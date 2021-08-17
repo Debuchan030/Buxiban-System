@@ -6,90 +6,100 @@
 -->
 <!-- test -->
 <html>
-	<head>
-		<title>Bulletin Board</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
 
-	
-	<body class="is-preload">
+<head>
+	<title>Bulletin Board</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
 
-		<!-- Wrapper -->
-			<div id="wrapper">
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
-							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo"><h1><strong>公佈欄</strong></h1> </a>
-									
-								</header>
+	<script src="./assets/js/required.js"></script> -->
+</head>
 
-							<!-- Banner -->
-								<section id="banner">
-									<div class="content">
-										<header>
-											<h1>Hi, I’m Editorial<br />
-											by HTML5 UP</h1>
-											<p>A free and fully responsive site template</p>
-										</header>
-										<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
-										<ul class="actions">
-											<li><a href="#" class="button big">Learn More</a></li>
-										</ul>
-									</div>
-									<span class="image object">
-										<img src="images/pic10.jpg" alt="" />
-									</span>
-								</section>
 
-							
+<body class="is-preload">
 
-						</div>
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<!-- Header -->
+				<header id="header">
+					<a href="index.html" class="logo">
+						<h1><strong>公佈欄</strong></h1>
+					</a>
+
+				</header>
+
+				<!-- Banner -->
+
+				<section id="banner">
+					<div class="content">
+
+						<textarea name="" id="title" cols="10" rows="3" placeholder="title" class="my-3"></textarea>
+
+						<textarea name="" id="content" cols="30" rows="5" placeholder="content"class="my-3"></textarea>
+						<ul class="actions">
+							<li><a class="button big" id="edit">編輯</a></li>
+						</ul>
 					</div>
+					
+				</section>
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
 
-							
-
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>目錄</h2>
-									</header>
-									<ul>
-										<li><a href="index.html">公佈欄</a></li>
-										<li><a href="payment_notice.html">繳款通知管理</a></li>
-										<li><a href="member_management.html">學生/家長管理	</a></li>
-										<li>
-											<span class="opener">課程管理</span>
-											<ul>
-												<li><a href="class_selected_management.html">選課管理</a></li>
-												<li><a href="class_management.html">開課課程管理</a></li>
-												
-											</ul>
-										</li>
-										<li><a href="attend_record.html">到班通知管理</a></li>
-									</ul>
-								</nav>
-
-						</div>
-					</div>
 
 			</div>
+		</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
 
-	</body>
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>目錄</h2>
+					</header>
+					<ul>
+						<li><a href="index.html">公佈欄</a></li>
+						<li><a href="payment_notice.html">繳款通知管理</a></li>
+						<li><a href="member_management.html">學生/家長管理 </a></li>
+						<li>
+							<span class="opener">課程管理</span>
+							<ul>
+								<li><a href="class_selected_management.html">選課管理</a></li>
+								<li><a href="class_management.html">開課課程管理</a></li>
+
+							</ul>
+						</li>
+						<li><a href="attend_record.html">到班通知管理</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<!-- <div id="required">
+		{{template}}
+	</div> -->
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+	<script src="./assets/js/index.js"></script>
+
+</body>
+
 </html>
