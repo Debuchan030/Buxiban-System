@@ -6,79 +6,106 @@
 -->
 <!-- test -->
 <html>
-	<head>
-		<title>Bulletin Board</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-        <script src="https://www.w3schools.com/lib/w3.js"></script>
 
-	</head>
-    <script>
-        w3.includeHTML();
-    </script>
-    
-	<body class="is-preload">
+<head>
+	<title>payment_notice</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+</head>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
 
-							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo"><h1><strong>繳款通知管理</strong></h1> </a>
-									
-								</header>
+<body class="is-preload">
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>繳款進度</h2>
-									</header>
-									<div class="posts">
-									</div>
-								</section>
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-						</div>
-					</div>
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-							<!-- Menu -->
-							<nav id="menu">
-								<header class="major">
-									<h2>目錄</h2>
-								</header>
-								<ul>
-									<li><a href="index.html">公佈欄</a></li>
-									<li><a href="payment_notice.html">繳款通知管理</a></li>
-									<li><a href="member_management.html">學生/家長管理	</a></li>
-									<li>
-										<span class="opener">課程管理</span>
-										<ul>
-											<li><a href="class_selected_management.html">選課管理</a></li>
-											<li><a href="class_management.html">開課課程管理</a></li>
-											
-										</ul>
-									</li>
-									<li><a href="attend_record.html">到班通知管理</a></li>
-								</ul>
-							</nav>
-						</div>
-					</div>
+				<!-- Header -->
+				<header id="header">
+					<a href="" class="logo">
+						<h1><strong>繳款通知管理</strong></h1>
+					</a>
+
+				</header>
+
+				<!-- Section -->
+				<section>
+					<table>
+						<thead class="major">
+							<h2>繳款進度</h2>
+						</thead>
+						<tbody>
+							<tr>
+								<td>陳小美</td>
+								<td>參加課程：HCT線上程式設計、線上安親</td>
+								<td>費用：$5000</td>
+								<td><button>未繳款</button></td>
+								<td><button>發送繳款訊息</button></td>
+							</tr>
+							<tr>
+								<td>陳中美</td>
+								<td>參加課程：HCT線上程式設計、線上安親</td>
+								<td>費用：$5000</td>
+								<td><button>未繳款</button></td>
+								<td><button>發送繳款訊息</button></td>
+							</tr>
+							<tr>
+								<td>陳大美</td>
+								<td>參加課程：HCT線上程式設計、線上安親</td>
+								<td>費用：$5000</td>
+								<td><button>未繳款</button></td>
+								<td><button>發送繳款訊息</button></td>
+							</tr>
+						</tbody>
+
+					</table>
+					<button>一鍵催繳</button>
+				</section>
 
 			</div>
+		</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>目錄</h2>
+					</header>
+					<ul>
+						<li><a href="index.html">公佈欄</a></li>
+						<li><a href="payment_notice.html">繳款通知管理</a></li>
+						<li><a href="member_management.html">學生/家長管理 </a></li>
+						<li>
+							<span class="opener">課程管理</span>
+							<ul>
+								<li><a href="class_selected_management.html">選課管理</a></li>
+								<li><a href="class_management.html">開課課程管理</a></li>
 
-	</body>
+							</ul>
+						</li>
+						<li><a href="attend_record.html">到班通知管理</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="./assets/js/required.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</body>
+
 </html>
