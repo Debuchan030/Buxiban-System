@@ -1505,7 +1505,7 @@ button,
   height: 3.5em;
   letter-spacing: 0.075em;
   line-height: 3.5em;
-  padding: 0 2.25em;
+  /* padding: 0 2.25em; */
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
