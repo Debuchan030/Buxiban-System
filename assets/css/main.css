@@ -2275,3 +2275,7 @@ button,
   margin-top: 15px;
   margin-bottom: 15px;
 }
+table img{
+  width : 20px;
+  height: 20px;
+}
