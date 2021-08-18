@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto Slab", serif;
   font-weight: 700;
   line-height: 1.5;
-  margin: 0 0 1em 0; }
+  margin: 0 0 5px 0; }
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     color: inherit;
     text-decoration: none;
@@ -143,7 +143,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 4em;
-  margin: 0 0 0.5em 0;
+  margin: 0 0 0 0;
   line-height: 1.3; }
 
 h2 {
@@ -163,7 +163,7 @@ h6 {
 
 @media screen and (max-width: 1680px) {
   h1 {
-    font-size: 3.5em; } }
+    font-size: 2em; } }
 
 @media screen and (max-width: 980px) {
   h1 {
@@ -1867,7 +1867,7 @@ button,
     #main > .inner {
       padding: 0 5em 0.1em 5em ; }
       #main > .inner > section {
-        padding: 5em 0 3em 0 ; } }
+        padding: 1em 0 1em 0 ; } }
   @media screen and (max-width: 1280px) {
     #main > .inner {
       padding: 0 4em 0.1em 4em ; }
@@ -1997,27 +1997,27 @@ button,
       top: 0;
       width: inherit; }
   #sidebar.inactive {
-    margin-left: -26em; }
+    margin-left: -13em; }
   @media screen and (max-width: 1680px) {
     #sidebar {
-      width: 24em; }
+      width: 12em; }
       #sidebar > .inner {
         padding: 1.66667em 1.66667em 1.33333em 1.66667em ;
-        width: 24em; }
+        width: 12em; }
         #sidebar > .inner > .alt {
           margin: -1.66667em 0 3.33333em -1.66667em;
           padding: 1.66667em;
           width: calc(100% + 3.33333em); }
       #sidebar .toggle {
         height: 6.25em;
-        left: 24em;
+        left: 12em;
         line-height: 6.25em;
         text-indent: 5em;
         width: 5em; }
         #sidebar .toggle:before {
           font-size: 1.5rem; }
       #sidebar.inactive {
-        margin-left: -24em; } }
+        margin-left: -12em; } }
   @media screen and (max-width: 1280px) {
     #sidebar {
       box-shadow: 0 0 5em 0 rgba(0, 0, 0, 0.175);
@@ -2071,12 +2071,13 @@ button,
 
 /* Header */
 #header {
+  text-align: center;
   display: -moz-flex;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
   border-bottom: solid 5px #f56a6a;
-  padding: 6em 0 1em 0;
+  padding: 0em 0 1em 0;
   position: relative; }
   #header > * {
     -moz-flex: 1;
@@ -2093,10 +2094,10 @@ button,
     text-align: right; }
   @media screen and (max-width: 1680px) {
     #header {
-      padding-top: 5em; } }
+      padding-top: 2em; } }
   @media screen and (max-width: 736px) {
     #header {
-      padding-top: 6.5em; }
+      padding-top:2em; }
       #header .logo {
         font-size: 1.25em;
         margin: 0; }
