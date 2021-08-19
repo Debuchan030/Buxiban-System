@@ -8,15 +8,19 @@
 <html>
 
 <head>
-	<title>Bulletin Board</title>
+	<title>公佈欄</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!-- bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
+	<!-- vue cdn -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 	<link rel="stylesheet" href="assets/css/main.css" />
+
 </head>
 
 
@@ -44,80 +48,80 @@
 
 						<table id="post_record">
 							<tbody>
-								<tr data-bs-toggle="collapse" data-bs-target="#content" aria-expanded="false"
-									aria-controls="content">
-									<td>
-										<textarea name="" id="" cols="30" rows="1">標題：HCT線上程式設計夏令營開張啦~</textarea>
-									</td>
-								</tr>
-								<tr class="collapse" id="content">
-									<td>
-										<textarea name="" id="" cols="30" rows="3"
-											class="m-2">開課資訊：在最嚴峻的時代，做最完善的準備，讓您的孩子超前部屬，走在時尚的尖端，在未來成為一位年薪千萬的工程師！開課日期：8月每周三下午4:30收費：$12500  </textarea>
-										<button class="m-2">儲存</button>
-										<button class="m-2">刪除</button>
-									</td>
-								</tr>
+								<form action="" method="POST">
+									<div>
+										<tr data-bs-toggle="collapse" data-bs-target="#content" aria-expanded="false"
+											aria-controls="content">
+											<td>
+												<textarea id="" cols="30" rows="1" name="bulletin_title"></textarea>
+											</td>
+										</tr>
+										<tr class="collapse" id="content">
+											<td>
+												<textarea name="bulletin_content" id="" cols="30" rows="3"
+													class="m-2"></textarea>
+												<button class="m-2" action="submit" name="save">儲存</button>
+												<button class="m-2" action="submit" name="delete">刪除</button>
+											</td>
+										</tr>
+									</div>
+								</form>
+								<!-- 範例 -->
+								<div>
+									<tr data-bs-toggle="collapse" data-bs-target="#content1" aria-expanded="false"
+										aria-controls="content">
+										<td>
+											<textarea name="" id="" cols="30" rows="1">標題：HCT線上程式設計夏令營開張啦~</textarea>
+										</td>
+									</tr>
+									<tr class="collapse" id="content1">
+										<td>
+											<textarea name="" id="" cols="30" rows="3"
+												class="m-2">開課資訊：在最嚴峻的時代，做最完善的準備，讓您的孩子超前部屬，走在時尚的尖端，在未來成為一位年薪千萬的工程師！開課日期：8月每周三下午4:30收費：$12500  </textarea>
+											<button class="m-2">儲存</button>
+											<button class="m-2">刪除</button>
+										</td>
+									</tr>
+								</div>
 							</tbody>
 						</table>
 						<button data-bs-toggle="collapse" data-bs-target="#add_post" aria-expanded="false"
 							aria-controls="add_post">新增訊息</button>
-						<div class="collapse" id="add_post">
-							<textarea name="" cols="10" rows="1" placeholder="title" class="my-3"></textarea>
-							<textarea name="" cols="30" rows="5" placeholder="content" class="my-3"></textarea>
-							<ul class="actions">
-								<li><a class="button big">發布</a></li>
-							</ul>
-						</div>
-
+						<form action="" method="post">
+							<div class="collapse" id="add_post">
+								<textarea name="" cols="10" rows="1" placeholder="title" class="my-3"
+									name="bulletin_title"></textarea>
+								<textarea name="" cols="30" rows="5" placeholder="content" class="my-3"
+									name="bulletin_content"></textarea>
+								<button type="submit" action="submit">發布</button>
+							</div>
+						</form>
 					</div>
-
 				</section>
 
 
 
 			</div>
 		</div>
-
-		<!-- Sidebar -->
-		<div id="sidebar">
-			<div class="inner">
-
-
-
-				<!-- Menu -->
-				<nav id="menu">
-					<header class="major">
-						<h2>目錄</h2>
-					</header>
-					<ul>
-						<li><a href="index.html">公佈欄</a></li>
-						<li><a href="payment_notice.html">繳款通知管理</a></li>
-						<li><a href="member_management.html">學生/家長管理 </a></li>
-						<li>
-							<span class="opener">課程管理</span>
-							<ul>
-								<li><a href="class_selected_management.html">選課管理</a></li>
-								<li><a href="class_management.html">開課課程管理</a></li>
-
-							</ul>
-						</li>
-						<li><a href="attend_record.html">到班通知管理</a></li>
-					</ul>
-				</nav>
-
-			</div>
+		<!-- sidebar -->
+		<div id="navbar" style="background-color: #f5f6f7">
+			<navbar></navbar>
 		</div>
-
 	</div>
 
 	<!-- Scripts -->
+
+	<script src="./assets/js/navbar.js"></script>
+
+	<!-- required_link -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script src="./assets/js/index.js"></script>
+
+
 </body>
 
 </html>
