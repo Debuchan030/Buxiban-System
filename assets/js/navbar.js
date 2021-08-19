@@ -4,8 +4,9 @@
 // import "./browser.min.js";
 // import "./jquery.min.js";
 // import "./breakpoints.min.js";
+
 Vue.component('navbar', {
-    template: `
+	template: `
     <div id="sidebar">
 			<div class="inner">
 
@@ -27,6 +28,7 @@ Vue.component('navbar', {
 							</ul>
 						</li>
 						<li><a href="attend_record.html">到班通知管理</a></li>
+						<li><a href="login.html">登出</a></li>
 					</ul>
 				</nav>
 
@@ -36,19 +38,6 @@ Vue.component('navbar', {
 })
 
 new Vue({
-    el: '#required',
-})
+	el: 'navbar'
 
-var script = new Vue({
-    el: '#script'
-})
-script.component('script_link', {
-    template: `<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-<script src="./assets/js/required.js"></script>
-`,
 })
