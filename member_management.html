@@ -41,8 +41,28 @@
 				</header>
 
 				<!-- Section -->
-				<section>
+				<section>	
 					<textarea name="" id="" cols="30" rows="1" placeholder="搜尋姓名"></textarea>
+					<button data-bs-toggle="collapse" data-bs-target="#add_post" aria-expanded="false"
+						aria-controls="add_post" class="add_member">新增資料</button>
+					<button class="add_member">修改資料</button>
+					<form action="" method="post">
+						<div class="collapse" id="add_post">
+							<table>
+								<tr>
+									<th>學生姓名</th>
+									<th>家長姓名</th>
+									<th>連絡電話</th>
+								</tr>
+								<tr>
+									<td><input ></input></td>
+									<td><input ></input></td>
+									<td><input ></input></td>
+								</tr>
+							</table>
+							<button type="submit" action="submit">新增</button>
+						</div>
+					</form>
 					<div class="management_student">
 						<h2>學生</h2>
 						<table>
