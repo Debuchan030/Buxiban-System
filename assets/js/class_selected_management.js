@@ -30,7 +30,7 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
         var std_name = i/*course_selected_std_list[i].std_name*/;
         //var parent_name = (select * from buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id)
         var parent_name = i+10/*course_selected_std_list[i].parent_name*/;
-        var table_list = "<tr><td>學生姓名："+std_name+"</td><td>家長姓名："+parent_name+"</td><td><button>刪除</button></td></tr>"
+        var table_list = "<tr class = \"std_info\"><td>學生姓名："+std_name+"</td><td>家長姓名："+parent_name+"</td><td><button class = \"std_delete_selcourse\">刪除</button></td></tr>"
         $("#course_selected_std").append(table_list)
     }
 
@@ -43,12 +43,31 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
         var std_name = i/*course_selected_std_list[i].std_name*/;
         //var parent_name = (select * from buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id)
         var parent_name = i+10/*course_selected_std_list[i].parent_name*/;
-        var table_list = "<tr><td>學生姓名："+std_name+"</td><td>家長姓名："+parent_name+"</td><td><button>新增</button></td></tr>"
+        var table_list = "<tr class = \"std_info\"><td>學生姓名："+std_name+"</td><td>家長姓名："+parent_name+"</td><td><button class = \"std_add_selcourse\">新增</button></td></tr>"
         $("#course_nonselected_std").append(table_list)
     }
-
+    console.log("hi")
+}
+// 刪除已選修學生
+$('#course_selected_std').on('click', '.std_delete_selcourse', std_delete_selcourse);
+function std_delete_selcourse(){
+    //傳送std_name、parent_name去刪除
+    var std_name = $(this).parents(".std_info").find("td").first().text().substring(5)
+    var parent_name = $(this).parents(".std_info").find("td").first().next().text().substring(5)
+    console.log(std_name)
+    console.log(parent_name)
+    //reload視窗
+    change_student_list.call()
 }
 
-
-
-
+// 新增未選修學生
+$('#course_nonselected_std').on('click', '.std_add_selcourse', std_add_selcourse);
+function std_add_selcourse(){
+    //傳送std_name、parent_name去新增
+    var std_name = $(this).parents(".std_info").find("td").first().text().substring(5)
+    var parent_name = $(this).parents(".std_info").find("td").first().next().text().substring(5)
+    console.log(std_name)
+    console.log(parent_name)
+    //reload視窗
+    change_student_list.call()
+}
