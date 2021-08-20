@@ -1,0 +1,4 @@
+.payed {
+    color: rgb(0, 209, 0) !important;
+    box-shadow: inset 0 0 0 2px rgb(0, 209, 0) !important;
+}
