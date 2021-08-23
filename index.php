@@ -21,7 +21,9 @@ include('app\loginstate.php');
 <body class="is-preload">
 
     <!-- 要放的頁面 -->
-
+    <?php
+    include('./template/bulletin_board.html');
+    ?>
     <!-- 側邊攔 -->
     <div id="sidebar" style="background-color: rgb(245, 246, 247);">
         <div class="inner">
@@ -50,6 +52,8 @@ include('app\loginstate.php');
 
         </div>
     </div>
+    </div>
+
     <!-- script -->
     <?php
     include('./template/link_script.html');
