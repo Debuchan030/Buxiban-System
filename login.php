@@ -30,28 +30,24 @@
 							<div class="d-flex justify-content-center align-items-center me-5">
 								<img src="./template/images/LOGO.png" alt="" class="m-3" style="width: 50px;">
 								<h3 class="d-flex align-items-center">登入</h3>
-
 							</div>
 							<form action="" method="POST">
 								<input type="hidden" name="action" value="login">
 								<div class="form-outline mb-4">
-									<input  id="typeEmailX" class="form-control form-control-lg "
-										placeholder="帳號" name="buxiban_acct"/>
+									<input type="phone"  id="typeEmailX" class="form-control form-control-lg "
+										placeholder="帳號" name="buxiban_acct" required/>
 								</div>
-
 								<div class="form-outline mb-4">
 									<input type="password" id="typePasswordX" class="form-control form-control-lg"
-										placeholder="密碼" name="buxiban_pwd"/>
+										placeholder="密碼" name="buxiban_pwd" required/>
 								</div>
-
 								<!-- Checkbox -->
 								<div class="form-check d-flex justify-content-start mb-4">
 									<input class="form-check-input mx-2" type="checkbox" value="" id="form1Example3" />
 									<label class="form-check-label" for="form1Example3"> Remember password </label>
 								</div>
-								<button class="btn btn-primary btn-lg btn-block" type="submit" action="submit">Login</button>
+								<button class="btn btn-primary btn-lg btn-block" type="submit" action="submit" id="login_submit">Login</button>
 							</form>
-
 						</div>
 					</div>
 				</div>
@@ -60,7 +56,6 @@
 	</section>
 
 	<!-- Scripts -->
-
 
 </body>
 
