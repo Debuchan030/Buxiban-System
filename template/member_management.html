@@ -1,28 +1,3 @@
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<!-- test -->
-<html>
-
-<head>
-	<title>學生/家長管理</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<!-- bootstrap -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script>
-	<!-- vue cdn -->
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/member_management.css" />
-</head>
-
 <body class="is-preload">
 
 	<!-- Wrapper -->
@@ -41,7 +16,7 @@
 				</header>
 
 				<!-- Section -->
-				<section>	
+				<section>
 					<textarea name="" id="" cols="30" rows="1" placeholder="搜尋姓名"></textarea>
 					<button data-bs-toggle="collapse" data-bs-target="#add_post" aria-expanded="false"
 						aria-controls="add_post" class="add_member">新增資料</button>
@@ -63,7 +38,7 @@
 							<button type="submit" action="submit">新增</button>
 						</div>
 					</form>
-					<div class="management_student" >
+					<div class="management_student">
 						<h2>學生</h2>
 						<table>
 							<thead>
@@ -73,15 +48,15 @@
 								</tr>
 							</thead>
 							<tbody id="std_list">
-							
+
 							</tbody>
 						</table>
 					</div>
-					<div class="management_parent" >
+					<div class="management_parent">
 						<h2>家長</h2>
-						<table >
+						<table>
 							<thead>
-								<tr>						
+								<tr>
 									<th>家長姓名</th>
 									<th>帳號</th>
 									<th>密碼</th>
@@ -90,7 +65,7 @@
 								</tr>
 							</thead>
 							<tbody id="parent_list">
-								
+
 							</tbody>
 						</table>
 					</div>
@@ -99,26 +74,7 @@
 			</div>
 		</div>
 
-		<!-- sidebar -->
-		<div id="navbar" style="background-color: #f5f6f7">
-			<navbar></navbar>
-		</div>
 
 	</div>
-	<!-- Scripts -->
 
-	<script src="./assets/js/navbar.js"></script>
-
-
-	<!-- required_link -->
-
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
 	<script src="./assets/js/member_management.js"></script>
-
-</body>
-
-</html>
