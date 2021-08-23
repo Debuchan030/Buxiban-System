@@ -16,7 +16,7 @@ Vue.component('navbar', {
 						<h2>目錄</h2>
 					</header>
 					<ul>
-						<li><a href="index.html">公佈欄</a></li>
+						<li><a href="bulletin_board.html">公佈欄</a></li>
 						<li><a href="payment_notice.html">繳款通知管理</a></li>
 						<li><a href="member_management.html">學生/家長管理 </a></li>
 						<li>
