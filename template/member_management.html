@@ -1,79 +1,81 @@
-<body class="is-preload">
+<link rel="stylesheet" href="assets/css/member_management.css" />
 
-	<!-- Wrapper -->
-	<div id="wrapper">
 
-		<!-- Main -->
-		<div id="main">
-			<div class="inner">
+<!-- Wrapper -->
+<div id="wrapper">
 
-				<!-- Header -->
-				<header id="header">
-					<a href="" class="logo">
-						<h1><strong>學生/家長管理</strong></h1>
-					</a>
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
 
-				</header>
+			<!-- Header -->
+			<header id="header">
+				<a href="" class="logo">
+					<h1><strong>學生/家長管理</strong></h1>
+				</a>
 
-				<!-- Section -->
-				<section>
-					<textarea name="" id="" cols="30" rows="1" placeholder="搜尋姓名"></textarea>
-					<button data-bs-toggle="collapse" data-bs-target="#add_post" aria-expanded="false"
-						aria-controls="add_post" class="add_member">新增資料</button>
-					<form action="" method="post">
-						<div class="collapse" id="add_post">
-							<table>
-								<tr>
-									<th>學生姓名</th>
-									<th>家長姓名</th>
-									<th>連絡電話</th>
-								</tr>
-								<tr>
-									<td><input name=""></input></td>
-									<td><input name=""></input></td>
-									<td><input name=""></input></td>
-								</tr>
-							</table>
-							<button type="submit" action="submit">新增</button>
-						</div>
-					</form>
-					<div class="management_student">
-						<h2>學生</h2>
+			</header>
+
+			<!-- Section -->
+			<section>
+				<textarea name="" id="" cols="30" rows="1" placeholder="搜尋姓名"></textarea>
+				<button data-bs-toggle="collapse" data-bs-target="#add_post" aria-expanded="false"
+					aria-controls="add_post" class="add_member">新增資料</button>
+				<button class="add_member" id="update">修改資料</button>
+				<form action="" method="post">
+					<div class="collapse" id="add_post">
 						<table>
-							<thead>
-								<tr>
-									<th>學生姓名</th>
-									<th>聯絡人</th>
-								</tr>
-							</thead>
-							<tbody id="std_list">
-
-							</tbody>
+							<tr>
+								<th>學生姓名</th>
+								<th>家長姓名</th>
+								<th>連絡電話</th>
+							</tr>
+							<tr>
+								<td><input name=""></input></td>
+								<td><input name=""></input></td>
+								<td><input name=""></input></td>
+							</tr>
 						</table>
+						<button type="submit" action="submit">新增</button>
 					</div>
-					<div class="management_parent">
-						<h2>家長</h2>
-						<table>
-							<thead>
-								<tr>
-									<th>家長姓名</th>
-									<th>帳號</th>
-									<th>密碼</th>
-									<th>連絡電話</th>
-									<th>學生</th>
-								</tr>
-							</thead>
-							<tbody id="parent_list">
+				</form>
+				<div class="management_student">
+					<h2>學生</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>學生姓名</th>
+								<th>聯絡人</th>
+							</tr>
+						</thead>
+						<tbody id="std_list">
 
-							</tbody>
-						</table>
-					</div>
-				</section>
+						</tbody>
+					</table>
+				</div>
+				<div class="management_parent">
+					<h2>家長</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>家長姓名</th>
+								<th>帳號</th>
+								<th>密碼</th>
+								<th>連絡電話</th>
+								<th>學生</th>
+							</tr>
+						</thead>
+						<tbody id="parent_list">
 
-			</div>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
 		</div>
-
-
 	</div>
 
-	<script src="./assets/js/member_management.js"></script>
+
+</div>
+
+<script src="./assets/js/member_management.js"></script>
