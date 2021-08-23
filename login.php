@@ -1,6 +1,9 @@
 <!DOCTYPE HTML>
 <?php 
-	include('app\loginstate.php');
+	session_start();
+	if(isset($_SESSION['user_id'])){
+		header("location:index.php");
+	}
 ?>
 <html>
 
