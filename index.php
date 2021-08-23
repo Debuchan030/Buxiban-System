@@ -23,7 +23,7 @@ include('app/loginstates.php');
     <!-- 要放的頁面 -->
 
     <!-- 側邊攔 -->
-    <div id="sidebar">
+    <div id="sidebar" style="background-color: rgb(245, 246, 247);">
         <div class="inner">
 
             <!-- Menu -->
@@ -44,7 +44,7 @@ include('app/loginstates.php');
                         </ul>
                     </li>
                     <li><a href="attend_record.html">到班通知管理</a></li>
-                    <li><a href="login.html">登出</a></li>
+                    <li><a href="../login.php">登出</a></li>
                 </ul>
             </nav>
 
