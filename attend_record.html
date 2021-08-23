@@ -34,63 +34,29 @@
 
 				<!-- Header -->
 				<header id="header">
-					<a href="index.html" class="logo">
+					<a href="" class="logo">
 						<h1><strong>到班通知管理</strong></h1>
 					</a>
 				</header>
 
 				<!-- Section -->
 				<section>
-					<select class="my-3">
-						<option>程式課</option>
-						<option value="">數學課</option>
-						<option value="">英文課</a></option>
-						<option value="">體育課</a></option>
+					<select class="my-3" id="attend_status_course">
+
 					</select>
 					<div>
 						<table>
-							<tr>
-								<th>學生姓名</th>
-								<th>家長姓名</th>
-								<th>家長電話</th>
-								<th>出席狀況</th>
-								<th></th>
-							</tr>
-						
-							<tr>
-								<td>王小明</td>
-								<td>王大明</td>
-								<td>09xxxxxxxx</td>
-								<td>
-									到班
-								</td>
-								<td>
-									<button>切換狀態</button>
-								</td>
-							</tr>
-							<tr>
-								<td>陳小華</td>
-								<td>陳大華</td>
-								<td>09xxxxxxxx</td>
-								<td>
-									到班
-								</td>
-								<td>
-									<button>切換狀態</button>
-								</td>
-							</tr>
-							<tr>
-								<td>孫小美</td>
-								<td>孫大美</td>
-								<td>09xxxxxxxx</td>
-								<td>
-									到班
-								</td>
-								<td>
-									<button>切換狀態</button>
-								</td>
-							</tr>
+							<thead>
+								<tr>
+									<th>學生姓名</th>
+									<th>家長姓名</th>
+									<th>家長電話</th>
+									<th>出席狀況</th>
+									<th></th>
+								</tr>
+							<tbody id="course_attend_status">
 
+							</tbody>
 						</table>
 					</div>
 				</section>
@@ -114,7 +80,7 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-	<script src="./assets/js/index.js"></script>
+	<script src="./assets/js/attend_change.js"></script>
 
 </body>
 

@@ -20,7 +20,7 @@
 	<!-- vue cdn -->
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 	<link rel="stylesheet" href="assets/css/main.css" />
-
+	<link rel="stylesheet" href="assets/css/member_management.css" />
 </head>
 
 <body class="is-preload">
@@ -34,64 +34,60 @@
 
 				<!-- Header -->
 				<header id="header">
-					<a href="index.html" class="logo">
+					<a href="" class="logo">
 						<h1><strong>學生/家長管理</strong></h1>
 					</a>
 
 				</header>
 
 				<!-- Section -->
-				<section>
+				<section>	
 					<textarea name="" id="" cols="30" rows="1" placeholder="搜尋姓名"></textarea>
-					<div class="management_student">
+					<button data-bs-toggle="collapse" data-bs-target="#add_post" aria-expanded="false"
+						aria-controls="add_post" class="add_member">新增資料</button>
+					<button class="add_member" id="update">修改資料</button>
+					<form action="" method="post">
+						<div class="collapse" id="add_post">
+							<table>
+								<tr>
+									<th>學生姓名</th>
+									<th>家長姓名</th>
+									<th>連絡電話</th>
+								</tr>
+								<tr>
+									<td><input name=""></input></td>
+									<td><input name=""></input></td>
+									<td><input name=""></input></td>
+								</tr>
+							</table>
+							<button type="submit" action="submit">新增</button>
+						</div>
+					</form>
+					<div class="management_student" >
 						<h2>學生</h2>
 						<table>
-							<th>學生姓名</th>
-							<th>聯絡人</th>
-							<tr>
-								<td>王小明</td>
-								<td>王大明</td>
-							</tr>
-							<tr>
-								<td>陳小華</td>
-								<td>陳大華</td>
-							</tr>
-							<tr>
-								<td>孫小美</td>
-								<td>孫大美</td>
-							</tr>
+							<thead>
+								<th>學生姓名</th>
+								<th>聯絡人</th>
+							</thead>
+							</tbody id="std_table_list">
+							
+							</tbody>
 						</table>
 					</div>
-					<div class="management_parent">
+					<div class="management_parent" >
 						<h2>家長</h2>
-						<table>
-							<th>家長姓名</th>
-							<th>帳號</th>
-							<th>密碼</th>
-							<th>連絡電話</th>
-							<th>學生</th>
-							<tr>
-								<td>王大明</td>
-								<td>HCTxxxxxx</td>
-								<td>a123</td>
-								<td>09xxxxxxxxxx</td>
-								<td>王小明</td>
-							</tr>
-							<tr>
-								<td>陳大華</td>
-								<td>HCTxxxxxx</td>
-								<td>b123</td>
-								<td>09xxxxxxxxxx</td>
-								<td>陳小華</td>
-							</tr>
-							<tr>
-								<td>孫大美</td>
-								<td>HCTxxxxxx</td>
-								<td>c123</td>
-								<td>09xxxxxxxxxx</td>
-								<td>孫小美</td>
-							</tr>
-
+						<table >
+							<thead>						
+								<th>家長姓名</th>
+								<th>帳號</th>
+								<th>密碼</th>
+								<th>連絡電話</th>
+								<th>學生</th>
+							</thead>
+							<tbody id="parent_table_list">
+								
+							</tbody>
 						</table>
 					</div>
 				</section>
@@ -105,19 +101,19 @@
 		</div>
 
 	</div>
-
 	<!-- Scripts -->
 
 	<script src="./assets/js/navbar.js"></script>
 
+
 	<!-- required_link -->
+
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-	<script src="./assets/js/index.js"></script>
-
+	<script src="./assets/js/member_management.js"></script>
 
 </body>
 
