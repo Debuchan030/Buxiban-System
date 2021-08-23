@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-
+<?php 
+	include('app/loginstates.php');
+?>
 <html>
 
 <head>
