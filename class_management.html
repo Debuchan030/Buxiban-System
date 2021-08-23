@@ -49,21 +49,27 @@
 						<tbody>
 							<tr>
 								<td>課程名稱：HCT線上程式設計</td>
-								<td>開課日期：8月每周三下午4:30</td>
+								<td>上課時間：8月每周三下午4:30</td>
 								<td>收費：$3000</td>
-								<td><button>修改</button></td>
-								<td><button>刪除</button></td>
+							
 							</tr>
 							<tr>
 								<td>課程名稱：線上安親</td>
-								<td>開課日期：8月 周一至周五 上午9:00~下午5:30</td>
+								<td>上課時間：8月 周一至周五 上午9:00~下午5:30</td>
 								<td>收費：$2000</td>
-								<td><button>修改</button></td>
-								<td><button>刪除</button></td>
+								
 							</tr>
 						</tbody>
 					</table>
-					<button>新增課程</button>
+					<button data-bs-toggle="collapse" data-bs-target="#add_class" aria-expanded="false"
+						aria-controls="add_class">新增課程</button>
+					<div class="collapse" id="add_class">
+						<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="課程名稱"></textarea>
+						<textarea name="" id="" cols="30" rows="3" class="m-2" placeholder="內容"></textarea>
+						<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="上課時間"></textarea>
+						<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="收費"></textarea>
+						<button class="m-2">發布</button>
+					</div>
 				</section>
 
 			</div>
