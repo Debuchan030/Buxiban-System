@@ -27,8 +27,8 @@
 				<div class="col-12 col-md-8 col-lg-6 col-xl-5">
 					<div class="card shadow-2-strong" style="border-radius: 1rem;">
 						<div class="card-body p-5 text-center">
-							<div class="d-flex justify-content-center align-items-center  me-5">
-								<img src="./images/LOGO.png" alt="" class="m-3" style="width: 50px;">
+							<div class="d-flex justify-content-center align-items-center me-5">
+								<img src="./template/images/LOGO.png" alt="" class="m-3" style="width: 50px;">
 								<h3 class="d-flex align-items-center">登入</h3>
 
 							</div>
