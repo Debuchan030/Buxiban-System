@@ -27,5 +27,8 @@ for (var i = 0; i < 5 /*buxiban.length*/; i++) {
 
 
 // 修改貼文
-
+$(".bulletin_save").on("click",bulletin_save_func)
+function bulletin_save_func(){
+    console.log()
+}
 //刪除貼文
