@@ -45,7 +45,6 @@
 					<textarea name="" id="" cols="30" rows="1" placeholder="搜尋姓名"></textarea>
 					<button data-bs-toggle="collapse" data-bs-target="#add_post" aria-expanded="false"
 						aria-controls="add_post" class="add_member">新增資料</button>
-					<button class="add_member" id="update">修改資料</button>
 					<form action="" method="post">
 						<div class="collapse" id="add_post">
 							<table>
@@ -62,38 +61,22 @@
 							</table>
 							<button type="submit" action="submit">新增</button>
 						</div>
-					</form>
-					<div class="management_student" >
-						<h2>學生</h2>
-						<table>
-							<thead>
-								<tr>
-									<th>學生姓名</th>
-									<th>聯絡人</th>
-								</tr>
-							</thead>
-							<tbody id="std_list">
+					</form>					
+					<h2>學生</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>學生姓名</th>
+								<th>家長姓名</th>
+								<th>帳號</th>
+								<th>密碼</th>
+								<th>連絡電話</th>
+							</tr>
+						</thead>
+						<tbody id="std_list">
 							
-							</tbody>
-						</table>
-					</div>
-					<div class="management_parent" >
-						<h2>家長</h2>
-						<table >
-							<thead>
-								<tr>						
-									<th>家長姓名</th>
-									<th>帳號</th>
-									<th>密碼</th>
-									<th>連絡電話</th>
-									<th>學生</th>
-								</tr>
-							</thead>
-							<tbody id="parent_list">
-								
-							</tbody>
-						</table>
-					</div>
+						</tbody>
+					</table>			
 				</section>
 
 			</div>
