@@ -34,19 +34,19 @@ include('app\loginstate.php');
                     <h2>目錄</h2>
                 </header>
                 <ul>
-                    <li><a href="bulletin_board.html">公佈欄</a></li>
-                    <li><a href="payment_notice.html">繳款通知管理</a></li>
-                    <li><a href="member_management.html">學生/家長管理 </a></li>
+                    <li><a>公佈欄</a></li>
+                    <li><a>繳款通知管理</a></li>
+                    <li><a>學生/家長管理 </a></li>
                     <li>
                         <span class="opener">課程管理</span>
                         <ul>
-                            <li><a href="class_selected_management.html">選課管理</a></li>
-                            <li><a href="class_management.html">開課課程管理</a></li>
+                            <li><a>選課管理</a></li>
+                            <li><a>開課課程管理</a></li>
 
                         </ul>
                     </li>
-                    <li><a href="attend_record.html">到班通知管理</a></li>
-                    <li><a href="../login.php">登出</a></li>
+                    <li><a>到班通知管理</a></li>
+                    <li><a href="./login.php">登出</a></li>
                 </ul>
             </nav>
 
