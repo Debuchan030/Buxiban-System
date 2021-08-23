@@ -39,5 +39,4 @@ Vue.component('navbar', {
 
 new Vue({
 	el: 'navbar'
-
 })
