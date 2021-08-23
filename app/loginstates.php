@@ -30,12 +30,5 @@ switch ( $_POST['action'] ) {
         }
 
     break;
-    
-    //登出
-    case "logout":
-        session_start();
-        session_destroy();
-        echo '<script>window.location.replace("/login.php")</script>';
-    break;
 }
 ?>

@@ -48,7 +48,7 @@ if(!isset($_SESSION['user_id'])){
                         </ul>
                     </li>
                     <li><a>到班通知管理</a></li>
-                    <li><a href="./login.php">登出</a></li>
+                    <li><a href="app/logout.php">登出</a></li>
                 </ul>
             </nav>
 
