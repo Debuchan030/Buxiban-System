@@ -9,7 +9,7 @@ aria-controls="content">
         class="m-2">${bulletin_content}</textarea>
     <textarea name="" id="" cols="30" rows="1"
         class="m-2">${bulletin_time}</textarea>
-        <button class="m-2">儲存</button><button class="m-2">刪除</button></td>
+        <button class="m-2 bulletin_save">儲存</button><button class="m-2 bulletin_delete">刪除</button></td>
 </tr>
 `;
 
@@ -24,3 +24,8 @@ for (var i = 0; i < 5 /*buxiban.length*/; i++) {
         { bulletin_id: id, bulletin_title: title, bulletin_content: content, bulletin_time: time },
     ].map(bulletin_template));
 }
+
+
+// 修改貼文
+
+//刪除貼文
