@@ -9,7 +9,7 @@ switch ( $_POST['action'] ) {
 
         if(!isset($acct) || !isset($pwd)){
             echo '<script> window.alert("請輸入帳號或密碼!");</script>';
-            echo '<script>window.location.replace("/login")</script>';
+            echo '<script>window.location.replace("/login.php")</script>';
         }
         else{
             include("dbconfig.php");
@@ -24,7 +24,7 @@ switch ( $_POST['action'] ) {
             }
             else{ 
                 echo '<script> window.alert("帳號或密碼錯誤!");</script>';
-                echo '<script>window.location.replace("/login")</script>';
+                echo '<script>window.location.replace("/login.php")</script>';
             }
             $conn=null;
         }
@@ -35,7 +35,7 @@ switch ( $_POST['action'] ) {
     case "logout":
         session_start();
         session_destroy();
-        echo '<script>window.location.replace("/login")</script>';
+        echo '<script>window.location.replace("/login.php")</script>';
     break;
 }
 ?>
