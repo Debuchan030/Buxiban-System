@@ -7,7 +7,7 @@ switch ( $_POST['action'] ) {
         $acct = $_POST["buxiban_acct"];
         $pwd = $_POST["buxiban_pwd"];
 
-        if(!isset($acc) || !isset($pwd)){
+        if(!isset($acct) || !isset($pwd)){
             echo '<script> window.alert("請輸入帳號或密碼!");</script>';
             echo '<script>window.location.replace("/login")</script>';
         }
