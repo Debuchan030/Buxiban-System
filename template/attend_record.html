@@ -1,86 +1,46 @@
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<!-- test -->
-<html>
+<!-- Wrapper -->
+<div id="wrapper">
 
-<head>
-	<title>到班通知管理</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<!-- bootstrap -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script>
-	<!-- vue cdn -->
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-	<link rel="stylesheet" href="assets/css/main.css" />
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
 
-</head>
+			<!-- Header -->
+			<header id="header">
+				<a href="" class="logo">
+					<h1><strong>到班通知管理</strong></h1>
+				</a>
+			</header>
 
-<body class="is-preload">
+			<!-- Section -->
+			<section>
+				<textarea name="" id="" cols="30" rows="1" placeholder="搜尋姓名"></textarea>
+				<div>
+					<table>
+						<thead class="">
+							<tr>
+								<th>學生姓名</th>
+								<th>家長姓名</th>
+								<th>家長電話</th>
+								<th>出席狀況</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody id="course_attend">
 
-	<!-- Wrapper -->
-	<div id="wrapper">
+						</tbody>
+					</table>
+				</div>
+			</section>
 
-		<!-- Main -->
-		<div id="main">
-			<div class="inner">
-
-				<!-- Header -->
-				<header id="header">
-					<a href="" class="logo">
-						<h1><strong>到班通知管理</strong></h1>
-					</a>
-				</header>
-
-				<!-- Section -->
-				<section>
-					<textarea class="mb-5" name="" id="" cols="30" rows="1" placeholder="搜尋姓名"></textarea>
-					<div>
-						<table>
-							<thead>
-								<tr>
-									<th>學生姓名</th>
-									<th>家長姓名</th>
-									<th>家長電話</th>
-									<th>出席狀況</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody id="course_attend">
-
-							</tbody>
-						</table>
-					</div>
-				</section>
-
-			</div>
-		</div>
-
-		<!-- sidebar -->
-		<div id="navbar" style="background-color: #f5f6f7">
-			<navbar></navbar>
 		</div>
 	</div>
 
-	<!-- Scripts -->
+	<!-- sidebar -->
+	<div id="navbar" style="background-color: #f5f6f7">
+		<navbar></navbar>
+	</div>
+</div>
 
-	<script src="./assets/js/navbar.js"></script>
 
-	<!-- required_link -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="./assets/js/attend_change.js"></script>
-
-</body>
-
-</html>
+<script src="./assets/js/attend_change.js"></script>

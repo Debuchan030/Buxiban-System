@@ -1,99 +1,52 @@
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<!-- test -->
-<html>
+<!-- Wrapper -->
+<div id="wrapper">
 
-<head>
-	<title>所有課程管理</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<!-- bootstrap -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script>
-	<!-- vue cdn -->
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-	<link rel="stylesheet" href="assets/css/main.css" />
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
 
-</head>
+			<!-- Header -->
+			<header id="header">
+				<a href="" class="logo">
+					<h1><strong>開課課程管理</strong></h1>
+				</a>
 
-<body class="is-preload">
+			</header>
 
-	<!-- Wrapper -->
-	<div id="wrapper">
-
-		<!-- Main -->
-		<div id="main">
-			<div class="inner">
-
-				<!-- Header -->
-				<header id="header">
-					<a href="" class="logo">
-						<h1><strong>開課課程管理</strong></h1>
-					</a>
-
+			<!-- Section -->
+			<section>
+				<header>
+					<h2>所有課程</h2>
 				</header>
+				<table>
+					<tbody>
+						<tr>
+							<td>課程名稱：HCT線上程式設計</td>
+							<td>上課時間：8月每周三下午4:30</td>
+							<td>收費：$3000</td>
 
-				<!-- Section -->
-				<section>
-					<header>
-						<h2>所有課程</h2>
-					</header>
-					<table>
-						<tbody>
-							<tr>
-								<td>課程名稱：HCT線上程式設計</td>
-								<td>上課時間：8月每周三下午4:30</td>
-								<td>收費：$3000</td>
-							
-							</tr>
-							<tr>
-								<td>課程名稱：線上安親</td>
-								<td>上課時間：8月 周一至周五 上午9:00~下午5:30</td>
-								<td>收費：$2000</td>
-								
-							</tr>
-						</tbody>
-					</table>
-					<button data-bs-toggle="collapse" data-bs-target="#add_class" aria-expanded="false"
-						aria-controls="add_class">新增課程</button>
-					<div class="collapse" id="add_class">
-						<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="課程名稱"></textarea>
-						<textarea name="" id="" cols="30" rows="3" class="m-2" placeholder="內容"></textarea>
-						<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="上課時間"></textarea>
-						<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="收費"></textarea>
-						<button class="m-2">發布</button>
-					</div>
-				</section>
+						</tr>
+						<tr>
+							<td>課程名稱：線上安親</td>
+							<td>上課時間：8月 周一至周五 上午9:00~下午5:30</td>
+							<td>收費：$2000</td>
 
-			</div>
+						</tr>
+					</tbody>
+				</table>
+				<button data-bs-toggle="collapse" data-bs-target="#add_class" aria-expanded="false"
+					aria-controls="add_class">新增課程</button>
+				<div class="collapse" id="add_class">
+					<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="課程名稱"></textarea>
+					<textarea name="" id="" cols="30" rows="3" class="m-2" placeholder="內容"></textarea>
+					<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="上課時間"></textarea>
+					<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="收費"></textarea>
+					<button class="m-2">發布</button>
+				</div>
+			</section>
+
 		</div>
-
-		<!-- sidebar -->
-		<div id="navbar" style="background-color: #f5f6f7">
-			<navbar></navbar>
-		</div>
-
 	</div>
 
-	<!-- Scripts -->
 
-	<script src="./assets/js/navbar.js"></script>
-
-	<!-- required_link -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="./assets/js/index.js"></script>
-
-</body>
-
-</html>
+</div>
