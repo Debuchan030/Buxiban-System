@@ -32,7 +32,7 @@
 								<h3 class="d-flex align-items-center">登入</h3>
 
 							</div>
-							<form action="" method="POST">
+							<form action="app/loginstates.php" method="POST">
 								<input type="hidden" name="action" value="login">
 								<div class="form-outline mb-4">
 									<input  id="typeEmailX" class="form-control form-control-lg "
