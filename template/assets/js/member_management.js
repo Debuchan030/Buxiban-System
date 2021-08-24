@@ -1,5 +1,4 @@
-window.onload = function()
-{
+
    $("#std_list").empty()
 
     //學生/家長列表 std_list[i]
@@ -13,7 +12,7 @@ window.onload = function()
         $("#std_list").append(table_list)
     }
 
-}
+
 
 //修改學生/家長資料
 

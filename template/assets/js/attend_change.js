@@ -1,6 +1,5 @@
 //獲取php資料
 
-
     $("#course_attend").empty()
 
     //建立所有學生列表
