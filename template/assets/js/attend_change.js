@@ -1,7 +1,6 @@
 //獲取php資料
 
-window.onload = function()
-{
+
     $("#course_attend").empty()
 
     //建立所有學生列表
@@ -14,7 +13,7 @@ window.onload = function()
         var table_list = "<tr><td>"+std_name+"</td><td>"+parent_name+"</td><td>"+parent_phone+"</td><td>"+attend_status+"</td><td><button>切換狀態</button></td></tr>"
         $("#course_attend").append(table_list)
     }
-}
+
 
 
 //點擊按鈕切換成已到班
