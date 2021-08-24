@@ -20,6 +20,7 @@ switch ( $_POST['action'] ) {
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['user_name'] = $user['user_name'];
                 $_SESSION['pc_quantity'] = $user['pc_quantity'];
+                $_SESSION['togo'] = "./template/bulletin_board.html";
                 echo '<script>window.location.replace("/")</script>';
             }
             else{ 

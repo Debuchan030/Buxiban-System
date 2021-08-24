@@ -22,41 +22,46 @@ if(!isset($_SESSION['user_id'])){
 
 <body class="is-preload">
 
-    <!-- 要放的頁面 -->
-    <?php
-    include('./template/bulletin_board.html');
-    ?>
-    <!-- 側邊攔 -->
-    <div id="sidebar" style="background-color: rgb(245, 246, 247);">
-        <div class="inner">
 
-            <!-- Menu -->
-            <nav id="menu">
-                <header class="major">
-                    <h2>目錄</h2>
-                </header>
-                <ul>
-                    <li><a>公佈欄</a></li>
-                    <li><a>繳款通知管理</a></li>
-                    <li><a>學生/家長管理 </a></li>
-                    <li>
-                        <span class="opener">課程管理</span>
-                        <ul>
-                            <li><a>選課管理</a></li>
-                            <li><a>開課課程管理</a></li>
 
-                        </ul>
-                    </li>
-                    <li><a>到班通知管理</a></li>
-                    <li><a href="app/logout.php">登出</a></li>
-                </ul>
-            </nav>
+    <div id="wrapper">
+        <!-- 要放的頁面 -->
+        <div id="mainpage_change">
 
         </div>
-    </div>
+
+        <!-- 側邊攔 -->
+        <div id="sidebar" style="background-color: rgb(245, 246, 247);">
+            <div class="inner">
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>目錄</h2>
+                    </header>
+                    <ul>
+                        <li id="bulletin_board"><a>公佈欄</a></li>
+                        <li id="payment_notice"><a>繳款通知管理</a></li>
+                        <li id="member_management"><a>學生/家長管理 </a></li>
+                        <li>
+                            <span class="opener">課程管理</span>
+                            <ul>
+                                <li id="class_selected_management"><a>選課管理</a></li>
+                                <li id="class_opened_management"><a>開課課程管理</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a>到班通知管理</a></li>
+                        <li><a href="app/logout.php">登出</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
     </div>
 
     <!-- script -->
+    <script src="./template/assets/js/sidebar.js"></script>
     <?php
     include('./template/link_script.html');
     ?>
