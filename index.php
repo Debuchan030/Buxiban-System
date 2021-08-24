@@ -23,9 +23,10 @@ if(!isset($_SESSION['user_id'])){
 <body class="is-preload">
 
     <!-- 要放的頁面 -->
-    <?php
-    include('./template/bulletin_board.html');
-    ?>
+    <div id="content">
+
+    </div>
+
     <!-- 側邊攔 -->
     <div id="sidebar" style="background-color: rgb(245, 246, 247);">
         <div class="inner">
@@ -36,7 +37,7 @@ if(!isset($_SESSION['user_id'])){
                     <h2>目錄</h2>
                 </header>
                 <ul>
-                    <li><a>公佈欄</a></li>
+                    <li><a id="bullentin_board">公佈欄</a></li>
                     <li><a>繳款通知管理</a></li>
                     <li><a>學生/家長管理 </a></li>
                     <li>
@@ -55,7 +56,13 @@ if(!isset($_SESSION['user_id'])){
         </div>
     </div>
     </div>
-
+    <script>
+        $$(document).ready(function(){
+            $("#bullentin_board").click(function(){
+                $("#content").load("template/bullentin_board.html");  
+            });
+        });
+    </script>
     <!-- script -->
     <?php
     include('./template/link_script.html');
