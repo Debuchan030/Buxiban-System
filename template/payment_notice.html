@@ -1,220 +1,217 @@
 <link rel="stylesheet" href="./assets/css/payment_notice.css">
 
 
-<!-- Main -->
-<div id="main">
 
-	<div class="inner">
+<div class="inner">
 
-		<!-- Header -->
-		<header id="header">
-			<a href="" class="logo">
-				<h1><strong>繳款通知管理</strong></h1>
-			</a>
+	<!-- Header -->
+	<header id="header">
+		<a href="" class="logo">
+			<h1><strong>繳款通知管理</strong></h1>
+		</a>
+
+	</header>
+
+	<!-- Section -->
+	<section>
+		<header class="major">
+			<h2>繳款進度</h2>
 
 		</header>
 
-		<!-- Section -->
-		<section>
-			<header class="major">
-				<h2>繳款進度</h2>
+		<div class="border border-secondary border-3 rounded p-2 h1 text-center bg-white" data-bs-toggle="collapse"
+			data-bs-target="#payment_notice1" aria-expanded="false" aria-controls="payment_notice1">
+			2021年7月
+		</div>
 
-			</header>
+		<div class="collapse" id="payment_notice1">
+			<div>
+				<table>
+					<h3>未繳款</h3>
+					<tbody>
+						<!-- <form action="" method="GET"> -->
+						<tr data-bs-toggle="collapse" data-bs-target="#non_payed1" aria-expanded="false"
+							aria-controls="non_payed1">
+							<td>陳小美</td>
+							<td>繳費期限：8月31日</td>
+							<td>總費用：$5000</td>
+							<td><button class="non_payed">未繳款</button></td>
+							<td><button>未發送繳款訊息</button></td>
+						</tr>
 
-			<div class="border border-secondary border-3 rounded p-2 h1 text-center bg-white" data-bs-toggle="collapse"
-				data-bs-target="#payment_notice1" aria-expanded="false" aria-controls="payment_notice1">
-				2021年7月
+						<tr class="collapse" id="non_payed1">
+							<td>
+								<div>
+									姓名：陳小美
+								</div>
+								<div>
+									家長：陳美小
+								</div>
+								<div>
+									詳細資訊：
+								</div>
+								<div>
+									HCT程式設計--$2000
+								</div>
+								<div>
+									HCT線上安親--$3000
+								</div>
+								<div>
+									繳費期限：8月31日
+								</div>
+							</td>
+						</tr>
+						<!-- </form> -->
+
+						<tr data-bs-toggle="collapse" data-bs-target="#non_payed2" aria-expanded="false"
+							aria-controls="non_payed2">
+							<td>陳中美</td>
+							<td>繳費期限：8月31日</td>
+							<td>總費用：$5000</td>
+							<td><button class="non_payed">未繳款</button></td>
+							<td><button>未發送繳款訊息</button></td>
+						</tr>
+						<tr class="collapse" id="non_payed2">
+							<td>
+								<div>
+									姓名：陳中美
+								</div>
+								<div>
+									家長：陳美中
+								</div>
+								<div>
+									詳細資訊：
+								</div>
+								<div>
+									HCT程式設計--$2000
+								</div>
+								<div>
+									HCT線上安親--$3000
+								</div>
+								<div>
+									繳費期限：8月31日
+								</div>
+							</td>
+						</tr>
+						<tr data-bs-toggle="collapse" data-bs-target="#non_payed3" aria-expanded="false"
+							aria-controls="non_payed3">
+							<td>陳大美</td>
+							<td>繳費期限：8月31日</td>
+							<td>總費用：$5000</td>
+							<td><button class="non_payed">未繳款</button></td>
+							<td><button>未發送繳款訊息</button></td>
+						</tr>
+						<tr class="collapse" id="non_payed3">
+							<td>
+								<div>
+									姓名：陳大美
+								</div>
+								<div>
+									家長：陳美大
+								</div>
+								<div>
+									詳細資訊：
+								</div>
+								<div>
+									HCT程式設計--$2000
+								</div>
+								<div>
+									HCT線上安親--$3000
+								</div>
+								<div>
+									繳費期限：8月31日
+								</div>
+							</td>
+						</tr>
+					</tbody>
+
+				</table>
 			</div>
+			<!-- <button class="mb-5">一鍵催繳</button> -->
 
-			<div class="collapse" id="payment_notice1">
-				<div>
-					<table>
-						<h3>未繳款</h3>
-						<tbody>
-							<!-- <form action="" method="GET"> -->
-							<tr data-bs-toggle="collapse" data-bs-target="#non_payed1" aria-expanded="false"
-								aria-controls="non_payed1">
-								<td>陳小美</td>
-								<td>繳費期限：8月31日</td>
-								<td>總費用：$5000</td>
-								<td><button class="non_payed">未繳款</button></td>
-								<td><button>未發送繳款訊息</button></td>
-							</tr>
+			<div>
+				<table>
+					<h3>已繳款</h3>
+					<tbody>
+						<!-- <form action="" method="GET"> -->
+						<tr data-bs-toggle="collapse" data-bs-target="#payed1" aria-expanded="false"
+							aria-controls="payed1">
+							<td>陳迷你美</td>
+							<td>繳費期限：8月31日</td>
+							<td>總費用：$5000</td>
+							<td><button class="payed">已繳款</button></td>
+						</tr>
+						<tr class="collapse" id="payed1">
+							<td>
+								<div>
+									姓名：陳迷你美
+								</div>
+								<div>
+									家長：陳美迷你
+								</div>
+								<div>
+									詳細資訊：
+								</div>
+								<div>
+									HCT程式設計--$2000
+								</div>
+								<div>
+									HCT線上安親--$3000
+								</div>
 
-							<tr class="collapse" id="non_payed1">
-								<td>
-									<div>
-										姓名：陳小美
-									</div>
-									<div>
-										家長：陳美小
-									</div>
-									<div>
-										詳細資訊：
-									</div>
-									<div>
-										HCT程式設計--$2000
-									</div>
-									<div>
-										HCT線上安親--$3000
-									</div>
-									<div>
-										繳費期限：8月31日
-									</div>
-								</td>
-							</tr>
-							<!-- </form> -->
+								<div>
+									繳費期限：8月31日
+								</div>
+							</td>
+						</tr>
+						<!-- </form> -->
 
-							<tr data-bs-toggle="collapse" data-bs-target="#non_payed2" aria-expanded="false"
-								aria-controls="non_payed2">
-								<td>陳中美</td>
-								<td>繳費期限：8月31日</td>
-								<td>總費用：$5000</td>
-								<td><button class="non_payed">未繳款</button></td>
-								<td><button>未發送繳款訊息</button></td>
-							</tr>
-							<tr class="collapse" id="non_payed2">
-								<td>
-									<div>
-										姓名：陳中美
-									</div>
-									<div>
-										家長：陳美中
-									</div>
-									<div>
-										詳細資訊：
-									</div>
-									<div>
-										HCT程式設計--$2000
-									</div>
-									<div>
-										HCT線上安親--$3000
-									</div>
-									<div>
-										繳費期限：8月31日
-									</div>
-								</td>
-							</tr>
-							<tr data-bs-toggle="collapse" data-bs-target="#non_payed3" aria-expanded="false"
-								aria-controls="non_payed3">
-								<td>陳大美</td>
-								<td>繳費期限：8月31日</td>
-								<td>總費用：$5000</td>
-								<td><button class="non_payed">未繳款</button></td>
-								<td><button>未發送繳款訊息</button></td>
-							</tr>
-							<tr class="collapse" id="non_payed3">
-								<td>
-									<div>
-										姓名：陳大美
-									</div>
-									<div>
-										家長：陳美大
-									</div>
-									<div>
-										詳細資訊：
-									</div>
-									<div>
-										HCT程式設計--$2000
-									</div>
-									<div>
-										HCT線上安親--$3000
-									</div>
-									<div>
-										繳費期限：8月31日
-									</div>
-								</td>
-							</tr>
-						</tbody>
+						<tr data-bs-toggle="collapse" data-bs-target="#payed2" aria-expanded="false"
+							aria-controls="payed2">
+							<td>陳超大美</td>
+							<td>繳費期限：8月31日</td>
+							<td>總費用：$5000</td>
+							<td><button class="payed">已繳款</button></td>
+						</tr>
+						<tr class="collapse" id="payed2">
+							<td>
+								<div>
+									姓名：陳超大美
+								</div>
+								<div>
+									家長：陳美超大
+								</div>
+								<div>
+									詳細資訊：
+								</div>
+								<div>
+									HCT程式設計--$2000
+								</div>
+								<div>
+									HCT線上安親--$3000
+								</div>
+								<div>
+									繳費期限：8月31日
+								</div>
+							</td>
+						</tr>
+					</tbody>
 
-					</table>
-				</div>
-				<!-- <button class="mb-5">一鍵催繳</button> -->
-
-				<div>
-					<table>
-						<h3>已繳款</h3>
-						<tbody>
-							<!-- <form action="" method="GET"> -->
-							<tr data-bs-toggle="collapse" data-bs-target="#payed1" aria-expanded="false"
-								aria-controls="payed1">
-								<td>陳迷你美</td>
-								<td>繳費期限：8月31日</td>
-								<td>總費用：$5000</td>
-								<td><button class="payed">已繳款</button></td>
-							</tr>
-							<tr class="collapse" id="payed1">
-								<td>
-									<div>
-										姓名：陳迷你美
-									</div>
-									<div>
-										家長：陳美迷你
-									</div>
-									<div>
-										詳細資訊：
-									</div>
-									<div>
-										HCT程式設計--$2000
-									</div>
-									<div>
-										HCT線上安親--$3000
-									</div>
-
-									<div>
-										繳費期限：8月31日
-									</div>
-								</td>
-							</tr>
-							<!-- </form> -->
-
-							<tr data-bs-toggle="collapse" data-bs-target="#payed2" aria-expanded="false"
-								aria-controls="payed2">
-								<td>陳超大美</td>
-								<td>繳費期限：8月31日</td>
-								<td>總費用：$5000</td>
-								<td><button class="payed">已繳款</button></td>
-							</tr>
-							<tr class="collapse" id="payed2">
-								<td>
-									<div>
-										姓名：陳超大美
-									</div>
-									<div>
-										家長：陳美超大
-									</div>
-									<div>
-										詳細資訊：
-									</div>
-									<div>
-										HCT程式設計--$2000
-									</div>
-									<div>
-										HCT線上安親--$3000
-									</div>
-									<div>
-										繳費期限：8月31日
-									</div>
-								</td>
-							</tr>
-						</tbody>
-
-					</table>
-				</div>
+				</table>
 			</div>
-			<footer class="my-5">
-				<button>
-					新增當月繳款紀錄
-				</button>
-			</footer>
+		</div>
+		<footer class="my-5">
+			<button>
+				新增當月繳款紀錄
+			</button>
+		</footer>
 
 
 
 
 
-		</section>
+	</section>
 
-	</div>
 </div>
 
 

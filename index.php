@@ -25,7 +25,7 @@ if(!isset($_SESSION['user_id'])){
 
     <div id="wrapper">
         <!-- 要放的頁面 -->
-        <div id="mainpage_change">
+        <div id="main">
 
         </div>
 
@@ -46,11 +46,11 @@ if(!isset($_SESSION['user_id'])){
                             <span class="opener">課程管理</span>
                             <ul>
                                 <li id="class_selected_management"><a>選課管理</a></li>
-                                <li id="class_opened_management"><a>開課課程管理</a></li>
+                                <li id="class_management"><a>開課課程管理</a></li>
 
                             </ul>
                         </li>
-                        <li><a>到班通知管理</a></li>
+                        <li id="attend_record"><a>到班通知管理</a></li>
                         <li><a href="app/logout.php">登出</a></li>
                     </ul>
                 </nav>
@@ -59,9 +59,9 @@ if(!isset($_SESSION['user_id'])){
         </div>
     </div>
     <script>
-        $(document).ready(function(){
-            $("#bullentin_board").click(function(){
-                $("#content").load("template/bulletin_board.html");  
+        $(document).ready(function() {
+            $("#bullentin_board").click(function() {
+                $("#content").load("template/bulletin_board.html");
             });
         });
     </script>
