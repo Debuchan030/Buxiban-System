@@ -57,7 +57,7 @@ if(!isset($_SESSION['user_id'])){
     </div>
     </div>
     <script>
-        $$(document).ready(function(){
+        $(document).ready(function(){
             $("#bullentin_board").click(function(){
                 $("#content").load("template/bullentin_board.html");  
             });
