@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if(!isset($_SESSION['user_id'])){
+if (!isset($_SESSION['user_id'])) {
     header("location:login.php");
 }
 ?>
@@ -11,7 +11,7 @@ if(!isset($_SESSION['user_id'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title></title>
 
     <!-- 外部引入css -->
     <?php
@@ -26,7 +26,7 @@ if(!isset($_SESSION['user_id'])){
     <div id="wrapper">
         <!-- 要放的頁面 -->
         <div id="main">
-
+          
         </div>
 
         <!-- 側邊攔 -->
@@ -67,6 +67,7 @@ if(!isset($_SESSION['user_id'])){
     </script>
     <!-- script -->
     <script src="./template/assets/js/sidebar.js"></script>
+
     <?php
     include('./template/link_script.html');
     ?>

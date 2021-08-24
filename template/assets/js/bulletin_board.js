@@ -24,7 +24,7 @@ for (var i = 0; i < 5 /*buxiban.length*/; i++) {
         { bulletin_id: id, bulletin_title: title, bulletin_content: content, bulletin_time: time },
     ].map(bulletin_template));
 }
-console.log("hihi")
+// console.log("hihi")
 
 // 修改貼文
 $(".bulletin_save").on("click",bulletin_save_func)
