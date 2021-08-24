@@ -23,7 +23,6 @@ if(!isset($_SESSION['user_id'])){
 <body class="is-preload">
 
 
-
     <div id="wrapper">
         <!-- 要放的頁面 -->
         <div id="mainpage_change">
@@ -59,7 +58,13 @@ if(!isset($_SESSION['user_id'])){
             </div>
         </div>
     </div>
-
+    <script>
+        $(document).ready(function(){
+            $("#bullentin_board").click(function(){
+                $("#content").load("template/bulletin_board.html");  
+            });
+        });
+    </script>
     <!-- script -->
     <script src="./template/assets/js/sidebar.js"></script>
     <?php
