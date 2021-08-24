@@ -59,7 +59,7 @@ if(!isset($_SESSION['user_id'])){
     <script>
         $(document).ready(function(){
             $("#bullentin_board").click(function(){
-                $("#content").load("template/bullentin_board.html");  
+                $("#content").load("template/bulletin_board.html");  
             });
         });
     </script>
