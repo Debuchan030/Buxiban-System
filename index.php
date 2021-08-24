@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("location:login.php");
-}
+// session_start();
+// if (!isset($_SESSION['user_id'])) {
+//     header("location:login.php");
+// }
 ?>
 <html lang="en">
 
@@ -26,7 +26,7 @@ if (!isset($_SESSION['user_id'])) {
     <div id="wrapper">
         <!-- 要放的頁面 -->
         <div id="main">
-          
+
         </div>
 
         <!-- 側邊攔 -->
@@ -59,11 +59,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
     <script>
-        $(document).ready(function() {
-            $("#bullentin_board").click(function() {
-                $("#content").load("template/bulletin_board.html");
-            });
-        });
+        $("#main").load("template/bulletin_board.html");
     </script>
     <!-- script -->
     <script src="./template/assets/js/sidebar.js"></script>

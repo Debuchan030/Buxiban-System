@@ -1,5 +1,5 @@
 // 公佈欄模板
-const bulletin_template = ({ bulletin_id, bulletin_title, bulletin_content, bulletin_time }) => `
+var bulletin_template = ({ bulletin_id, bulletin_title, bulletin_content, bulletin_time }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#${bulletin_id}" aria-expanded="false"
 aria-controls="content">
 <td><textarea cols="30" rows="1">${bulletin_title}</textarea></td>
