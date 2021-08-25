@@ -8,8 +8,7 @@ aria-controls="content">
     <td name = "${bulletin_id}">
         <textarea name="bulletin_content" cols="30" rows="3"
             class="m-2" id = "${bulletin_id}_content">${bulletin_content}</textarea>
-        <textarea name="bulletin_time" cols="30" rows="1"
-            class="m-2">${bulletin_time}</textarea>
+            <label for="">${bulletin_time}</label>
             <button class="m-2 bulletin_save">儲存</button>
             <button class="m-2 bulletin_delete">刪除</button></td>
     </tr>
