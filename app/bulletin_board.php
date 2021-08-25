@@ -25,7 +25,8 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("Error");</script>';
         }
-        header(location:.getenv("HTTP_REFERER"));
+        $back = getenv("HTTP_REFERER");
+        header("location:$back");
     break;
     
     //更新該則公告
@@ -41,7 +42,8 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("Error");</script>';
         }
-        header(location:.getenv("HTTP_REFERER"));
+        $back = getenv("HTTP_REFERER");
+        header("location:$back");
     break;
 
     //刪除該則公告
@@ -55,7 +57,8 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("Error");</script>';
         }
-        header(location:.getenv("HTTP_REFERER"));
+        $back = getenv("HTTP_REFERER");
+        header("location:$back");
     break;
 }
 
