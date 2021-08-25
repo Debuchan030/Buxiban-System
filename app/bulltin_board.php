@@ -12,8 +12,6 @@ switch ($_POST['action']) {
     case "add_bulletin": 
         ini_set("display_errors", "On"); 
         print_r($_POST);
-        print_r($$_POST['bulletin_title']);
-        print_r($$_POST['bulletin_content']);
         $bulletin_title = $_POST['bulletin_title'];
         $bulletin_content = $_POST['bulletin_content'];
         $bulletin_time = date("Y-m-d H:i:s");  
