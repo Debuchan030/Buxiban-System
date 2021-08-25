@@ -14,11 +14,11 @@ switch ( $_POST['action'] ) {
         else{
             include("dbconfig.php");
             $sqlresult =$conn->query("select * from buxiban_user where buxiban_acct = '$acct' and buxiban_pwd=md5('$pwd')");
-            $user = $sqlresult->fetch();
+            $buxiban = $sqlresult->fetch();
             //print_r($user);
-            if($user){
-                $_SESSION['buxib_id'] = $user['buxiban_id'];
-                $_SESSION['buxiban_name'] = $user['buxiban_name'];
+            if($buxiban){
+                $_SESSION['buxiban_id'] = $buxiban['buxiban_id'];
+                $_SESSION['buxiban_name'] = $buxiban['buxiban_name'];
                 echo '<script>window.location.replace("/")</script>';
             }
             else{ 
