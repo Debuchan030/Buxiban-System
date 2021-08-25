@@ -16,27 +16,21 @@
 		<!-- Section -->
 		<section>
 			<textarea name="" id="" cols="30" rows="1" placeholder="搜尋姓名"></textarea>
-			<button data-bs-toggle="collapse" data-bs-target="#add_post" aria-expanded="false" aria-controls="add_post"
-				class="add_member">新增資料</button>
-			<form action="" method="post">
-				<div class="collapse" id="add_post">
-					<table>
+			<button data-bs-toggle="collapse" data-bs-target="#add_data" aria-expanded="false" aria-controls="add_data">新增資料</button>
+			<div class="collapse">
+				<table>
+					<thead>
 						<tr>
 							<th>學生姓名</th>
 							<th>家長姓名</th>
 							<th>連絡電話</th>
 						</tr>
-						<tr>
-							<form name="add_data" action="">
-							<td><input name="std_name"></td>
-							<td><input name="parent_name"></td>
-							<td><input name="parent_phone"></td>
-							</form>
-						</tr>
-					</table>
-					<button type="submit" action="submit">新增</button>
-				</div>
-			</form>
+					</thead>
+					<tbody id="add_data_write">
+					</tbody>
+				</table>
+				<button onclick="add_data_row()">新增</button>
+			</div>
 			<table>
 				<thead>
 					<tr>
@@ -59,4 +53,4 @@
 
 
 
-<script src="./template/assets/js/member_management.js?210824"></script>
+<script src="./template/assets/js/member_management.js?210825"></script>
