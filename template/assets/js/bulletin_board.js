@@ -38,7 +38,7 @@ $.post("../../app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban
 // console.log("hihi")
 
 // 修改貼文
-$(".bulletin_save").on("click",bulletin_save_func)
+$("#bulletin_board").on("click",".bulletin_save",bulletin_save_func)
 function bulletin_save_func(){
     var id = $(this).parent().attr("name")
     var title = $(this).parent().attr('class')
@@ -51,7 +51,7 @@ function bulletin_save_func(){
     });
 }
 //刪除貼文
-$(".bulletin_delete").on("click",bulletin_delete_func)
+$("#bulletin_board").on("click",".bulletin_delete",bulletin_delete_func)
 function bulletin_delete_func(){
     console("hihihi")
     var id = $(this).parent().attr("name")
