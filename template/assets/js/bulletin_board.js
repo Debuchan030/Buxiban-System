@@ -17,6 +17,11 @@ aria-controls="content">
 
 // 獲取所有公佈欄資訊 id title content time , buxiban_bulletin.length
 
+$.get("app/bulletin_board.php", function(data){
+    // Display the returned data in browser
+    $("#result").html(data);
+});
+
 for (var i = 0; i < 5 /*buxiban.length*/; i++) {
     var id = "buxiban_id" + i //buxiban_bulletin[i].buxiban_id
     var title = "test" + i //buxiban_bulletin[i].buxiban_title
