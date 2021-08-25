@@ -32,8 +32,7 @@ $.post("../../app/class_management.php", { action: "get_course" }, function (all
             { course_id: id, course_name: name, course_info: info, course_price: price, course_time: time },
         ].map(class_management_template));
     }
-    $("#main").load("./template/class_management.html")
-    $("title").html("開課課程管理")
+    
 });
 
 // 修改貼文
