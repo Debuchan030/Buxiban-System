@@ -36,9 +36,10 @@ function test_func() {
             console.log(info)
             console.log(price)
             console.log(time)
-            $('#all_course').append([
-                { course_id: id, course_name: "name", course_info: "info", course_price: 3000, course_time: "time" },
-            ].map(class_management_template));
+            // $('#all_course').append([
+            //     { course_id: id, course_name: "name", course_info: "info", course_price: 3000, course_time: "time" },
+            // ].map(class_management_template));
+            $("#all_course").append("<p>Test</p>")
         }
     });
 }
