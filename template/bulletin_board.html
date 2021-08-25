@@ -21,11 +21,12 @@
 
 			<button data-bs-toggle="collapse" data-bs-target="#add_post" aria-expanded="false"
 				aria-controls="add_post">新增訊息</button>
-			<form action="" method="post">
+			<form action="../app/bulltin_board.php" method="post">
+				<input type="hidden" name="action" value="add_bulletin">
 				<div class="collapse" id="add_post">
-					<textarea name="" cols="10" rows="1" placeholder="title" class="my-3"
+					<textarea cols="10" rows="1" placeholder="title" class="my-3"
 						name="bulletin_title"></textarea>
-					<textarea name="" cols="30" rows="5" placeholder="content" class="my-3"
+					<textarea cols="30" rows="5" placeholder="content" class="my-3"
 						name="bulletin_content"></textarea>
 					<button type="submit" action="submit">發布</button>
 				</div>

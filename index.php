@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['buxiban_id'])) {
     header("location:login.php");
 }
 ?>
@@ -64,7 +64,6 @@ if (!isset($_SESSION['user_id'])) {
     </script>
     <!-- script -->
     <script src="./template/assets/js/sidebar.js"></script>
-
     <?php
     include('./template/link_script.html');
     ?>
