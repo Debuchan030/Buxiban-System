@@ -20,7 +20,7 @@ aria-controls="content">
 $.post("app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban_bulletin){
     // Display the returned data in browser
     // $("#result").html(buxiban_bulletin);
-    console.log(buxiban_bulletin)
+    console.log(buxiban_bulletin) 
     for (var i = 0; i < buxiban_bulletin.length; i++) {
         var id = buxiban_bulletin[i].bulletin_id
         var title = buxiban_bulletin[i].bulletin_title
