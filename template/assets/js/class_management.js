@@ -19,9 +19,9 @@ var class_management_template = ({ course_id, course_name, course_info, course_p
 `
 
 $.post("../../app/class_management.php", { action: "get_course" }, function (all_course) {
-    // Display the returned data in browser
-    // $("#result").html(buxiban_bulletin);
+
     all_course = JSON.parse(all_course)
+    console.log(all_course)
     for (var i = 0; i < all_course.length; i++) {
         var id = all_course[i].course_id
         var name = all_course[i].course_name
