@@ -1,18 +1,16 @@
 <?php
+include('dbconfig.php');
+$buxiban_id = $_SESSION['buxiban_id']; 
 switch ($_POST['action']) { 
-    ini_set("display_errors", "On"); 
-    include('dbconfig.php');
-    $buxiban_id = $_SESSION['buxiban_id'];
     //取得公告
     case "get_bulletin":
         $sqlresult = $conn->query("select * from buxiban_bulletin where buxiban_id= $buxiban_id");
-        $bulletin = $sqlresult->fetch();
-
-        
+        $bulletin = $sqlresult->fetch(); 
     break;
 
     //新增一則公告
     case "add_bulletin": 
+        ini_set("display_errors", "On"); 
         $bulletin_title = $_POST['bulletin_title'];
         $bulletin_content = $_POST['bulletin_content'];
         $bulletin_time = date("Y-m-d H:i:s");  
@@ -30,7 +28,7 @@ switch ($_POST['action']) {
     
     //更新該則公告
     case "update_bulletin":
-    
+        
     break;
 
     //刪除該則公告
