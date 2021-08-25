@@ -1,7 +1,7 @@
 <?php
 include('dbconfig.php');
 $buxiban_id = $_SESSION['buxiban_id'];
-$bulletin_time = date("Y-m-d H:i:s"); 
+$datetime = date("Y-m-d H:i:s"); 
 switch ($_POST['action']) { 
     //取得公告
     case "get_bulletin":
@@ -15,7 +15,7 @@ switch ($_POST['action']) {
         //print_r($_POST);
         $bulletin_title = $_POST['bulletin_title'];
         $bulletin_content = $_POST['bulletin_content'];
-        $sqlsend = $conn->query("Insert into buxiban_bulletin(bulletin_title,bulletin_content,bulletin_time,buxiban_id) value('$bulletin_title','$bulletin_content','$$bulletin_time','$buxiban_id');");
+        $sqlsend = $conn->query("Insert into buxiban_bulletin(bulletin_title,bulletin_content,bulletin_time,buxiban_id) value('$bulletin_title','$bulletin_content','$datetime','$buxiban_id');");
         $conn=null;
         if($sqlsend){
             echo '<script> window.alert("新增成功");</script>';
@@ -31,7 +31,7 @@ switch ($_POST['action']) {
         $bulletin_id = $_POST['bulletin_id'];
         $bulletin_title = $_POST['bulletin_title'];
         $bulletin_content = $_POST['bulletin_content'];
-        $sqlsend = $conn->query("update buxiban_bulletin set bulletin_title='$bulletin_title' ,bulletin_content='$bulletin_content',bulletin_time='$bulletin_time' where bulletin_id ='$bulletin_id;");
+        $sqlsend = $conn->query("update buxiban_bulletin set bulletin_title='$bulletin_title' ,bulletin_content='$bulletin_content',bulletin_time='$datetime' where bulletin_id ='$bulletin_id;");
         $conn=null;
         if($sqlsend){
             echo '<script> window.alert("更新成功");</script>';
