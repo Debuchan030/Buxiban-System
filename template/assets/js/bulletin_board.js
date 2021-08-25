@@ -1,10 +1,10 @@
 // 公佈欄模板
 var bulletin_template = ({ bulletin_id, bulletin_title, bulletin_content, bulletin_time }) => `
-<tr data-bs-toggle="collapse" data-bs-target="#${bulletin_id}" aria-expanded="false"
+<tr data-bs-toggle="collapse" data-bs-target="#b${bulletin_id}" aria-expanded="false"
 aria-controls="content">
     <td><textarea cols="30" rows="1" name = "bulletin_title">${bulletin_title}</textarea></td>
 </tr>
-<tr class="collapse"  id="${bulletin_id}">
+<tr class="collapse"  id="b${bulletin_id}">
     <td name = "${bulletin_id}" class = "${bulletin_title}">
         <textarea name="bulletin_content" id="" cols="30" rows="3"
             class="m-2">${bulletin_content}</textarea>
@@ -20,6 +20,7 @@ aria-controls="content">
 $.post("../../app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban_bulletin){
     // Display the returned data in browser
     // $("#result").html(buxiban_bulletin);
+    buxiban_bulletin = JSON.parse(buxiban_bulletin)
     console.log(buxiban_bulletin)
     console.log(buxiban_bulletin.length)
     for (var i = 0; i < buxiban_bulletin.length; i++) {
