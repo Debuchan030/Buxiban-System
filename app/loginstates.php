@@ -19,6 +19,8 @@ switch ( $_POST['action'] ) {
             if($buxiban){
                 $_SESSION['buxiban_id'] = $buxiban['buxiban_id'];
                 $_SESSION['buxiban_name'] = $buxiban['buxiban_name'];
+                $aaa = $_SESSION['buxiban_id'];
+                echo "<script>alert('$aaa')</script>";
                 echo '<script>window.location.replace("/")</script>';
             }
             else{ 
