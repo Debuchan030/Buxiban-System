@@ -1,7 +1,7 @@
 // 公佈欄模板
 var bulletin_template = ({ bulletin_id, bulletin_title, bulletin_content, bulletin_time }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#b${bulletin_id}" aria-expanded="false"
-aria-controls="content">
+aria-controls="#b${bulletin_id}">
     <td><textarea cols="30" rows="1" id = "${bulletin_id}_title">${bulletin_title}</textarea></td>
 </tr>
 <tr class="collapse"  id="b${bulletin_id}">
@@ -17,8 +17,7 @@ aria-controls="content">
 // 獲取所有公佈欄資訊 id title content time , buxiban_bulletin.length
 
 $.post("../../app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban_bulletin){
-    // Display the returned data in browser
-    // $("#result").html(buxiban_bulletin);
+
     buxiban_bulletin = JSON.parse(buxiban_bulletin)
     for (var i = 0; i < buxiban_bulletin.length; i++) {
         var id = buxiban_bulletin[i].bulletin_id

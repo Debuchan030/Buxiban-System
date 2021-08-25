@@ -1,44 +1,38 @@
+<div class="inner">
 
-	<div class="inner">
+	<!-- Header -->
+	<header id="header">
+		<a class="logo">
+			<h1><strong>開課課程管理</strong></h1>
+		</a>
 
-		<!-- Header -->
-		<header id="header">
-			<a class="logo">
-				<h1><strong>開課課程管理</strong></h1>
-			</a>
+	</header>
 
+	<!-- Section -->
+	<section>
+		<header class="major">
+			<h2>所有課程</h2>
 		</header>
+		<table>
+			<tbody id="all_course">
+				
 
-		<!-- Section -->
-		<section>
-			<header class="major">
-				<h2>所有課程</h2>
-			</header>
-			<table>
-				<tbody>
-					<tr>
-						<td>課程名稱：HCT線上程式設計</td>
-						<td>上課時間：8月每周三下午4:30</td>
-						<td>收費：$3000</td>
-
-					</tr>
-					<tr>
-						<td>課程名稱：線上安親</td>
-						<td>上課時間：8月 周一至周五 上午9:00~下午5:30</td>
-						<td>收費：$2000</td>
-
-					</tr>
-				</tbody>
-			</table>
-			<button data-bs-toggle="collapse" data-bs-target="#add_class" aria-expanded="false"
-				aria-controls="add_class">新增課程</button>
-			<div class="collapse" id="add_class">
-				<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="課程名稱"></textarea>
-				<textarea name="" id="" cols="30" rows="3" class="m-2" placeholder="內容"></textarea>
-				<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="上課時間"></textarea>
-				<textarea name="" id="" cols="30" rows="1" class="m-2" placeholder="收費"></textarea>
+			</tbody>
+		</table>
+		<button data-bs-toggle="collapse" data-bs-target="#add_course" aria-expanded="false"
+			aria-controls="add_course">新增課程</button>
+		<form action="" method="post">
+			<input type="hidden" name="action" value="add_course">
+			<div class="collapse" id="add_course">
+				<textarea name="course_name" id="" cols="30" rows="1" class="m-2" placeholder="課程名稱"></textarea>
+				<textarea name="course_info" id="" cols="30" rows="3" class="m-2" placeholder="課程資訊"></textarea>
+				<textarea name="course_time" id="" cols="30" rows="1" class="m-2" placeholder="上課時間"></textarea>
+				<textarea name="course_price" id="" cols="30" rows="1" class="m-2" placeholder="收費"></textarea>
 				<button class="m-2">發布</button>
 			</div>
-		</section>
+		</form>
 
-	</div>
+	</section>
+
+</div>
+<script src="./template/assets/js/class_management.js"></script>
