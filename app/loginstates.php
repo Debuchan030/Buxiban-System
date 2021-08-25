@@ -13,14 +13,12 @@ switch ( $_POST['action'] ) {
         }
         else{
             include("dbconfig.php");
-            $sqlresult =$conn->query("select * from buxiban_user where user_acct = '$acct' and user_pwd=md5('$pwd')");
-            $user = $sqlresult->fetch();
+            $sqlresult =$conn->query("select * from buxiban_user where buxiban_acct = '$acct' and buxiban_pwd=md5('$pwd')");
+            $buxiban = $sqlresult->fetch();
             //print_r($user);
-            if($user){
-                $_SESSION['user_id'] = $user['user_id'];
-                $_SESSION['user_name'] = $user['user_name'];
-                $_SESSION['pc_quantity'] = $user['pc_quantity'];
-                $_SESSION['togo'] = "./template/bulletin_board.html";
+            if($buxiban){
+                $_SESSION['buxiban_id'] = $buxiban['buxiban_id'];
+                $_SESSION['buxiban_name'] = $buxiban['buxiban_name'];
                 echo '<script>window.location.replace("/")</script>';
             }
             else{ 

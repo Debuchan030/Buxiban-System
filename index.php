@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['buxiban_id'])) {
     header("location:login.php");
 }
 ?>
