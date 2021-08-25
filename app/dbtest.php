@@ -5,6 +5,6 @@ $buxiban_id = $_SESSION['buxiban_id'];
     include('dbconfig.php');
     $sqlresult = $conn->query("select * from buxiban_bulletin where buxiban_id= $buxiban_id");
     $bulletin = $sqlresult->fetchall(PDO::FETCH_OBJ);
-    //print_r($bulletin);
-    echo $bulletin;
+    print_r($bulletin);
+    //echo $bulletin;
 ?>
