@@ -3,7 +3,8 @@ ini_set("display_errors", "On");
 include('dbconfig.php');
 session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
-$datetime = date("Y-m-d H:i:s"); 
+$datetime = date("Y-m-d H:i:s");
+$back = getenv("HTTP_REFERER");
 switch ($_POST['action']) { 
     //取得公告
     case "get_bulletin":
@@ -23,9 +24,8 @@ switch ($_POST['action']) {
             echo '<script> window.alert("新增成功");</script>';
         }
         else{
-            echo '<script> window.alert("Error");</script>';
+            echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        $back = getenv("HTTP_REFERER");
         header("location:$back");
     break;
     
@@ -40,9 +40,8 @@ switch ($_POST['action']) {
             echo '<script> window.alert("更新成功");</script>';
         }
         else{
-            echo '<script> window.alert("Error");</script>';
+            echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        $back = getenv("HTTP_REFERER");
         header("location:$back");
     break;
 
@@ -55,9 +54,8 @@ switch ($_POST['action']) {
             echo '<script> window.alert("更新成功");</script>';
         }
         else{
-            echo '<script> window.alert("Error");</script>';
+            echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        $back = getenv("HTTP_REFERER");
         header("location:$back");
     break;
 }
