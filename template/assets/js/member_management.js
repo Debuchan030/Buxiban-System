@@ -43,11 +43,13 @@ function update_data(){
 }
 
 //動態生成一列
+$("#add_data_write").empty() 
+var add_list = "<tr><td><input></td><td><input></td><td><input></td></tr>";
+$("#add_data_write").append(add_list)
 function add_data_row(){
-    //$("#add_data_write").empty()
-   //var add_list = "<tr><td><input></td><td><input></td><td><input></td></tr>";
-   //$("#add_data_write").append(add_list) 
-   console.log(ha)   
+    var add_list = "<tr><td><input></td><td><input></td><td><input></td></tr>";
+    $("#add_data_write").append(add_list)   
+    console.log("hi") 
     }
 
 
