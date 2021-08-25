@@ -8,7 +8,7 @@ for (var i = 0; i < 10 /*std_id.length*/; i++) {
     var parent_pwd = "HCTxxxxxxx"+i ; /*std_list[i].parent_pwd*/
     var parent_phone = "09xxxxxx"+i ; /*std_list[i].parent_phone*/
     var table_list = "<tr class = \"std_info\"><td>"+std_name+"</td><td>"+parent_name+"</td><td>"+parent_acct+"</td><td>"+parent_pwd+"</td><td>"+parent_phone+"</td><td><button class = \"update_data\">修改資料</button></td><td><button class = \"delete_data\">刪除資料</button></td></tr>"
-       $("#std_list").append(table_list)
+    $("#std_list").append(table_list)
 }
 
 
