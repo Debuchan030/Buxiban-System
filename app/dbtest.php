@@ -1,8 +1,10 @@
 <?php
-    $buxiban_id = $_SESSION['buxiban_id'];
+session_start();
+$buxiban_id = $_SESSION['buxiban_id'];
     ini_set("display_errors", "On"); 
     include('dbconfig.php');
     $sqlresult = $conn->query("select * from buxiban_bulletin where buxiban_id= $buxiban_id");
-    $bulletin = $sqlresult->fetch(); 
-    print_r($bulletin);
+    $bulletin = $sqlresult->fetchall(PDO::FETCH_OBJ);
+    //print_r($bulletin);
+    echo $bulletin;
 ?>
