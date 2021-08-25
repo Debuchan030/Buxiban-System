@@ -1,13 +1,14 @@
 <?php
 ini_set("display_errors", "On"); 
 include('dbconfig.php');
+session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
 $datetime = date("Y-m-d H:i:s"); 
 switch ($_POST['action']) { 
     //取得公告
     case "get_bulletin":
         $sqlresult = $conn->query("select * from buxiban_bulletin where buxiban_id= $buxiban_id");
-        $bulletin = $sqlresult->fetch(PDO::FETCH_ASSOC); 
+        $bulletin = $sqlresult->fetchall(PDO::FETCH_ASSOC); 
         return $bulletin;
     break;
 
