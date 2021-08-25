@@ -11,12 +11,11 @@ switch ($_POST['action']) {
     //新增一則公告
     case "add_bulletin": 
         ini_set("display_errors", "On"); 
-        print_r($_POST);
+        //print_r($_POST);
         $bulletin_title = $_POST['bulletin_title'];
         $bulletin_content = $_POST['bulletin_content'];
         $bulletin_time = date("Y-m-d H:i:s");  
-
-        $sqlsend = $conn->query("Insert into buxiban_user(bulletin_title,bulletin_content,bulletin_time,buxiban_id) value('$bulletin_title','$bulletin_content','$bulletin_time','$buxiban_id');");
+        $sqlsend = $conn->query("Insert into buxiban_bulletin(bulletin_title,bulletin_content,bulletin_time,buxiban_id) value('$bulletin_title','$bulletin_content','$bulletin_time','$buxiban_id');");
         $conn=null;
         if($sqlsend){
             echo '<script> window.alert("新增成功");</script>';
