@@ -2,12 +2,12 @@
 var bulletin_template = ({ bulletin_id, bulletin_title, bulletin_content, bulletin_time }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#b${bulletin_id}" aria-expanded="false"
 aria-controls="content">
-    <td><textarea cols="30" rows="1" name = "bulletin_title" id = "${bulletin_id}_title">${bulletin_title}</textarea></td>
+    <td><textarea cols="30" rows="1" id = "${bulletin_id}_title">${bulletin_title}</textarea></td>
 </tr>
 <tr class="collapse"  id="b${bulletin_id}">
-    <td name = "${bulletin_id}" class = "${bulletin_title}">
+    <td name = "${bulletin_id}">
         <textarea name="bulletin_content" id="" cols="30" rows="3"
-            class="m-2">${bulletin_content}</textarea>
+            class="m-2" id = "${bulletin_id}_content">${bulletin_content}</textarea>
         <textarea name="bulletin_time" id="" cols="30" rows="1"
             class="m-2">${bulletin_time}</textarea>
             <button class="m-2 bulletin_save">儲存</button>
@@ -41,9 +41,11 @@ $.post("../../app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban
 $("#bulletin_board").on("click",".bulletin_save",bulletin_save_func)
 function bulletin_save_func(){
     var id = $(this).parent().attr("name")
-    var title = $(this).parent("#bulletin_board").attr('class')
+    var title_addr = "#"+id+"_title"
+    var content_addr = "#"+id+"_content"
+    var title = $(title_addr).val()
     console.log(title)
-    var content = $(this).parent().find(name = 'bulletin_content').val()
+    var content = $(content_addr).val()
     console.log(content)
 
     $.post("../../app/bulletin_board.php",{action: "update_bulletin",bulletin_id:id,bulletin_title:title,bulletin_content:content}, function(buxiban_bulletin){
