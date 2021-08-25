@@ -6,11 +6,11 @@ switch ($_POST['action']) {
     case "get_bulletin":
         $sqlresult = $conn->query("select * from buxiban_bulletin where buxiban_id= $buxiban_id");
         $bulletin = $sqlresult->fetch(); 
+
     break;
 
     //新增一則公告
     case "add_bulletin": 
-        ini_set("display_errors", "On"); 
         //print_r($_POST);
         $bulletin_title = $_POST['bulletin_title'];
         $bulletin_content = $_POST['bulletin_content'];

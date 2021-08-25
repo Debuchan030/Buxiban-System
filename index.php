@@ -64,7 +64,6 @@ if (!isset($_SESSION['buxiban_id'])) {
     </script>
     <!-- script -->
     <script src="./template/assets/js/sidebar.js"></script>
-
     <?php
     include('./template/link_script.html');
     ?>
