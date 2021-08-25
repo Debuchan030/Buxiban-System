@@ -20,8 +20,8 @@ switch ( $_POST['action'] ) {
                 $_SESSION['buxiban_id'] = $buxiban['buxiban_id'];
                 $_SESSION['buxiban_name'] = $buxiban['buxiban_name'];
                 $aaa = $_SESSION['buxiban_id'];
-                echo "<script>alert('$buxiban')</script>";
-                echo '<script>window.location.replace("/")</script>';
+                print_r($buxiban);
+                //echo '<script>window.location.replace("/")</script>';
             }
             else{ 
                 echo '<script> window.alert("帳號或密碼錯誤!");</script>';
