@@ -8,8 +8,9 @@ switch ($_POST['action']) {
     //取得公告
     case "get_bulletin":
         $sqlresult = $conn->query("select * from buxiban_bulletin where buxiban_id= $buxiban_id");
-        $bulletin = $sqlresult->fetchall(PDO::FETCH_ASSOC); 
-        return $bulletin;
+        $bulletin = $sqlresult->fetchall(PDO::FETCH_OBJ);
+        print_r($bulletin);
+        //return $bulletin;
     break;
 
     //新增一則公告
