@@ -24,22 +24,15 @@ test.addEventListener('click', test_func)
 function test_func() {
     $.post("../../app/class_management.php", { action: "get_course" }, function (all_course) {
         all_course = JSON.parse(all_course)
-        console.log(all_course.length)
         for (var i = 0; i < all_course.length; i++) {
             var id = all_course[i].course_id
             var name = all_course[i].course_name
             var info = all_course[i].course_info
             var price = all_course[i].course_price
             var time = all_course[i].course_time
-            console.log(id)
-            console.log(name)
-            console.log(info)
-            console.log(price)
-            console.log(time)
-            // $('#all_course').append([
-            //     { course_id: id, course_name: "name", course_info: "info", course_price: 3000, course_time: "time" },
-            // ].map(class_management_template));
-            $("#all_course").append("<p>Test</p>")
+            $('#all_course').append([
+                { course_id: id, course_name: name, course_info:info, course_price:price, course_time: time },
+            ].map(class_management_template));
         }
     });
 }
