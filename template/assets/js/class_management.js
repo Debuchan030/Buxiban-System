@@ -14,6 +14,7 @@ var class_management_template = ({ course_id, course_name, course_info, course_p
         <button class="m-2 course_save">儲存</button>
         <button class="m-2 course_delete">刪除</button>
     </td>
+    </td>
 </tr>
 
 `;
