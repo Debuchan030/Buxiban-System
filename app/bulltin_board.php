@@ -1,6 +1,6 @@
 <?php
-
 switch ($_POST['action']) { 
+    ini_set("display_errors", "On"); 
     include('dbconfig.php');
     $buxiban_id = $_SESSION['buxiban_id'];
     //取得公告
@@ -25,7 +25,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("Error");</script>';
         }
-        header("Refresh:0");
+        //header("Refresh:0");
     break;
     
     //更新該則公告
