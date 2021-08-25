@@ -43,6 +43,7 @@ function bulletin_save_func(){
     var id = $(this).parent().attr("name")
     var title = $(this).parent().attr('class')
     var content = $(this).parent().find(name = 'bulletin_content').text()
+    console("hi")
     $.post("../../app/bulletin_board.php",{action: "update_bulletin",bulletin_id:id,bulletin_title:title,bulletin_content:content}, function(buxiban_bulletin){
         // Display the returned data in browser
         // $("#result").html(buxiban_bulletin);
@@ -52,6 +53,7 @@ function bulletin_save_func(){
 //刪除貼文
 $(".bulletin_delete").on("click",bulletin_delete_func)
 function bulletin_delete_func(){
+    console("hihihi")
     var id = $(this).parent().attr("name")
     $.post("../../app/bulletin_board.php",{action: "delete_bulletin",bulletin_id:id}, function(buxiban_bulletin){
         // Display the returned data in browser
