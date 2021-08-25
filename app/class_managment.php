@@ -27,7 +27,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        header("location:$back");
+        //header("location:$back");
     break;
     
     //更新該則公告
@@ -45,7 +45,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        header("location:$back");
+        //header("location:$back");
     break;
 
     //刪除該則公告
@@ -59,7 +59,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        header("location:$back");
+        //header("location:$back");
     break;
 }
 
