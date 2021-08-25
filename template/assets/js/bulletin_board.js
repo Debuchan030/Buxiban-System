@@ -2,16 +2,19 @@
 var bulletin_template = ({ bulletin_id, bulletin_title, bulletin_content, bulletin_time }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#b${bulletin_id}" aria-expanded="false"
 aria-controls="#b${bulletin_id}">
-    <td><textarea cols="30" rows="1" id = "${bulletin_id}_title">${bulletin_title}</textarea></td>
+    <td>
+        <textarea cols="30" rows="1" id = "${bulletin_id}_title">${bulletin_title}</textarea>
+    </td>
 </tr>
 <tr class="collapse"  id="b${bulletin_id}">
     <td name = "${bulletin_id}">
         <textarea name="bulletin_content" cols="30" rows="3"
             class="m-2" id = "${bulletin_id}_content">${bulletin_content}</textarea>
-            <label for="" class="my-3 mx-3" >發布時間：${bulletin_time}</label>
-            <button class="m-2 bulletin_save">儲存</button>
-            <button class="m-2 bulletin_delete">刪除</button></td>
-    </tr>
+        <label for="" class="my-3 mx-3" >發布時間：${bulletin_time}</label>
+        <button class="m-2 bulletin_save">儲存</button>
+        <button class="m-2 bulletin_delete">刪除</button>
+    </td>
+</tr>
 `;
 
 // 獲取所有公佈欄資訊 id title content time , buxiban_bulletin.length

@@ -1,8 +1,9 @@
 var class_management_template = ({ course_id, course_name, course_info, course_price, course_time }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#c${course_id}" aria-expanded="false"
     aria-controls="content">
-    <textarea id="${course_id}_name" cols="30" rows="1">${course_name}</textarea>
-
+    <td>
+        <textarea id="${course_id}_name" cols="30" rows="1">${course_name}</textarea>
+    </td>
 
 </tr>
 <tr class="collapse" id="c${course_id}">
