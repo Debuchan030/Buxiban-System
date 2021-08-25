@@ -1,15 +1,15 @@
 var class_management_template = ({ course_id, course_name, course_info, course_price, course_time }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#c${course_id}" aria-expanded="false"
     aria-controls="content">
-    <textarea name="" id="${course_id}_name" cols="30" rows="10">${course_name}</textarea>
+    <textarea name="" id="${course_id}_name" cols="30" rows="1">${course_name}</textarea>
 
 
 </tr>
 <tr class="collapse" id="c${course_id}">
     <td name = "${course_id}">
-        <textarea name="" id="${course_id}_info" cols="30" rows="10">${course_info}</textarea>
-        <textarea name="" id="${course_id}_price" cols="30" rows="30">${course_price}</textarea>
-        <textarea name="" id="${course_id}_time" cols="30" rows="10">${course_time}</textarea>
+        <textarea name="" id="${course_id}_info" cols="30" rows="1">${course_info}</textarea>
+        <textarea name="" id="${course_id}_price" cols="30" rows="3">${course_price}</textarea>
+        <textarea name="" id="${course_id}_time" cols="30" rows="1">${course_time}</textarea>
         <button class="m-2 course_save">儲存</button>
         <button class="m-2 course_delete">刪除</button>
     </td>
