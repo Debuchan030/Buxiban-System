@@ -16,11 +16,11 @@ var class_management_template = ({ course_id, course_name, course_info, course_p
     </td>
 </tr>
 
-`
+`;
 
 $.post("../../app/class_management.php", { action: "get_course" }, function (all_course) {
     all_course = JSON.parse(all_course)
-    console.log(all_course)
+    console.log(all_course.length)
     for (var i = 0; i < all_course.length; i++) {
         var id = all_course[i].course_id
         var name = all_course[i].course_name
