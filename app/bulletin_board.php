@@ -9,7 +9,6 @@ switch ($_POST['action']) {
     case "get_bulletin":
         $sqlresult = $conn->query("select * from buxiban_bulletin where buxiban_id= $buxiban_id");
         $bulletin = $sqlresult->fetchall(PDO::FETCH_OBJ);
-        //print_r($bulletin);
         echo json_encode($bulletin);
     break;
 
