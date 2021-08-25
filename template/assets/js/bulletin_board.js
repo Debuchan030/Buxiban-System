@@ -44,7 +44,7 @@ function bulletin_save_func(){
     var title = $(this).parent().attr('class')
     console.log(title)
     console.log(content)
-    var content = $(this).parent().find(name = 'bulletin_content').text()
+    var content = $(this).parent().find(name = 'bulletin_content').val()
     $.post("../../app/bulletin_board.php",{action: "update_bulletin",bulletin_id:id,bulletin_title:title,bulletin_content:content}, function(buxiban_bulletin){
         // Display the returned data in browser
         // $("#result").html(buxiban_bulletin);
