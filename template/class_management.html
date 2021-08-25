@@ -15,20 +15,21 @@
 		</header>
 		<table>
 			<tbody id="all_course">
-				
+
 
 			</tbody>
 		</table>
 		<button data-bs-toggle="collapse" data-bs-target="#add_course" aria-expanded="false"
 			aria-controls="add_course">新增課程</button>
+		<button id="testbtn">test</button>
 		<form action="../app/class_management.php" method="post">
 			<input type="hidden" name="action" value="add_course">
 			<div class="collapse" id="add_course">
-				<textarea name="course_name"  cols="30" rows="1" class="m-2" placeholder="課程名稱" required></textarea>
-				<textarea name="course_info"  cols="30" rows="3" class="m-2" placeholder="課程資訊" required></textarea>
-				<textarea name="course_time"  cols="30" rows="1" class="m-2" placeholder="上課時間" required></textarea>
-				<textarea name="course_price"  cols="30" rows="1" class="m-2" placeholder="收費" required></textarea>
-				<button class="m-2" action = "submit">發布</button>
+				<textarea name="course_name" cols="30" rows="1" class="m-2" placeholder="課程名稱" required></textarea>
+				<textarea name="course_info" cols="30" rows="3" class="m-2" placeholder="課程資訊" required></textarea>
+				<textarea name="course_time" cols="30" rows="1" class="m-2" placeholder="上課時間" required></textarea>
+				<textarea name="course_price" cols="30" rows="1" class="m-2" placeholder="收費" required></textarea>
+				<button class="m-2" action="submit">發布</button>
 			</div>
 		</form>
 
