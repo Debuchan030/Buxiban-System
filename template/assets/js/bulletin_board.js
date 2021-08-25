@@ -6,9 +6,9 @@ aria-controls="content">
 </tr>
 <tr class="collapse"  id="b${bulletin_id}">
     <td name = "${bulletin_id}">
-        <textarea name="bulletin_content" id="" cols="30" rows="3"
+        <textarea name="bulletin_content" cols="30" rows="3"
             class="m-2" id = "${bulletin_id}_content">${bulletin_content}</textarea>
-        <textarea name="bulletin_time" id="" cols="30" rows="1"
+        <textarea name="bulletin_time" cols="30" rows="1"
             class="m-2">${bulletin_time}</textarea>
             <button class="m-2 bulletin_save">儲存</button>
             <button class="m-2 bulletin_delete">刪除</button></td>
@@ -21,8 +21,6 @@ $.post("../../app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban
     // Display the returned data in browser
     // $("#result").html(buxiban_bulletin);
     buxiban_bulletin = JSON.parse(buxiban_bulletin)
-    console.log(buxiban_bulletin)
-    console.log(buxiban_bulletin.length)
     for (var i = 0; i < buxiban_bulletin.length; i++) {
         var id = buxiban_bulletin[i].bulletin_id
         var title = buxiban_bulletin[i].bulletin_title
@@ -44,7 +42,6 @@ function bulletin_save_func(){
     var title_addr = "#"+id+"_title"
     var content_addr = "#"+id+"_content"
     var title = $(title_addr).val()
-    console.log(title)
     var content = $(content_addr).val()
     console.log(content)
 
