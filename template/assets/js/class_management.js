@@ -19,23 +19,22 @@ var class_management_template = ({ course_id, course_name, course_info, course_p
 `;
 
 
-var test = document.getElementById('testbtn')
-test.addEventListener('click', test_func)
-function test_func() {
-    $.post("../../app/class_management.php", { action: "get_course" }, function (all_course) {
-        all_course = JSON.parse(all_course)
-        for (var i = 0; i < all_course.length; i++) {
-            var id = all_course[i].course_id
-            var name = all_course[i].course_name
-            var info = all_course[i].course_info
-            var price = all_course[i].course_price
-            var time = all_course[i].course_time
-            $('#all_course').append([
-                { course_id: id, course_name: name, course_info:info, course_price:price, course_time: time },
-            ].map(class_management_template));
-        }
-    });
-}
+$.post("../../app/class_management.php", { action: "get_course" }, function (all_course) {
+    all_course = JSON.parse(all_course)
+    for (var i = 0; i < all_course.length; i++) {
+        var id = all_course[i].course_id
+        var name = all_course[i].course_name
+        var info = all_course[i].course_info
+        var price = all_course[i].course_price
+        var time = all_course[i].course_time
+        $('#all_course').append([
+            { course_id: id, course_name: name, course_info: info, course_price: price, course_time: time },
+        ].map(class_management_template));
+    }
+});
+
+
+
 
 
 
