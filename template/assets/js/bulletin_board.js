@@ -5,7 +5,7 @@ aria-controls="content">
     <td><textarea cols="30" rows="1" name = "bulletin_title">${bulletin_title}</textarea></td>
 </tr>
 <tr class="collapse"  id="${bulletin_id}">
-    <td name = "${bulletin_id}">
+    <td name = "${bulletin_id}" class = "${bulletin_title}">
         <textarea name="bulletin_content" id="" cols="30" rows="3"
             class="m-2">${bulletin_content}</textarea>
         <textarea name="bulletin_time" id="" cols="30" rows="1"
@@ -17,9 +17,12 @@ aria-controls="content">
 
 // 獲取所有公佈欄資訊 id title content time , buxiban_bulletin.length
 
-$.post("app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban_bulletin){
+$.post("../../app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban_bulletin){
     // Display the returned data in browser
     // $("#result").html(buxiban_bulletin);
+    buxiban_bulletin = JSON.parse(buxiban_bulletin)
+    console.log(buxiban_bulletin)
+    console.log(buxiban_bulletin.length)
     for (var i = 0; i < buxiban_bulletin.length; i++) {
         var id = buxiban_bulletin[i].bulletin_id
         var title = buxiban_bulletin[i].bulletin_title
@@ -38,7 +41,9 @@ $.post("app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban_bulle
 $(".bulletin_save").on("click",bulletin_save_func)
 function bulletin_save_func(){
     var id = $(this).parent().attr("name")
-    $.post("app/bulletin_board.php",{action: "update_bulletin",bulletin_id:id}, function(buxiban_bulletin){
+    var title = $(this).parent().attr('class')
+    var content = $(this).parent().find(name = 'bulletin_content').text()
+    $.post("../../app/bulletin_board.php",{action: "update_bulletin",bulletin_id:id,bulletin_title:title,bulletin_content:content}, function(buxiban_bulletin){
         // Display the returned data in browser
         // $("#result").html(buxiban_bulletin);
        
@@ -48,7 +53,7 @@ function bulletin_save_func(){
 $(".bulletin_delete").on("click",bulletin_delete_func)
 function bulletin_delete_func(){
     var id = $(this).parent().attr("name")
-    $.post("app/bulletin_board.php",{action: "delete_bulletin",bulletin_id:id}, function(buxiban_bulletin){
+    $.post("../../app/bulletin_board.php",{action: "delete_bulletin",bulletin_id:id}, function(buxiban_bulletin){
         // Display the returned data in browser
         // $("#result").html(buxiban_bulletin);
        
