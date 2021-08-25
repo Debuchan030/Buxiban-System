@@ -2,7 +2,7 @@
 var bulletin_template = ({ bulletin_id, bulletin_title, bulletin_content, bulletin_time }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#b${bulletin_id}" aria-expanded="false"
 aria-controls="content">
-    <td><textarea cols="30" rows="1" name = "bulletin_title">${bulletin_title}</textarea></td>
+    <td><textarea cols="30" rows="1" name = "bulletin_title" id = "${bulletin_id}_title">${bulletin_title}</textarea></td>
 </tr>
 <tr class="collapse"  id="b${bulletin_id}">
     <td name = "${bulletin_id}" class = "${bulletin_title}">
@@ -41,7 +41,7 @@ $.post("../../app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban
 $("#bulletin_board").on("click",".bulletin_save",bulletin_save_func)
 function bulletin_save_func(){
     var id = $(this).parent().attr("name")
-    var title = $(this).parent().attr('class')
+    var title = $(this).parent("#bulletin_board").attr('class')
     console.log(title)
     var content = $(this).parent().find(name = 'bulletin_content').val()
     console.log(content)
