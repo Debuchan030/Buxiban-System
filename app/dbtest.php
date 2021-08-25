@@ -1,4 +1,5 @@
 <?php
+/*
     ini_set("display_errors", "On"); 
     include('dbconfig.php');
     $sqlresult = $conn->query("select * from buxiban_bulletin where buxiban_id= 0");
@@ -13,5 +14,5 @@
     print_r($b);
     print("FETCH_OBJ");
     print_r($c);
-    
+*/
 ?>

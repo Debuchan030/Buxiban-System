@@ -14,14 +14,12 @@ switch ( $_POST['action'] ) {
         else{
             include("dbconfig.php");
             $sqlresult =$conn->query("select * from buxiban_user where buxiban_acct = '$acct' and buxiban_pwd=md5('$pwd')");
-            $buxiban = $sqlresult->fetch();
+            $buxiban = $sqlresult->fetch(PDO::FETCH_ASSOC);
             //print_r($user);
             if($buxiban){
                 $_SESSION['buxiban_id'] = $buxiban['buxiban_id'];
                 $_SESSION['buxiban_name'] = $buxiban['buxiban_name'];
-                $aaa = $_SESSION['buxiban_id'];
-                print_r($buxiban);
-                //echo '<script>window.location.replace("/")</script>';
+                echo '<script>window.location.replace("/")</script>';
             }
             else{ 
                 echo '<script> window.alert("帳號或密碼錯誤!");</script>';
