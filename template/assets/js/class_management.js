@@ -19,7 +19,6 @@ var class_management_template = ({ course_id, course_name, course_info, course_p
 `
 
 $.post("../../app/class_management.php", { action: "get_course" }, function (all_course) {
-
     all_course = JSON.parse(all_course)
     console.log(all_course)
     for (var i = 0; i < all_course.length; i++) {
@@ -28,11 +27,15 @@ $.post("../../app/class_management.php", { action: "get_course" }, function (all
         var info = all_course[i].course_info
         var price = all_course[i].course_price
         var time = all_course[i].course_time
+        console.log(id)
+        console.log(name)
+        console.log(info)
+        console.log(price)
+        console.log(time)
         $('#all_course').append([
-            { course_id: id, course_name: name, course_info: info, course_price: price, course_time: time },
+            { course_id: id, course_name: "name", course_info:"info", course_price: 3000, course_time: "time" },
         ].map(class_management_template));
     }
-    
 });
 
 // 修改貼文

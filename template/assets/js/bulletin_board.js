@@ -16,7 +16,7 @@ aria-controls="#b${bulletin_id}">
 
 // 獲取所有公佈欄資訊 id title content time , buxiban_bulletin.length
 
-$.post("../../app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban_bulletin){
+$.post("../../app/bulletin_board.php", { action: "get_bulletin" }, function (buxiban_bulletin) {
 
     buxiban_bulletin = JSON.parse(buxiban_bulletin)
     for (var i = 0; i < buxiban_bulletin.length; i++) {
@@ -34,18 +34,18 @@ $.post("../../app/bulletin_board.php",{action: "get_bulletin"}, function(buxiban
 // console.log("hihi")
 
 // 修改貼文
-$("#bulletin_board").on("click",".bulletin_save",bulletin_save_func)
-function bulletin_save_func(){
+$("#bulletin_board").on("click", ".bulletin_save", bulletin_save_func)
+function bulletin_save_func() {
     var id = $(this).parent().attr("name")
-    var title_addr = "#"+id+"_title"
-    var content_addr = "#"+id+"_content"
+    var title_addr = "#" + id + "_title"
+    var content_addr = "#" + id + "_content"
     var title = $(title_addr).val()
     var content = $(content_addr).val()
-    $.post("../../app/bulletin_board.php",{action: "update_bulletin",bulletin_id:id,bulletin_title:title,bulletin_content:content});
+    $.post("../../app/bulletin_board.php", { action: "update_bulletin", bulletin_id: id, bulletin_title: title, bulletin_content: content });
 }
 //刪除貼文
-$("#bulletin_board").on("click",".bulletin_delete",bulletin_delete_func)
-function bulletin_delete_func(){
+$("#bulletin_board").on("click", ".bulletin_delete", bulletin_delete_func)
+function bulletin_delete_func() {
     var id = $(this).parent().attr("name")
-    $.post("../../app/bulletin_board.php",{action: "delete_bulletin",bulletin_id:id});
+    $.post("../../app/bulletin_board.php", { action: "delete_bulletin", bulletin_id: id });
 }
