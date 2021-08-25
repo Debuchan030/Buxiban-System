@@ -25,7 +25,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("Error");</script>';
         }
-        header("Refresh:0");
+        header("location:index.php");
     break;
     
     //更新該則公告
@@ -41,7 +41,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("Error");</script>';
         }
-        header("Refresh:0");
+        header("location:index.php");
     break;
 
     //刪除該則公告
@@ -55,7 +55,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("Error");</script>';
         }
-        header("Refresh:0");
+        header("location:index.php");
 
     break;
 }
