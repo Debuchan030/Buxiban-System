@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors", "On"); 
 include('dbconfig.php');
 $buxiban_id = $_SESSION['buxiban_id'];
 $datetime = date("Y-m-d H:i:s"); 
