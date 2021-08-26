@@ -16,6 +16,7 @@ switch ($_POST['action']) {
         $target_title = $_POST['target_title'];
         $_SESSION['page_name'] = $target_page;
         $_SESSION['page_title'] = $target_title;
+        echo $_SESSION['page_name'].$_SESSION['page_title'];
     break;
 }
 ?>

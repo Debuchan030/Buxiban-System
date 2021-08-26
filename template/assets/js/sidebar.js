@@ -10,5 +10,7 @@ $('li').click(function () {
     var target_title = $(this).first().text();
     $("#main").load("./template/"+target_page+".html")
     $("title").html(target_title)
-    $.post("../../app/changepage.php", {action:"change_page", target_page: target_page,target_title: target_title });
+    $.post("../../app/changepage.php", {action:"change_page", target_page: target_page,target_title: target_title }, function (data) {
+        console.log(data);
+    });
 })
