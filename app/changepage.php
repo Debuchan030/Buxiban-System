@@ -3,16 +3,16 @@ session_start();
 switch ($_POST['action']) { 
     //檢測目前頁面狀態(回調用)
     case "get_pagename":
-        $return_page = new array("bulletin_board","公佈欄");
-        if(isset($_SESSION['page_name'] && $_SESSION['title'])){
-            $return_page[0] = $_SESSION['page_name'];
-            $return_page[1] = $_SESSION['title'];
-            //echo json_encode($return_page);
-        }
-        else{
-            //echo json_encode($return_page);
-        }; 
-        echo "132"       
+        // //$return_page = new array("bulletin_board","公佈欄");
+        // if(isset($_SESSION['page_name'] && $_SESSION['title'])){
+        //     $return_page[0] = $_SESSION['page_name'];
+        //     $return_page[1] = $_SESSION['title'];
+        //     //echo json_encode($return_page);
+        // }
+        // else{
+        //     //echo json_encode($return_page);
+        // }; 
+        // echo "132"       
     break;
 
     case "change_page":
