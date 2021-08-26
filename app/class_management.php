@@ -19,7 +19,7 @@ switch ($_POST['action']) {
         $course_price = $_POST['course_price'];
         $course_info = $_POST['course_info'];
         $course_time = $_POST['course_time'];
-        $sqlsend = $conn->query("Insert into buxiban_course(course_name,course_price,course_info,course_time,buxiban_id) value('$course_name',$course_price,'$course_info','$course_time',$buxiban_id);");
+        $sqlsend = $conn->query("Insert into buxiban_course(course_name,course_price,course_info,course_time,buxiban_id) value('$course_name','$course_price','$course_info','$course_time',$buxiban_id);");
         $conn=null;
         if($sqlsend){
             echo '<script> window.alert("新增成功");</script>';
@@ -37,7 +37,7 @@ switch ($_POST['action']) {
         $course_price = $_POST['course_price'];
         $course_info = $_POST['course_info'];
         $course_time = $_POST['course_time'];
-        $sqlsend = $conn->query("update buxiban_course set course_name='$course_name' ,course_price=$course_price ,course_info='$course_info',course_time='$course_time' where course_id = $course_id;");
+        $sqlsend = $conn->query("update buxiban_course set course_name='$course_name' ,course_price='$course_price' ,course_info='$course_info',course_time='$course_time' where course_id = $course_id;");
         $conn=null;
         if($sqlsend){
             echo '<script> window.alert("更新成功");</script>';

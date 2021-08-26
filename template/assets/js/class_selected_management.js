@@ -26,9 +26,9 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
     //獲取buxiban_selcourse.course_id = selected_course_id之資料
     //(select * from buxiban_selcourse where selected_course_id = buxiban_selcourse.course_id)
 
-    //獲取buxiban_selcourse.std_id = buxiban_student.std_id之資料
+    //獲取buxiban_selcourse.std_id = buxiban_student.std_id之資料 
     //(select * from buxiban_student where buxiban_selcourse.std_id = buxiban_student.std_id)
-    //我將這個資料命名為course_selected_std_list
+    //我將這個資料命名為course_selected_std_list(有選課的)
 
 
     //建立已選修學生之列表
@@ -52,6 +52,9 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
     //獲取buxiban_selcourse.std_id = buxiban_student.std_id之資料
     //(select * from buxiban_student where buxiban_selcourse.std_id != buxiban_student.std_id)
 
+    //獲取為選課學生資料
+    //(SELECT * FROM buxiban_student except  course_selected_std_list)
+    
     //建立未選修學生之列表
 
     $.post("../../app/class_selected_management.php", { action: "get_nonselcourse_std" }, function (std) {
