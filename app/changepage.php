@@ -6,7 +6,7 @@ switch ($_POST['action']) {
         $return_page = array("bulletin_board","公佈欄");
         if(isset($_SESSION['page_name']) && isset($_SESSION['title'])){
             $return_page[0] = $_SESSION['page_name'];
-            $return_page[1] = $_SESSION['title'];
+            $return_page[1] = $_SESSION['page_title'];
         }
         echo json_encode($return_page);    
     break;
@@ -16,7 +16,6 @@ switch ($_POST['action']) {
         $target_title = $_POST['target_title'];
         $_SESSION['page_name'] = $target_page;
         $_SESSION['page_title'] = $target_title;
-        echo "<script>alert($target_title)</script>";
     break;
 }
 ?>
