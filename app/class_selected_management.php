@@ -34,10 +34,21 @@ switch ($_POST['action']) {
 
         //新增選課學生
     case "add_selcourse":
-
+        $course_id = $_POST['course_id'];
+        $std_id = json_decode($_POST['one_btn_add_std_array']);
+        foreach ($std_id as &$value) {
+            $sqlsend = $conn->query("Insert into buxiban_selcourse(course_id,std_id) value('$course_id','$value');");
+            $conn=null;
+        }   
         break;
         //刪除選課學生
     case "delete_selcourse":
+        $course_id = $_POST['course_id'];
 
+        $std_id = json_decode($_POST['one_btn_delete_std_array']);
+        foreach ($std_id as &$value) {
+            $sqlsend = $conn->query("delete from buxiban_selcourse where course_id = $course_id AND std_id = $value");
+            $conn=null;
+        }   
         break;
 }
