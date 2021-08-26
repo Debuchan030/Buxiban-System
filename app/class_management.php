@@ -14,7 +14,6 @@ switch ($_POST['action']) {
 
     //新增課程
     case "add_course": 
-        //print_r($_POST);
         $course_name = $_POST['course_name'];
         $course_price = $_POST['course_price'];
         $course_info = $_POST['course_info'];
@@ -27,7 +26,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        //header("location:$back");
+        header("location:$back");
     break;
     
     //更新該則公告
@@ -45,7 +44,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        //header("location:$back");
+        header("location:$back");
     break;
 
     //刪除該則公告
@@ -59,7 +58,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        //header("location:$back");
+        header("location:$back");
     break;
 }
 

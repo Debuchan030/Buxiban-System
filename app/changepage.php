@@ -8,11 +8,9 @@ switch ($_POST['action']) {
             $return_page[0] = $_SESSION['page_name'];
             $return_page[1] = $_SESSION['title'];
         }
-        else{
-        }; 
         echo json_encode($return_page);    
     break;
-
+    //切換頁面
     case "change_page":
         $target_page = $_POST['target_page'];
         $target_title = $_POST['target_title'];
