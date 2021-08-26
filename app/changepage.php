@@ -3,14 +3,13 @@ session_start();
 switch ($_POST['action']) { 
     //檢測目前頁面狀態(回調用)
     case "get_pagename":
+        $return_page = array("bulletin_board","公佈欄");
         if(isset($_SESSION['page_name'] && $_SESSION['title'])){
             $return_page[0] = $_SESSION['page_name'];
             $return_page[1] = $_SESSION['title'];
             echo json_encode($return_page);
         }
         else{
-            $return_page[0] = "bulletin_board";
-            $return_page[1] = "公佈欄";
             echo json_encode($return_page);
         }
         
