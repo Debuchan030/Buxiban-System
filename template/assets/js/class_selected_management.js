@@ -4,6 +4,10 @@ $.post("../../app/class_selected_management.php", { action: "get_course" }, func
 
     course = JSON.parse(course)
     var course_selection = document.getElementById('course_selection');
+    var option = document.createElement("option")
+    option.value = "0";
+    option.text = "請選擇課程";
+    course_selection.appendChild(option);
     for (var i = 0; i < course.length; i++) {
         var course_name = course[i].course_name
         var course_id = course[i].course_id
@@ -15,13 +19,17 @@ $.post("../../app/class_selected_management.php", { action: "get_course" }, func
 });
 var one_btn_add_std_list = {}
 var one_btn_delete_std_list = {}
-var index_delete = "0",index_add = "0"
+var index_delete = "0", index_add = "0"
 //根據option value不同抓取有選取此課的學生名單
 
 course_selection.addEventListener("change", change_student_list)//偵測有沒有選擇課程
 
 function change_student_list() { //依據選擇的課程來分類有選課/未選課 並列表
+    
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
+    if(selected_course_id == "0"){
+        return 0
+    }
     $("#course_selected_std").empty()
     $("#course_nonselected_std").empty()
     one_btn_add_std_list = {}
@@ -81,10 +89,10 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
 $('#course_selected_std').on('click', '.std_delete_selcourse', std_delete_selcourse);
 function std_delete_selcourse() {
     $(this).html("已刪除")
-    $(this).css({"box-shadow":"inset 0 0 0 2px gray;","color":"gray"})
+    $(this).css({ "box-shadow": "inset 0 0 0 2px gray;", "color": "gray" })
     var std_id = $(this).parent().attr('id')
     one_btn_delete_std_list[index_delete] = std_id
-    index_delete = (parseInt(index_delete)+1).toString()
+    index_delete = (parseInt(index_delete) + 1).toString()
     //reload視窗
     // change_student_list.call()
 }
@@ -94,26 +102,26 @@ $('#course_nonselected_std').on('click', '.std_add_selcourse', std_add_selcourse
 function std_add_selcourse() {
     //傳送std_name、parent_name去新增
     $(this).html("已新增")
-    $(this).css({"box-shadow":"inset 0 0 0 2px green;","color":"green"})
+    $(this).css({ "box-shadow": "inset 0 0 0 2px green;", "color": "green" })
     var std_id = $(this).parent().attr('id')
     one_btn_add_std_list[index_delete] = std_id
-    index_add = (parseInt(index_add)+1).toString()
-    
+    index_add = (parseInt(index_add) + 1).toString()
+
     //reload視窗
     // change_student_list.call()
 }
 
 // 一鍵新增post上去
-$("#one_btn_add_std").on("click",one_btn_add_std)
-function one_btn_add_std(){
+$("#one_btn_add_std").on("click", one_btn_add_std)
+function one_btn_add_std() {
     one_btn_add_std_list = JSON.stringify(one_btn_add_std_list)
     $.post("../../app/class_selected_management.php", one_btn_add_std_list);
     change_student_list.call()
 }
 
 // 一鍵刪除post上去
-$("one_btn_delete_std").on('click',one_btn_delete_std)
-function one_btn_delete_std(){
+$("one_btn_delete_std").on('click', one_btn_delete_std)
+function one_btn_delete_std() {
     one_btn_delete_std_list = JSON.stringify(one_btn_delete_std_list)
     $.post("../../app/class_selected_management.php", one_btn_delete_std_list);
     change_student_list.call()
