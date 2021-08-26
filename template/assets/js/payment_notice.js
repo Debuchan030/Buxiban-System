@@ -12,8 +12,7 @@ var payment_template = ({ payment_id, std_id, std_name, payment_deadline, total_
 			<div>
 				<table>
 					<h3>未繳款</h3>
-					<tbody id="payed">
-						<!-- <form action="" method="GET"> -->
+					<tbody id="non_payed">
 							<tr data-bs-toggle="collapse" data-bs-target="#${std_id}" aria-expanded="false"
 							aria-controls="non_payed1">
 							<td>${std_name}</td>
@@ -48,13 +47,11 @@ var payment_template = ({ payment_id, std_id, std_name, payment_deadline, total_
 
 				</table>
 			</div>
-			<!-- <button class="mb-5">一鍵催繳</button> -->
 
 			<div>
 				<table>
 					<h3>已繳款</h3>
-					<tbody id="non_payed">
-						<!-- <form action="" method="GET"> -->
+					<tbody id="payed">
 							<tr data-bs-toggle="collapse" data-bs-target="#${std_id}" aria-expanded="false"
 							aria-controls="non_payed1">
 							<td>${std_name}</td>

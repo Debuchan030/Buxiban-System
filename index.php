@@ -2,7 +2,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['buxiban_id'])) {
-   header("location:login.php");
+    header("location:login.php");
 }
 ?>
 <html lang="en">
@@ -42,14 +42,8 @@ if (!isset($_SESSION['buxiban_id'])) {
                         <li id="bulletin_board"><a>公佈欄</a></li>
                         <li id="payment_notice"><a>繳款通知管理</a></li>
                         <li id="member_management"><a>學生/家長管理 </a></li>
-                        <li>
-                            <span class="opener">課程管理</span>
-                            <ul>
-                                <li id="class_selected_management"><a>選課管理</a></li>
-                                <li id="class_management"><a>開課課程管理</a></li>
-
-                            </ul>
-                        </li>
+                        <li id="class_selected_management"><a>選課管理</a></li>
+                        <li id="class_management"><a>開課課程管理</a></li>
                         <li id="attend_record"><a>到班通知管理</a></li>
                         <li><a href="app/logout.php">登出</a></li>
                     </ul>
