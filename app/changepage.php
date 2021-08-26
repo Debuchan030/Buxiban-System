@@ -6,12 +6,14 @@ switch ($_POST['action']) {
         if(isset($_SESSION['page_name'] && $_SESSION['title'])){
             $return_page[0] = $_SESSION['page_name'];
             $return_page[1] = $_SESSION['title'];
+            echo json_encode($return_page);
         }
         else{
             $return_page[0] = "bulletin_board";
             $return_page[1] = "公佈欄";
+            echo json_encode($return_page);
         }
-        echo json_encode($return_page);
+        
     break;
 
     case "change_page":
