@@ -1,16 +1,13 @@
 $.post("../../app/changepage.php", { action: "get_pagename" }, function (page) {
     page = JSON.parse(page);
-    if(page){
-        $("#main").load("./template/"+page[0]+".html")
-        $("title").html(page[1])
-    }
+    $("#main").load("./template/"+page[0]+".html")
+    $("title").html(page[1])
 });
 
 $('li').click(function () {
-    var targetpage = $(this).attr('id');
-    //var pagetitle =  $(this).
-    $.post("../../app/changepage.php", {action:"change_page", target_page: targetpage }, function (get_title) {
-        $("#main").load("./template/"+targetpage+".html")
-        $("title").html("GGG")
-    });
+    var targe_tpage = $(this).attr('id');
+    var targe_title =  $(this).child().text();
+    $("#main").load("./template/"+targe_tpage+".html")
+    $("title").html(targe_title)
+    $.post("../../app/changepage.php", {action:"change_page", target_page: targe_tpage,target_title: target_title });
 })
