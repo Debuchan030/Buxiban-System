@@ -16,12 +16,20 @@ switch ($_POST['action']) {
     case "get_selcourse_std":
         $course_id = $_POST['course_id'];
         $sqlresult = $conn->query("select std_id from buxiban_selcourse where course_id= $course_id");
-        $std_info = $conn->query("select * from buxiban_student where std_id IN $sqlresult");
+        $std_id_array = $sqlresult->fetchAll(PDO::FETCH_ASSOC);
+        $std_info = $conn->query("select * from buxiban_student where std_id IN($sqlresult)");
+        $std_info = $std_info->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($std_info);
         break;
 
         //取得未選課之學生
     case "get_nonselcourse_std":
-
+        $course_id = $_POST['course_id'];
+        $sqlresult = $conn->query("select std_id from buxiban_selcourse where course_id= $course_id");
+        $std_id_array = $sqlresult->fetchAll(PDO::FETCH_ASSOC);
+        $std_info = $conn->query("select * from buxiban_student where std_id NOT IN($sqlresult)");
+        $std_info = $std_info->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($std_info);
         break;
 
         //新增選課學生
