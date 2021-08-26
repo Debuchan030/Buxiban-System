@@ -1,7 +1,6 @@
 //獲取php資料
 //將課程新增option並填入select
 $.post("../../app/class_selected_management.php", { action: "get_course" }, function (course) {
-
     course = JSON.parse(course)
     var course_selection = document.getElementById('course_selection');
     var option = document.createElement("option")
@@ -20,11 +19,8 @@ $.post("../../app/class_selected_management.php", { action: "get_course" }, func
 var one_btn_add_std_list = {}
 var one_btn_delete_std_list = {}
 //根據option value不同抓取有選取此課的學生名單
-
 course_selection.addEventListener("change", change_student_list)//偵測有沒有選擇課程
-
 function change_student_list() { //依據選擇的課程來分類有選課/未選課 並列表
-
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
     if (selected_course_id == "0") {
         return 0
@@ -35,16 +31,7 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
     one_btn_delete_std_list = {}
     one_btn_add_std_list['course_id'] = selected_course_id
     one_btn_delete_std_list['course_id'] = selected_course_id
-    //獲取buxiban_selcourse.course_id = selected_course_id之資料
-    //(select * from buxiban_selcourse where selected_course_id = buxiban_selcourse.course_id)
-
-    //獲取buxiban_selcourse.std_id = buxiban_student.std_id之資料 
-    //(select * from buxiban_student where buxiban_selcourse.std_id = buxiban_student.std_id)
-    //我將這個資料命名為course_selected_std_list(有選課的)
-
-
     //建立已選修學生之列表
-
     $.post("../../app/class_selected_management.php", { action: "get_selcourse_std", course_id: selected_course_id }, function (std) {
 
         std = JSON.parse(std)
@@ -57,18 +44,7 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
             $("#course_selected_std").append(table_list)
         }
     });
-
-
-
-
-    //獲取buxiban_selcourse.std_id = buxiban_student.std_id之資料
-    //(select * from buxiban_student where buxiban_selcourse.std_id != buxiban_student.std_id)
-
-    //獲取為選課學生資料
-    //(SELECT * FROM buxiban_student except  course_selected_std_list)
-
     //建立未選修學生之列表
-
     $.post("../../app/class_selected_management.php", { action: "get_nonselcourse_std", course_id: selected_course_id }, function (std) {
 
         std = JSON.parse(std)
@@ -82,7 +58,7 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
         }
     });
 }
-// 刪除已選修學生
+// 暫時刪除已選修學生
 $('#course_selected_std').on('click', '.std_delete_selcourse', std_delete_selcourse);
 function std_delete_selcourse() {
     if ($(this).text() == "刪除") {
@@ -90,7 +66,6 @@ function std_delete_selcourse() {
         $(this).css({ "box-shadow": "inset 0 0 0 2px gray", "color": "gray !important" })
         var std_id = $(this).parent().attr('id')
         one_btn_delete_std_list["del_" + std_id] = std_id
-        //reload視窗
     }
     else {
         $(this).html("刪除")
@@ -98,11 +73,9 @@ function std_delete_selcourse() {
         var std_id = $(this).parent().attr('id')
         delete one_btn_delete_std_list["del_" + std_id]
     }
-
-    // change_student_list.call()
 }
 
-// 新增未選修學生
+// 暫時新增未選修學生
 $('#course_nonselected_std').on('click', '.std_add_selcourse', std_add_selcourse);
 function std_add_selcourse() {
     //傳送std_name、parent_name去新增
@@ -120,12 +93,7 @@ function std_add_selcourse() {
         one_btn_add_std_list["add_"+std_id] = std_id
         delete one_btn_add_std_list["add_" + std_id]
     }
-
-
-    //reload視窗
-    // change_student_list.call()
 }
-
 // 一鍵新增post上去
 $("#one_btn_add_std").on("click", one_btn_add_std)
 function one_btn_add_std() {
@@ -134,7 +102,6 @@ function one_btn_add_std() {
     $.post("../../app/class_selected_management.php", one_btn_add_std_list);
     change_student_list.call()
 }
-
 // 一鍵刪除post上去
 $("one_btn_delete_std").on('click', one_btn_delete_std)
 function one_btn_delete_std() {
