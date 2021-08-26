@@ -58,10 +58,6 @@ session_start();
             </div>
         </div>
     </div>
-    <script>
-        $("#main").load("template/bulletin_board.html");
-        $("title").html("公佈欄")
-    </script>
     <!-- script -->
     <script src="./template/assets/js/sidebar.js"></script>
     <?php

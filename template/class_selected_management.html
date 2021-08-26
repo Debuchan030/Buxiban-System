@@ -1,51 +1,62 @@
+<div class="inner">
 
-	<div class="inner">
+	<!-- Header -->
+	<header id="header">
+		<a class="logo">
+			<h1><strong>選課管理</strong></h1>
+			<input type="radio" id="html" name="fav_language" value="HTML">
 
-		<!-- Header -->
-		<header id="header">
-			<a  class="logo">
-				<h1><strong>選課管理</strong></h1>
-			</a>
+		</a>
 
-		</header>
+	</header>
 
-		<!-- Section -->
-		<section>
+	<!-- Section -->
+	<section>
 
 
-			<select name="" id="course_selection" class="my-3">
+		<select name="" id="course_selection" class="my-3">
 
-			</select>
-			<div class="d-flex justify-content-around align-items-start">
-				<table class="m-3 ">
-					<thead>
-						<tr>
-							<td>
-								<h2>未選修學生</h2>
-							</td>
-						</tr>
-					</thead>
-					<tbody id="course_nonselected_std">
+		</select>
+		<div class="d-flex justify-content-around align-items-start">
+			<table class="m-3 ">
+				<thead>
+					<tr>
+						<td>
+							<h2>未選修學生</h2>
+						</td>
+						<td>
+							<button class="one_btn_add_std">確認新增</button>
 
-					</tbody>
-				</table>
-				<table class="m-3 ">
-					<thead>
-						<tr>
-							<td>
-								<h2>已選修學生</h2>
-							</td>
-						</tr>
-					</thead>
-					<tbody id="course_selected_std">
+						</td>
+					</tr>
+				</thead>
+				<tbody id="course_nonselected_std">
 
-					</tbody>
-				</table>
+				</tbody>
 
-			</div>
-		</section>
+			</table>
+			<table class="m-3 ">
+				<thead>
+					<tr>
+						<td>
+							<h2>已選修學生</h2>
+						</td>
+						<td>
+							<button class="one_btn_delete_std">確認刪除</button>
 
-	</div>
+						</td>
+					</tr>
+				</thead>
+				<tbody id="course_selected_std">
+
+				</tbody>
+
+			</table>
+		</div>
+
+	</section>
+
+</div>
 
 
 <script src="./template/assets/js/class_selected_management.js"></script>
