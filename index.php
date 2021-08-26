@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<?php/*
+<?php
 session_start();
 if (!isset($_SESSION['buxiban_id'])) {
     header("location:login.php");
-}*/
+}
 ?>
 <html lang="en">
 
