@@ -20,14 +20,4 @@ $buxiban_id = $_SESSION['buxiban_id'];
 // $std_id_array = $sqlresult->fetchAll(PDO::FETCH_ASSOC);
 // print($std_id_array);
 
-$return_page = array("bulletin_board","公佈欄");
-if(isset($_SESSION['page_name'])){
-    $return_page[0] = $_SESSION['page_name'];
-    $return_page[1] = $_SESSION['title'];
-    print_r($return_page);
-}
-else{
-    print_r($return_page);
-}; 
-
 ?>
