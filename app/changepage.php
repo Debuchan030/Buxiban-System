@@ -43,4 +43,5 @@ switch ($_POST['action']) {
             break;
         }
     break;
+}
 ?>
