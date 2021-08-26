@@ -8,9 +8,9 @@ var class_management_template = ({ course_id, course_name, course_info, course_p
 </tr>
 <tr class="collapse" id="c${course_id}">
     <td name = "${course_id}">
-        <textarea id="${course_id}_info" cols="30" rows="1">${course_info}</textarea>
-        <textarea id="${course_id}_price" cols="30" rows="3">${course_price}</textarea>
-        <textarea id="${course_id}_time" cols="30" rows="1">${course_time}</textarea>
+        <textarea id="${course_id}_info" cols="30" rows="1" class = "my-3">${course_info}</textarea>
+        <textarea id="${course_id}_price" cols="30" rows="3" class = "my-3">${course_price}</textarea>
+        <textarea id="${course_id}_time" cols="30" rows="1" class = "my-3">${course_time}</textarea>
         <button class="m-2 course_save">儲存</button>
         <button class="m-2 course_delete">刪除</button>
     </td>
