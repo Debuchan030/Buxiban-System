@@ -11,5 +11,5 @@ $('li').click(function () {
     var targe_title = $(this).first().text();
     $("#main").load("./template/"+targe_tpage+".html")
     $("title").html(targe_title)
-    //$.post("../../app/changepage.php", {action:"change_page", target_page: targe_tpage,target_title: target_title });
+    $.post("../../app/changepage.php", {action:"change_page", target_page: targe_tpage,target_title: target_title });
 })
