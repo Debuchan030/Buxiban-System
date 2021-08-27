@@ -18,8 +18,8 @@ switch ($_POST['action']) {
         $parent_name = $_POST['parent_name'];
         $parent_phone = $_POST['parent_phone'];
         //$parent_pwd = json_decode($_POST['parent_pwd']);
-        print(sizeof($std_name));
-        print($std_name[1]);
+        print(count($std_name));
+        print($std_name[0]);
         // for(i = 0 i < count($std_name)){
         //     echo $parent_phonep[i];
         // }
