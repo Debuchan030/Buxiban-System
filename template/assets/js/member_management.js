@@ -19,7 +19,7 @@ var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, p
 `;
 
 // 獲取所有學生/家長名單 std_n parent_n aact pwd phone, buxiban_parent.length
-function get_all_member_func() {
+// function get_all_member_func() {
     $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
         member = JSON.parse(member)
@@ -36,8 +36,8 @@ function get_all_member_func() {
         }
     });
 
-}
-get_all_member_func.call()
+// }
+// get_all_member_func.call()
 // 修改名單資料
 $("#member_info").on("click", ".update_member", update_member_func)
 function update_member_func() {
@@ -96,8 +96,8 @@ $('#search_text').on("keydown", event => {
     if (event.keyCode === 13) {
         var search_text = $('#search_text').val()
         if (search_text == "") {
-            $('#member_info').empty()
-            get_all_member_func.call()
+            // $('#member_info').empty()
+            // get_all_member_func.call()
         }
         else {
             $('#member_info').empty()
