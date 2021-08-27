@@ -125,7 +125,7 @@ $('#search_text').on("keydown",event => {
             }
             else {
 
-
+                alert("以下為搜尋結果")
             }
         }
     }
