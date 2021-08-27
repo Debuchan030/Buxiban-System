@@ -17,7 +17,7 @@ switch ($_POST['action']) {
         $course_id = $_POST['course_id'];
         $sqlresult = $conn->query("select std_id from buxiban_selcourse where course_id= $course_id");
         $std_id_array = $sqlresult->fetchAll(PDO::FETCH_ASSOC);
-        $std_info = $conn->query("select * from buxiban_student where std_id IN($sqlresult)");
+        $std_info = $conn->query("select * from buxiban_student where std_id IN($std_id_array)");
         $std_info = $std_info->fetchAll(PDO::FETCH_OBJ);
         echo json_encode($std_info);
         break;
@@ -27,7 +27,7 @@ switch ($_POST['action']) {
         $course_id = $_POST['course_id'];
         $sqlresult = $conn->query("select std_id from buxiban_selcourse where course_id= $course_id");
         $std_id_array = $sqlresult->fetchAll(PDO::FETCH_ASSOC);
-        $std_info = $conn->query("select * from buxiban_student where std_id NOT IN($sqlresult)");
+        $std_info = $conn->query("select * from buxiban_student where std_id NOT IN($std_id_array)");
         $std_info = $std_info->fetchAll(PDO::FETCH_OBJ);
         echo json_encode($std_info);
         break;
