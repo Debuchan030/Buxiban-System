@@ -30,7 +30,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-            header("location:index.php");
+            header("location:/index.php");
         break;
     */
     //修改學生/家長資料
@@ -52,7 +52,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        header("location:index.php");
+        header("location:/index.php");
         
     break;
 
@@ -72,7 +72,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        header("location:index.php");
+        header("location:/index.php");
     break;
     */
 }
