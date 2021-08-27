@@ -15,7 +15,7 @@ switch ($_POST['action']) {
     /*
     //新增學生/家長資料
     case "add_member": 
-        
+        $ = json_decode($_POST['std_name']);
         $std_name = $_POST['std_name'];
         $parent_name = $_POST['parent_name'];
         $parent_acct = $_POST['parent_acct'];
@@ -33,17 +33,19 @@ switch ($_POST['action']) {
         }
             header("location:$back");
         break;
-
+    */
     //修改學生/家長資料
     case "update_member":
-        $std_id = $_POST['std_id'];    
-        $std_name = $_POST['std_name'];
-        $parent_name = $_POST['parent_name'];
-        $parent_acct = $_POST['parent_acct'];
-        $parent_pwd = $_POST['parent_pwd'];
-        $parent_phone = $_POST['parent_phone'];
+
+        $get_data = json_decode($_POST['member_update_list']);
+        $std_id = $get_data[0];
+        $std_name = $get_data[1];
+        $parent_name = $get_data[2];
+        $parent_phone = $get_data[3];
+        $parent_pwd = $get_data[4];
+
         $sql = "update buxiban_student set std_name='$std_name' where std_id = $std_id;"
-        $sql .= "update buxiban_parent set parent_name='$parent_name',parent_acct='$parent_acct',parent_pwd='$parent_pwd',parent_phone='$parent_phone' where parent_id = $std_id;"
+        $sql .= "update buxiban_parent set parent_name='$parent_name',parent_acct='$parent_acct',parent_pwd='$parent_pwd',parent_phone='$parent_phone' where parent_phone = $parent_phone;"
         $sqlsend = $conn->multi_query($sql);
         $conn=null;
         if($sqlsend){
