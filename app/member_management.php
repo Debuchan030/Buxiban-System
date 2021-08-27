@@ -36,7 +36,7 @@ switch ($_POST['action']) {
     */
     //修改學生/家長資料
     case "update_member":
-
+        header("location:$back");
         $get_data = json_decode($_POST['member_update_list'],true);
         $std_id = $get_data['std_id'];
         $std_name = $get_data['std_name'];
@@ -53,7 +53,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        header("location:$back");
+        
         
     break;
 
