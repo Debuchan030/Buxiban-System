@@ -51,7 +51,7 @@ function update_member_func() {
     member_update_list.parent_phone = parent_phone
     member_update_list.parent_pwd = parent_pwd
     var flag = 1
-    console.log("test")
+    console.log(member_update_list.length)
     for (var i = 0; i < member_update_list.length; i++) {
         console.log(member_update_list[i])
 
