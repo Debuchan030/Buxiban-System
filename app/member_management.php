@@ -12,8 +12,10 @@ switch ($_POST['action']) {
         $member = $sqlresult->fetchall(PDO::FETCH_ASSOC);
         echo json_encode($member);
     break;
+    /*
     //新增學生/家長資料
     case "add_member": 
+        
         $std_name = $_POST['std_name'];
         $parent_name = $_POST['parent_name'];
         $parent_acct = $_POST['parent_acct'];
@@ -68,5 +70,6 @@ switch ($_POST['action']) {
         }
         header("location:$back");
     break;
+    */
 }
 ?>
