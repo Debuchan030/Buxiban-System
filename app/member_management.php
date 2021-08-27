@@ -56,18 +56,22 @@ switch ($_POST['action']) {
         
     break;
 
-    /*
+    
     //刪除學生/家長資料
     case "delete_member":
-        
         $std_id = $_POST['std_id'];
-        $sql = "delete from buxiban_student where std_id = $std_id;"
-        $sql .= "delete from buxiban_parent where parent_id = $std_id;"
-        $sqlsend = $conn->query($sql);
-        //檢測該家長是否還有其他筆小孩資料
-        $sql=   $conn->query("");     
+        $temp = $conn->query("select parent_id from buxiban_student where std_id = $std_id;")->fetch(PDO::FETCH_ASSOC);
+        $sqlresult = $conn->query("delete from buxiban_student where std_id = $std_id;");
+        //選課拔除
+        //
+        $sqlresult = $conn->query("select * from buxiban_student where parent_id = $temp;")->fetch(PDO::FETCH_ASSOC);
+        //沒小孩就砍了家長
+        if(!$sqlresult){
+            $sqlresult = $conn->query("delete from buxiban_parent where parent_id = $temp;");
+        }
+
         $conn=null;
     break;
-    */
+    
 }
 ?>
