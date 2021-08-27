@@ -23,7 +23,6 @@ function get_all_member_func() {
     $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
         member = JSON.parse(member)
-        console.log(member)
         for (var i = 0; i < member.length; i++) {
             var id = member[i].std_id
             var std_n = member[i].std_name
@@ -48,7 +47,6 @@ function update_member_func() {
     var parent_name = $("#" + std_id + "_parent_name").val()
     var parent_phone = $("#" + std_id + "_parent_phone").val()
     var parent_pwd = $("#" + std_id + "_parent_pwd").val()
-    console.log(std_name)
     if (std_name == "" || parent_name == "" || parent_phone == "" || parent_pwd == "") { flag = 0 }
     var member_update_list = {}
     member_update_list.std_id = std_id
@@ -58,11 +56,8 @@ function update_member_func() {
     member_update_list.parent_pwd = parent_pwd
 
     member_update_list = JSON.stringify(member_update_list)
-    console.log(member_update_list)
     if (flag == 1) {
-        $.post("../../app/member_management.php", { action: "update_member", member_update_list },function(data){
-            console.log(data)
-        });
+        $.post("../../app/member_management.php", { action: "update_member", member_update_list });
         location.reload();
     }
     else {
@@ -74,7 +69,6 @@ function update_member_func() {
 $("#member_info").on("click", ".delete_member", delete_member_func)
 function delete_member_func() {
     var id = $(this).parent().parent().attr("id")
-    console.log(id)
     id = id.substring(0, id.length - 7)
     $.post("../../app/member_management.php", { action: "delete_member", std_id: id });
     location.reload();
