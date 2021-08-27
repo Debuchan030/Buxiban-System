@@ -19,12 +19,6 @@ switch ($_POST['action']) {
         $bulletin_content = $_POST['bulletin_content'];
         $sqlsend = $conn->query("Insert into buxiban_bulletin(bulletin_title,bulletin_content,bulletin_time,buxiban_id) value('$bulletin_title','$bulletin_content','$datetime',$buxiban_id);");
         $conn=null;
-        if($sqlsend){
-            echo '<script> window.alert("新增成功");</script>';
-        }
-        else{
-            echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
-        }
         header("location:/index.php");
     break;
     
@@ -35,15 +29,6 @@ switch ($_POST['action']) {
         $bulletin_content = $_POST['bulletin_content'];
         $sqlsend = $conn->query("update buxiban_bulletin set bulletin_title='$bulletin_title' ,bulletin_content='$bulletin_content',bulletin_time='$datetime' where bulletin_id = $bulletin_id;");
         $conn=null;
-        /*
-        if($sqlsend){
-            echo '<script> window.alert("更新成功");</script>';
-        }
-        else{
-            echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
-        }
-        */
-        header("Refresh:0");
     break;
 
     //刪除該則公告
@@ -51,13 +36,6 @@ switch ($_POST['action']) {
         $bulletin_id = $_POST['bulletin_id'];
         $sqlsend = $conn->query("delete from buxiban_bulletin where bulletin_id = $bulletin_id;");
         $conn=null;
-        if($sqlsend){
-            echo '<script> window.alert("更新成功");</script>';
-        }
-        else{
-            echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
-        }
-        header("location:/index.php");
     break;
 }
 
