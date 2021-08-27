@@ -118,6 +118,7 @@ $('#search_text').on("keydown",event => {
                         count+=1
                     }
                 }
+                console.log(count)
             });
             if (count == 0) {
                 // alert("查無結果")
