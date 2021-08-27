@@ -91,15 +91,16 @@ $('#add_data_write').on('click', ".delete_new_member", function () {
 })
 
 //搜尋
-$('#search_text').on("keydown",event => {
+$('#search_text').on("keydown", event => {
     if (event.keyCode === 13) {
         var search_text = $('#search_text').val()
         if (search_text == "") {
+            $('#member_info').empty()
+            get_all_member_func.call()
         }
         else {
             $('#member_info').empty()
 
-            var count = 0;
             $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
                 member = JSON.parse(member)
@@ -113,19 +114,11 @@ $('#search_text').on("keydown",event => {
                         $('#member_info').append([
                             { std_id: id, std_name: std_n, parent_name: parent_n, parent_pwd: pwd, parent_phone: phone },
                         ].map(member_management_template));
-                        count+=1
                     }
                 }
-            });
-            if (count == 0) {
-                alert("查無結果")
-                // $('#member_info').empty()
-                // get_all_member_func.call()
-            }
-            else {
-                console.log("???")
                 alert("以下為搜尋結果")
-            }
+            });
+
         }
     }
 })
