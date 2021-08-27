@@ -22,7 +22,7 @@ switch ($_POST['action']) {
             $this_parent_name = $parent_name[$i];
             $this_parent_phone = $parent_phone[$i];
             $get_oldparent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
-            print($get_oldparent_id);
+            print(var_dump($get_oldparent_id));
             // if($get_oldparent_id != bool){
             //     //存在家長
             //     $temp = $get_oldparent_id['parent_id'];
