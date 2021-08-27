@@ -21,19 +21,20 @@ switch ($_POST['action']) {
             $this_std_name = $std_name[$i];
             $this_parent_name = $parent_name[$i];
             $this_parent_phone = $parent_phone[$i];
-            $get_parent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
-            if($get_parent_id['parent_id']){
-                //判斷是否存在家長
-                $temp = $get_parent_id['parent_id'];
-                $sqlinsert = $conn->query("Insert into buxiban_student(std_name,user_id,parent_id) value('$this_std_name',$buxiban_id,$temp);");
-            }
-            else{
-                //不存在則順勢新增家長
-                $sqlinsert = $conn->query("Insert into buxiban_parent(parent_name,parent_phone,parent_pwd) value('$this_parent_name',$this_parent_phone,$this_parent_phone);");
-                $get_parent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
-                $new_parent_id = $get_parent_id['parent_id'];
-                $sqlinsert = $conn->query("Insert into buxiban_student(std_name,user_id,parent_id) value('$this_std_name',$buxiban_id,$new_parent_id);");
-            }
+            $get_oldparent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
+            print($get_oldparent_id);
+            // if($get_oldparent_id != bool){
+            //     //存在家長
+            //     $temp = $get_oldparent_id['parent_id'];
+            //     $sqlinsert = $conn->query("Insert into buxiban_student(std_name,user_id,parent_id) value('$this_std_name',$buxiban_id,$temp);");
+            // }
+            // else{
+            //     //不存在則順勢新增家長
+            //     $sqlinsert = $conn->query("Insert into buxiban_parent(parent_name,parent_phone,parent_pwd) value('$this_parent_name',$this_parent_phone,$this_parent_phone);");
+            //     $get_parent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
+            //     $new_parent_id = $get_parent_id['parent_id'];
+            //     $sqlinsert = $conn->query("Insert into buxiban_student(std_name,user_id,parent_id) value('$this_std_name',$buxiban_id,$new_parent_id);");
+            // }
         }
         $conn=null;
     break;
