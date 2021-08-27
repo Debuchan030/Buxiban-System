@@ -1,9 +1,11 @@
 <?php
-ini_set("display_errors", "On"); /*
+ini_set("display_errors", "On"); 
 include('dbconfig.php');
-$sqlresult = $conn->query("select buxiban_student.std_id,buxiban_student.std_name,buxiban_parent.parent_name,buxiban_parent.parent_phone,buxiban_parent.parent_pwd from buxiban_student inner join buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_id= 2");
-$member = $sqlresult->fetchall(PDO::FETCH_ASSOC);
-print_r($member);
+$this_parent_phone = '0912345678';
+$parent_ld = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';");
+print($parent_ld);
+$result = $parent_ld->fetch(PDO::FETCH_ASSOC);
+print($result);
 /*
 /*
 session_start();
