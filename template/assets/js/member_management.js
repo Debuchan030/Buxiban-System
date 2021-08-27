@@ -11,11 +11,11 @@ var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, p
         <td>
             <input name="${std_id}_parent_phone" type="phone" value="${parent_phone}" required>
         </td>
-        <td >
+        <td>
             <input name="${std_id}_parent_pwd" type="text" value="${parent_pwd}" required>
         </td>
-        <td><button name = "update_member" value = "update_member" type = "submit">確認修改</button></td>
-        <td><button name = "delete_member" value = "delete_member" type = "submit">確認刪除</button></td>
+        // <td><button name = "update_member" value = "update_member" type = "submit">確認修改</button></td>
+        // <td><button name = "delete_member" value = "delete_member" type = "submit">確認刪除</button></td>
     </tr>
 </form>
 `;
