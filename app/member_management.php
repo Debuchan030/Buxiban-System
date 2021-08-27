@@ -37,13 +37,12 @@ switch ($_POST['action']) {
     //修改學生/家長資料
     case "update_member":
 
-        $get_data = json_decode($_POST['member_update_list']);
-        
-        $std_id = $get_data.std_id;
-        $std_name = $get_data.std_name;
-        $parent_name = $get_data.parent_name;
-        $parent_phone = $get_data.parent_phone;
-        $parent_pwd = $get_data.parent_pwd;
+        $get_data = json_decode($_POST['member_update_list'],true);
+        $std_id = $get_data['std_id'];
+        $std_name = $get_data['std_name'];
+        $parent_name = $get_data['parent_name'];
+        $parent_phone = $get_data['parent_phone'];
+        $parent_pwd = $get_data['parent_pwd'];
 
         $sql = "update buxiban_student set std_name='$std_name' where std_id = $std_id;";
         $sql .= "update buxiban_parent set parent_name='$parent_name',parent_acct='$parent_acct',parent_pwd='$parent_pwd',parent_phone='$parent_phone' where parent_phone = $parent_phone;";
@@ -56,6 +55,7 @@ switch ($_POST['action']) {
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
         //header("location:$back");
+        
     break;
 
     //刪除學生/家長資料
