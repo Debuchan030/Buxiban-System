@@ -23,42 +23,43 @@ course_selection.addEventListener("change", change_student_list)//偵測有沒�
 function change_student_list() { //依據選擇的課程來分類有選課/未選課 並列表
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
     if (selected_course_id == "0") {
-        return 0
     }
-    $("#course_selected_std").empty()
-    $("#course_nonselected_std").empty()
-    one_btn_add_std_array = []
-    one_btn_delete_std_array = []
-    //建立已選修學生之列表
-    $.post("../../app/class_selected_management.php", { action: "get_selcourse_std", course_id: selected_course_id }, function (std) {
-        console.log("已選修")
-        console.log(std)
-        std = JSON.parse(std)
-        
-        for (var i = 0; i < std.length; i++) {
-            var std_id = std[i].std_id
-            var std_name = std[i].std_name;
-            var parent_name = std[i].parent_name;
-            var parent_phone = std[i].parent_phone
-            var table_list = "<tr class = \"std_info\" id = \"" + std_id + "\"><td>學生姓名：" + std_name + "</td><td>家長姓名：" + parent_name + "</td><td>家長電話：" + parent_phone + "</td><td><button class = \"std_delete_selcourse\">刪除</button></td></tr>"
-            $("#course_selected_std").append(table_list)
-        }
-    });
-    //建立未選修學生之列表
-    $.post("../../app/class_selected_management.php", { action: "get_nonselcourse_std", course_id: selected_course_id }, function (std) {
-        console.log("未選修")
-        console.log(std)
-        std = JSON.parse(std)
-        
-        for (var i = 0; i < std.length; i++) {
-            var std_id = std[i].std_id
-            var std_name = std[i].std_name;
-            var parent_name = std[i].parent_name;
-            var parent_phone = std[i].parent_phone
-            var table_list = "<tr class = \"std_info\" id = \"" + std_id + "_std_id" + "\"><td>學生姓名：" + std_name + "</td><td>家長姓名：" + parent_name + "</td><td>家長電話：" + parent_phone + "</td><td><button class = \"std_add_selcourse\">新增</button></td></tr>"
-            $("#course_nonselected_std").append(table_list)
-        }
-    });
+    else {
+        $("#course_selected_std").empty()
+        $("#course_nonselected_std").empty()
+        one_btn_add_std_array = []
+        one_btn_delete_std_array = []
+        //建立已選修學生之列表
+        $.post("../../app/class_selected_management.php", { action: "get_selcourse_std", course_id: selected_course_id }, function (std) {
+            console.log("已選修")
+            console.log(std)
+            std = JSON.parse(std)
+
+            for (var i = 0; i < std.length; i++) {
+                var std_id = std[i].std_id
+                var std_name = std[i].std_name;
+                var parent_name = std[i].parent_name;
+                var parent_phone = std[i].parent_phone
+                var table_list = "<tr class = \"std_info\" id = \"" + std_id + "\"><td>學生姓名：" + std_name + "</td><td>家長姓名：" + parent_name + "</td><td>家長電話：" + parent_phone + "</td><td><button class = \"std_delete_selcourse\">刪除</button></td></tr>"
+                $("#course_selected_std").append(table_list)
+            }
+        });
+        //建立未選修學生之列表
+        $.post("../../app/class_selected_management.php", { action: "get_nonselcourse_std", course_id: selected_course_id }, function (std) {
+            console.log("未選修")
+            console.log(std)
+            std = JSON.parse(std)
+
+            for (var i = 0; i < std.length; i++) {
+                var std_id = std[i].std_id
+                var std_name = std[i].std_name;
+                var parent_name = std[i].parent_name;
+                var parent_phone = std[i].parent_phone
+                var table_list = "<tr class = \"std_info\" id = \"" + std_id + "_std_id" + "\"><td>學生姓名：" + std_name + "</td><td>家長姓名：" + parent_name + "</td><td>家長電話：" + parent_phone + "</td><td><button class = \"std_add_selcourse\">新增</button></td></tr>"
+                $("#course_nonselected_std").append(table_list)
+            }
+        });
+    }
 }
 // 暫時刪除已選修學生
 $('#course_selected_std').on('click', '.std_delete_selcourse', std_delete_selcourse);
@@ -85,9 +86,9 @@ function std_add_selcourse() {
         $(this).html("已新增")
         $(this).css({ "box-shadow": "inset 0 0 0 2px green;", "color": "green" })
         var std_id = $(this).parent().attr('id')
-        one_btn_add_std_array.push(std_id) 
+        one_btn_add_std_array.push(std_id)
     }
-    else{
+    else {
         $(this).html("新增")
         $(this).css({ "box-shadow": "inset 0 0 0 2px #f56a6a;", "color": "f56a6a !important" })
         var std_id = $(this).parent().attr('id')
@@ -99,7 +100,7 @@ $("#one_btn_add_std").on("click", one_btn_add_std)
 function one_btn_add_std() {
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
     one_btn_add_std_array = JSON.stringify(one_btn_add_std_array)
-    $.post("../../app/class_selected_management.php", {action:"add_selcourse",course_id:selected_course_id,one_btn_add_std_array});
+    $.post("../../app/class_selected_management.php", { action: "add_selcourse", course_id: selected_course_id, one_btn_add_std_array });
     change_student_list.call()
 }
 // 一鍵刪除post上去
@@ -107,6 +108,6 @@ $("one_btn_delete_std").on('click', one_btn_delete_std)
 function one_btn_delete_std() {
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
     one_btn_delete_std_array = JSON.stringify(one_btn_delete_std_array)
-    $.post("../../app/class_selected_management.php",{action:"delete_selcourse",course_id:selected_course_id,one_btn_delete_std_array});
+    $.post("../../app/class_selected_management.php", { action: "delete_selcourse", course_id: selected_course_id, one_btn_delete_std_array });
     change_student_list.call()
 }
