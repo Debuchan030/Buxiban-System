@@ -25,6 +25,7 @@ var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, p
 $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
     member = JSON.parse(member)
+    console.log(member)
     for (var i = 0; i < member.length; i++) {
         var id = member[i].std_id
         var std_n = member[i].std_name
@@ -68,7 +69,7 @@ $.post("../../app/member_management.php", { action: "get_member" }, function (me
 $("#add_data_write").empty()
 var add_list = "<tr><td><input></td><td><input></td><td><input></td></tr>";
 $("#add_data_write").append(add_list)
-var add_new_member = document.getElementById('.add_new_member')
+var add_new_member = document.getElementById('add_new_member')
 add_new_member.addEventListener('click', add_new_member_func)
 function add_new_member_func() {
     var add_list = "<tr><td><input></td><td><input></td><td><input></td><td><button><button></td></tr>";
