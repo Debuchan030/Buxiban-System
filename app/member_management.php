@@ -53,7 +53,9 @@ switch ($_POST['action']) {
         $sqlsend = $conn->query($sql);
         $conn=null;
         
+        header("location:/index.php");
     break;
+    
     /*
     //刪除學生/家長資料
     case "delete_member":
