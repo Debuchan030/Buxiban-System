@@ -42,10 +42,10 @@ function update_member_func() {
     console.log(id)
 
     var std_id = id.substring(0,id.length-7)
-    var std_name = $(id+"_std_name").text()
-    var parent_name = $(id+"_parent_name").text()
-    var parent_phone = $(id+"_parent_phone").text()
-    var parent_pwd = $(id+"_parent_pwd").text()
+    var std_name = $(std_id+"_std_name").text()
+    var parent_name = $(std_id+"_parent_name").text()
+    var parent_phone = $(std_id+"_parent_phone").text()
+    var parent_pwd = $(std_id+"_parent_pwd").text()
     var member_update_list = {}
     member_update_list.std_id = std_id
     member_update_list.std_name = std_name
