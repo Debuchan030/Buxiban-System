@@ -2,16 +2,16 @@
 var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, parent_phone }) => `
 <tr id="${std_id}_std_id">
     <td >
-        <input id="${std_id}_std_name" type="text" value="${std_name}" required>
+        <input id="${std_id}_std_name" type="text" value="${std_name}" >
     </td>
     <td>
-        <input id="${std_id}_parent_name" type="text" value="${parent_name}" required>
+        <input id="${std_id}_parent_name" type="text" value="${parent_name}" >
     </td>
     <td>
-        <input id="${std_id}_parent_phone" type="text" maxlength = "10" value="${parent_phone}" required>
+        <input id="${std_id}_parent_phone" type="text" maxlength = "10" value="${parent_phone}" >
     </td>
     <td >
-        <input id="${std_id}_parent_pwd" type="text" value="${parent_pwd}" required>
+        <input id="${std_id}_parent_pwd" type="text" value="${parent_pwd}" >
     </td>
     <td><button class = "update_member">確認修改</button></td>
     <td><button class = "delete_member">確認刪除</button></td>
