@@ -19,22 +19,24 @@ var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, p
 `;
 
 // 獲取所有學生/家長名單 std_n parent_n aact pwd phone, buxiban_parent.length
+function get_all_member_func() {
+    $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
-$.post("../../app/member_management.php", { action: "get_member" }, function (member) {
+        member = JSON.parse(member)
+        for (var i = 0; i < member.length; i++) {
+            var id = member[i].std_id
+            var std_n = member[i].std_name
+            var parent_n = member[i].parent_name
+            var pwd = member[i].parent_pwd
+            var phone = member[i].parent_phone
+            $('#member_info').append([
+                { std_id: id, std_name: std_n, parent_name: parent_n, parent_pwd: pwd, parent_phone: phone },
+            ].map(member_management_template));
+        }
+    });
 
-    member = JSON.parse(member)
-    for (var i = 0; i < member.length; i++) {
-        var id = member[i].std_id
-        var std_n = member[i].std_name
-        var parent_n = member[i].parent_name
-        var pwd = member[i].parent_pwd
-        var phone = member[i].parent_phone
-        $('#member_info').append([
-            { std_id: id, std_name: std_n, parent_name: parent_n, parent_pwd: pwd, parent_phone: phone },
-        ].map(member_management_template));
-    }
-});
-
+}
+get_all_member_func.call()
 // 修改名單資料
 $("#member_info").on("click", ".update_member", update_member_func)
 function update_member_func() {
@@ -82,9 +84,55 @@ function add_new_member_func() {
     var add_list = "<tr><td><input name = \"std_name[]\"></td><td><input name = \"parent_name[]\"></td><td><input name = \"parent_phone[]\" type=\"tex\" maxlength = \"10\"></td><td><button type = \"button\" class = \"delete_new_member\">刪除</button></td></tr>";
     $("#add_data_write").append(add_list)
 }
-//新增名單資料
 
-
+//刪除動態生成一列
 $('#add_data_write').on('click', ".delete_new_member", function () {
     $(this).parent().parent().remove()
 })
+
+//搜尋
+$('#search_text').keydown(function (event) {
+    if (event.keyCode == 13) {
+        var search_text = $('#search_text').text()
+        var count = 0;
+        if (search_text == "") {
+
+        }
+        else {
+            $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
+
+                member = JSON.parse(member)
+                $('#member_info').empty()
+                for (var i = 0; i < member.length; i++) {
+                    var id = member[i].std_id
+                    var std_n = member[i].std_name
+                    var parent_n = member[i].parent_name
+                    var pwd = member[i].parent_pwd
+                    var phone = member[i].parent_phone
+                    if (std_n.indexOf(search_text) != -1 || parent_n.indexOf(search_text) != -1 || pwd.indexOf(search_text) != -1 || phone.indexOf(search_text) != -1) {
+                        $('#member_info').append([
+                            { std_id: id, std_name: std_n, parent_name: parent_n, parent_pwd: pwd, parent_phone: phone },
+                        ].map(member_management_template));
+                        count++
+                    }
+
+                }
+
+
+            });
+            if (count == 0) {
+                alert("查無結果")
+                $('#member_info').empty()
+                get_all_member_func.call()
+            }
+            else {
+
+
+            }
+        }
+    }
+})
+
+
+
+
