@@ -118,15 +118,16 @@ $('#search_text').on("keydown",event => {
                         count+=1
                     }
                 }
+                console.log(count)
             });
             if (count == 0) {
-                alert("查無結果")
+                // alert("查無結果")
                 $('#member_info').empty()
                 get_all_member_func.call()
             }
             else {
 
-                alert("以下為搜尋結果")
+                // alert("以下為搜尋結果")
             }
         }
     }
