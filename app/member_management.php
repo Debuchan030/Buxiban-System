@@ -21,10 +21,10 @@ switch ($_POST['action']) {
             $this_std_name = $std_name[$i];
             $this_parent_name = $parent_name[$i];
             $this_parent_phone = $parent_phone[$i];
-            $get_parent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
-            if($get_parent_id['parent_id']){
+            $get_oldparent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
+            if($get_oldparent_id != bool){
                 //判斷是否存在家長
-                $temp = $get_parent_id['parent_id'];
+                $temp = $get_oldparent_id['parent_id'];
                 $sqlinsert = $conn->query("Insert into buxiban_student(std_name,user_id,parent_id) value('$this_std_name',$buxiban_id,$temp);");
             }
             else{
