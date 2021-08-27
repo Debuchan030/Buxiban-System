@@ -57,6 +57,7 @@ function update_member_func() {
     member_update_list.parent_pwd = parent_pwd
 
     member_update_list = JSON.stringify(member_update_list)
+    console.log(member_update_list)
     if (flag == 1) {
         $.post("../../app/member_management.php", { action: "update_member", member_update_list });
         location.reload();
