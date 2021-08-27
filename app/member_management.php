@@ -44,8 +44,8 @@ switch ($_POST['action']) {
         $parent_phone = $get_data[3];
         $parent_pwd = $get_data[4];
 
-        $sql = "update buxiban_student set std_name='$std_name' where std_id = $std_id;"
-        $sql .= "update buxiban_parent set parent_name='$parent_name',parent_acct='$parent_acct',parent_pwd='$parent_pwd',parent_phone='$parent_phone' where parent_phone = $parent_phone;"
+        $sql = "update buxiban_student set std_name='$std_name' where std_id = $std_id;";
+        $sql .= "update buxiban_parent set parent_name='$parent_name',parent_acct='$parent_acct',parent_pwd='$parent_pwd',parent_phone='$parent_phone' where parent_phone = $parent_phone;";
         $sqlsend = $conn->multi_query($sql);
         $conn=null;
         if($sqlsend){
@@ -59,6 +59,7 @@ switch ($_POST['action']) {
 
     //刪除學生/家長資料
     case "delete_member":
+        /*
         $std_id = $_POST['std_id'];
         $sql = "delete from buxiban_student where std_id = $std_id;"
         $sql .= "delete from buxiban_parent where parent_id = $std_id;"
