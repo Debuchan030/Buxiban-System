@@ -11,23 +11,25 @@ switch ($_POST['action']) {
         $member = $sqlresult->fetchall(PDO::FETCH_ASSOC);
         echo json_encode($member);
     break;
-    /*
+    
     //新增學生/家長資料
-    case "add_member": 
-        $ = json_decode($_POST['std_name']);
-        $std_name = $_POST['std_name'];
-        $parent_name = $_POST['parent_name'];
-        $parent_acct = $_POST['parent_acct'];
-        $parent_pwd = $_POST['parent_pwd'];
-        $parent_phone = $_POST['parent_phone'];
-        $sql = "Insert into buxiban_student(std_name) value('$std_name',$buxiban_id);";
-        $sql .= "Insert into buxiban_parent(parent_name,parent_acct,parent_pwd,parent_phone) value('$parent_name','$parent_acct','$parent_acct','$parent_pwd','$parent_acct',$buxiban_id);";
-        $sqlsend = $conn->multi_query($sql);
-        $conn=null;
+    case "add_member":        
+        $std_name = json_decode($_POST['std_name']);
+        $parent_name = json_decode($_POST['parent_name']);
+        $parent_phone = json_decode($_POST['parent_phone']);
+        $parent_pwd = json_decode($_POST['parent_pwd']);
+        print(sizeof($std_name));
+        print($std_name[1]);
+        // for(i = 0 i < count($std_name)){
+        //     echo $parent_phonep[i];
+        // }
 
-        header("location:/index.php");
+        // $sql = "Insert into buxiban_student(std_name) value('$std_name',$buxiban_id);";
+        // $sql .= "Insert into buxiban_parent(parent_name,parent_acct,parent_pwd,parent_phone) value('$parent_name','$parent_acct','$parent_acct','$parent_pwd','$parent_acct',$buxiban_id);";
+        // $sqlsend = $conn->multi_query($sql);
+        // $conn=null;
         break;
-    */
+    
     //修改學生/家長資料
     case "update_member":
         $get_data = json_decode($_POST['member_update_list'],true);
