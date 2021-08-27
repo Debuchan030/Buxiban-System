@@ -40,22 +40,31 @@ $("#member_info").on("click", ".update_member", update_member_func)
 function update_member_func() {
     var id = $(this).parent().parent().attr("id")
     var std_id = id.substring(0, id.length - 7)
-    var std_name = $("#"+std_id + "_std_name").val()
-    var parent_name = $("#"+std_id + "_parent_name").val()
-    var parent_phone = $("#"+std_id + "_parent_phone").val()
-    var parent_pwd = $("#"+std_id + "_parent_pwd").val()
+    var std_name = $("#" + std_id + "_std_name").val()
+    var parent_name = $("#" + std_id + "_parent_name").val()
+    var parent_phone = $("#" + std_id + "_parent_phone").val()
+    var parent_pwd = $("#" + std_id + "_parent_pwd").val()
     var member_update_list = {}
     member_update_list.std_id = std_id
     member_update_list.std_name = std_name
     member_update_list.parent_name = parent_name
     member_update_list.parent_phone = parent_phone
     member_update_list.parent_pwd = parent_pwd
-
-    console.log(member_update_list)
+    var flag = 1
+    for (var i = 0; i < member_update_list.length; i++) {
+        if (member_update_list[i] == "") {
+            flag = 0
+            break
+        }
+    }
     member_update_list = JSON.stringify(member_update_list)
-    console.log(member_update_list)
+    if (flag == 1) {
+        $.post("../../app/member_management.php", { action: "update_member", member_update_list });
 
-    $.post("../../app/member_management.php", { action: "update_member", member_update_list });
+    }
+    else{
+        alert("請勿空格！")
+    }
 }
 
 //刪除名單資料
