@@ -23,6 +23,7 @@ function get_all_member_func() {
     $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
         member = JSON.parse(member)
+        console.log(member)
         for (var i = 0; i < member.length; i++) {
             var id = member[i].std_id
             var std_n = member[i].std_name
