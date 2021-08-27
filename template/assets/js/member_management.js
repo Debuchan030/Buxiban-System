@@ -25,6 +25,7 @@ var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, p
 $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
     member = JSON.parse(member)
+    console.log(member)
     for (var i = 0; i < member.length; i++) {
         var id = member[i].std_id
         var std_n = member[i].std_name
