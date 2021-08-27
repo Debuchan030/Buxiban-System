@@ -1,11 +1,19 @@
 // 學生/家長名單模板
 var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, parent_phone }) => `
 <tr id="${std_id}_std_id">
-    <td id="${std_id}_std_name">${std_name}</td>
-    <td id="${std_id}_parent_name">${parent_name}</td>
-    <td id="${std_id}_parent_phone">${parent_phone}</td>
-    <td id="${std_id}_parent_pwd">${parent_pwd}</td>
-    <td><button class = "update_member ">確認修改</button></td>
+    <td >
+        <input id="${std_id}_std_name" type="text" value="${std_name}" required>
+    </td>
+    <td>
+        <input id="${std_id}_parent_name" type="text" value="${parent_name}" required>
+    </td>
+    <td>
+        <input id="${std_id}_parent_phone" type="phone" value="${parent_phone}" required>
+    </td>
+    <td >
+        <input id="${std_id}_parent_pwd" type="text" value="${parent_pwd}" required>
+    </td>
+    <td><button class = "update_member " type = "submit">確認修改</button></td>
     <td><button class = "delete_member">確認刪除</button></td>
 </tr>
 `;
