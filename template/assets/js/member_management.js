@@ -5,8 +5,8 @@ var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, p
     <td id="${std_id}_parent_name">${parent_name}</td>
     <td id="${std_id}_parent_phone">${parent_phone}</td>
     <td id="${std_id}_parent_pwd">${parent_pwd}</td>
-    <td><button class = "update_member ">修改資料</button></td>
-    <td><button class = "delete_member">刪除資料</button></td>
+    <td><button class = "update_member ">確認修改</button></td>
+    <td><button class = "delete_member">確認刪除</button></td>
 </tr>
 `;
 
