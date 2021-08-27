@@ -13,7 +13,7 @@ var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, p
     <td >
         <input id="${std_id}_parent_pwd" type="text" value="${parent_pwd}" required>
     </td>
-    <td><button class = "update_member " type = "submit">確認修改</button></td>
+    <td><button class = "update_member"確認修改</button></td>
     <td><button class = "delete_member">確認刪除</button></td>
 </tr>
 `;
