@@ -14,7 +14,7 @@ switch ($_POST['action']) {
     
     //新增學生/家長資料
     case "add_member":        
-        $std_name = $_POST['std_name'];
+        $std_name = $_POST['std_name'][];
         $parent_name = $_POST['parent_name'];
         $parent_phone = $_POST['parent_phone'];
         //$parent_pwd = json_decode($_POST['parent_pwd']);
