@@ -40,12 +40,12 @@ $("#member_info").on("click", ".update_member", update_member_func)
 function update_member_func() {
     var id = $(this).parent().parent().attr("id")
     var std_id = id.substring(0, id.length - 7)
-    var std_name = $(std_id + "_std_name").value()
+    var std_name = $("#"+std_id + "_std_name").value()
     console.log(std_name)
 
-    var parent_name = $(std_id + "_parent_name").value()
-    var parent_phone = $(std_id + "_parent_phone").value()
-    var parent_pwd = $(std_id + "_parent_pwd").value()
+    var parent_name = $("#"+std_id + "_parent_name").value()
+    var parent_phone = $("#"+std_id + "_parent_phone").value()
+    var parent_pwd = $("#"+std_id + "_parent_pwd").value()
     var member_update_list = {}
     member_update_list.std_id = std_id
     member_update_list.std_name = std_name
