@@ -100,33 +100,34 @@ $('#search_text').on("keydown",event => {
 
         }
         else {
-            var count = 0;
-            $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
+            // var count = 0;
+            // $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
-                member = JSON.parse(member)
-                $('#member_info').empty()
-                for (var i = 0; i < member.length; i++) {
-                    var id = member[i].std_id
-                    var std_n = member[i].std_name
-                    var parent_n = member[i].parent_name
-                    var pwd = member[i].parent_pwd
-                    var phone = member[i].parent_phone
-                    if (std_n.indexOf(search_text) != -1 || parent_n.indexOf(search_text) != -1 || pwd.indexOf(search_text) != -1 || phone.indexOf(search_text) != -1) {
-                        $('#member_info').append([
-                            { std_id: id, std_name: std_n, parent_name: parent_n, parent_pwd: pwd, parent_phone: phone },
-                        ].map(member_management_template));
-                        count+=1
-                    }
-                }
-                console.log(count)
-            });
+            //     member = JSON.parse(member)
+            //     $('#member_info').empty()
+            //     for (var i = 0; i < member.length; i++) {
+            //         var id = member[i].std_id
+            //         var std_n = member[i].std_name
+            //         var parent_n = member[i].parent_name
+            //         var pwd = member[i].parent_pwd
+            //         var phone = member[i].parent_phone
+            //         if (std_n.indexOf(search_text) != -1 || parent_n.indexOf(search_text) != -1 || pwd.indexOf(search_text) != -1 || phone.indexOf(search_text) != -1) {
+            //             $('#member_info').append([
+            //                 { std_id: id, std_name: std_n, parent_name: parent_n, parent_pwd: pwd, parent_phone: phone },
+            //             ].map(member_management_template));
+            //             count+=1
+            //         }
+            //     }
+            //     console.log(count)
+            // });
             if (count == 0) {
                 // alert("查無結果")
                 $('#member_info').empty()
                 get_all_member_func.call()
             }
             else {
-
+                $('#member_info').empty()
+                console.log("???")
                 // alert("以下為搜尋結果")
             }
         }
