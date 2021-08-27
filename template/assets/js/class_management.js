@@ -52,14 +52,10 @@ function course_save_func() {
     var price = $(price_addr).val()
     var time = $(time_addr).val()
     $.post("../../app/class_management.php", { action: "update_course", course_id: id, course_name: name, course_info: info, course_price: price, course_time: time });
-    $("#main").load("./template/class_management.html")
-    $("title").html("開課課程管理")
 }
 //刪除貼文
 $("#all_course").on("click", ".course_delete", course_delete_func)
 function course_delete_func() {
     var id = $(this).parent().attr("name")
     $.post("../../app/class_management.php", { action: "delete_course", course_id: id });
-    $("#main").load("./template/class_management.html")
-    $("title").html("開課課程管理")
 }

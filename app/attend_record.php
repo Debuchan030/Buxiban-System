@@ -4,7 +4,6 @@ include('dbconfig.php');
 session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
 $datetime = date("Y-m-d H:i:s");
-$back = getenv("HTTP_REFERER");
 switch ($_POST['action']) {
     //取得學生/家長名單
     case "get_member":
@@ -31,7 +30,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-            header("location:$back");
+            header("Refresh:0");
         break;
     */
     //修改學生/家長資料
@@ -59,8 +58,10 @@ switch ($_POST['action']) {
 
     //刪除學生/家長資料
     case "delete_member":
-        /*
+        
         $std_id = $_POST['std_id'];
+        $sql = "select parent_id from buxiban_student where std_id = $std_id;"
+        $sqlsend = $conn->query($sql);
         $sql = "delete from buxiban_student where std_id = $std_id;"
         $sql .= "delete from buxiban_parent where parent_id = $std_id;"
         $sqlsend = $conn->query($sql);
@@ -75,6 +76,6 @@ switch ($_POST['action']) {
         }
         header("Refresh:0");
     break;
-    */
+    
 }
 ?>
