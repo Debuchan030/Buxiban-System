@@ -95,11 +95,12 @@ $('#search_text').on("keydown",event => {
     if (event.keyCode === 13) {
         var search_text = $('#search_text').val()
         console.log(search_text)
-        var count = 0;
+        
         if (search_text == "") {
 
         }
         else {
+            var count = 0;
             $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
                 member = JSON.parse(member)
