@@ -7,13 +7,13 @@ $datetime = date("Y-m-d H:i:s");
 $back = getenv("HTTP_REFERER");
 switch ($_POST['action']) {
     //取得學生/家長名單
-    case "get_list":
-        $sqlresult = $conn->query("select buxiban_student.id,buxiban_student.name,buxiban_parent.name,buxiban_parent.acct,buxiban_parent.pwd,buxiban_parent.phone from buxiban_student inner join buxiban_parent where buxiban_id= $buxiban_id");
+    case "get_member":
+        $sqlresult = $conn->query("select buxiban_student.std_id,buxiban_student.std_name,buxiban_parent.parent_name,buxiban_parent.parent_phone,buxiban_parent.parent_pwd from buxiban_student inner join buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_id= $buxiban_id");
         $member = $sqlresult->fetchall(PDO::FETCH_OBJ);
         echo json_encode($member);
     break;
-     //新增學生/家長資料
-    case "add_data": 
+    //新增學生/家長資料
+    case "add_member": 
         $std_name = $_POST['std_name'];
         $parent_name = $_POST['parent_name'];
         $parent_acct = $_POST['parent_acct'];
@@ -33,7 +33,7 @@ switch ($_POST['action']) {
         break;
 
     //修改學生/家長資料
-    case "update_data":
+    case "update_member":
         $std_id = $_POST['std_id'];    
         $std_name = $_POST['std_name'];
         $parent_name = $_POST['parent_name'];
@@ -54,7 +54,7 @@ switch ($_POST['action']) {
     break;
 
     //刪除學生/家長資料
-    case "delete_data":
+    case "delete_member":
         $std_id = $_POST['std_id'];
         $sql = "delete from buxiban_student where std_id = $std_id;"
         $sql .= "delete from buxiban_parent where parent_id = $std_id;"
