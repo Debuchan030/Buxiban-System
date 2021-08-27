@@ -21,22 +21,22 @@ switch ($_POST['action']) {
             $this_std_name = $std_name[i];
             $this_parent_name = $parent_name[i];
             $this_parent_phone = $parent_phone[i];
-            $get_parent_ld = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
-            if($get_parent_ld['parent_id']){
+            $get_parent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
+            if($get_parent_id['parent_id']){
                 //判斷是否存在家長
-                $temp = $get_parent_ld['parent_id'];
-                $sqlresult = $conn->query("Insert into buxiban_student(std_name,user_id,parent_id) value('$this_std_name',$buxiban_id,$temp);");
+                $temp = $get_parent_id['parent_id'];
+                $sqlinsert = $conn->query("Insert into buxiban_student(std_name,user_id,parent_id) value('$this_std_name',$buxiban_id,$temp);");
             }
             else{
                 //不存在則順勢新增家長
-                $sqlresult = $conn->query("Insert into buxiban_parent(parent_name,parent_phone,parent_pwd) value('$this_parent_name',$this_parent_phone,$this_parent_phone);");
-                $get_parent_ld = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
-                $new_parent_ld = $get_parent_ld['parent_id'];
-                $sqlresult = $conn->query("Insert into buxiban_student(std_name,user_id,parent_id) value('$this_std_name',$buxiban_id,$new_parent_ld);");
+                $sqlinsert = $conn->query("Insert into buxiban_parent(parent_name,parent_phone,parent_pwd) value('$this_parent_name',$this_parent_phone,$this_parent_phone);");
+                $get_parent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
+                $new_parent_id = $get_parent_id['parent_id'];
+                $sqlinsert = $conn->query("Insert into buxiban_student(std_name,user_id,parent_id) value('$this_std_name',$buxiban_id,$new_parent_id);");
             }
         }
         $conn=null;
-        break;
+    break;
     
     //修改學生/家長資料
     case "update_member":
@@ -46,7 +46,7 @@ switch ($_POST['action']) {
         $parent_name = $get_data['parent_name'];
         $parent_phone = $get_data['parent_phone'];
         $parent_pwd = $get_data['parent_pwd'];
-
+        
         $sql = "update buxiban_student,buxiban_parent set buxiban_student.std_name='$std_name',buxiban_parent.parent_name='$parent_name',buxiban_parent.parent_phone='$parent_phone',buxiban_parent.parent_pwd='$parent_pwd' where buxiban_student.std_id = $std_id AND buxiban_parent.parent_id = buxiban_student.parent_id;";
         $sqlsend = $conn->query($sql);
         $conn=null;
