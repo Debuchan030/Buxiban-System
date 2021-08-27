@@ -45,10 +45,12 @@ function bulletin_save_func() {
     var title = $(title_addr).val()
     var content = $(content_addr).val()
     $.post("../../app/bulletin_board.php", { action: "update_bulletin", bulletin_id: id, bulletin_title: title, bulletin_content: content });
+    location.reload();
 }
 //刪除貼文
 $("#bulletin_board").on("click", ".bulletin_delete", bulletin_delete_func)
 function bulletin_delete_func() {
     var id = $(this).parent().attr("name")
     $.post("../../app/bulletin_board.php", { action: "delete_bulletin", bulletin_id: id });
+    location.reload();
 }
