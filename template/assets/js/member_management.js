@@ -114,7 +114,7 @@ $('#search_text').on("keydown",event => {
                         $('#member_info').append([
                             { std_id: id, std_name: std_n, parent_name: parent_n, parent_pwd: pwd, parent_phone: phone },
                         ].map(member_management_template));
-                        count++
+                        count+=1
                     }
                 }
             });
