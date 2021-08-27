@@ -91,9 +91,10 @@ $('#add_data_write').on('click', ".delete_new_member", function () {
 })
 
 //搜尋
-$('#search_text').keydown(function (event) {
+$('#search_text').addEventListener("keydown", function(event) {
     console.log(event.keyCode)
-    if (event.keyCode == 13) {
+    if (event.keyCode === 13) {
+        console.log("gotcha")
         var search_text = $('#search_text').text()
         var count = 0;
         if (search_text == "") {
@@ -116,10 +117,7 @@ $('#search_text').keydown(function (event) {
                         ].map(member_management_template));
                         count++
                     }
-
                 }
-
-
             });
             if (count == 0) {
                 alert("查無結果")
