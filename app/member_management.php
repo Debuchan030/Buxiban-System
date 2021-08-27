@@ -44,8 +44,8 @@ switch ($_POST['action']) {
         $parent_phone = $get_data['parent_phone'];
         $parent_pwd = $get_data['parent_pwd'];
 
-        $sql = "update buxiban_student,buxiban_parent set buxiban_student.std_name='$std_name',buxiban_parent.parent_name='$parent_name',buxiban_parent.parent_phone='$parent_phone',buxiban_parent.parent_pwd='$parent_pwd' where buxiban_parent.parent_id = buxiban_student.parent_id;"
-        $sqlsend = $conn->multi_query($sql);
+        $sql = "update buxiban_student,buxiban_parent set buxiban_student.std_name='$std_name',buxiban_parent.parent_name='$parent_name',buxiban_parent.parent_phone='$parent_phone',buxiban_parent.parent_pwd='$parent_pwd' where buxiban_parent.parent_id = buxiban_student.parent_id;";
+        $sqlsend = $conn->query($sql);
         $conn=null;
         if($sqlsend){
             echo '<script> window.alert("修改成功");</script>';
