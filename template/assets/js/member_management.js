@@ -63,7 +63,7 @@ function update_member_func() {
         $.post("../../app/member_management.php", { action: "update_member", member_update_list },function(data){
             console.log(data)
         });
-        // location.reload();
+        location.reload();
     }
     else {
         alert("請勿空格！")
