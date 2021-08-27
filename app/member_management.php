@@ -37,6 +37,7 @@ switch ($_POST['action']) {
                 $sqlinsert = $conn->query("Insert into buxiban_student(std_name,buxiban_id,parent_id) value('$this_std_name',$buxiban_id,$new_parent_id);");
             }
         }
+        header("location:/index.php");
         $conn=null;
     break;
     
@@ -53,9 +54,8 @@ switch ($_POST['action']) {
         $sqlsend = $conn->query($sql);
         $conn=null;
         
-        header("location:/index.php");
     break;
-    
+
     /*
     //刪除學生/家長資料
     case "delete_member":
