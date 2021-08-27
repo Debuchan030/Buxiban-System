@@ -44,7 +44,7 @@ function update_member_func() {
     var id = $(this).parent().parent().attr("id")
     var flag = 1
     var std_id = id.substring(0, id.length - 7)
-    var std_name = $("#" + std_id + "_std_name").val()
+    var std_name = $("#" + std_id + " _std_name").val()
     var parent_name = $("#" + std_id + "_parent_name").val()
     var parent_phone = $("#" + std_id + "_parent_phone").val()
     var parent_pwd = $("#" + std_id + "_parent_pwd").val()
@@ -67,9 +67,10 @@ function update_member_func() {
 }
 
 //刪除名單資料
-$("#std_list").on("click", ".delete_member", delete_member_func)
+$("#member_info").on("click", ".delete_member", delete_member_func)
 function delete_member_func() {
-    var id = $(this).parent().attr("id")
+    var id = $(this).parent().parent().attr("id")
+    console.log(id)
     id = id.substring(0, id.length - 7)
     $.post("../../app/member_management.php", { action: "delete_member", std_id: id });
     location.reload();
