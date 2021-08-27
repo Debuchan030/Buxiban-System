@@ -39,7 +39,7 @@ switch ($_POST['action']) {
 
         $get_data = json_decode($_POST['member_update_list']);
         //echo json_encode($get_data);
-        echo ($get_data.parent_phone);
+        echo $get_data;
         /*
         $std_id = $get_data.std_id;
         $std_name = $get_data.std_name;
