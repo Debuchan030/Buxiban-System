@@ -37,7 +37,7 @@ function get_all_member_func() {
     });
 
 }
-// get_all_member_func.call()
+get_all_member_func.call()
 // 修改名單資料
 $("#member_info").on("click", ".update_member", update_member_func)
 function update_member_func() {
