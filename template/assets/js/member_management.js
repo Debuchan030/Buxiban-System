@@ -39,13 +39,12 @@ $.post("../../app/member_management.php", { action: "get_member" }, function (me
 $("#member_info").on("click", ".update_member", update_member_func)
 function update_member_func() {
     var id = $(this).parent().parent().attr("id")
-    console.log(id)
-
-    var std_id = id.substring(0,id.length-7)
-    var std_name = $(std_id+"_std_name").text()
-    var parent_name = $(std_id+"_parent_name").text()
-    var parent_phone = $(std_id+"_parent_phone").text()
-    var parent_pwd = $(std_id+"_parent_pwd").text()
+    var std_id = id.substring(0, id.length - 7)
+    console.log(std_id)
+    var std_name = $(std_id + "_std_name").text()
+    var parent_name = $(std_id + "_parent_name").text()
+    var parent_phone = $(std_id + "_parent_phone").text()
+    var parent_pwd = $(std_id + "_parent_pwd").text()
     var member_update_list = {}
     member_update_list.std_id = std_id
     member_update_list.std_name = std_name
@@ -53,14 +52,14 @@ function update_member_func() {
     member_update_list.parent_phone = parent_phone
     member_update_list.parent_pwd = parent_pwd
     member_update_list = JSON.stringify(member_update_list)
-    $.post("../../app/member_management.php", { action: "update_member" , member_update_list});
+    $.post("../../app/member_management.php", { action: "update_member", member_update_list });
 }
 
 //刪除名單資料
 $("#std_list").on("click", ".delete_member", delete_member_func)
 function delete_member_func() {
     var id = $(this).parent().attr("id")
-    id = id.substring(0,id.length-7)
+    id = id.substring(0, id.length - 7)
     $.post("../../app/member_management.php", { action: "delete_member", std_id: id });
 }
 
