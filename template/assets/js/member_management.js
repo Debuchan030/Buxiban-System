@@ -1,23 +1,21 @@
 // 學生/家長名單模板
 var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, parent_phone }) => `
-<form>
-    <tr name="${std_id}_std_id">
-        <td >
-            <input name="${std_id}_std_name" type="text" value="${std_name}" required>
-        </td>
-        <td>
-            <input name="${std_id}_parent_name" type="text" value="${parent_name}" required>
-        </td>
-        <td>
-            <input name="${std_id}_parent_phone" type="phone" value="${parent_phone}" required>
-        </td>
-        <td >
-            <input name="${std_id}_parent_pwd" type="text" value="${parent_pwd}" required>
-        </td>
-        <td><button name = "update_member" value = "update_member" type = "submit">確認修改</button></td>
-        <td><button name = "delete_member" value = "delete_member" type = "submit">確認刪除</button></td>
-    </tr>
-</form>
+<tr id="${std_id}_std_id">
+    <td >
+        <input id="${std_id}_std_name" type="text" value="${std_name}" required>
+    </td>
+    <td>
+        <input id="${std_id}_parent_name" type="text" value="${parent_name}" required>
+    </td>
+    <td>
+        <input id="${std_id}_parent_phone" type="phone" value="${parent_phone}" required>
+    </td>
+    <td >
+        <input id="${std_id}_parent_pwd" type="text" value="${parent_pwd}" required>
+    </td>
+    <td><button class = "update_member " type = "submit">確認修改</button></td>
+    <td><button class = "delete_member">確認刪除</button></td>
+</tr>
 `;
 
 // 獲取所有學生/家長名單 std_n parent_n aact pwd phone, buxiban_parent.length
@@ -25,7 +23,6 @@ var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, p
 $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
     member = JSON.parse(member)
-    console.log(member)
     for (var i = 0; i < member.length; i++) {
         var id = member[i].std_id
         var std_n = member[i].std_name
@@ -39,31 +36,35 @@ $.post("../../app/member_management.php", { action: "get_member" }, function (me
 });
 
 // 修改名單資料
-// $("#member_info").on("click", ".update_member", update_member_func)
-// function update_member_func() {
-//     var id = $(this).parent().attr("id")
-//     var std_id = id.substring(0,id.length-7)
-//     var std_name = $(id+"_std_name").text()
-//     var parent_name = $(id+"_parent_name").text()
-//     var parent_phone = $(id+"_parent_phone").text()
-//     var parent_pwd = $(id+"_parent_pwd").text()
-//     var member_update_list = {}
-//     member_update_list.std_id = std_id
-//     member_update_list.std_name = std_name
-//     member_update_list.parent_name = parent_name
-//     member_update_list.parent_phone = parent_phone
-//     member_update_list.parent_pwd = parent_pwd
-//     member_update_list = JSON.stringify(member_update_list)
-//     $.post("../../app/member_management.php", { action: "update_member" , member_update_list});
-// }
+$("#member_info").on("click", ".update_member", update_member_func)
+function update_member_func() {
+    var id = $(this).parent().parent().attr("id")
+    var std_id = id.substring(0, id.length - 7)
+    var std_name = $("#"+std_id + "_std_name").val()
+    var parent_name = $("#"+std_id + "_parent_name").val()
+    var parent_phone = $("#"+std_id + "_parent_phone").val()
+    var parent_pwd = $("#"+std_id + "_parent_pwd").val()
+    var member_update_list = {}
+    member_update_list.std_id = std_id
+    member_update_list.std_name = std_name
+    member_update_list.parent_name = parent_name
+    member_update_list.parent_phone = parent_phone
+    member_update_list.parent_pwd = parent_pwd
 
-// //刪除名單資料
-// $("#std_list").on("click", ".delete_member", delete_member_func)
-// function delete_member_func() {
-//     var id = $(this).parent().attr("id")
-//     id = id.substring(0,id.length-7)
-//     $.post("../../app/member_management.php", { action: "delete_member", std_id: id });
-// }
+    console.log(member_update_list)
+    member_update_list = JSON.stringify(member_update_list)
+    console.log(member_update_list)
+
+    $.post("../../app/member_management.php", { action: "update_member", member_update_list });
+}
+
+//刪除名單資料
+$("#std_list").on("click", ".delete_member", delete_member_func)
+function delete_member_func() {
+    var id = $(this).parent().attr("id")
+    id = id.substring(0, id.length - 7)
+    $.post("../../app/member_management.php", { action: "delete_member", std_id: id });
+}
 
 //動態生成一列
 $("#add_data_write").empty()
