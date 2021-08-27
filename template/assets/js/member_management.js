@@ -44,7 +44,7 @@ function update_member_func() {
     var id = $(this).parent().parent().attr("id")
     var flag = 1
     var std_id = id.substring(0, id.length - 7)
-    var std_name = $("#" + std_id + " _std_name").val()
+    var std_name = $("#" + std_id + "_std_name").val()
     var parent_name = $("#" + std_id + "_parent_name").val()
     var parent_phone = $("#" + std_id + "_parent_phone").val()
     var parent_pwd = $("#" + std_id + "_parent_pwd").val()
