@@ -44,7 +44,7 @@ switch ($_POST['action']) {
         $parent_phone = $get_data['parent_phone'];
         $parent_pwd = $get_data['parent_pwd'];
 
-        $sql = "update buxiban_student,buxiban_parent set buxiban_student.std_name='$std_name',buxiban_parent.parent_name='$parent_name',buxiban_parent.parent_phone='$parent_phone',buxiban_parent.parent_pwd='$parent_pwd' where buxiban_parent.parent_id = buxiban_student.parent_id;";
+        $sql = "update buxiban_student,buxiban_parent set buxiban_student.std_name='$std_name',buxiban_parent.parent_name='$parent_name',buxiban_parent.parent_phone='$parent_phone',buxiban_parent.parent_pwd='$parent_pwd' where buxiban_student.std_id = $std_id AND buxiban_parent.parent_id = buxiban_student.parent_id;";
         $sqlsend = $conn->query($sql);
         $conn=null;
         if($sqlsend){
@@ -53,7 +53,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        //header("location:$back");
+        header("location:$back");
         
     break;
 
