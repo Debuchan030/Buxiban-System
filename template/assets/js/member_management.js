@@ -52,6 +52,8 @@ function update_member_func() {
     member_update_list.parent_pwd = parent_pwd
     var flag = 1
     for (var i = 0; i < member_update_list.length; i++) {
+        console.log(member_update_list[i])
+
         if (member_update_list[i] == "") {
             flag = 0
             break
