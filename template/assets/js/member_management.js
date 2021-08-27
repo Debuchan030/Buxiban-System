@@ -56,7 +56,6 @@ function update_member_func() {
     member_update_list = JSON.stringify(member_update_list)
     if (flag == 1) {
         $.post("../../app/member_management.php", { action: "update_member", member_update_list });
-        location.reload();
     }
     else {
         alert("請勿空格！")
@@ -69,7 +68,6 @@ function delete_member_func() {
     var id = $(this).parent().attr("id")
     id = id.substring(0, id.length - 7)
     $.post("../../app/member_management.php", { action: "delete_member", std_id: id });
-    location.reload();
 }
 
 //動態生成一列
