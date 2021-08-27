@@ -67,7 +67,7 @@ function update_member_func() {
 }
 
 //刪除名單資料
-$("#std_list").on("click", ".delete_member", delete_member_func)
+$("#member_info").on("click", ".delete_member", delete_member_func)
 function delete_member_func() {
     var id = $(this).parent().attr("id")
     console.log(id)
