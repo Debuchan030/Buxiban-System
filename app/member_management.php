@@ -17,18 +17,24 @@ switch ($_POST['action']) {
         $std_name = $_POST['std_name'];
         $parent_name = $_POST['parent_name'];
         $parent_phone = $_POST['parent_phone'];
-        //$parent_pwd = json_decode($_POST['parent_pwd']);
-        print_r($std_name);
-        print(count($std_name));
-        print($std_name[1]);
-        // for($i=0;$i<sizeof($std_name);$i++){
-
-        // }
-
-        // $sql = "Insert into buxiban_student(std_name) value('$std_name',$buxiban_id);";
-        // $sql .= "Insert into buxiban_parent(parent_name,parent_acct,parent_pwd,parent_phone) value('$parent_name','$parent_acct','$parent_acct','$parent_pwd','$parent_acct',$buxiban_id);";
-        // $sqlsend = $conn->multi_query($sql);
-        // $conn=null;
+        for($i=0;$i<sizeof($std_name);$i++){
+            $this_std_name = $std_name[i];
+            $this_parent_name = $parent_name[i];
+            $this_parent_phone = $parent_phone[i];
+            $sqlresult = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone'"));
+            $parent_ld =$sqlresult->fetch();
+            if($parent_ld){
+                //判斷是否存在家長
+                $sqlresult = $conn->query("Insert into buxiban_student(std_name,user_id,parent_id) value('$this_std_name',$buxiban_id,$parent_ld);");
+            }
+            else{
+                //不存在則順勢新增家長
+                $sqlresult = $conn->query("Insert into buxiban_parent(parent_name,parent_phone,parent_pwd) value('$this_parent_name',$this_parent_phone,$this_parent_phone);");
+                $parent_ld = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';");
+                $sqlresult = $conn->query("Insert into buxiban_student(std_name,user_id,parent_id) select parent_id from buxiban_parent where buxiban_parent.parent_phone=$this_parent_phone value('$this_std_name',$buxiban_id,$this_parent_phone);");
+            }
+        }
+        $conn=null;
         break;
     
     //修改學生/家長資料
