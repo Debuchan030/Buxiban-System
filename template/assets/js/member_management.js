@@ -72,12 +72,12 @@ function delete_member_func() {
 
 //動態生成一列
 $("#add_data_write").empty()
-var add_list = "<tr><td><input></td><td><input></td><td><input></td><td><button class = \"delete_new_member\">刪除</button></td></tr>";
+var add_list = "<tr><td><input></td><td><input></td><td><input></td><td><button type = \"button\" class = \"delete_new_member\">刪除</button></td></tr>";
 $("#add_data_write").append(add_list)
 var add_new_member = document.getElementById('add_new_member')
 add_new_member.addEventListener('click', add_new_member_func)
 function add_new_member_func() {
-    var add_list = "<tr><td><input></td><td><input></td><td><input></td><td><button class = \"delete_new_member\">刪除</button></td></tr>";
+    var add_list = "<tr><td><input></td><td><input></td><td><input></td><td><button type = \"button\" class = \"delete_new_member\">刪除</button></td></tr>";
     $("#add_data_write").append(add_list)
 }
 //新增名單資料
