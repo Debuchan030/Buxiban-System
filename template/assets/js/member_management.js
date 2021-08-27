@@ -60,7 +60,7 @@ function update_member_func() {
     console.log(member_update_list)
     if (flag == 1) {
         $.post("../../app/member_management.php", { action: "update_member", member_update_list });
-        location.reload();
+        // location.reload();
     }
     else {
         alert("請勿空格！")
