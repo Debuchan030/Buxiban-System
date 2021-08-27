@@ -99,7 +99,6 @@ $('#search_text').on("keydown",event => {
         else {
             $('#member_info').empty()
 
-            var count = 0;
             $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
                 member = JSON.parse(member)
@@ -113,19 +112,11 @@ $('#search_text').on("keydown",event => {
                         $('#member_info').append([
                             { std_id: id, std_name: std_n, parent_name: parent_n, parent_pwd: pwd, parent_phone: phone },
                         ].map(member_management_template));
-                        count+=1
                     }
                 }
-            });
-            if (count == 0) {
-                alert("查無結果")
-                // $('#member_info').empty()
-                // get_all_member_func.call()
-            }
-            else {
-                console.log("???")
                 alert("以下為搜尋結果")
-            }
+            });
+            
         }
     }
 })
