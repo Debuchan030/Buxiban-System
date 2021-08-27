@@ -41,8 +41,6 @@ function update_member_func() {
     var id = $(this).parent().parent().attr("id")
     var std_id = id.substring(0, id.length - 7)
     var std_name = $("#"+std_id + "_std_name").val()
-    console.log(std_name)
-
     var parent_name = $("#"+std_id + "_parent_name").val()
     var parent_phone = $("#"+std_id + "_parent_phone").val()
     var parent_pwd = $("#"+std_id + "_parent_pwd").val()
@@ -52,7 +50,11 @@ function update_member_func() {
     member_update_list.parent_name = parent_name
     member_update_list.parent_phone = parent_phone
     member_update_list.parent_pwd = parent_pwd
+
+    console.log(member_update_list)
     member_update_list = JSON.stringify(member_update_list)
+    console.log(member_update_list)
+
     $.post("../../app/member_management.php", { action: "update_member", member_update_list });
 }
 
