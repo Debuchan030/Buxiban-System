@@ -38,7 +38,7 @@ $.post("../../app/member_management.php", { action: "get_member" }, function (me
 // 修改名單資料
 $("#member_info").on("click", ".update_member", update_member_func)
 function update_member_func() {
-    console("update")
+    console.log("update")
     var id = $(this).parent().parent().attr("id")
     var std_id = id.substring(0,id.length-7)
     var std_name = $(id+"_std_name").text()
