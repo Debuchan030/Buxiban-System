@@ -4,7 +4,6 @@ include('dbconfig.php');
 session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
 $datetime = date("Y-m-d H:i:s");
-$back = getenv("HTTP_REFERER");
 switch ($_POST['action']) {
     //取得學生/家長名單
     case "get_member":
@@ -31,7 +30,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-            header("location:$back");
+            header("location:index.php");
         break;
     */
     //修改學生/家長資料
@@ -53,7 +52,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        header("Refresh:0");
+        header("location:index.php");
         
     break;
 
@@ -73,7 +72,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        header("Refresh:0");
+        header("location:index.php");
     break;
     */
 }

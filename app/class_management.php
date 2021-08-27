@@ -3,7 +3,6 @@ ini_set("display_errors", "On");
 include('dbconfig.php');
 session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
-$back = getenv("HTTP_REFERER");
 switch ($_POST['action']) { 
     //取得現有課程列表
     case "get_course":
@@ -26,7 +25,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        header("location:$back");
+        header("location:index.php");
     break;
     
     //更新該則公告
@@ -44,7 +43,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        header("Refresh:0");
+        header("location:index.php");
     break;
 
     //刪除該則公告
@@ -58,7 +57,7 @@ switch ($_POST['action']) {
         else{
             echo '<script> window.alert("出現錯誤!請聯繫HCT工程部專員");</script>';
         }
-        header("Refresh:0");
+        header("location:index.php");
     break;
 }
 
