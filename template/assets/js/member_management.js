@@ -69,7 +69,7 @@ function update_member_func() {
 //刪除名單資料
 $("#member_info").on("click", ".delete_member", delete_member_func)
 function delete_member_func() {
-    var id = $(this).parent().attr("id")
+    var id = $(this).parent().parent().attr("id")
     console.log(id)
     id = id.substring(0, id.length - 7)
     $.post("../../app/member_management.php", { action: "delete_member", std_id: id });
