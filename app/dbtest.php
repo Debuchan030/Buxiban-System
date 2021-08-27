@@ -3,7 +3,7 @@ ini_set("display_errors", "On");
 include('dbconfig.php');
 $this_parent_phone = '0912345678';
 $parent_ld = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';");
-print($parent_ld);
+//print($parent_ld);
 $result = $parent_ld->fetch(PDO::FETCH_ASSOC);
 print($result);
 /*
