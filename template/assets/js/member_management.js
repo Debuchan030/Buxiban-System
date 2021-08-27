@@ -51,6 +51,7 @@ function update_member_func() {
     member_update_list.parent_phone = parent_phone
     member_update_list.parent_pwd = parent_pwd
     var flag = 1
+    console.log("test")
     for (var i = 0; i < member_update_list.length; i++) {
         console.log(member_update_list[i])
 
@@ -61,6 +62,7 @@ function update_member_func() {
     }
     member_update_list = JSON.stringify(member_update_list)
     if (flag == 1) {
+        console.log("push")
         $.post("../../app/member_management.php", { action: "update_member", member_update_list });
 
     }
