@@ -18,9 +18,9 @@ switch ($_POST['action']) {
         $parent_name = $_POST['parent_name'];
         $parent_phone = $_POST['parent_phone'];
         for($i=0;$i<sizeof($std_name);$i++){
-            $this_std_name = $std_name[i];
-            $this_parent_name = $parent_name[i];
-            $this_parent_phone = $parent_phone[i];
+            $this_std_name = $std_name[$i];
+            $this_parent_name = $parent_name[$i];
+            $this_parent_phone = $parent_phone[$i];
             $get_parent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
             if($get_parent_id['parent_id']){
                 //判斷是否存在家長
