@@ -91,7 +91,8 @@ $('#add_data_write').on('click', ".delete_new_member", function () {
 })
 
 //搜尋
-$('#search_text').addEventListener("keydown", event => {
+var search_text = document.getElementById('search_text')
+search_text.addEventListener("keydown", event => {
     if (event.keyCode === 13) {
         var search_text = $('#search_text').text()
         var count = 0;
