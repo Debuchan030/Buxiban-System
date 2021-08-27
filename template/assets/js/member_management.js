@@ -40,8 +40,9 @@ $("#member_info").on("click", ".update_member", update_member_func)
 function update_member_func() {
     var id = $(this).parent().parent().attr("id")
     var std_id = id.substring(0, id.length - 7)
-    console.log(std_id)
     var std_name = $(std_id + "_std_name").text()
+    console.log(std_name)
+
     var parent_name = $(std_id + "_parent_name").text()
     var parent_phone = $(std_id + "_parent_phone").text()
     var parent_pwd = $(std_id + "_parent_pwd").text()
