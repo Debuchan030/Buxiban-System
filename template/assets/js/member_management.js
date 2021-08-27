@@ -48,6 +48,7 @@ function update_member_func() {
     var parent_name = $("#" + std_id + "_parent_name").val()
     var parent_phone = $("#" + std_id + "_parent_phone").val()
     var parent_pwd = $("#" + std_id + "_parent_pwd").val()
+    console.log(std_name)
     if (std_name == "" || parent_name == "" || parent_phone == "" || parent_pwd == "") { flag = 0 }
     var member_update_list = {}
     member_update_list.std_id = std_id
