@@ -1,6 +1,5 @@
 // 學生/家長名單模板
 var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, parent_phone }) => `
-<form methed="POST">
     <tr name="${std_id}_std_id">
         <td >
             <input name="${std_id}_std_name" type="text" value="${std_name}" required>
@@ -17,7 +16,6 @@ var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, p
         <td><button name = "update_member" value = "update_member" type = "submit">確認修改</button></td>
         <td><button name = "delete_member" value = "delete_member" type = "submit">確認刪除</button></td>
     </tr>
-</form>
 `;
 
 // 獲取所有學生/家長名單 std_n parent_n aact pwd phone, buxiban_parent.length
