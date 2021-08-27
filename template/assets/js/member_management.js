@@ -85,4 +85,6 @@ function add_new_member_func() {
 //新增名單資料
 
 
-
+$('#add_data_write').on('click',".delete_new_member",function(){
+    console.log("delete")
+})
