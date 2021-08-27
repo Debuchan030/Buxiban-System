@@ -55,9 +55,7 @@ function update_member_func() {
 
     member_update_list = JSON.stringify(member_update_list)
     if (flag == 1) {
-        console.log("push")
         $.post("../../app/member_management.php", { action: "update_member", member_update_list });
-
     }
     else {
         alert("請勿空格！")
