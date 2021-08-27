@@ -61,15 +61,16 @@ switch ($_POST['action']) {
     case "delete_member":
         $std_id = $_POST['std_id'];
         
-        $temp = $conn->query("select parent_id from buxiban_student where std_id = $std_id;")->fetch(PDO::FETCH_ASSOC);
+        $find_parent_id = $conn->query("select parent_id from buxiban_student where std_id = $std_id;")->fetch(PDO::FETCH_ASSOC);
+        $parent_id = $find_parent_id['parent_id'];
         //殺小孩
         $sqlresult = $conn->query("delete from buxiban_student where std_id = $std_id;");
         //選課拔除
         //查找小孩
-        $sqlresult = $conn->query("select * from buxiban_student where parent_id = $temp;")->fetch(PDO::FETCH_ASSOC);
+        $sqlresult = $conn->query("select * from buxiban_student where parent_id = $parent_id;")->fetch(PDO::FETCH_ASSOC);
         //沒小孩就砍了家長
         if(!$sqlresult){
-            $sqlresult = $conn->query("delete from buxiban_parent where parent_id = $temp;");
+            $sqlresult = $conn->query("delete from buxiban_parent where parent_id = $parent_id;");
         }
 
         $conn=null;
