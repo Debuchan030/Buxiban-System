@@ -100,6 +100,8 @@ $('#search_text').on("keydown",event => {
 
         }
         else {
+            $('#member_info').empty()
+
             // var count = 0;
             // $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
 
@@ -120,16 +122,15 @@ $('#search_text').on("keydown",event => {
             //     }
             //     console.log(count)
             // });
-            if (count == 0) {
-                // alert("查無結果")
-                $('#member_info').empty()
-                get_all_member_func.call()
-            }
-            else {
-                $('#member_info').empty()
-                console.log("???")
-                // alert("以下為搜尋結果")
-            }
+            // if (count == 0) {
+            //     // alert("查無結果")
+            //     $('#member_info').empty()
+            //     get_all_member_func.call()
+            // }
+            // else {
+            //     console.log("???")
+            //     // alert("以下為搜尋結果")
+            // }
         }
     }
 })
