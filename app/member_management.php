@@ -14,15 +14,15 @@ switch ($_POST['action']) {
     
     //新增學生/家長資料
     case "add_member":        
-        $std_name = $_POST['std_name'][];
+        $std_name = $_POST['std_name'];
         $parent_name = $_POST['parent_name'];
         $parent_phone = $_POST['parent_phone'];
         //$parent_pwd = json_decode($_POST['parent_pwd']);
-        print($std_name);
+        print_r($std_name);
         print(count($std_name));
-        print_r($std_name[0]);
-        // for(i = 0 i < count($std_name)){
-        //     echo $parent_phonep[i];
+        print($std_name[1]);
+        // for($i=0;$i<sizeof($std_name);$i++){
+
         // }
 
         // $sql = "Insert into buxiban_student(std_name) value('$std_name',$buxiban_id);";
