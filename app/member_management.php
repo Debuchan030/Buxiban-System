@@ -7,7 +7,7 @@ $datetime = date("Y-m-d H:i:s");
 switch ($_POST['action']) {
     //取得學生/家長名單
     case "get_member":
-        $sqlresult = $conn->query("select buxiban_student.std_id,buxiban_student.std_name,buxiban_parent.parent_name,buxiban_parent.parent_phone,buxiban_parent.parent_pwd from buxiban_student inner join buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_id= $buxiban_id");
+        $sqlresult = $conn->query("select buxiban_student.std_id,buxiban_student.std_name,buxiban_parent.parent_name,buxiban_parent.parent_phone,buxiban_parent.parent_pwd from buxiban_student inner join buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_student.buxiban_id= $buxiban_id");
         $member = $sqlresult->fetchall(PDO::FETCH_OBJ);
         echo json_encode($member);
     break;
