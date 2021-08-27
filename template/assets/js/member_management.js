@@ -8,7 +8,7 @@ var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, p
         <input id="${std_id}_parent_name" type="text" value="${parent_name}" required>
     </td>
     <td>
-        <input id="${std_id}_parent_phone" type="tel" value="${parent_phone}" required>
+        <input id="${std_id}_parent_phone" type="number" maxlength = "10" value="${parent_phone}" required>
     </td>
     <td >
         <input id="${std_id}_parent_pwd" type="text" value="${parent_pwd}" required>
