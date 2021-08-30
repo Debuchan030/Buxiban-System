@@ -22,7 +22,7 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
     </td>
     <td>
         <textarea id="${std_id}_remark" cols="30" rows="4">${remark}</textarea>
-        <button id = "${std_id}_update_remark" class = "update_remark">儲存<button>
+        <button class = "mt-3" id = "${std_id}_update_remark" class = "update_remark">儲存</button>
     </td>
 </tr>
 
@@ -39,14 +39,20 @@ Date.prototype.yyyymmdd = function () {
 };
 $(function () {
     $("#datepicker").datepicker({
-        altFormat: 'yy-mm-dd'
+        dateFormat: 'yy-mm-dd',
+        onSelect: function (dateText, inst) {
+            var date = $("input[name='datepicker']").val(dateText);
+            console.log(date)
+            $('#attend_student').empty()
+            get_attend_table.call(date)
+        }
     });
 });
 
 //建立所有學生列表
 function get_attend_table(date) {
     $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
-
+        $('#attend_student').empty()
         attend = JSON.parse(attend)
         for (var i = 0; i < attend.length; i++) {
             var id = attend[i].std_id
@@ -77,9 +83,10 @@ function get_attend_table(date) {
         }
     });
 }
-var today = new Date();
+var date = new Date()
+get_attend_table.call(date.yyyymmdd())
 
-get_attend_table.call(today.yyyymmdd())
+
 
 // 修改狀態
 $('#attend_student').on('click', 'input:radio', update_attend_table)
@@ -110,7 +117,7 @@ function update_remark() {
 
     var id = $(this).attr('id')
     id = id.substring(0, id.length - 14)
-    var remark = $("#"+id+"_remark").text()
+    var remark = $("#" + id + "_remark").text()
     $.post("../../app/attend_record.php", { action: "update_remark", student_id: id, remark: remark })
 
 
