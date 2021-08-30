@@ -32,13 +32,9 @@ Date.prototype.yyyymmdd = function () {
     (dd > 9 ? '' : '0') + dd
     ].join('');
 };
-$(document).ready(function () {
-
-    $(function () {
-        $("#datepicker").datepicker();
-    });
+$(function () {
+    $("#datepicker").datepicker();
 });
-
 
 //建立所有學生列表
 function get_attend_table(date) {
