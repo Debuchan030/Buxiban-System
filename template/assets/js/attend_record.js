@@ -22,6 +22,7 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
     </td>
     <td>
         <textarea id="${std_id}_remark" cols="30" rows="4">${remark}</textarea>
+        <button id = "${std_id}_update_remark" class = "update_remark">儲存<button>
     </td>
 </tr>
 
@@ -102,14 +103,18 @@ function update_attend_table() {
 }
 
 // 修改備註
-$('#attend_student').on('keydown', 'input:text', event => {
-    if (event.keyCode === 13) {
-        var id = $(this).attr('id')
-        id = id.substring(0, id.length - 7)
-        var remark = $(this).text()
-        $.post("../../app/attend_record.php", { action: "update_remark", student_id: id, remark: remark })
-    }
-})
+
+$('#attend_student').on('click', '.update_remark', update_remark)
+function update_remark() {
+
+
+    var id = $(this).attr('id')
+    id = id.substring(0, id.length - 14)
+    var remark = $("#"+id+"_remark").text()
+    $.post("../../app/attend_record.php", { action: "update_remark", student_id: id, remark: remark })
+
+
+}
 //搜尋
 $('#search_text').on("keydown", event => {
     if (event.keyCode === 13) {
