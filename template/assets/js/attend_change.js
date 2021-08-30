@@ -33,10 +33,7 @@ Date.prototype.yyyymmdd = function () {
     ].join('');
 };
 
-$('.datepicker').datepicker({
-    format: 'yyyy/dd/mm',
-    // startDate: '-3d'
-});
+
 
 //建立所有學生列表
 function get_attend_table(date) {
