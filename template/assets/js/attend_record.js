@@ -38,7 +38,7 @@ Date.prototype.yyyymmdd = function () {
 };
 $(function () {
     $("#datepicker").datepicker({
-        format: 'yyyy/mm/dd'
+        dateFormat: 'yyyy-mm-dd'
     });
 });
 
