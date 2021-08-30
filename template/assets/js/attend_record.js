@@ -11,26 +11,14 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
         <label for="">離班時間：${leave_time}</label>
     </td>
     <td>
-        
-        <label for="${std_id}_not_attend" name="${std_id}_attend_state">
-            <input type="radio" name="${std_id}_attend_state" id="${std_id}_not_attend" value="未到班">
-            <span>未到班</span>
-        </label><br>
-        
-        <label for="${std_id}_attended" name="${std_id}_attend_state">
-            <input type="radio" name="${std_id}_attend_state" id="${std_id}_attended" value="到班">
-            <span>到班</span>
-        </label><br>
-        
-        <label for="${std_id}_leaved" name="${std_id}_attend_state">
-            <input type="radio" name="${std_id}_attend_state" id="${std_id}_leaved" value="離班">
-            <span>離班</span>
-        </label><br>
-        
-        <label for="${std_id}_day_off" name="${std_id}_attend_state">
-            <input type="radio" name="${std_id}_attend_state" id="${std_id}_day_off" value="請假">
-            <span>請假</span>
-        </label><br>
+        <input type="radio" name="${std_id}_attend_state" id="${std_id}_not_attend" value="未到班">
+        <label for="${std_id}_not_attend" name="${std_id}_attend_state">未到班</label><br>
+        <input type="radio" name="${std_id}_attend_state" id="${std_id}_attended" value="到班">
+        <label for="${std_id}_attended" name="${std_id}_attend_state">到班</label><br>
+        <input type="radio" name="${std_id}_attend_state" id="${std_id}_leaved" value="離班">
+        <label for="${std_id}_leaved" name="${std_id}_attend_state">離班</label><br>
+        <input type="radio" name="${std_id}_attend_state" id="${std_id}_day_off" value="請假">
+        <label for="${std_id}_day_off" name="${std_id}_attend_state">請假</label><br>
     </td>
     <td>
         <input id="${std_id}_remark" type="text" value="${remark}" >
