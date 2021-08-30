@@ -51,7 +51,10 @@ $(function () {
 
 //建立所有學生列表
 function get_attend_table(date) {
-    console.log(date)
+    if(date == "undefined"){
+        console.log("no value")
+        return
+    }
     $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
         $('#attend_student').empty()
         attend = JSON.parse(attend)
