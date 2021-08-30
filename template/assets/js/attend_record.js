@@ -12,9 +12,13 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
     </td>
     <td>
         <input type="radio" name="${std_id}_attend_state" id="${std_id}_not_attend" value="未到班">
+        <label for="${std_id}_not_attend">未到班</label><br>
         <input type="radio" name="${std_id}_attend_state" id="${std_id}_attended" value="到班">
+        <label for="${std_id}_attended">到班</label><br>
         <input type="radio" name="${std_id}_attend_state" id="${std_id}_leaved" value="離班">
+        <label for="${std_id}_leaved">離班</label><br>
         <input type="radio" name="${std_id}_attend_state" id="${std_id}_day_off" value="請假">
+        <label for="${std_id}_day_off">請假</label><br>
     </td>
     <td>
         <input id="${std_id}_remark" type="text" value="${remark}" >
