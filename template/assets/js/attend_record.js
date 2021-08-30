@@ -35,8 +35,8 @@ Date.prototype.yyyymmdd = function () {
 $(document).ready(function () {
 
     $(function () {
-        var $j = jQuery.noConflict();
-        $j("#datepicker").datepicker();
+        $.noConflict();
+        $("#datepicker").datepicker();
     });
 });
 
