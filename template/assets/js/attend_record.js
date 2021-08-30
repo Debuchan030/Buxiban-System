@@ -85,8 +85,9 @@ function get_attend_table(date) {
     });
 }
 var date = new Date()
-var date = date.yyyymmdd()
-console.log(date.toString())
+date = date.yyyymmdd()
+date = date.toString()
+console.log(date)
 
 get_attend_table.call(date)
 
