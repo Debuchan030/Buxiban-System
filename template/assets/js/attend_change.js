@@ -33,8 +33,10 @@ Date.prototype.yyyymmdd = function () {
     ].join('');
 };
 $(document).ready(function () {
+
     $(function () {
-        $("#datepicker").datepicker();
+        var $j = jQuery.noConflict();
+        $j("#datepicker").datepicker();
     });
 });
 
