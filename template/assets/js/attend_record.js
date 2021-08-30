@@ -51,7 +51,7 @@ $(function () {
 //建立所有學生列表
 function get_attend_table(date) {
     $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
-
+        $('#attend_student').empty()
         attend = JSON.parse(attend)
         for (var i = 0; i < attend.length; i++) {
             var id = attend[i].std_id
