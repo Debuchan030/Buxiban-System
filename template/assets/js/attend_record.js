@@ -41,16 +41,16 @@ $(function () {
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         onSelect: function (dateText, inst) {
-            var date = $("input[name='datepicker']").val(dateText);
-            console.log(date)
+           
             $('#attend_student').empty()
-            get_attend_table.call(date)
+            get_attend_table.call(dateText)
         }
     });
 });
 
 //建立所有學生列表
 function get_attend_table(date) {
+    console.log(date)
     $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
         $('#attend_student').empty()
         attend = JSON.parse(attend)
@@ -84,6 +84,7 @@ function get_attend_table(date) {
     });
 }
 var date = new Date()
+// console.log(date.yyyymmdd())
 get_attend_table.call(date.yyyymmdd())
 
 
