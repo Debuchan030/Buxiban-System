@@ -103,7 +103,7 @@ function update_attend_table() {
 }
 
 // 修改備註
-$('#attend_student').on('keydown', $('input:text'), event => {
+$('#attend_student').on('keydown', 'input:text', event => {
     if (event.keyCode === 13) {
         var id = $(this).attr('id')
         id = id.substring(0, id.length - 7)
