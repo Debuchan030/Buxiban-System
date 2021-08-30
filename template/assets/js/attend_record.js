@@ -22,7 +22,7 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
     </td>
     <td>
         <textarea id="${std_id}_remark" cols="30" rows="4">${remark}</textarea>
-        <button id = "${std_id}_update_remark" class = "update_remark">儲存<button>
+        <button id = "${std_id}_update_remark" class = "update_remark">儲存</button>
     </td>
 </tr>
 
