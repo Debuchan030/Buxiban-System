@@ -27,8 +27,7 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
 </tr>
 
 `
-var date = new Date()
-get_attend_table.call(date.yyyymmdd())
+
 Date.prototype.yyyymmdd = function () {
     var mm = this.getMonth() + 1; // getMonth() is zero-based
     var dd = this.getDate();
@@ -83,7 +82,8 @@ function get_attend_table(date) {
         }
     });
 }
-
+var date = new Date()
+get_attend_table.call(date.yyyymmdd())
 
 
 
