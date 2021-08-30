@@ -32,8 +32,6 @@ Date.prototype.yyyymmdd = function () {
     (dd > 9 ? '' : '0') + dd
     ].join('');
 };
-$.noConflict();
-
 $(document).ready(function () {
 
     $(function () {
