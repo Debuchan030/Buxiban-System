@@ -8,6 +8,8 @@ $time = date("H:i:s");
 switch ($_POST['action']) {
     //依日期取得紀錄
     case "get_attend":
+        echo $_POST['date'];
+        /*
         if(isset($_POST['date'])){
             $date = $_POST['date'];
         }
@@ -18,7 +20,7 @@ switch ($_POST['action']) {
         else{
             echo "查無紀錄";
         }
-
+        */
     break;
 
     //修改狀態
