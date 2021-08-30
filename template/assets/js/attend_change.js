@@ -32,8 +32,7 @@ Date.prototype.yyyymmdd = function () {
     (dd > 9 ? '' : '0') + dd
     ].join('');
 };
-
-$(function () {
+$(document).ready(function () {
     var bindDatePicker = function () {
         $(".date").datetimepicker({
             format: 'YYYY-MM-DD',
@@ -79,6 +78,7 @@ $(function () {
 
     bindDatePicker();
 });
+
 
 //建立所有學生列表
 function get_attend_table(date) {
