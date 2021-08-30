@@ -43,6 +43,7 @@ $(function () {
         onSelect: function (dateText, inst) {
            
             $('#attend_student').empty()
+            console.log(dateText)
             get_attend_table.call(dateText)
         }
     });
