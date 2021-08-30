@@ -22,12 +22,13 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
     </td>
     <td>
         <textarea id="${std_id}_remark" cols="30" rows="4">${remark}</textarea>
-        <button id = "${std_id}_update_remark" class = "update_remark">儲存</button>
+        <button class = "mt-3" id = "${std_id}_update_remark" class = "update_remark">儲存</button>
     </td>
 </tr>
 
 `
-
+var date = new Date()
+get_attend_table.call(date.yyyymmdd())
 Date.prototype.yyyymmdd = function () {
     var mm = this.getMonth() + 1; // getMonth() is zero-based
     var dd = this.getDate();
@@ -39,7 +40,12 @@ Date.prototype.yyyymmdd = function () {
 };
 $(function () {
     $("#datepicker").datepicker({
-        altFormat: 'yy-mm-dd'
+        dateFormat: 'yy-mm-dd',
+        onSelect: function (dateText, inst) {
+            var date = $("input[name='datepicker']").val(dateText);
+            $('#attend_student').empty()
+            get_attend_table.call(date)
+        }
     });
 });
 
@@ -77,9 +83,9 @@ function get_attend_table(date) {
         }
     });
 }
-var today = new Date();
 
-get_attend_table.call(today.yyyymmdd())
+
+
 
 // 修改狀態
 $('#attend_student').on('click', 'input:radio', update_attend_table)
@@ -110,7 +116,7 @@ function update_remark() {
 
     var id = $(this).attr('id')
     id = id.substring(0, id.length - 14)
-    var remark = $("#"+id+"_remark").text()
+    var remark = $("#" + id + "_remark").text()
     $.post("../../app/attend_record.php", { action: "update_remark", student_id: id, remark: remark })
 
 
