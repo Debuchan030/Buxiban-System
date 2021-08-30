@@ -41,10 +41,9 @@ $(function () {
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         onSelect: function (dateText, inst) {
-            var date = $("input[name='datepicker']").val(dateText);
-            console.log(date)
+           
             $('#attend_student').empty()
-            get_attend_table.call(date)
+            get_attend_table.call(dateText)
         }
     });
 });
