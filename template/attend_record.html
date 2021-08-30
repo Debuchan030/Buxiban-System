@@ -9,19 +9,26 @@
 
 	<!-- Section -->
 	<section>
-		<textarea class="mb-3" name="" id="" cols="30" rows="1" placeholder="搜尋姓名"></textarea>
+		<input id="search_text" type="search" placeholder="搜尋">
+		<div class="input-group date" data-provide="datepicker">
+			<input type="text" class="form-control">
+			<div class="input-group-addon">
+				<span class="glyphicon glyphicon-th"></span>
+			</div>
+		</div>
 		<table>
 			<thead>
 				<tr>
 					<th>學生姓名</th>
 					<th>家長姓名</th>
 					<th>家長電話</th>
-					<th>出席狀況</th>
+					<th>時間</th>
+					<th>切換狀態</th>
 					<th>備註</th>
 				</tr>
 			</thead>
 			<tbody id="attend_student">
-				
+
 			</tbody>
 		</table>
 	</section>
