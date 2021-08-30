@@ -84,6 +84,7 @@ get_attend_table.call(today.yyyymmdd())
 $('#attend_student').on('click', $('input:radio'), update_attend_table)
 function update_attend_table() {
     var id = $(this).attr('for')
+    console.log(id)
     id = id.substring(0, id.length - 13)
     var attend_states = 0
     if ($(this).attr('value') == "未到班") {
