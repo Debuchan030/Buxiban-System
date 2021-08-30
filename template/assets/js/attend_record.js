@@ -87,7 +87,7 @@ function get_attend_table(date) {
 var date = new Date()
 console.log(date.yyyymmdd())
 var date = date.yyyymmdd()
-get_attend_table.call(date.yyyymmdd())
+get_attend_table.call(date)
 
 
 
