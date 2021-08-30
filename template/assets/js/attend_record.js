@@ -81,7 +81,7 @@ var today = new Date();
 get_attend_table.call(today.yyyymmdd())
 
 // 修改狀態
-$('#attend_student').on('click', $('input:radio'), update_attend_table)
+$('#attend_student').on('click', 'input:radio', update_attend_table)
 function update_attend_table() {
     var id = $(this).attr('name')
     console.log(id)
