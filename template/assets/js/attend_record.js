@@ -33,7 +33,9 @@ Date.prototype.yyyymmdd = function () {
     ].join('');
 };
 $(function () {
-    $("#datepicker").datepicker();
+    $("#datepicker").datepicker({
+        format: 'yyyy/mm/dd'
+    });
 });
 
 //建立所有學生列表
