@@ -12,13 +12,13 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
     </td>
     <td>
         <input type="radio" name="${std_id}_attend_state" id="${std_id}_not_attend" value="未到班">
-        <label for="${std_id}_not_attend">未到班</label><br>
+        <label for="${std_id}_not_attend" name="${std_id}_attend_state">未到班</label><br>
         <input type="radio" name="${std_id}_attend_state" id="${std_id}_attended" value="到班">
-        <label for="${std_id}_attended">到班</label><br>
+        <label for="${std_id}_attended" name="${std_id}_attend_state">到班</label><br>
         <input type="radio" name="${std_id}_attend_state" id="${std_id}_leaved" value="離班">
-        <label for="${std_id}_leaved">離班</label><br>
+        <label for="${std_id}_leaved" name="${std_id}_attend_state">離班</label><br>
         <input type="radio" name="${std_id}_attend_state" id="${std_id}_day_off" value="請假">
-        <label for="${std_id}_day_off">請假</label><br>
+        <label for="${std_id}_day_off" name="${std_id}_attend_state">請假</label><br>
     </td>
     <td>
         <input id="${std_id}_remark" type="text" value="${remark}" >
@@ -83,7 +83,7 @@ get_attend_table.call(today.yyyymmdd())
 // 修改狀態
 $('#attend_student').on('click', $('input:radio'), update_attend_table)
 function update_attend_table() {
-    var id = $(this).attr('for')
+    var id = $(this).attr('name')
     console.log(id)
     id = id.substring(0, id.length - 13)
     var attend_states = 0
