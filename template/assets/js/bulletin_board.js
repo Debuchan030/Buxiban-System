@@ -10,14 +10,13 @@ var bulletin_template = ({ bulletin_id, bulletin_title, bulletin_content, bullet
 aria-controls="#b${bulletin_id}">
     <td>
         <label for="" class="my-3 mx-3" >發布時間：${bulletin_time}</label>
-        <textarea cols="30" rows="1" id = "${bulletin_id}_title">${bulletin_title}</textarea>
+        <textarea cols="30" rows="1" id = "${bulletin_id}_title">標題：${bulletin_title}</textarea>
     </td>
 </tr>
 <tr class="collapse"  id="b${bulletin_id}">
     <td name = "${bulletin_id}">
         <textarea name="bulletin_content" cols="30" rows="3"
-            class="m-2" id = "${bulletin_id}_content">${bulletin_content}</textarea>
-        <label for="" class="my-3 mx-3" >發布時間：${bulletin_time}</label>
+            class="m-2" id = "${bulletin_id}_content">內容：${bulletin_content}</textarea>
         <button class="m-2 bulletin_save">儲存</button>
         <button class="m-2 bulletin_delete">刪除</button>
     </td>
