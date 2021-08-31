@@ -19,7 +19,7 @@ switch ( $_POST['action'] ) {
             }
             else{ 
                 echo '<script> window.alert("帳號或密碼錯誤!");</script>';
-                header("location:/login.php");
+                echo '<script>window.location.replace("/login.php")</script>';
             }
         }
     break;
