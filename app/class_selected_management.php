@@ -17,7 +17,9 @@ switch ($_POST['action']) {
         if($std_info){
             echo json_encode($std_info);
         }
-
+        else{
+            echo "no data";
+        }
         break;
 
     //取得未選課之學生 
@@ -27,7 +29,9 @@ switch ($_POST['action']) {
         if($std_info){
             echo json_encode($std_info);
         }
-  
+        else{
+            echo "no data";
+        }
         break;
 
         //新增選課學生
@@ -35,7 +39,7 @@ switch ($_POST['action']) {
         $course_id = $_POST['course_id'];
         $std_id = json_decode($_POST['one_btn_add_std_array'],true);
         foreach ($std_id as &$value) {
-            $sqlsend = $conn->query("Insert into buxiban_selcourse(std_id,course_id) value('$course_id','$value');");
+            $sqlsend = $conn->query("Insert into buxiban_selcourse(std_id,course_id) value($course_id,$value);");
             $conn = null;
         }
         break;
