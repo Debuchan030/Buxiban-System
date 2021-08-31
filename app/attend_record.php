@@ -1,15 +1,12 @@
 <?php
-ini_set("display_errors", "On"); 
 include('dbconfig.php');
 session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
 $date = date("Y-m-d");
 $time = date("H:i:s");
-
 switch ($_POST['action']) {
     //依日期取得紀錄
     case "get_attend":
-
         if(isset($_POST['date'])){
             $date = $_POST['date'];
         }
@@ -20,46 +17,40 @@ switch ($_POST['action']) {
         else{
             echo "查無紀錄";
         }
-
     break;
 
     //修改狀態
     case "update_attend_states":
-        
         $std_id = $_POST['student_id'];
         $date = $_POST['date'];
         $attend_states = (int)$_POST['attend_states'];
         switch($attend_states){
-            case 0:
+            case 0://未到班
                 $sqlsend = "update buxiban_attend set attend_states=$attend_states,attend_time ='00:00:00',leave_time='00:00:00' where std_id = $std_id AND date = '$date'";
             break;
 
-            case 1:
+            case 1://到班
                 $sqlsend = "update buxiban_attend set attend_states=$attend_states,attend_time='$time' where std_id = $std_id AND date = '$date' ";
             break;
 
-            case 2:
+            case 2://離班
                 $sqlsend = "update buxiban_attend set attend_states=$attend_states,leave_time='$time' where std_id = $std_id AND date = '$date' ";
             break;
 
-            case 3:
+            case 3://請假
                 $sqlsend = "update buxiban_attend set attend_states=$attend_states,attend_time ='00:00:00',leave_time='00:00:00' where std_id = $std_id AND date = '$date'";
             break;
         }
         $sqlresult = $conn->query("$sqlsend");
-
     break;
-        
-    //修改附註
-    case "update_remark":
 
+    //修改備註
+    case "update_remark":
         $std_id = $_POST['student_id'];
         $remark = $_POST['remark'];
         $date = $_POST['date'];
         $attend = $conn->query("update buxiban_attend set remark ='$remark' where std_id = $std_id AND date = '$date'");
-
     break;
-
-
 }
+$conn=null;
 ?>
