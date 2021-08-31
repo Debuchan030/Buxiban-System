@@ -31,19 +31,19 @@ switch ($_POST['action']) {
         $attend_states = (int)$_POST['attend_states'];
         switch($attend_states){
             case 0:
-                $sqlsend = "update buxiban_attend set attend_time ='00:00:00',leave_time='00:00:00' where std_id = $std_id AND date = '$date'";
+                $sqlsend = "update buxiban_attend set attend_states=$attend_states,attend_time ='00:00:00',leave_time='00:00:00' where std_id = $std_id AND date = '$date'";
             break;
 
             case 1:
-                $sqlsend = "update buxiban_attend set attend_time='$time' where std_id = $std_id AND date = '$date' ";
+                $sqlsend = "update buxiban_attend set attend_states=$attend_states,attend_time='$time' where std_id = $std_id AND date = '$date' ";
             break;
 
             case 2:
-                $sqlsend = "update buxiban_attend set leave_time='$time' where std_id = $std_id AND date = '$date' ";
+                $sqlsend = "update buxiban_attend set attend_states=$attend_states,leave_time='$time' where std_id = $std_id AND date = '$date' ";
             break;
 
             case 3:
-                $sqlsend = "update buxiban_attend set attend_time ='00:00:00',leave_time='00:00:00' where std_id = $std_id AND date = '$date'";
+                $sqlsend = "update buxiban_attend set attend_states=$attend_states,attend_time ='00:00:00',leave_time='00:00:00' where std_id = $std_id AND date = '$date'";
             break;
         }
         $sqlresult = $conn->query("$sqlsend");
