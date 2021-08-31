@@ -71,14 +71,14 @@ $('#course_selected_std').on('click', '.std_delete_selcourse', std_delete_selcou
 function std_delete_selcourse() {
     if ($(this).text() == "刪除") {
         $(this).html("已刪除")
-        $(this).css({ "box-shadow": "inset 0 0 0 2px gray", "color": "gray !important;" })
+        $(this).css({ "cssText": "box-shadow:inset 0 0 0 2px gray;color:grey!important" })
         var std_id = $(this).parent().parent().attr('id')
         std_id = std_id.substring(0, std_id.length - 7)
         one_btn_delete_std_array.push(std_id)
     }
     else {
         $(this).html("刪除")
-        $(this).css({ "box-shadow": "inset 0 0 0 2px #f56a6a", "color": "#f56a6a !important;" })
+        $(this).css({ "cssText": "box-shadow:inset 0 0 0 2px #f56a6a;color:#f56a6a!important" })
         var std_id = $(this).parent().parent().attr('id')
         std_id = std_id.substring(0, std_id.length - 7)
         one_btn_delete_std_array.pop(std_id)
@@ -91,14 +91,14 @@ function std_add_selcourse() {
     //傳送std_name、parent_name去新增
     if ($(this).text() == "新增") {
         $(this).html("已新增")
-        $(this).css({ "box-shadow": "inset 0 0 0 2px gray !important;", "color": "green !important;" })
+        $(this).css({ "cssText": "box-shadow:inset 0 0 0 2px #18b118;color:#18b118!important" })
         var std_id = $(this).parent().parent().attr('id')
         std_id = std_id.substring(0, std_id.length - 7)
         one_btn_add_std_array.push(std_id)
     }
     else {
         $(this).html("新增")
-        $(this).css({ "box-shadow": "inset 0 0 0 2px #f56a6a  !important;", "color": "f56a6a !important;" })
+        $(this).css({ "cssText": "box-shadow:inset 0 0 0 2px #f56a6a;color:#f56a6a!important" })
         var std_id = $(this).parent().parent().attr('id')
         std_id = std_id.substring(0, std_id.length - 7)
         one_btn_add_std_array.pop(std_id)
@@ -110,7 +110,6 @@ function one_btn_add_std() {
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
     one_btn_add_std_array = JSON.stringify(one_btn_add_std_array)
     $.post("../../app/class_selected_management.php", { action: "add_selcourse", course_id: selected_course_id, one_btn_add_std_array }, function (data) {
-        console.log(data)
         change_student_list.call(this)
     });
 
@@ -122,8 +121,6 @@ function one_btn_delete_std() {
     one_btn_delete_std_array = JSON.stringify(one_btn_delete_std_array)
 
     $.post("../../app/class_selected_management.php", { action: "delete_selcourse", course_id: selected_course_id, one_btn_delete_std_array }, function (data) {
-        console.log(data)
         change_student_list.call(this)
-
     });
 }
