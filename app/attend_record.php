@@ -54,7 +54,7 @@ switch ($_POST['action']) {
     case "update_remark":
 
         $std_id = $_POST['student_id'];
-        $daremarkte = $_POST['remark'];
+        $remark = $_POST['remark'];
         $date = $_POST['date'];
         $attend = $conn->query("update buxiban_attend set remark ='$remark' where std_id = $std_id AND date = '$date'");
 
