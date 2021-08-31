@@ -1,8 +1,9 @@
 <?php
+session_start();
 switch ( $_POST['action'] ) { 
     //登入
     case "login": 
-        session_start();
+
         //ini_set("display_errors", "On"); 
         $acct = $_POST["buxiban_acct"];
         $pwd = $_POST["buxiban_pwd"];
@@ -30,7 +31,6 @@ switch ( $_POST['action'] ) {
     break;
 
     case "get_buxiban_name":
-        session_start();
         echo $_SESSION['buxiban_name'];
     break;
 }
