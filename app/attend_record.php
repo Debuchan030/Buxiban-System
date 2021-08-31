@@ -29,7 +29,7 @@ switch ($_POST['action']) {
         $std_id = $_POST['student_id'];
         $date = $_POST['date'];
         $attend_states = $_POST['attend_states'];
-        echo json_encode($date);
+        echo json_encode(var_dump($attend_states));
         switch($attend_states){
             case 0:
                 $sqlsend = "update buxiban_attend set attend_time ='00:00:00',leave_time='00:00:00' where std_id = $std_id AND date = '$date'";
