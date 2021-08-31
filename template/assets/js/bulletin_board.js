@@ -44,7 +44,6 @@ $.post("../../app/bulletin_board.php", { action: "get_bulletin" }, function (bux
 });
 
 
-// console.log("hihi")
 
 // 修改貼文
 $("#bulletin_board").on("click", ".bulletin_save", bulletin_save_func)
