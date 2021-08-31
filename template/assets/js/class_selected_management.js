@@ -24,6 +24,7 @@ course_selection.addEventListener("change", change_student_list)//偵測有沒�
 function change_student_list() { //依據選擇的課程來分類有選課/未選課 並列表
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
     if (selected_course_id == "0") {
+        return
     }
     else {
         $("#course_selected_std").empty()
@@ -39,9 +40,7 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
             for (var i = 0; i < std.length; i++) {
                 var std_id = std[i].std_id
                 var std_name = std[i].std_name;
-                var parent_name = std[i].parent_name;
-                var parent_phone = std[i].parent_phone
-                var table_list = "<tr class = \"std_info\" id = \"" + std_id + "\"><td>學生姓名：" + std_name + "</td><td>家長姓名：" + parent_name + "</td><td>家長電話：" + parent_phone + "</td><td><button class = \"std_delete_selcourse\">刪除</button></td></tr>"
+                var table_list = "<tr class = \"std_info\" id = \"" + std_id + "\"><td>學生姓名：" + std_name + "</td><td><button class = \"std_delete_selcourse\">刪除</button></td></tr>"
                 $("#course_selected_std").append(table_list)
             }
         });
@@ -54,9 +53,7 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
             for (var i = 0; i < std.length; i++) {
                 var std_id = std[i].std_id
                 var std_name = std[i].std_name;
-                var parent_name = std[i].parent_name;
-                var parent_phone = std[i].parent_phone
-                var table_list = "<tr class = \"std_info\" id = \"" + std_id + "_std_id" + "\"><td>學生姓名：" + std_name + "</td><td>家長姓名：" + parent_name + "</td><td>家長電話：" + parent_phone + "</td><td><button class = \"std_add_selcourse\">新增</button></td></tr>"
+                var table_list = "<tr class = \"std_info\" id = \"" + std_id + "_std_id" + "\"><td>學生姓名：" + std_name + "</td><td><button class = \"std_add_selcourse\">新增</button></td></tr>"
                 $("#course_nonselected_std").append(table_list)
             }
         });
