@@ -91,7 +91,7 @@ function std_add_selcourse() {
     //傳送std_name、parent_name去新增
     if ($(this).text() == "新增") {
         $(this).html("已新增")
-        $(this).css({ "cssText": "box-shadow:inset 0 0 0 2px green;color:green!important" })
+        $(this).css({ "cssText": "box-shadow:inset 0 0 0 2px #18b118;color:#18b118!important" })
         var std_id = $(this).parent().parent().attr('id')
         std_id = std_id.substring(0, std_id.length - 7)
         one_btn_add_std_array.push(std_id)
