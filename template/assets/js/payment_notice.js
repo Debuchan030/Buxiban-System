@@ -139,8 +139,9 @@ function get_student_record_info() {
 //新增當月繳款紀錄
 var add_payment_record = document.getElementById('add_payment_record')
 add_payment_record.addEventListener('click', add_payment_record_func)
-
 function add_payment_record_func() {
+	$.post("../../app/payment_notice.php", { action: "get_member" }, function (member) {
 
+    });
 }
 
