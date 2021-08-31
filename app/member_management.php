@@ -1,5 +1,4 @@
 <?php
-ini_set("display_errors", "On"); 
 include('dbconfig.php');
 session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
@@ -25,7 +24,6 @@ switch ($_POST['action']) {
             if($get_oldparent_id != false){
                 //存在家長
                 $temp = $get_oldparent_id['parent_id'];
-                print("就ㄉ".var_dump($temp));
                 $sqlinsert = $conn->query("Insert into buxiban_student(std_name,buxiban_id,parent_id) value('$this_std_name',$buxiban_id,$temp);");
             }
             else{
@@ -33,12 +31,10 @@ switch ($_POST['action']) {
                 $sqlinsert = $conn->query("Insert into buxiban_parent(parent_name,parent_phone,parent_pwd,buxiban_id) value('$this_parent_name','$this_parent_phone','$this_parent_phone',$buxiban_id);");
                 $get_parent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
                 $new_parent_id = $get_parent_id['parent_id'];
-                print("新的家長".var_dump($new_parent_id));
                 $sqlinsert = $conn->query("Insert into buxiban_student(std_name,buxiban_id,parent_id) value('$this_std_name',$buxiban_id,$new_parent_id);");
             }
         }
         header("location:/index.php");
-        $conn=null;
     break;
     
     //修改學生/家長資料
@@ -49,18 +45,13 @@ switch ($_POST['action']) {
         $parent_name = $get_data['parent_name'];
         $parent_phone = $get_data['parent_phone'];
         $parent_pwd = $get_data['parent_pwd'];
-        echo $std_name;
         $sql = "update buxiban_student,buxiban_parent set buxiban_student.std_name='$std_name',buxiban_parent.parent_name='$parent_name',buxiban_parent.parent_phone='$parent_phone',buxiban_parent.parent_pwd='$parent_pwd' where buxiban_student.std_id = $std_id AND buxiban_parent.parent_id = buxiban_student.parent_id;";
         $sqlsend = $conn->query($sql);
-        $conn=null;
-        
     break;
-
     
     //刪除學生/家長資料
     case "delete_member":
         $std_id = $_POST['std_id'];
-        
         $find_parent_id = $conn->query("select parent_id from buxiban_student where std_id = $std_id;")->fetch(PDO::FETCH_ASSOC);
         $parent_id = $find_parent_id['parent_id'];
         //殺小孩
@@ -72,9 +63,7 @@ switch ($_POST['action']) {
         if(!$sqlresult){
             $sqlresult = $conn->query("delete from buxiban_parent where parent_id = $parent_id;");
         }
-
-        $conn=null;
     break;
-    
 }
+$conn=null;
 ?>
