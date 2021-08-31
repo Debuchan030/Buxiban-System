@@ -1,4 +1,4 @@
-公佈欄模板
+// 公佈欄模板
 var buxiban_name_template = ({buxiban_name}) => `
 <a  class="logo">
     <h1><strong>${buxiban_name}補習班公佈欄</strong></h1>
