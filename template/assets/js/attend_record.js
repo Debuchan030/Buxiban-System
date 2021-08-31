@@ -52,14 +52,14 @@ $(function () {
 //建立所有學生列表
 function get_attend_table(date) {
     console.log(date)
-    if(date){
-        console.log("no value")
-        return
-    }
-    $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
-        $('#attend_student').empty()
+    // if(date){
+    //     console.log("no value")
+    //     return
+    // }
+    // $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
+    //     $('#attend_student').empty()
         // attend = JSON.parse(attend)
-        console.log(attend)
+        // console.log(attend)
         // for (var i = 0; i < attend.length; i++) {
         //     var id = attend[i].std_id
         //     var std_n = attend[i].std_name
@@ -87,7 +87,7 @@ function get_attend_table(date) {
         //         $("#" + id + "_day_off").prop('checked', true);
         //     }
         // }
-    });
+    // });
 }
 var date = new Date()
 date = date.yyyymmdd()
