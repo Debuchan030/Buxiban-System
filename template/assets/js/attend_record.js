@@ -64,13 +64,13 @@ function get_attend_table(date) {
             ].map(attend_template));
 
             var attend_states = attend[i].attend_states
-            if (attend_states == 0) {
+            if (attend_states == "0") {
                 $("#" + id + "_not_attend").prop('checked', true);
             }
-            else if (attend_states == 1) {
+            else if (attend_states == "1") {
                 $("#" + id + "_attended").prop('checked', true);
             }
-            else if (attend_states == 2) {
+            else if (attend_states == "2") {
                 $("#" + id + "_leaved").prop('checked', true);
             }
             else {
