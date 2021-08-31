@@ -22,7 +22,7 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
     </td>
     <td>
         <textarea id="${std_id}_remark" cols="30" rows="4">${remark}</textarea>
-        <button class = "mt-3" id = "${std_id}_update_remark" class = "update_remark">儲存</button>
+        <button class = "mt-3 update_remark" id = "${std_id}_update_remark" >儲存</button>
     </td>
 </tr>
 
@@ -86,9 +86,6 @@ $('#attend_student').on('click', 'input:radio', update_attend_table)
 function update_attend_table() {
     var id = $(this).attr('name')
     id = id.substring(0, id.length - 13)
-    console.log(id)
-    console.log($(this).attr('value'))
-    console.log(date)
     var attend_states = 0
     if ($(this).attr('value') == "未到班") {
         attend_states = 0
