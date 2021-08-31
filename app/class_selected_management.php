@@ -37,9 +37,8 @@ switch ($_POST['action']) {
     case "add_selcourse":
         $course_id = $_POST['course_id'];
         $std_id = json_decode($_POST['one_btn_add_std_array'],true);
-       // echo $std_id;
+        echo $std_id;
         foreach ($std_id as $value) {
-            echo $value;
             $sqlsend = $conn->query("Insert into buxiban_selcourse(std_id,course_id) value($value,$course_id);");
             $conn = null;
         }
