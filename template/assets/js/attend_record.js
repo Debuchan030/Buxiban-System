@@ -112,7 +112,7 @@ function update_remark() {
     id = id.substring(0, id.length - 14)
     console.log(id)
     var remark = $("#" + id + "_remark").text()
-    console.log)remark
+    console.log(remark)
     $.post("../../app/attend_record.php", { action: "update_remark", student_id: id, remark: remark ,date:date})
 
 
