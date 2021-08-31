@@ -28,7 +28,7 @@ switch ($_POST['action']) {
         
         $std_id = $_POST['student_id'];
         $date = $_POST['date'];
-        $attend_states = $_POST['attend_states'];
+        $attend_states = (int)$_POST['attend_states'];
         echo var_dump($attend_states);
         switch($attend_states){
             case 0:
