@@ -29,18 +29,17 @@ switch ($_POST['action']) {
         $std_id = $_POST['student_id'];
         $date = $_POST['date'];
         $attend_states = (int)$_POST['attend_states'];
-        echo var_dump($attend_states);
         switch($attend_states){
             case 0:
                 $sqlsend = "update buxiban_attend set attend_time ='00:00:00',leave_time='00:00:00' where std_id = $std_id AND date = '$date'";
             break;
 
             case 1:
-                $sqlsend = "update buxiban_attend set attend_time='$time' where std_id = $std_id AND date = $date ";
+                $sqlsend = "update buxiban_attend set attend_time='$time' where std_id = $std_id AND date = '$date' ";
             break;
 
             case 2:
-                $sqlsend = "update buxiban_attend set leave_time='$time' where std_id = $std_id AND date = $date ";
+                $sqlsend = "update buxiban_attend set leave_time='$time' where std_id = $std_id AND date = '$date' ";
             break;
 
             case 3:
@@ -55,7 +54,7 @@ switch ($_POST['action']) {
     case "update_remark":
 
         $std_id = $_POST['student_id'];
-        $daremarkte = $_POST['remark'];
+        $remark = $_POST['remark'];
         $date = $_POST['date'];
         $attend = $conn->query("update buxiban_attend set remark ='$remark' where std_id = $std_id AND date = '$date'");
 
