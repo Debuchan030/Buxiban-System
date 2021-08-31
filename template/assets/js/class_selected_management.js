@@ -64,14 +64,14 @@ function std_delete_selcourse() {
         $(this).html("已刪除")
         $(this).css({ "box-shadow": "inset 0 0 0 2px gray", "color": "gray !important;" })
         var std_id = $(this).parent().parent().attr('id')
-        std_id = std_id.substring(0, id.length-7)
+        std_id = std_id.substring(0, std_id.length-7)
         one_btn_delete_std_array.push(std_id)
     }
     else {
         $(this).html("刪除")
         $(this).css({ "box-shadow": "inset 0 0 0 2px #f56a6a", "color": "#f56a6a !important;" })
         var std_id = $(this).parent().parent().attr('id')
-        std_id = std_id.substring(0, id.length-7)
+        std_id = std_id.substring(0, std_id.length-7)
         one_btn_delete_std_array.pop(std_id)
     }
 }
@@ -84,14 +84,14 @@ function std_add_selcourse() {
         $(this).html("已新增")
         $(this).css({ "box-shadow": "inset 0 0 0 2px green  !important;", "color": "green !important;" })
         var std_id = $(this).parent().parent().attr('id')
-        std_id = std_id.substring(0, id.length-7)
+        std_id = std_id.substring(0, std_id.length-7)
         one_btn_add_std_array.push(std_id)
     }
     else {
         $(this).html("新增")
         $(this).css({ "box-shadow": "inset 0 0 0 2px #f56a6a  !important;", "color": "f56a6a !important;" })
         var std_id = $(this).parent().parent().attr('id')
-        std_id = std_id.substring(0, id.length-7)
+        std_id = std_id.substring(0, std_id.length-7)
         one_btn_add_std_array.pop(std_id)
     }
 }
