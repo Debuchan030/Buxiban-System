@@ -121,6 +121,9 @@ function one_btn_delete_std() {
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
     one_btn_delete_std_array = JSON.stringify(one_btn_delete_std_array)
 
-    $.post("../../app/class_selected_management.php", { action: "delete_selcourse", course_id: selected_course_id, one_btn_delete_std_array });
-    change_student_list.call(this)
+    $.post("../../app/class_selected_management.php", { action: "delete_selcourse", course_id: selected_course_id, one_btn_delete_std_array }, function (data) {
+        console.log(data)
+        change_student_list.call(this)
+
+    });
 }
