@@ -28,5 +28,9 @@ switch ( $_POST['action'] ) {
         }
 
     break;
+
+    case "get_buxiban_name": 
+        echo $_SESSION['buxiban_name'];
+    break;
 }
 ?>
