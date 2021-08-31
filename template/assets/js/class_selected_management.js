@@ -94,7 +94,7 @@ function std_add_selcourse() {
     }
 }
 // 一鍵新增post上去
-$("#one_btn_add_std").on("click", one_btn_add_std)
+$(".one_btn_add_std").on("click", one_btn_add_std)
 function one_btn_add_std() {
     console.log("test")
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
@@ -103,7 +103,7 @@ function one_btn_add_std() {
     change_student_list.call()
 }
 // 一鍵刪除post上去
-$("one_btn_delete_std").on('click', one_btn_delete_std)
+$(".one_btn_delete_std").on('click', one_btn_delete_std)
 function one_btn_delete_std() {
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
     one_btn_delete_std_array = JSON.stringify(one_btn_delete_std_array)
