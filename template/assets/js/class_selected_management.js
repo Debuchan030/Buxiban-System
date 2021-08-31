@@ -72,7 +72,7 @@ function std_delete_selcourse() {
     if ($(this).text() == "刪除") {
         $(this).html("已刪除")
         $(this).css({ "box-shadow": "inset 0 0 0 2px gray"})
-        $(this).css({ "color": "grey !important"})
+        $(this).css({ "color": "inset grey !important"})
         var std_id = $(this).parent().parent().attr('id')
         std_id = std_id.substring(0, std_id.length - 7)
         one_btn_delete_std_array.push(std_id)
@@ -80,7 +80,7 @@ function std_delete_selcourse() {
     else {
         $(this).html("刪除")
         $(this).css({ "box-shadow": "inset 0 0 0 2px #f56a6a"})
-        $(this).css({ "color": "#f56a6a  !important"})
+        $(this).css({ "color": "inset #f56a6a  !important"})
         var std_id = $(this).parent().parent().attr('id')
         std_id = std_id.substring(0, std_id.length - 7)
         one_btn_delete_std_array.pop(std_id)
@@ -94,7 +94,7 @@ function std_add_selcourse() {
     if ($(this).text() == "新增") {
         $(this).html("已新增")
         $(this).css({ "box-shadow": "inset 0 0 0 2px green"})
-        $(this).css({ "color": "green  !important"})
+        $(this).css({ "color": "inset green  !important"})
         var std_id = $(this).parent().parent().attr('id')
         std_id = std_id.substring(0, std_id.length - 7)
         one_btn_add_std_array.push(std_id)
@@ -102,7 +102,7 @@ function std_add_selcourse() {
     else {
         $(this).html("新增")
         $(this).css({ "box-shadow": "inset 0 0 0 2px #f56a6a"})
-        $(this).css({ "color": "#f56a6a"})
+        $(this).css({ "color": "inset #f56a6a !important"})
         var std_id = $(this).parent().parent().attr('id')
         std_id = std_id.substring(0, std_id.length - 7)
         one_btn_add_std_array.pop(std_id)
