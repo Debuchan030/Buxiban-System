@@ -58,34 +58,35 @@ function get_attend_table(date) {
     }
     $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
         $('#attend_student').empty()
-        attend = JSON.parse(attend)
-        for (var i = 0; i < attend.length; i++) {
-            var id = attend[i].std_id
-            var std_n = attend[i].std_name
-            var parent_n = attend[i].parent_name
-            //確認狀態 0 未到班 1 到班 2 離班 3 請假
-            var attend_time = attend[i].attend_time
-            var leave_time = attend[i].leave_time
-            var phone = attend[i].parent_phone
-            var remark = attend[i].remark
-            $('#attend_student').append([
-                { std_id: id, std_name: std_n, parent_name: parent_n, parent_phone: phone, attend_time: attend_time, leave_time: leave_time, remark: remark },
-            ].map(attend_template));
+        // attend = JSON.parse(attend)
+        console.log(attend)
+        // for (var i = 0; i < attend.length; i++) {
+        //     var id = attend[i].std_id
+        //     var std_n = attend[i].std_name
+        //     var parent_n = attend[i].parent_name
+        //     //確認狀態 0 未到班 1 到班 2 離班 3 請假
+        //     var attend_time = attend[i].attend_time
+        //     var leave_time = attend[i].leave_time
+        //     var phone = attend[i].parent_phone
+        //     var remark = attend[i].remark
+        //     $('#attend_student').append([
+        //         { std_id: id, std_name: std_n, parent_name: parent_n, parent_phone: phone, attend_time: attend_time, leave_time: leave_time, remark: remark },
+        //     ].map(attend_template));
 
-            var attend_states = attend[i].attend_states
-            if (attend_states == 0) {
-                $("#" + id + "_not_attend").prop('checked', true);
-            }
-            else if (attend_states == 1) {
-                $("#" + id + "_attended").prop('checked', true);
-            }
-            else if (attend_states == 2) {
-                $("#" + id + "_leaved").prop('checked', true);
-            }
-            else {
-                $("#" + id + "_day_off").prop('checked', true);
-            }
-        }
+        //     var attend_states = attend[i].attend_states
+        //     if (attend_states == 0) {
+        //         $("#" + id + "_not_attend").prop('checked', true);
+        //     }
+        //     else if (attend_states == 1) {
+        //         $("#" + id + "_attended").prop('checked', true);
+        //     }
+        //     else if (attend_states == 2) {
+        //         $("#" + id + "_leaved").prop('checked', true);
+        //     }
+        //     else {
+        //         $("#" + id + "_day_off").prop('checked', true);
+        //     }
+        // }
     });
 }
 var date = new Date()
