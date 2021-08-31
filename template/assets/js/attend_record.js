@@ -91,8 +91,8 @@ function get_attend_table(date) {
 }
 var date = new Date()
 date = date.yyyymmdd()
-date = date.toString()
-console.log(date)
+// date = date.toString()
+// console.log(date)
 
 get_attend_table.call(date)
 
