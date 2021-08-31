@@ -9,6 +9,7 @@ var bulletin_template = ({ bulletin_id, bulletin_title, bulletin_content, bullet
 <tr data-bs-toggle="collapse" data-bs-target="#b${bulletin_id}" aria-expanded="false"
 aria-controls="#b${bulletin_id}">
     <td>
+        <label for="" class="my-3 mx-3" >發布時間：${bulletin_time}</label>
         <textarea cols="30" rows="1" id = "${bulletin_id}_title">${bulletin_title}</textarea>
     </td>
 </tr>
