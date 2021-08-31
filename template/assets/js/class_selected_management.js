@@ -37,9 +37,8 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
 
             for (var i = 0; i < std.length; i++) {
                 var std_id = std[i].std_id
-                console.log(std_id)
                 var std_name = std[i].std_name;
-                var table_list = "<tr class = \"std_info\" id = \"" + std_id + "\"><td>學生姓名：" + std_name + "</td><td><button class = \"std_delete_selcourse\">刪除</button></td></tr>"
+                var table_list = "<tr class = \"std_info\" id = \"" + std_id + "_std_id" + "\"><td>學生姓名：" + std_name + "</td><td><button class = \"std_delete_selcourse\">刪除</button></td></tr>"
                 $("#course_selected_std").append(table_list)
             }
         });
@@ -64,13 +63,15 @@ function std_delete_selcourse() {
     if ($(this).text() == "刪除") {
         $(this).html("已刪除")
         $(this).css({ "box-shadow": "inset 0 0 0 2px gray", "color": "gray !important;" })
-        var std_id = $(this).parent().attr('id')
+        var std_id = $(this).parent().parent().attr('id')
+        std_id = std_id.substring(0, id.length-7)
         one_btn_delete_std_array.push(std_id)
     }
     else {
         $(this).html("刪除")
         $(this).css({ "box-shadow": "inset 0 0 0 2px #f56a6a", "color": "#f56a6a !important;" })
-        var std_id = $(this).parent().attr('id')
+        var std_id = $(this).parent().parent().attr('id')
+        std_id = std_id.substring(0, id.length-7)
         one_btn_delete_std_array.pop(std_id)
     }
 }
@@ -83,14 +84,14 @@ function std_add_selcourse() {
         $(this).html("已新增")
         $(this).css({ "box-shadow": "inset 0 0 0 2px green  !important;", "color": "green !important;" })
         var std_id = $(this).parent().parent().attr('id')
-        id = id.substring(0,id.length)
-        console.log("std_id："+id)
+        std_id = std_id.substring(0, id.length-7)
         one_btn_add_std_array.push(std_id)
     }
     else {
         $(this).html("新增")
         $(this).css({ "box-shadow": "inset 0 0 0 2px #f56a6a  !important;", "color": "f56a6a !important;" })
-        var std_id = $(this).parent().attr('id')
+        var std_id = $(this).parent().parent().attr('id')
+        std_id = std_id.substring(0, id.length-7)
         one_btn_add_std_array.pop(std_id)
     }
 }
