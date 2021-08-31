@@ -35,7 +35,9 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
         one_btn_delete_std_array = []
         //建立已選修學生之列表
         $.post("../../app/class_selected_management.php", { action: "get_selcourse_std", course_id: selected_course_id }, function (std) {
+            console.log(std)
             if (std != "no data") {
+                
                 std = JSON.parse(std)
 
                 for (var i = 0; i < std.length; i++) {
@@ -51,6 +53,7 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
         });
         //建立未選修學生之列表
         $.post("../../app/class_selected_management.php", { action: "get_nonselcourse_std", course_id: selected_course_id }, function (std) {
+            console.log(std)
             if (std != "no data") {
                 std = JSON.parse(std)
 
