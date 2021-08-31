@@ -1,4 +1,10 @@
 // 公佈欄模板
+var buxiban_name_template = ({buxiban_name}) => `
+<a  class="logo">
+    <h1><strong>${buxiban_name}補習班公佈欄</strong></h1>
+</a>
+
+`
 var bulletin_template = ({ bulletin_id, bulletin_title, bulletin_content, bulletin_time }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#b${bulletin_id}" aria-expanded="false"
 aria-controls="#b${bulletin_id}">
@@ -18,7 +24,12 @@ aria-controls="#b${bulletin_id}">
 `;
 
 // 獲取所有公佈欄資訊 id title content time , buxiban_bulletin.length
+$.post("../../app/bulletin_board.php", { action: "get_buxiban_name" }, function (buxiban_name) {
 
+    $('#header').append([
+        { buxiban_name:buxiban_name },
+    ].map(buxiban_name_template));
+});
 $.post("../../app/bulletin_board.php", { action: "get_bulletin" }, function (buxiban_bulletin) {
 
     buxiban_bulletin = JSON.parse(buxiban_bulletin)
@@ -27,7 +38,7 @@ $.post("../../app/bulletin_board.php", { action: "get_bulletin" }, function (bux
         var title = buxiban_bulletin[i].bulletin_title
         var content = buxiban_bulletin[i].bulletin_content
         var time = buxiban_bulletin[i].bulletin_time
-        $('#bulletin_board').append([
+        $('#buxiban_name_template').append([
             { bulletin_id: id, bulletin_title: title, bulletin_content: content, bulletin_time: time },
         ].map(bulletin_template));
     }
