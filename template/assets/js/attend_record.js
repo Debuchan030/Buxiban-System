@@ -100,20 +100,22 @@ function update_attend_table() {
         attend_states = 3
     }
     $.post("../../app/attend_record.php", { action: "update_attend_states", student_id: id, attend_states: attend_states ,date:date})
+    $('#attend_student').empty()
+    get_attend_table.call(this,date)
 }
 
 // 修改備註
 
 $('#attend_student').on('click', '.update_remark', update_remark)
 function update_remark() {
-
+  
 
     var id = $(this).attr('id')
     id = id.substring(0, id.length - 14)
-    var remark = $("#" + id + "_remark").text()
+    var remark = $("#" + id + "_remark").val()
     $.post("../../app/attend_record.php", { action: "update_remark", student_id: id, remark: remark ,date:date})
-
-
+    $('#attend_student').empty()
+    get_attend_table.call(this,date)
 }
 //搜尋
 $('#search_text').on("keydown", event => {
