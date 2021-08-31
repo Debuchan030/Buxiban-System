@@ -39,13 +39,17 @@ $(function () {
         }
     });
 });
-$.post("../../app/attend_record.php", { action: "get_attend" })
+$.post("../../app/attend_record.php", { action: "get_attend" }, function (attend) {
+    if (attend == "查無紀錄") {
+        alert(attend)
+        return
+    }
+})
 //建立所有學生列表
 function get_attend_table(date) {
     $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
         $('#attend_student').empty()
         if (attend == "查無紀錄") {
-            console.log(attend)
             alert(attend)
             return
         }
@@ -86,18 +90,18 @@ $('#attend_student').on('click', 'input:radio', update_attend_table)
 function update_attend_table() {
     var id = $(this).attr('name')
     id = id.substring(0, id.length - 13)
-    var attend_states = 0
+    var attend_states = ""
     if ($(this).attr('value') == "未到班") {
-        attend_states = 0
+        attend_states = "0"
     }
     else if ($(this).attr('value') == "到班") {
-        attend_states = 1
+        attend_states = "1"
     }
     else if ($(this).attr('value') == "離班") {
-        attend_states = 2
+        attend_states = "2"
     }
     else {
-        attend_states = 3
+        attend_states = "3"
     }
     $.post("../../app/attend_record.php", { action: "update_attend_states", student_id: id, attend_states: attend_states, date: date }, function () {
         $('#attend_student').empty()
@@ -150,13 +154,13 @@ $('#search_text').on("keydown", event => {
                         ].map(attend_template));
 
                         var attend_states = attend[i].attend_states
-                        if (attend_states == 0) {
+                        if (attend_states == "0") {
                             $("#" + id + "_not_attend").prop('checked', true);
                         }
-                        else if (attend_states == 1) {
+                        else if (attend_states == "1") {
                             $("#" + id + "_attended").prop('checked', true);
                         }
-                        else if (attend_states == 2) {
+                        else if (attend_states == "2") {
                             $("#" + id + "_leaved").prop('checked', true);
                         }
                         else {
