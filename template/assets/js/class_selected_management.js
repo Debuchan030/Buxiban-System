@@ -84,6 +84,7 @@ function std_add_selcourse() {
         $(this).html("已新增")
         $(this).css({ "box-shadow": "inset 0 0 0 2px green  !important;", "color": "green !important;" })
         var std_id = $(this).parent().attr('id')
+        console.log("std_id："+id)
         one_btn_add_std_array.push(std_id)
     }
     else {
@@ -96,9 +97,7 @@ function std_add_selcourse() {
 // 一鍵新增post上去
 $(".one_btn_add_std").on("click", one_btn_add_std)
 function one_btn_add_std() {
-    // console.log("test")
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
-    console.log(one_btn_add_std_array)
     one_btn_add_std_array = JSON.stringify(one_btn_add_std_array)
     $.post("../../app/class_selected_management.php", { action: "add_selcourse", course_id: selected_course_id, one_btn_add_std_array });
     change_student_list.call()
