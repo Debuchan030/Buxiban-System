@@ -68,6 +68,7 @@ function get_attend_table(date) {
             ].map(attend_template));
 
             var attend_states = attend[i].attend_states
+            console.log(attend_states)
             if (attend_states == "0") {
                 $("#" + id + "_not_attend").prop('checked', true);
             }
