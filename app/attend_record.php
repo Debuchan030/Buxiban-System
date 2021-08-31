@@ -45,6 +45,9 @@ switch ($_POST['action']) {
             case 3:
                 $sqlsend = "update buxiban_attend set attend_time ='00:00:00',leave_time='00:00:00' where std_id = $std_id AND date = '$date'";
             break;
+
+            default:
+                echo $attend_states;
         }
         $sqlresult = $conn->query("$sqlsend");
 
