@@ -45,7 +45,8 @@ function get_attend_table(date) {
     $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
         $('#attend_student').empty()
     if(attend == "查無紀錄"){
-        alert("查無紀錄")
+        console.log(attend)
+        alert(attend)
         return
     }
     attend = JSON.parse(attend)
