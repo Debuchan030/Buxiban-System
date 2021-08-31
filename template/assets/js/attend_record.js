@@ -51,6 +51,7 @@ $(function () {
 
 //建立所有學生列表
 function get_attend_table(date) {
+    console.log(date)
     if(date == "undefined"){
         console.log("no value")
         return
