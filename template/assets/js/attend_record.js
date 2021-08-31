@@ -88,6 +88,7 @@ function update_attend_table() {
     id = id.substring(0, id.length - 13)
     console.log(id)
     console.log($(this).attr('value'))
+    console.log(date)
     var attend_states = 0
     if ($(this).attr('value') == "未到班") {
         attend_states = 0
