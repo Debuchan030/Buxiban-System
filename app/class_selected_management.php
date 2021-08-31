@@ -13,7 +13,7 @@ switch ($_POST['action']) {
     //取得有選課之學生
     case "get_selcourse_std":
         $course_id = $_POST['course_id'];
-        $std_info = $conn->query("select buxiban_student.std_id,buxiban_student.std_name from buxiban_student,buxiban_selcourse where buxiban_selcourse.std_id = buxiban_student.std_id AND buxiban_selcourse.course_id=$course_id")->fetchAll(PDO::FETCH_ASSOC);
+        $std_info = $conn->query("select buxiban_student.std_id,buxiban_student.std_name from buxiban_student where buxiban_student.buxiban_id =$buxiban_id AND buxiban_student.std_id in(SELECT std_id FROM buxiban_selcourse where buxiban_selcourse.course_id = $course_id)")->fetchAll(PDO::FETCH_ASSOC);
         if($std_info){
             echo json_encode($std_info);
         }
@@ -25,8 +25,7 @@ switch ($_POST['action']) {
     //取得未選課之學生 
     case "get_nonselcourse_std":
         $course_id = $_POST['course_id'];
-        $std_info = $conn->query("select buxiban_student.std_id,buxiban_student.std_name from buxiban_student,buxiban_selcourse where buxiban_student.buxiban_id =$buxiban_id AND buxiban_selcourse.std_id != buxiban_student.std_id AND buxiban_selcourse.course_id = $course_id")->fetchAll(PDO::FETCH_ASSOC);
-        if($std_info){
+        $std_info = $conn->query("select buxiban_student.std_id,buxiban_student.std_name from buxiban_student where buxiban_student.buxiban_id =$buxiban_id AND buxiban_student.std_id NOT in(SELECT std_id FROM buxiban_selcourse where buxiban_selcourse.course_id = $course_id)")->fetchAll(PDO::FETCH_ASSOC);        if($std_info){
             echo json_encode($std_info);
         }
         else{
