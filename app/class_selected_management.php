@@ -17,7 +17,9 @@ switch ($_POST['action']) {
         if($std_info){
             echo json_encode($std_info);
         }
-
+        else{
+            echo "no data";
+        }
         break;
 
     //取得未選課之學生 
@@ -27,7 +29,9 @@ switch ($_POST['action']) {
         if($std_info){
             echo json_encode($std_info);
         }
-  
+        else{
+            echo "no data";
+        }
         break;
 
         //新增選課學生
