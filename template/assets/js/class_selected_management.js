@@ -19,6 +19,7 @@ $.post("../../app/class_selected_management.php", { action: "get_course" }, func
 var one_btn_add_std_array = []
 var one_btn_delete_std_array = []
 //根據option value不同抓取有選取此課的學生名單
+var course_selection = document.getElementById('course_selection');
 course_selection.addEventListener("change", change_student_list)//偵測有沒有選擇課程
 function change_student_list() { //依據選擇的課程來分類有選課/未選課 並列表
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
