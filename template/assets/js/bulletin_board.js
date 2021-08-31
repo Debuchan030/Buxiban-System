@@ -24,12 +24,12 @@ aria-controls="#b${bulletin_id}">
 `;
 
 // 獲取所有公佈欄資訊 id title content time , buxiban_bulletin.length
-$.post("../../app/loginstates.php", { action: "get_buxiban_name" }, function (buxiban_name) {
-    console.log(buxiban_name)
-    $('#header').append([
-        { buxiban_name:buxiban_name },
-    ].map(buxiban_name_template));
-});
+// $.post("../../app/loginstates.php", { action: "get_buxiban_name" }, function (buxiban_name) {
+//     console.log(buxiban_name)
+//     $('#header').append([
+//         { buxiban_name:buxiban_name },
+//     ].map(buxiban_name_template));
+// });
 $.post("../../app/bulletin_board.php", { action: "get_bulletin" }, function (buxiban_bulletin) {
 
     buxiban_bulletin = JSON.parse(buxiban_bulletin)
