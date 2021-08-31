@@ -44,8 +44,6 @@ function change_student_list() { //依據選擇的課程來分類有選課/未�
         });
         //建立未選修學生之列表
         $.post("../../app/class_selected_management.php", { action: "get_nonselcourse_std", course_id: selected_course_id }, function (std) {
-            console.log("未選修")
-            console.log(std)
             std = JSON.parse(std)
 
             for (var i = 0; i < std.length; i++) {
