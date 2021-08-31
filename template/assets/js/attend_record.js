@@ -22,86 +22,63 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
     </td>
     <td>
         <textarea id="${std_id}_remark" cols="30" rows="4">${remark}</textarea>
-        <button class = "mt-3" id = "${std_id}_update_remark" class = "update_remark">儲存</button>
+        <button class = "mt-3 update_remark" id = "${std_id}_update_remark" >儲存</button>
     </td>
 </tr>
 
 `
-
-Date.prototype.yyyymmdd = function () {
-    var mm = this.getMonth() + 1; // getMonth() is zero-based
-    var dd = this.getDate();
-
-    return [this.getFullYear(),
-    (mm > 9 ? '' : '0') + mm,
-    (dd > 9 ? '' : '0') + dd
-    ].join('-');
-};
+var date = ""
 $(function () {
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         onSelect: function (dateText, inst) {
 
             $('#attend_student').empty()
-            console.log(dateText)
-            get_attend_table.call(dateText)
+            date = dateText;
+            get_attend_table.call(this,dateText)
         }
     });
 });
-
+$.post("../../app/attend_record.php", { action: "get_attend"})
 //建立所有學生列表
 function get_attend_table(date) {
-    if (date === undefined) {
-        console.log("沒定義")
+    $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
+        $('#attend_student').empty()
+    if(attend == "查無紀錄"){
+        console.log(attend)
+        alert(attend)
+        return
     }
-    else {
-        console.log(date)
+    attend = JSON.parse(attend)
+    for (var i = 0; i < attend.length; i++) {
+        var id = attend[i].std_id
+        var std_n = attend[i].std_name
+        var parent_n = attend[i].parent_name
+        //確認狀態 0 未到班 1 到班 2 離班 3 請假
+        var attend_time = attend[i].attend_time
+        var leave_time = attend[i].leave_time
+        var phone = attend[i].parent_phone
+        var remark = attend[i].remark
+        $('#attend_student').append([
+            { std_id: id, std_name: std_n, parent_name: parent_n, parent_phone: phone, attend_time: attend_time, leave_time: leave_time, remark: remark },
+        ].map(attend_template));
 
+        var attend_states = attend[i].attend_states
+        if (attend_states == 0) {
+            $("#" + id + "_not_attend").prop('checked', true);
+        }
+        else if (attend_states == 1) {
+            $("#" + id + "_attended").prop('checked', true);
+        }
+        else if (attend_states == 2) {
+            $("#" + id + "_leaved").prop('checked', true);
+        }
+        else {
+            $("#" + id + "_day_off").prop('checked', true);
+        }
     }
-    // if(date){
-    //     console.log("no value")
-    //     return
-    // }
-    // $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
-    //     $('#attend_student').empty()
-    // attend = JSON.parse(attend)
-    // console.log(attend)
-    // for (var i = 0; i < attend.length; i++) {
-    //     var id = attend[i].std_id
-    //     var std_n = attend[i].std_name
-    //     var parent_n = attend[i].parent_name
-    //     //確認狀態 0 未到班 1 到班 2 離班 3 請假
-    //     var attend_time = attend[i].attend_time
-    //     var leave_time = attend[i].leave_time
-    //     var phone = attend[i].parent_phone
-    //     var remark = attend[i].remark
-    //     $('#attend_student').append([
-    //         { std_id: id, std_name: std_n, parent_name: parent_n, parent_phone: phone, attend_time: attend_time, leave_time: leave_time, remark: remark },
-    //     ].map(attend_template));
-
-    //     var attend_states = attend[i].attend_states
-    //     if (attend_states == 0) {
-    //         $("#" + id + "_not_attend").prop('checked', true);
-    //     }
-    //     else if (attend_states == 1) {
-    //         $("#" + id + "_attended").prop('checked', true);
-    //     }
-    //     else if (attend_states == 2) {
-    //         $("#" + id + "_leaved").prop('checked', true);
-    //     }
-    //     else {
-    //         $("#" + id + "_day_off").prop('checked', true);
-    //     }
-    // }
-    // });
+    });
 }
-var date = new Date()
-date = date.yyyymmdd()
-// date = date.toString()
-// console.log(date)
-
-get_attend_table.call(this,date)
-
 
 
 // 修改狀態
@@ -122,7 +99,7 @@ function update_attend_table() {
     else {
         attend_states = 3
     }
-    $.post("../../app/attend_record.php", { action: "update_attend_states", student_id: id, attend_states: attend_states })
+    $.post("../../app/attend_record.php", { action: "update_attend_states", student_id: id, attend_states: attend_states ,date:date})
 }
 
 // 修改備註
@@ -134,7 +111,7 @@ function update_remark() {
     var id = $(this).attr('id')
     id = id.substring(0, id.length - 14)
     var remark = $("#" + id + "_remark").text()
-    $.post("../../app/attend_record.php", { action: "update_remark", student_id: id, remark: remark })
+    $.post("../../app/attend_record.php", { action: "update_remark", student_id: id, remark: remark ,date:date})
 
 
 }
