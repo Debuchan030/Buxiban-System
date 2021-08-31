@@ -24,6 +24,8 @@ course_selection.addEventListener("change", change_student_list)//偵測有沒�
 function change_student_list() { //依據選擇的課程來分類有選課/未選課 並列表
     var selected_course_id = course_selection.options[course_selection.selectedIndex].value
     if (selected_course_id == "0") {
+        $("#course_selected_std").empty()
+        $("#course_nonselected_std").empty()
         return
     }
     else {
