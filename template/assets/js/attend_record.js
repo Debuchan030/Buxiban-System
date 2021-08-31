@@ -100,7 +100,7 @@ date = date.yyyymmdd()
 // date = date.toString()
 // console.log(date)
 
-get_attend_table.call(date)
+get_attend_table.call(this,date)
 
 
 
