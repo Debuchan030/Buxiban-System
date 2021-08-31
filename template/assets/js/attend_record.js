@@ -127,12 +127,12 @@ $('#search_text').on("keydown", event => {
         var search_text = $('#search_text').val()
         if (search_text == "") {
             $('#attend_student').empty()
-            get_attend_table.call()
+            get_attend_table.call(this, date)
         }
         else {
             $('#attend_student').empty()
 
-            $.post("../../app/attend_record.php", { action: "get_attend" }, function (attend) {
+            $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
 
                 attend = JSON.parse(attend)
                 for (var i = 0; i < attend.length; i++) {
@@ -140,12 +140,13 @@ $('#search_text').on("keydown", event => {
                     var std_n = attend[i].std_name
                     var parent_n = attend[i].parent_name
                     //確認狀態 0 未到班 1 到班 2 離班 3 請假
-
+                    var attend_time = attend[i].attend_time
+                    var leave_time = attend[i].leave_time
                     var phone = attend[i].parent_phone
                     var remark = attend[i].remark
-                    if (std_n.indexOf(search_text) != -1 || parent_n.indexOf(search_text) != -1 || phone.indexOf(search_text) != -1 || remark.indexOf(search_text) != -1) {
+                    if (std_n.indexOf(search_text) != -1 || parent_n.indexOf(search_text) != -1 || attend_time.indexOf(search_text) != -1 || leave_time.indexOf(search_text) != -1 || phone.indexOf(search_text) != -1 || remark.indexOf(search_text) != -1) {
                         $('#attend_student').append([
-                            { std_id: id, std_name: std_n, parent_name: parent_n, parent_phone: phone, remark },
+                            { std_id: id, std_name: std_n, parent_name: parent_n, parent_phone: phone, attend_time: attend_time, leave_time: leave_time, remark },
                         ].map(attend_template));
 
                         var attend_states = attend[i].attend_states
