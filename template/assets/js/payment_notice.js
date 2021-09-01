@@ -139,7 +139,6 @@ function get_std_selcourse(record_id) {
 		record_selcourse = JSON.parse(record_selcourse)
 		console.log(record_selcourse)
 		for (var i = 0; i < record_selcourse.length; i++) {
-			var id = record_selcourse[i].record_id
 			var record_selcourse_name = record_selcourse[i].record_selcourse_name
 			var record_selcourse_price = record_selcourse[i].record_selcourse_price
 			$("#selcourse_" + id).append([
