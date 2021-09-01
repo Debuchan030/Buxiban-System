@@ -2,6 +2,7 @@
 //獲取buxiban_payment table資料
 
 //將資料用template放上去
+//展開模板
 var payment_template = ({ payment_id, payment_time, }) => `
 <div class="border border-secondary border-3 rounded p-2 h1 text-center bg-white" data-bs-toggle="collapse"
 	data-bs-target="#record_${payment_id}" aria-expanded="false" aria-controls="record_${payment_id}">
@@ -11,21 +12,21 @@ var payment_template = ({ payment_id, payment_time, }) => `
 <div class="collapse" id="record_${payment_id}">
 	<table>
 		<h3>未繳款</h3>
-		<tbody id="non_payed">
+		<tbody id="${payment_id}_non_payed">
 
 		</tbody>
 
 	</table>
 	<table>
 		<h3>已繳款</h3>
-		<tbody id="payed">
+		<tbody id="${payment_id}_payed">
 
 		</tbody>
 
 	</table>
 </div>
 `
-
+//未繳款模板
 var nonpayed_std_info_template = ({ record_std_id, record_std_name, record_parent_name, record_parent_phone }) => `
 
 <tr data-bs-toggle="collapse" data-bs-target="#std_${record_std_id}" aria-expanded="false"
@@ -53,6 +54,7 @@ var nonpayed_std_info_template = ({ record_std_id, record_std_name, record_paren
 </tr>
 	
 `
+//已繳款模板
 var payed_std_info_template = ({ record_std_id, record_std_name, record_parent_name, record_parent_phone }) => `
 
 
@@ -84,11 +86,12 @@ var payed_std_info_template = ({ record_std_id, record_std_name, record_parent_n
 `
 
 
-
+//課程模板
 var selcourse_template = ({ record_selcourse_name, record_selcourse_price }) => `
 <label for="">課程名稱：${record_selcourse_name}---$${record_selcourse_price}</label>
 
 `
+//總價格模板
 var total_price_template = ({ total_price }) => `
 總金額：$${total_price}
 `
@@ -122,12 +125,48 @@ function get_student_record_info() {
 				var std_name = student_record_info[i].record_std_name
 				var parent_name = student_record_info[i].record_parent_name
 				var parent_phone = student_record_info[i].record_parent_phone
-				$('#non_payed').append([
+				$("#" + id + "non_payed").append([
+					{ record_std_id: id, record_std_name: std_name, record_parent_name: parent_name, record_parent_phone: parent_phone },
+				].map(nonpayed_std_info_template));
+
+			}
+			else {//有繳款
+				var id = student_record_info[i].record_std_id
+				var std_name = student_record_info[i].record_std_name
+				var parent_name = student_record_info[i].record_parent_name
+				var parent_phone = student_record_info[i].record_parent_phone
+				$("#" + id + "payed").append([
 					{ record_std_id: id, record_std_name: std_name, record_parent_name: parent_name, record_parent_phone: parent_phone },
 				].map(payed_std_info_template));
 
 			}
-			else{//有繳款
+
+		}
+	});
+}
+function get_std_selcourse(){
+	$.post("../../app/payment_notice.php", { action: "get_std_selcourse" }, function (std_selcourse) {
+
+		std_selcourse = JSON.parse(std_selcourse)
+		for (var i = 0; i < student_record_info.length; i++) {
+			if (student_record_info[i].record_payment_state == false) { //未繳款
+				var id = student_record_info[i].record_std_id
+				var std_name = student_record_info[i].record_std_name
+				var parent_name = student_record_info[i].record_parent_name
+				var parent_phone = student_record_info[i].record_parent_phone
+				$("#" + id + "non_payed").append([
+					{ record_std_id: id, record_std_name: std_name, record_parent_name: parent_name, record_parent_phone: parent_phone },
+				].map(nonpayed_std_info_template));
+
+			}
+			else {//有繳款
+				var id = student_record_info[i].record_std_id
+				var std_name = student_record_info[i].record_std_name
+				var parent_name = student_record_info[i].record_parent_name
+				var parent_phone = student_record_info[i].record_parent_phone
+				$("#" + id + "payed").append([
+					{ record_std_id: id, record_std_name: std_name, record_parent_name: parent_name, record_parent_phone: parent_phone },
+				].map(payed_std_info_template));
 
 			}
 
@@ -135,12 +174,12 @@ function get_student_record_info() {
 	});
 }
 
-
 //新增當月繳款紀錄
 var add_payment_record = document.getElementById('add_payment_record')
 add_payment_record.addEventListener('click', add_payment_record_func)
-
 function add_payment_record_func() {
+	$.post("../../app/payment_notice.php", { action: "get_member" }, function (member) {
 
+	});
 }
 
