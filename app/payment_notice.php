@@ -68,12 +68,12 @@ switch ($_POST['action']) {
                         $course_name = $get_std_selcourse[$j]['course_name'];
                         $course_price = $get_std_selcourse[$j]['course_price'];
                          //add new record_selcourse
-                        $add_new_record_selcourse = $conn->query("insert into buxiban_record_selcourse(record_id,course_name,course_price) value($record_id,'$course_name',$course_price) ");
+                        $add_new_record_selcourse = $conn->query("insert into buxiban_record_selcourse(record_id,record_selcourse_name,record_selcourse_price) value($record_id,'$course_name',$course_price) ");
                         $total_price += $get_std_selcourse[$j]['course_price'];
                     }
                 }
                 //update total price
-                $update_this_record = $conn->query("update buxiban_record_payment set recore_total _price=$total_price where record_id=$record_id ");
+                $update_this_record = $conn->query("update buxiban_record_payment set record_total_price=$total_price where record_id=$record_id ");
             }
         }
     break;
