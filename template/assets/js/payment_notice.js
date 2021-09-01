@@ -163,7 +163,7 @@ function add_payment_record_func() {
 //更新當月繳款紀錄
 $("#record_payment").on('click', '.non_payed', function () {
 	var record_id = $(this).attr('id')
-	record_id = record_id.substring(0, id.length - 10)
+	record_id = record_id.substring(0, record_id.length - 10)
 	$(this).html("更新成已繳款")
 	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id }, function (data) {
 		console.log(data)
@@ -171,7 +171,7 @@ $("#record_payment").on('click', '.non_payed', function () {
 })
 $("#record_payment").on('click', '.payed', function () {
 	var record_id = $(this).attr('id')
-	record_id = record_id.substring(0, id.length - 6)
+	record_id = record_id.substring(0, record_id.length - 6)
 	$(this).html("更新成未繳款")
 	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id }, function (data) {
 		console.log(data)
