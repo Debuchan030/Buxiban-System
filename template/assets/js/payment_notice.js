@@ -112,7 +112,7 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 				var parent_name = student_record_info[i].record_parent_name
 				var parent_phone = student_record_info[i].record_parent_phone
 				var total_price = student_record_info[i].record_total_price
-				$("#" + id + "non_payed").append([
+				$("#" + payment_time + "_non_payed").append([
 					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_parent_name: parent_name, record_parent_phone: parent_phone },
 				].map(nonpayed_std_info_template));
 				// 放上選課課程資料
@@ -125,7 +125,7 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 				var parent_phone = student_record_info[i].record_parent_phone
 				var total_price = student_record_info[i].record_total_price
 				var payment_done = student_record_info[i].record_payment_done
-				$("#" + id + "payed").append([
+				$("#" + payment_time + "_payed").append([
 					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_parent_name: parent_name, record_parent_phone: parent_phone, record_payment_done: payment_done },
 				].map(payed_std_info_template));
 				// 放上選課課程資料
