@@ -3,8 +3,8 @@
 // include('dbconfig.php');
 // session_start();
 // $buxiban_id = $_SESSION['buxiban_id'];
-
-// print(date("Y-m"));
+// $get_this_record_id = $conn->query("select course_id from buxiban_course where course_id =20 AND buxiban_id = $buxiban_id")->fetch(PDO::FETCH_ASSOC);
+// print_r($get_this_record_id);
 /*
 /*
 session_start();
