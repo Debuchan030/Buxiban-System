@@ -33,7 +33,7 @@ var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_pri
 	aria-controls="non_payed1">
 	<td>學生姓名：${record_std_name}</td>
 	<td>總金額：$${record_total_price}</td>
-	<td><button class="non_payed">未繳款</button></td>
+	<td><button class="non_payed"  id = "${record_id}_non_payed">未繳款</button></td>
 </tr>
 
 <tr class="collapse" id="std_${record_id}">
@@ -62,7 +62,7 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 	aria-controls="non_payed1">
 	<td>學生姓名：${record_std_name}</td>
 	<td>總金額：$${record_total_price}</td>
-	<td><button class="payed">已繳款</button></td>
+	<td><button class="payed" id = "${record_id}_payed">已繳款</button></td>
 </tr>
 
 <tr class="collapse" id="std_${record_id}">
@@ -90,11 +90,6 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 var selcourse_template = ({ record_selcourse_name, record_selcourse_price }) => `
 <label for="">課程名稱：${record_selcourse_name}---$${record_selcourse_price}</label>
 `
-//抓取繳款紀錄並放上去
-//獲取繳款紀錄資料 buxiban_payment table (select * from buxiban_payment)
-//獲取學生家長資料 buxiban_student_record_info table (select * from buxiban_student_record_info where buxiban_payment.payment_id == buxiban_student_record_info.payment_id)
-//獲取學生選課紀錄 buxiban_selcourse_record_info table 
-//(select * from buxiban_selcourse_record_info where buxiban_payment_record_info.record_selcourse_id == buxiban_selcourse_record_info.record_selcourse_id)
 
 function get_payment_record() { //放上年月大標題
 	$.post("../../app/payment_notice.php", { action: "get_payment" }, function (record_payment) {
@@ -171,6 +166,23 @@ function add_payment_record_func() {
 	});
 }
 
+//更新當月繳款紀錄
+$("#record_payment").on('click', '.non_payed', function () {
+	var id = $(this).attr('id')
+	id = id.substring(0, id.length - 10)
+	$(this).html("更新成已繳款")
+	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1" },function(data){
+		console.log(data)
+	})
+})
+$("#record_payment").on('click', '.payed', function () {
+	var id = $(this).attr('id')
+	id = id.substring(0, id.length - 6)
+	$(this).html("更新成未繳款")
+	$.post("../../app/payment_notice.php", { action: "update_record_payment_states", record_id: record_id, record_payment_states: "0" },function(data){
+		console.log(data)
+	})
+})
 
 
 //初始化
