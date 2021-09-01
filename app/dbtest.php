@@ -8,7 +8,12 @@ $get_std_list = $conn->query("select std_id,std_name,parent_name,parent_phone fr
 for($i=0;$i < count($get_std_list);$i++){
     $std_id = $get_std_list[$i]['std_id'];
     $get_std_selcourse = $conn->query("select course_name,course_price form buxiban_course,buxiban_selcourse where buxiban_selcourse.std_id = $std_id AND buxiban_selcourse.course_id = buxiban_course.course_id")->fetchAll(PDO::FETCH_ASSOC);
-    print_r($get_std_selcourse);
+    if($get_std_selcourse){
+        print_r($get_std_selcourse);
+    }
+    else{
+        print("NO DATA");
+    }
 }
 /*
 /*
