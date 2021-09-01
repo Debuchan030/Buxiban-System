@@ -93,15 +93,20 @@ var selcourse_template = ({ record_selcourse_name, record_selcourse_price }) => 
 
 function get_payment_record() { //放上年月大標題
 	$.post("../../app/payment_notice.php", { action: "get_payment" }, function (record_payment) {
-
-		record_payment = JSON.parse(record_payment)
-		for (var i = 0; i < record_payment.length; i++) {
-			var time = record_payment[i].payment_time
-			$('#record_payment').append([
-				{ payment_time: time },
-			].map(payment_template));
+		if (record_payment != "NO DATA") {
+			record_payment = JSON.parse(record_payment)
+			for (var i = 0; i < record_payment.length; i++) {
+				var time = record_payment[i].payment_time
+				$('#record_payment').append([
+					{ payment_time: time },
+				].map(payment_template));
+			}
+			get_student_record_info.call(this)
 		}
-		get_student_record_info.call(this)
+		else{
+			alert("暫無資料")
+		}
+
 	});
 }
 function get_student_record_info() { //放上學生資訊 根據有繳費未繳費區分
@@ -171,7 +176,7 @@ $("#record_payment").on('click', '.non_payed', function () {
 	var id = $(this).attr('id')
 	id = id.substring(0, id.length - 10)
 	$(this).html("更新成已繳款")
-	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1" },function(data){
+	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1" }, function (data) {
 		console.log(data)
 	})
 })
@@ -179,7 +184,7 @@ $("#record_payment").on('click', '.payed', function () {
 	var id = $(this).attr('id')
 	id = id.substring(0, id.length - 6)
 	$(this).html("更新成未繳款")
-	$.post("../../app/payment_notice.php", { action: "update_record_payment_states", record_id: record_id, record_payment_states: "0" },function(data){
+	$.post("../../app/payment_notice.php", { action: "update_record_payment_states", record_id: record_id, record_payment_states: "0" }, function (data) {
 		console.log(data)
 	})
 })
