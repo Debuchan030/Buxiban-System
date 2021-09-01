@@ -5,6 +5,16 @@ session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
 $datemonth = date("Y-m");
 switch ($_POST['action']) {
+    //取得紀錄
+    case "get_payment":
+        $get_payment = $conn->query("select payment_time from buxiban_payment where buxiban_id = $buxiban_id")->fetchAll(PDO::FETCH_ASSOC); 
+        if($get_payment){
+            echo json_encode($get_payment);
+        }
+        else{
+            echo("NO DATA");
+        }
+    break;
     //生成該月紀錄
     case "add_new_payment":
         // 檢測該月紀錄
@@ -53,7 +63,7 @@ switch ($_POST['action']) {
     break;
 
     //刪除紀錄
-    case "":
+    case "DE":
         // $course_id = $_POST['course_id'];
         // $std_id = json_decode($_POST['one_btn_delete_std_array'],true);
         // foreach ($std_id as $value) {
