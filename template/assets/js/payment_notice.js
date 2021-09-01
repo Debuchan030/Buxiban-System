@@ -141,7 +141,7 @@ function get_std_selcourse(record_id) {
 		for (var i = 0; i < record_selcourse.length; i++) {
 			var record_selcourse_name = record_selcourse[i].record_selcourse_name
 			var record_selcourse_price = record_selcourse[i].record_selcourse_price
-			$("#selcourse_" + id).append([
+			$("#selcourse_" + record_id).append([
 				{ record_selcourse_name: record_selcourse_name, record_selcourse_price: record_selcourse_price },
 			].map(selcourse_template));
 		}
