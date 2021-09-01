@@ -91,16 +91,17 @@ function get_payment_record() { //放上年月大標題
 				$('#record_payment').append([
 					{ payment_time: time },
 				].map(payment_template));
+				get_student_record_info.call(this,time)
 			}
-			get_student_record_info.call(this)
+			
 		}
 		else{
 			alert("暫無資料")
 		}
 	});
 }
-function get_student_record_info() { //放上學生資訊 根據有繳費未繳費區分
-	$.post("../../app/payment_notice.php", { action: "get_record_payment" }, function (student_record_info) {
+function get_student_record_info(payment_time) { //放上學生資訊 根據有繳費未繳費區分
+	$.post("../../app/payment_notice.php", { action: "get_record_payment",payment_time:payment_time }, function (student_record_info) {
 		student_record_info = JSON.parse(student_record_info)
 		for (var i = 0; i < student_record_info.length; i++) {
 			if (parseInt(student_record_info[i].record_payment_states) == 0) { //未繳款
