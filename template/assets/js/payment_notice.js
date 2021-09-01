@@ -103,6 +103,7 @@ function get_payment_record() { //放上年月大標題
 }
 function get_student_record_info(payment_time) { //放上學生資訊 根據有繳費未繳費區分
 	$.post("../../app/payment_notice.php", { action: "get_record_payment", payment_time: payment_time }, function (student_record_info) {
+		console.log(student_record_info)
 		student_record_info = JSON.parse(student_record_info)
 		for (var i = 0; i < student_record_info.length; i++) {
 			if (parseInt(student_record_info[i].record_payment_states) == 0) { //未繳款
@@ -111,7 +112,7 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 				var parent_name = student_record_info[i].record_parent_name
 				var parent_phone = student_record_info[i].record_parent_phone
 				var total_price = student_record_info[i].record_total_price
-				$("#" + id + "non_payed").append([
+				$("#" + payment_time + "_non_payed").append([
 					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_parent_name: parent_name, record_parent_phone: parent_phone },
 				].map(nonpayed_std_info_template));
 				// 放上選課課程資料
@@ -124,7 +125,7 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 				var parent_phone = student_record_info[i].record_parent_phone
 				var total_price = student_record_info[i].record_total_price
 				var payment_done = student_record_info[i].record_payment_done
-				$("#" + id + "payed").append([
+				$("#" + payment_time + "_payed").append([
 					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_parent_name: parent_name, record_parent_phone: parent_phone, record_payment_done: payment_done },
 				].map(payed_std_info_template));
 				// 放上選課課程資料
@@ -161,16 +162,16 @@ function add_payment_record_func() {
 }
 //更新當月繳款紀錄
 $("#record_payment").on('click', '.non_payed', function () {
-	var id = $(this).attr('id')
-	id = id.substring(0, id.length - 10)
+	var record_id = $(this).attr('id')
+	record_id = record_id.substring(0, record_id.length - 10)
 	$(this).html("更新成已繳款")
 	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id }, function (data) {
 		console.log(data)
 	})
 })
 $("#record_payment").on('click', '.payed', function () {
-	var id = $(this).attr('id')
-	id = id.substring(0, id.length - 6)
+	var record_id = $(this).attr('id')
+	record_id = record_id.substring(0, record_id.length - 6)
 	$(this).html("更新成未繳款")
 	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id }, function (data) {
 		console.log(data)
