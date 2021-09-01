@@ -81,7 +81,7 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 `
 //課程模板
 var selcourse_template = ({ record_selcourse_name, record_selcourse_price }) => `
-<label for="">課程名稱：${record_selcourse_name}---$${record_selcourse_price}</label>
+課程名稱：${record_selcourse_name}---$${record_selcourse_price}<br>
 `
 function get_payment_record() { //放上年月大標題
 	$.post("../../app/payment_notice.php", { action: "get_payment" }, function (record_payment) {
