@@ -58,7 +58,7 @@ switch ($_POST['action']) {
                 //add new record_payment
                 $add_new_record_payment = $conn->query("insert into buxiban_record_payment(record_std_name,record_parent_name,record_parent_phone,record_total_price,payment_time,parent_id,buxiban_id) value('$std_name','$parent_name','$parent_phone',$total_price,'$payment_time',$parent_id,$buxiban_id)");
                 //search selcourse
-                $get_this_record_id = $conn->query("select record_id from buxiban_record_payment where parent_id =$parent_id AND payment_time='$payment_time'")->fetch(PDO::FETCH_ASSOC);
+                $get_this_record_id = $conn->query("select record_id from buxiban_record_payment where parent_id =$parent_id AND payment_time='$payment_time' AND record_std_name='$std_name'")->fetch(PDO::FETCH_ASSOC);
                 $record_id = $get_this_record_id['record_id'];
                 $std_id = $get_std_list[$i]['std_id'];
 
