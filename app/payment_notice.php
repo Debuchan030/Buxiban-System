@@ -38,7 +38,7 @@ switch ($_POST['action']) {
     //生成該月紀錄
     case "add_new_payment":
         // 檢測該月紀錄
-        $check_payment = $conn->query("select * from buxiban_payment where buxiban_id = $buxiban_id AND payment_time = '$datemonth'"); 
+        $check_payment = $conn->query("select * from buxiban_payment where buxiban_id = $buxiban_id AND payment_time = '$datemonth'")->fetchAll(PDO::FETCH_ASSOC); 
         if($check_payment){
             //update
             echo("get");
