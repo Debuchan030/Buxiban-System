@@ -107,7 +107,6 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 		for (var i = 0; i < student_record_info.length; i++) {
 			if (parseInt(student_record_info[i].record_payment_states) == 0) { //未繳款
 				var id = student_record_info[i].record_id
-				console.log(id)
 				var std_name = student_record_info[i].record_std_name
 				var parent_name = student_record_info[i].record_parent_name
 				var parent_phone = student_record_info[i].record_parent_phone
@@ -120,7 +119,6 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 			}
 			else {//有繳款
 				var id = student_record_info[i].record_id
-				console.log(id)
 				var std_name = student_record_info[i].record_std_name
 				var parent_name = student_record_info[i].record_parent_name
 				var parent_phone = student_record_info[i].record_parent_phone
@@ -139,6 +137,7 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 function get_std_selcourse(record_id) {
 	$.post("../../app/payment_notice.php", { action: "get_record_selcourse", record_id: record_id }, function (record_selcourse) {
 		record_selcourse = JSON.parse(record_selcourse)
+		console.log(record_selcourse)
 		for (var i = 0; i < record_selcourse.length; i++) {
 			var id = record_selcourse[i].record_id
 			var record_selcourse_name = record_selcourse[i].record_selcourse_name
