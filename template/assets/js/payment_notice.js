@@ -128,7 +128,6 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_parent_name: parent_name, record_parent_phone: parent_phone, record_payment_done: payment_done },
 				].map(payed_std_info_template));
 				// 放上選課課程資料
-				console.log(id+"我是有繳款")
 				get_std_selcourse.call(this, id)
 			}
 		}
