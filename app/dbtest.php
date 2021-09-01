@@ -3,7 +3,7 @@ ini_set("display_errors", "On");
 include('dbconfig.php');
 session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
-$get_this_record_id = $conn->query("select course_id from buxiban_course where buxiban_course_id =$course_id AND buxiban_id = $buxiban_id")->fetch(PDO::FETCH_ASSOC);
+$get_this_record_id = $conn->query("select course_id from buxiban_course where buxiban_course_id =20 AND buxiban_id = $buxiban_id")->fetch(PDO::FETCH_ASSOC);
 print_r($get_this_record_id);
 /*
 /*
