@@ -72,7 +72,7 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 		<div>
 			詳細資訊：
 		</div>
-		<div id = "selcourse_${record_id}>
+		<div id = "selcourse_${record_id}">
 
 		</div>
 
@@ -128,6 +128,7 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_parent_name: parent_name, record_parent_phone: parent_phone, record_payment_done: payment_done },
 				].map(payed_std_info_template));
 				// 放上選課課程資料
+				console.log(id+"我是有繳款")
 				get_std_selcourse.call(this, id)
 			}
 		}
@@ -137,7 +138,6 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 function get_std_selcourse(record_id) {
 	$.post("../../app/payment_notice.php", { action: "get_record_selcourse", record_id: record_id }, function (record_selcourse) {
 		record_selcourse = JSON.parse(record_selcourse)
-		console.log(record_selcourse)
 		for (var i = 0; i < record_selcourse.length; i++) {
 			var record_selcourse_name = record_selcourse[i].record_selcourse_name
 			var record_selcourse_price = record_selcourse[i].record_selcourse_price
@@ -161,14 +161,14 @@ $("#record_payment").on('click', '.non_payed', function () {
 	var record_id = $(this).attr('id')
 	record_id = record_id.substring(0, record_id.length - 10)
 	$(this).html("更新成已繳款")
-	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1" }, function (data) {
+	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "0" }, function (data) {
 	})
 })
 $("#record_payment").on('click', '.payed', function () {
 	var record_id = $(this).attr('id')
 	record_id = record_id.substring(0, record_id.length - 6)
 	$(this).html("更新成未繳款")
-	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "0" }, function (data) {
+	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1" }, function (data) {
 	})
 })
 //初始化
