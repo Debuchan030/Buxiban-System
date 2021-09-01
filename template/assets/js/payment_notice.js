@@ -103,7 +103,7 @@ function get_student_record_info() { //放上學生資訊 根據有繳費未繳�
 	$.post("../../app/payment_notice.php", { action: "get_record_payment" }, function (student_record_info) {
 		student_record_info = JSON.parse(student_record_info)
 		for (var i = 0; i < student_record_info.length; i++) {
-			if (student_record_info[i].record_payment_states == false) { //未繳款
+			if (parseInt(student_record_info[i].record_payment_states) == 0) { //未繳款
 				var id = student_record_info[i].record_id
 				var std_name = student_record_info[i].record_std_name
 				var parent_name = student_record_info[i].record_parent_name
