@@ -10,6 +10,7 @@ for($i=0;$i < count($get_std_list);$i++){
     $std_name = $get_std_list[$i]['std_name'];
     $parent_name = $get_std_list[$i]['parent_name'];
     $parent_phone = $get_std_list[$i]['parent_phone'];
+    $total_price = 0;
     $payment_time = date("Y-m");
     $parent_id = $get_std_list[$i]['parent_id'];
     //search selcourse
@@ -20,13 +21,10 @@ for($i=0;$i < count($get_std_list);$i++){
             $total_price += $get_std_selcourse[$j]['course_price'];
         }
     }
-    else{
-        $total_price = 0;
-    }
        
     // $add_payment = $conn->query("insert into buxiban_record_payment(record_std_name,record_parent_name,record_parent_phone,record_total_price,payment_time,parent_id,buxiban_id) value('$std_name','$parent_name','$parent_phone',$total_price,'$payment_time',$parent_id,$buxiban_id)");
 
-    print($total_price);
+    print("NO.".$i."費用".$total_price);
 }
 // print(date("Y-m"));
 /*
