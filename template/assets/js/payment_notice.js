@@ -152,8 +152,8 @@ add_payment_record.addEventListener('click', add_payment_record_func)
 function add_payment_record_func() {
 	$.post("../../app/payment_notice.php", { action: "add_new_payment" }, function (payment) {
 		console.log("新增當月繳款紀錄")
-		// $("#record_payment").empty()
-		// get_payment_record.call(this)
+		$("#record_payment").empty()
+		get_payment_record.call(this)
 	});
 }
 //更新當月繳款紀錄
