@@ -8,15 +8,26 @@ switch ($_POST['action']) {
     //生成該月紀錄
     case "add_new_payment":
         //檢測該月紀錄
-        // $check_payent = $conn->query("select * from buxiban_payment where buxiban_id = $buxiban_id AND payment_time = '$datemonth'"); 
-        // if($check_payent){
+        // $check_payment = $conn->query("select * from buxiban_payment where buxiban_id = $buxiban_id AND payment_time = '$datemonth'"); 
+        // if($check_payment){
 
         // }
         // else{
+            // $add_payment =  $conn->query("insert into buxiban_payment(buxiban_id,payment_time) value($buxiban_id,'$datemonth')");
             //取學生表
-            // $get_std_list = $conn->query("select std_id,std_name,parent_name,parent_phone from buxiban_student,bixiban_parent where buxiban_student.parent_id = bixiban_parent.parent_id AND bixiban_student.buxiban_id=$buxiban_id")->fetchAll(PDO::FETCH_ASSOC);
-            //
-            // $std_info = $conn->query("select buxiban_student.std_id,buxiban_student.std_name from buxiban_student where buxiban_student.buxiban_id =$buxiban_id AND buxiban_student.std_id in(SELECT std_id FROM buxiban_selcourse where buxiban_selcourse.course_id = $course_id)")->fetchAll(PDO::FETCH_ASSOC);
+            // $get_std_list = $conn->query("select std_id,std_name,parent_name,parent_phone from buxiban_student,buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_student.buxiban_id=$buxiban_id")->fetchAll(PDO::FETCH_ASSOC);
+            // for($i=0;$i<count($get_std_list);$i++){
+            //     $std_id = $get_std_list[$i]['std_id'];
+            //     $get_std_selcourse = $conn->query("select course_name,course_price from buxiban_course,buxiban_selcourse where buxiban_selcourse.std_id = $std_id AND buxiban_selcourse.course_id = buxiban_course.course_id")->fetchAll(PDO::FETCH_ASSOC);
+            //     if($get_std_selcourse){
+            //         $add_payment = $conn->query("insert into course_name,course_price from buxiban_course,buxiban_selcourse where buxiban_selcourse.std_id = $std_id AND buxiban_selcourse.course_id = buxiban_course.course_id")->fetchAll(PDO::FETCH_ASSOC);
+            
+            //         print_r($get_std_selcourse);
+            //     }
+            //     else{
+            //         print("NO DATA");
+            //     }
+            // }
         // }
         // $course_id = $_POST['course_id'];
         // $std_id = json_decode($_POST['one_btn_delete_std_array'],true);
