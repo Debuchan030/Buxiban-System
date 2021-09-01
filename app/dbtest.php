@@ -4,7 +4,12 @@ include('dbconfig.php');
 session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
 $get_std_list = $conn->query("select std_id,std_name,parent_name,parent_phone from buxiban_student,buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_student.buxiban_id=$buxiban_id")->fetchAll(PDO::FETCH_ASSOC);
-print_r($get_std_list);
+
+for($i=0;$i < count($get_std_list);$i++){
+    $std_id = $get_std_list[$i]['std_id'];
+    $get_std_selcourse = $conn->query("select course_name,course_price form buxiban_course,buxiban_selcourse where buxiban_selcourse.std_id = $std_id AND buxiban_selcourse.course_id = buxiban_course.course_id")->fetchAll(PDO::FETCH_ASSOC);
+    print_r($get_std_selcourse);
+}
 /*
 /*
 session_start();
