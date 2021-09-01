@@ -3,7 +3,7 @@ ini_set("display_errors", "On");
 include('dbconfig.php');
 session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
-$get_std_list = $conn->query("select std_id,std_name,parent_id,parent_name,parent_phone from buxiban_student,buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_student.buxiban_id=$buxiban_id")->fetchAll(PDO::FETCH_ASSOC);
+$get_std_list = $conn->query("select std_id,std_name,buxiban_parent.parent_id,parent_name,parent_phone from buxiban_student,buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_student.buxiban_id=$buxiban_id")->fetchAll(PDO::FETCH_ASSOC);
 
 for($i=0;$i < count($get_std_list);$i++){
     //insert data
