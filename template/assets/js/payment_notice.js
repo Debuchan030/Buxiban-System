@@ -103,6 +103,7 @@ function get_payment_record() { //放上年月大標題
 }
 function get_student_record_info(payment_time) { //放上學生資訊 根據有繳費未繳費區分
 	$.post("../../app/payment_notice.php", { action: "get_record_payment", payment_time: payment_time }, function (student_record_info) {
+		console.log(student_record_info)
 		student_record_info = JSON.parse(student_record_info)
 		for (var i = 0; i < student_record_info.length; i++) {
 			if (parseInt(student_record_info[i].record_payment_states) == 0) { //未繳款
