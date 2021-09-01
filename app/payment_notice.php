@@ -4,6 +4,7 @@ include('dbconfig.php');
 session_start();
 $buxiban_id = $_SESSION['buxiban_id'];
 $datemonth = date("Y-m");
+$datetime = date("Y-m-d H:i:s");
 switch ($_POST['action']) {
     //取得月份紀錄
     case "get_payment":
@@ -15,37 +16,40 @@ switch ($_POST['action']) {
             echo("NO DATA");
         }
     break;
+
     //取得學生列表
     case "get_record_payment":
-        // $get_payment = $conn->query("select payment_time from buxiban_payment where buxiban_id = $buxiban_id")->fetchAll(PDO::FETCH_ASSOC); 
-        // if($get_payment){
-        //     echo json_encode($get_payment);
-        // }
-        // else{
-        //     echo("NO DATA");
-        // }
+        $payment_time = $_POST['payment_time'];
+        $get_record_payment = $conn->query("select record_id,record_std_name,record_parent_name,record_parent_phone,record_payment_states,record_total_price,record_payment_done from buxiban_record_payment where buxiban_id=$buxiban_id AND payment_time ='$payment_time'")->fetchAll(PDO::FETCH_ASSOC); 
+        if($get_record_payment){
+            echo json_encode($get_record_payment);
+        }
+        else{
+            echo("NO DATA");
+        }
     break;
+
     //取得選課資料
     case "get_record_selcourse":
-        // $get_payment = $conn->query("select payment_time from buxiban_payment where buxiban_id = $buxiban_id")->fetchAll(PDO::FETCH_ASSOC); 
-        // if($get_payment){
-        //     echo json_encode($get_payment);
-        // }
-        // else{
-        //     echo("NO DATA");
-        // }
+        $record_id = $_POST['record_id'];
+        $get_record_selcourse = $conn->query("select record_selcourse_name,record_selcourse_price from buxiban_record_selcourse where record_id=$record_id")->fetchAll(PDO::FETCH_ASSOC); 
+        if($get_record_selcourse){
+            echo json_encode($get_record_selcourse);
+        }
+        else{
+            echo("NO DATA");
+        }
     break;
+
     //生成該月紀錄
     case "add_new_payment":
         // 檢測該月紀錄
         $check_payment = $conn->query("select * from buxiban_payment where buxiban_id = $buxiban_id AND payment_time = '$datemonth'")->fetchAll(PDO::FETCH_ASSOC); 
         if($check_payment){
             //update
-            echo("get");
         }
         else{
             $add_new_payment = $conn->query("insert into buxiban_payment(buxiban_id,payment_time) value($buxiban_id,'$datemonth')");
-            echo("non get");
             $get_std_list = $conn->query("select std_id,std_name,buxiban_parent.parent_id,parent_name,parent_phone from buxiban_student,buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_student.buxiban_id=$buxiban_id")->fetchAll(PDO::FETCH_ASSOC);
             for($i=0;$i < count($get_std_list);$i++){
                 //insert data
@@ -78,11 +82,10 @@ switch ($_POST['action']) {
         }
     break;
 
-    ////切換繳款狀態
+    //切換繳款狀態
     case "update_payment_states":
-        // $record_id = $_POST['record_id'];
-        // $sqlsend = $conn->query("update buxiban_record_payment set record_payment_states = NOT(record_payment_states) where record_id = $record_id"); 
-        
+        $record_id = $_POST['record_id'];
+        $sqlsend = $conn->query("update buxiban_record_payment set record_payment_states=NOT record_payment_states,record_payment_done='$datetime' where record_id = $record_id"); 
     break;
 
     //刪除紀錄
