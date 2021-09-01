@@ -36,9 +36,9 @@ switch ($_POST['action']) {
     case "add_selcourse":
         $course_id = $_POST['course_id'];
         $std_id = json_decode($_POST['one_btn_add_std_array'],true);
-        echo $std_id;
         foreach ($std_id as $value) {
             $sqlsend = $conn->query("Insert into buxiban_selcourse(std_id,course_id) value($value,$course_id);"); 
+            $sqlsend = $conn->query("update buxiban_student set selcourse_states=1 where std_id=$value");
         }
         break;
     //刪除選課學生
@@ -46,7 +46,8 @@ switch ($_POST['action']) {
         $course_id = $_POST['course_id'];
         $std_id = json_decode($_POST['one_btn_delete_std_array'],true);
         foreach ($std_id as $value) {
-            $sqlsend = $conn->query("delete from buxiban_selcourse where course_id = $course_id AND std_id = $value"); 
+            $sqlsend = $conn->query("delete from buxiban_selcourse where course_id = $course_id AND std_id = $value");
+            $sqlsend = $conn->query("update buxiban_student set selcourse_states=1 where std_id=$value");
         }
         break;
 }

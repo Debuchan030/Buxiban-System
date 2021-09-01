@@ -47,6 +47,39 @@ switch ($_POST['action']) {
         $check_payment = $conn->query("select * from buxiban_payment where buxiban_id = $buxiban_id AND payment_time = '$datemonth'")->fetchAll(PDO::FETCH_ASSOC); 
         if($check_payment){
             //update
+            //調record
+            $get_std_selstates = $conn->query("select std_id,std_name,parent_id from buxiban_student where selcourse_states=1 AND buxiban_id=$buxiban_id")->fetch(PDO::FETCH_ASSOC);
+            if($get_std_selstates){
+                for($i=0;$i<count($get_std_selstates);$i++){
+                    //get someone selcourse record
+                    $parent_id = $get_std_selstates[$i]['parent_id'];
+                    $std_name = $get_std_selstates[$i]['std_name'];
+                    $std_id = $get_std_selstates[$i]['std_id'];
+                    $get_record_id = $conn->query("select record_id from buxiban_record_payment where parent_id=$parent_id AND record_std_mame='$std_name'")->fetch(PDO::FETCH_ASSOC);
+                    for($j=0;$j<count($get_std_selstates);$j++){
+                        //del old record_selcourse
+                        $record_id = $get_record_id[$j]['record_id'];
+                        $del_record_selcourse = $conn->query("delete from buxiban_record_selcourse where record_id=$record_id");
+                    }
+
+                    // $get_std_selcourse = $conn->query("select course_name,course_price from buxiban_course,buxiban_selcourse where buxiban_selcourse.std_id = $std_id AND buxiban_selcourse.course_id = buxiban_course.course_id")->fetchAll(PDO::FETCH_ASSOC);
+                    // if($get_std_selcourse){
+                    //     for($j=0;$j<count($get_std_selcourse);$j++){
+                    //         $course_name = $get_std_selcourse[$j]['course_name'];
+                    //         $course_price = $get_std_selcourse[$j]['course_price'];
+                    //          //add new record_selcourse
+                    //         $add_new_record_selcourse = $conn->query("insert into buxiban_record_selcourse(record_id,record_selcourse_name,record_selcourse_price) value($record_id,'$course_name',$course_price) ");
+                    //         $total_price += $get_std_selcourse[$j]['course_price'];
+                    //     }
+                    // }
+                    // //update total price
+                    // $update_this_record = $conn->query("update buxiban_record_payment set record_total_price=$total_price where record_id=$record_id ");
+
+
+                }
+                
+            }
+
         }
         else{
             $add_new_payment = $conn->query("insert into buxiban_payment(buxiban_id,payment_time) value($buxiban_id,'$datemonth')");
@@ -93,16 +126,6 @@ switch ($_POST['action']) {
             $sqlsend = $conn->query("update buxiban_record_payment set record_payment_states=NOT record_payment_states,record_payment_done='0000-00-00 00:00:00' where record_id = $record_id"); 
         }
         break;
-
-    //刪除紀錄
-    case "DE":
-        // $course_id = $_POST['course_id'];
-        // $std_id = json_decode($_POST['one_btn_delete_std_array'],true);
-        // foreach ($std_id as $value) {
-        //     $sqlsend = $conn->query("delete from buxiban_selcourse where course_id = $course_id AND std_id = $value"); 
-        // }
-
-    break;
 }
 $conn = null;
 ?>
