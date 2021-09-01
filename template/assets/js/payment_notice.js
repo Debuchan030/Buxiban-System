@@ -72,7 +72,7 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 		<div>
 			詳細資訊：
 		</div>
-		<div id = "selcourse_${record_id}>
+		<div id = "selcourse_${record_id}">
 
 		</div>
 
@@ -81,7 +81,7 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 `
 //課程模板
 var selcourse_template = ({ record_selcourse_name, record_selcourse_price }) => `
-<label for="">課程名稱：${record_selcourse_name}---$${record_selcourse_price}</label>
+課程名稱：${record_selcourse_name}---$${record_selcourse_price}<br>
 `
 function get_payment_record() { //放上年月大標題
 	$.post("../../app/payment_notice.php", { action: "get_payment" }, function (record_payment) {
@@ -103,7 +103,6 @@ function get_payment_record() { //放上年月大標題
 }
 function get_student_record_info(payment_time) { //放上學生資訊 根據有繳費未繳費區分
 	$.post("../../app/payment_notice.php", { action: "get_record_payment", payment_time: payment_time }, function (student_record_info) {
-		console.log(student_record_info)
 		student_record_info = JSON.parse(student_record_info)
 		for (var i = 0; i < student_record_info.length; i++) {
 			if (parseInt(student_record_info[i].record_payment_states) == 0) { //未繳款
@@ -138,13 +137,10 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 function get_std_selcourse(record_id) {
 	$.post("../../app/payment_notice.php", { action: "get_record_selcourse", record_id: record_id }, function (record_selcourse) {
 		record_selcourse = JSON.parse(record_selcourse)
-		var total_price
 		for (var i = 0; i < record_selcourse.length; i++) {
-			var id = record_selcourse[i].record_id
 			var record_selcourse_name = record_selcourse[i].record_selcourse_name
 			var record_selcourse_price = record_selcourse[i].record_selcourse_price
-			total_price += parseInt(record_selcourse_price)
-			$("#selcourse_" + id).append([
+			$("#selcourse_" + record_id).append([
 				{ record_selcourse_name: record_selcourse_name, record_selcourse_price: record_selcourse_price },
 			].map(selcourse_template));
 		}
@@ -155,7 +151,7 @@ var add_payment_record = document.getElementById('add_payment_record')
 add_payment_record.addEventListener('click', add_payment_record_func)
 function add_payment_record_func() {
 	$.post("../../app/payment_notice.php", { action: "add_new_payment" }, function (payment) {
-		console.log(payment)
+		console.log("新增當月繳款紀錄")
 		$("#record_payment").empty()
 		get_payment_record.call(this)
 	});
@@ -165,16 +161,14 @@ $("#record_payment").on('click', '.non_payed', function () {
 	var record_id = $(this).attr('id')
 	record_id = record_id.substring(0, record_id.length - 10)
 	$(this).html("更新成已繳款")
-	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id }, function (data) {
-		console.log(data)
+	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "0" }, function (data) {
 	})
 })
 $("#record_payment").on('click', '.payed', function () {
 	var record_id = $(this).attr('id')
 	record_id = record_id.substring(0, record_id.length - 6)
 	$(this).html("更新成未繳款")
-	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id }, function (data) {
-		console.log(data)
+	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1" }, function (data) {
 	})
 })
 //初始化
