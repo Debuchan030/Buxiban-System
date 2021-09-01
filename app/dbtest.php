@@ -1,10 +1,10 @@
 <?php
-// ini_set("display_errors", "On"); 
-// include('dbconfig.php');
-// session_start();
-// $buxiban_id = $_SESSION['buxiban_id'];
-
-// print(date("Y-m"));
+ini_set("display_errors", "On"); 
+include('dbconfig.php');
+session_start();
+$buxiban_id = $_SESSION['buxiban_id'];
+$get_this_record_id = $conn->query("select record_id from buxiban_record_payment where parent_id =$parent_id AND payment_time='$payment_time'")->fetch(PDO::FETCH_ASSOC);
+print_r($get_this_record_id);
 /*
 /*
 session_start();
