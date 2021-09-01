@@ -3,23 +3,23 @@
 
 //將資料用template放上去
 //展開模板
-var payment_template = ({ payment_id, payment_time, }) => `
+var payment_template = ({ payment_time }) => `
 <div class="border border-secondary border-3 rounded p-2 h1 text-center bg-white" data-bs-toggle="collapse"
-	data-bs-target="#record_${payment_id}" aria-expanded="false" aria-controls="record_${payment_id}">
+	data-bs-target="#record_${payment_time}" aria-expanded="false" aria-controls="record_${payment_time}">
 	${payment_time}
 </div>
 
-<div class="collapse" id="record_${payment_id}">
+<div class="collapse" id="record_${payment_time}">
 	<table>
 		<h3>未繳款</h3>
-		<tbody id="${payment_id}_non_payed">
+		<tbody id="${payment_time}_non_payed">
 
 		</tbody>
 
 	</table>
 	<table>
 		<h3>已繳款</h3>
-		<tbody id="${payment_id}_payed">
+		<tbody id="${payment_time}_payed">
 
 		</tbody>
 
@@ -27,16 +27,16 @@ var payment_template = ({ payment_id, payment_time, }) => `
 </div>
 `
 //未繳款模板
-var nonpayed_std_info_template = ({ record_std_id, record_std_name, record_parent_name, record_parent_phone }) => `
+var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_price, record_parent_name, record_parent_phone }) => `
 
-<tr data-bs-toggle="collapse" data-bs-target="#std_${record_std_id}" aria-expanded="false"
+<tr data-bs-toggle="collapse" data-bs-target="#std_${record_id}" aria-expanded="false"
 	aria-controls="non_payed1">
 	<td>學生姓名：${record_std_name}</td>
-	<td id = "total_price_${record_std_id}"></td>
+	<td>總金額：$${record_total_price}</td>
 	<td><button class="non_payed">未繳款</button></td>
 </tr>
 
-<tr class="collapse" id="std_${record_std_id}">
+<tr class="collapse" id="std_${record_id}">
 	<td>
 		<div>
 			姓名：${record_std_name}
@@ -47,7 +47,7 @@ var nonpayed_std_info_template = ({ record_std_id, record_std_name, record_paren
 		<div>
 			詳細資訊：
 		</div>
-		<div id = "selcourse_${record_std_id}">
+		<div id = "selcourse_${record_id}">
 
 		</div>
 	</td>
@@ -55,17 +55,17 @@ var nonpayed_std_info_template = ({ record_std_id, record_std_name, record_paren
 	
 `
 //已繳款模板
-var payed_std_info_template = ({ record_std_id, record_std_name, record_parent_name, record_parent_phone }) => `
+var payed_std_info_template = ({ record_id, record_std_name, record_total_price, record_parent_name, record_parent_phone }) => `
 
 
-<tr data-bs-toggle="collapse" data-bs-target="#std_${record_std_id}" aria-expanded="false"
+<tr data-bs-toggle="collapse" data-bs-target="#std_${record_id}" aria-expanded="false"
 	aria-controls="non_payed1">
 	<td>學生姓名：${record_std_name}</td>
-	<td id = "total_price_${record_std_id}"></td>
+	<td>總金額：$${record_total_price}</td>
 	<td><button class="payed">已繳款</button></td>
 </tr>
 
-<tr class="collapse" id="std_${record_std_id}">
+<tr class="collapse" id="std_${record_id}">
 	<td>
 		<div>
 			姓名：${record_std_name}
@@ -76,7 +76,7 @@ var payed_std_info_template = ({ record_std_id, record_std_name, record_parent_n
 		<div>
 			詳細資訊：
 		</div>
-		<div id = "selcourse_${record_std_id}>
+		<div id = "selcourse_${record_id}>
 
 		</div>
 
@@ -89,11 +89,6 @@ var payed_std_info_template = ({ record_std_id, record_std_name, record_parent_n
 //課程模板
 var selcourse_template = ({ record_selcourse_name, record_selcourse_price }) => `
 <label for="">課程名稱：${record_selcourse_name}---$${record_selcourse_price}</label>
-
-`
-//總價格模板
-var total_price_template = ({ total_price }) => `
-總金額：$${total_price}
 `
 //抓取繳款紀錄並放上去
 //獲取繳款紀錄資料 buxiban_payment table (select * from buxiban_payment)
@@ -101,75 +96,66 @@ var total_price_template = ({ total_price }) => `
 //獲取學生選課紀錄 buxiban_selcourse_record_info table 
 //(select * from buxiban_selcourse_record_info where buxiban_payment_record_info.record_selcourse_id == buxiban_selcourse_record_info.record_selcourse_id)
 
-function get_payment_record() {
-	$.post("../../app/payment_notice.php", { action: "get_payment_record" }, function (payment_record) {
+function get_payment_record() { //放上年月大標題
+	$.post("../../app/payment_notice.php", { action: "get_payment" }, function (record_payment) {
 
-		payment_record = JSON.parse(payment_record)
-		for (var i = 0; i < payment_record.length; i++) {
-			var id = payment_record[i].payment_id
-			var time = payment_record[i].payment_time
-
-			$('#payment_record').append([
-				{ payment_id: id, payment_time: time },
+		record_payment = JSON.parse(record_payment)
+		for (var i = 0; i < record_payment.length; i++) {
+			var time = record_payment[i].payment_time
+			$('#record_payment').append([
+				{ payment_time: time },
 			].map(payment_template));
 		}
+		get_student_record_info.call(this)
 	});
 }
-function get_student_record_info() {
-	$.post("../../app/payment_notice.php", { action: "get_student_record_info" }, function (student_record_info) {
+function get_student_record_info() { //放上學生資訊 根據有繳費未繳費區分
+	$.post("../../app/payment_notice.php", { action: "get_record_payment" }, function (student_record_info) {
 
 		student_record_info = JSON.parse(student_record_info)
 		for (var i = 0; i < student_record_info.length; i++) {
 			if (student_record_info[i].record_payment_state == false) { //未繳款
-				var id = student_record_info[i].record_std_id
+				var id = student_record_info[i].record_id
 				var std_name = student_record_info[i].record_std_name
 				var parent_name = student_record_info[i].record_parent_name
 				var parent_phone = student_record_info[i].record_parent_phone
+				var total_price = student_record_info[i].record_total_price
 				$("#" + id + "non_payed").append([
-					{ record_std_id: id, record_std_name: std_name, record_parent_name: parent_name, record_parent_phone: parent_phone },
+					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_parent_name: parent_name, record_parent_phone: parent_phone },
 				].map(nonpayed_std_info_template));
+				// 放上選課課程資料
+
+
 
 			}
 			else {//有繳款
-				var id = student_record_info[i].record_std_id
+				var id = student_record_info[i].record_id
 				var std_name = student_record_info[i].record_std_name
 				var parent_name = student_record_info[i].record_parent_name
 				var parent_phone = student_record_info[i].record_parent_phone
+				var total_price = student_record_info[i].record_total_price
 				$("#" + id + "payed").append([
-					{ record_std_id: id, record_std_name: std_name, record_parent_name: parent_name, record_parent_phone: parent_phone },
+					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_parent_name: parent_name, record_parent_phone: parent_phone },
 				].map(payed_std_info_template));
-
+				// 放上選課課程資料
 			}
 
 		}
+		get_std_selcourse.call(this)
 	});
 }
-function get_std_selcourse(){
-	$.post("../../app/payment_notice.php", { action: "get_std_selcourse" }, function (std_selcourse) {
-
-		std_selcourse = JSON.parse(std_selcourse)
-		for (var i = 0; i < student_record_info.length; i++) {
-			if (student_record_info[i].record_payment_state == false) { //未繳款
-				var id = student_record_info[i].record_std_id
-				var std_name = student_record_info[i].record_std_name
-				var parent_name = student_record_info[i].record_parent_name
-				var parent_phone = student_record_info[i].record_parent_phone
-				$("#" + id + "non_payed").append([
-					{ record_std_id: id, record_std_name: std_name, record_parent_name: parent_name, record_parent_phone: parent_phone },
-				].map(nonpayed_std_info_template));
-
-			}
-			else {//有繳款
-				var id = student_record_info[i].record_std_id
-				var std_name = student_record_info[i].record_std_name
-				var parent_name = student_record_info[i].record_parent_name
-				var parent_phone = student_record_info[i].record_parent_phone
-				$("#" + id + "payed").append([
-					{ record_std_id: id, record_std_name: std_name, record_parent_name: parent_name, record_parent_phone: parent_phone },
-				].map(payed_std_info_template));
-
-			}
-
+function get_std_selcourse() {
+	$.post("../../app/payment_notice.php", { action: "get_record_selcourse" }, function (record_selcourse) {
+		record_selcourse = JSON.parse(record_selcourse)
+		var total_price
+		for (var i = 0; i < record_selcourse.length; i++) {
+			var id = record_selcourse[i].record_id
+			var record_selcourse_name = record_selcourse[i].record_selcourse_name
+			var record_selcourse_price = record_selcourse[i].record_selcourse_price
+			total_price += parseInt(record_selcourse_price)
+			$("#selcourse_" + id).append([
+				{ record_selcourse_name: record_selcourse_name, record_selcourse_price: record_selcourse_price },
+			].map(selcourse_template));
 		}
 	});
 }
@@ -178,8 +164,16 @@ function get_std_selcourse(){
 var add_payment_record = document.getElementById('add_payment_record')
 add_payment_record.addEventListener('click', add_payment_record_func)
 function add_payment_record_func() {
-	$.post("../../app/payment_notice.php", { action: "get_member" }, function (member) {
-
+	$.post("../../app/payment_notice.php", { action: "add_new_payment" }, function (payment) {
+		console.log(payment)
+		$("#record_payment").empty()
+		get_payment_record.call(this)
 	});
 }
+
+
+
+//初始化
+$("#record_payment").empty()
+get_payment_record.call(this)
 
