@@ -16,7 +16,7 @@ for($i=0;$i < count($get_std_list);$i++){
     $std_id = $get_std_list[$i]['std_id'];
     $get_std_selcourse = $conn->query("select course_name,course_price from buxiban_course,buxiban_selcourse where buxiban_selcourse.std_id = $std_id AND buxiban_selcourse.course_id = buxiban_course.course_id")->fetchAll(PDO::FETCH_ASSOC);
     if($get_std_selcourse){
-        for($j=0;$j<$get_std_selcourse;$j++){
+        for($j=0;$j<count($get_std_selcourse);$j++){
             $total_price += $get_std_selcourse[$j]['course_price'];
         }
     }
