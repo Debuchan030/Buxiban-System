@@ -58,21 +58,18 @@ switch ($_POST['action']) {
                         $record_id = $get_record_id[$j]['record_id'];
                         $del_record_selcourse = $conn->query("delete from buxiban_record_selcourse where record_id=$record_id");
                     }
-
-                    // $get_std_selcourse = $conn->query("select course_name,course_price from buxiban_course,buxiban_selcourse where buxiban_selcourse.std_id = $std_id AND buxiban_selcourse.course_id = buxiban_course.course_id")->fetchAll(PDO::FETCH_ASSOC);
-                    // if($get_std_selcourse){
-                    //     for($j=0;$j<count($get_std_selcourse);$j++){
-                    //         $course_name = $get_std_selcourse[$j]['course_name'];
-                    //         $course_price = $get_std_selcourse[$j]['course_price'];
-                    //          //add new record_selcourse
-                    //         $add_new_record_selcourse = $conn->query("insert into buxiban_record_selcourse(record_id,record_selcourse_name,record_selcourse_price) value($record_id,'$course_name',$course_price) ");
-                    //         $total_price += $get_std_selcourse[$j]['course_price'];
-                    //     }
-                    // }
-                    // //update total price
-                    // $update_this_record = $conn->query("update buxiban_record_payment set record_total_price=$total_price where record_id=$record_id ");
-
-
+                    $get_std_selcourse = $conn->query("select course_name,course_price from buxiban_course,buxiban_selcourse where buxiban_selcourse.std_id = $std_id AND buxiban_selcourse.course_id = buxiban_course.course_id")->fetchAll(PDO::FETCH_ASSOC);
+                    if($get_std_selcourse){
+                        for($j=0;$j<count($get_std_selcourse);$j++){
+                            $course_name = $get_std_selcourse[$j]['course_name'];
+                            $course_price = $get_std_selcourse[$j]['course_price'];
+                            //add new record_selcourse
+                            $add_new_record_selcourse = $conn->query("insert into buxiban_record_selcourse(record_id,record_selcourse_name,record_selcourse_price) value($record_id,'$course_name',$course_price) ");
+                            $total_price += $get_std_selcourse[$j]['course_price'];
+                        }
+                    }
+                    //update total price
+                    $update_this_record = $conn->query("update buxiban_record_payment set record_total_price=$total_price where record_id=$record_id ");
                 }
             }
         } else {
