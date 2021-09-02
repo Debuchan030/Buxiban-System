@@ -27,7 +27,10 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
 </tr>
 
 `
+var now = new Date();
+var today = now.format("yyyy-MM-dd");
 
+$("#datepicker").val(today)
 $(function () {
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
@@ -78,9 +81,6 @@ function get_attend_table(date) {
         }
     });
 }
-var now = new Date();
-var today = now.format("yyyy-MM-dd");
-get_attend_table.call(this, today)
 
 // 修改狀態
 $('#attend_student').on('click', 'input:radio', update_attend_table)
