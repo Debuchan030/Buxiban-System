@@ -27,7 +27,7 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
 </tr>
 
 `
-var date = ""
+
 $(function () {
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
@@ -39,16 +39,7 @@ $(function () {
         }
     });
 });
-$.post("../../app/attend_record.php", { action: "get_attend" }, function (date) {
-    if (date == "查無紀錄") {
-        alert(date)
-        return
-    }
-    else{
-        $('#attend_student').empty()
-        get_attend_table.call(this, date)
-    }
-})
+
 //建立所有學生列表
 function get_attend_table(date) {
     $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
@@ -87,7 +78,9 @@ function get_attend_table(date) {
         }
     });
 }
-
+var now = new Date();
+var today = now.format("yyyy-MM-dd");
+get_attend_table.call(this, today)
 
 // 修改狀態
 $('#attend_student').on('click', 'input:radio', update_attend_table)
