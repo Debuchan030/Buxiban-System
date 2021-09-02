@@ -28,28 +28,18 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
 
 `
 
-Date.prototype.format = function (format) {
-    var date = {
-        "M+": this.getMonth() + 1,
-        "d+": this.getDate(),
-        "h+": this.getHours(),
-        "m+": this.getMinutes(),
-        "s+": this.getSeconds(),
-        "q+": Math.floor((this.getMonth() + 3) / 3),
-        "S": this.getMilliseconds()
-    };
-    if (/(y+)/i.test(format)) {
-        format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
-    }
-    for (var k in date) {
-        if (new RegExp("(" + k + ")").test(format)) {
-            format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
-        }
-    }
-    return format;
+Date.prototype.yyyymmdd = function () {
+    var mm = this.getMonth() + 1; // getMonth() is zero-based
+    var dd = this.getDate();
+
+    return [this.getFullYear(),
+    (mm > 9 ? '' : '0') + mm,
+    (dd > 9 ? '' : '0') + dd
+    ].join('-');
 };
-var now = new Date();
-var date = now.format("yyyy-MM-dd");
+
+var date = new Date();
+date = date.yyyymmdd();
 get_attend_table.call(this, date)
 
 $("#datepicker").datepicker({
