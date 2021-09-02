@@ -10,9 +10,6 @@ switch ($_POST['action']) {
         if(isset($_POST['date'])){
             $date = $_POST['date'];
         }
-        else{
-            $date = date("Y-m-d");
-        }
         $attend = $conn->query("select buxiban_student.std_id,buxiban_student.std_name,buxiban_parent.parent_name,buxiban_parent.parent_phone,buxiban_attend.attend_time,buxiban_attend.leave_time,buxiban_attend.attend_states,buxiban_attend.remark FROM buxiban_student,buxiban_parent,buxiban_attend WHERE buxiban_student.parent_id=buxiban_parent.parent_id AND buxiban_attend.std_id = buxiban_student.std_id AND buxiban_student.buxiban_id = $buxiban_id AND buxiban_attend.date = '$date'")->fetchall(PDO::FETCH_ASSOC);
         if($attend){
             echo json_encode($attend);
