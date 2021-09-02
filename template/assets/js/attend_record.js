@@ -27,6 +27,9 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
 </tr>
 
 `
+$("#datepicker").datepicker({
+    dateFormat: 'yy-mm-dd',
+}).datepicker("setDate", new Date());
 
 $(function () {
     $("#datepicker").datepicker({
@@ -36,8 +39,9 @@ $(function () {
             date = dateText;
             get_attend_table.call(this, dateText)
         }
-    }).datepicker("setDate", new Date());;
+    });
 });
+
 get_attend_table(this,$("#datepicker").val())
 
 //建立所有學生列表
