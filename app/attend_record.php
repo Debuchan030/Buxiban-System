@@ -15,7 +15,7 @@ switch ($_POST['action']) {
             echo json_encode($attend);
         }
         else{
-            echo "查無紀錄";
+            echo $_POST['date'];
         }
     break;
 
