@@ -49,10 +49,10 @@ switch ($_POST['action']) {
                 for($i=0;$i<count($get_std_selstates);$i++){
                     $std_id = $get_std_selstates[$i]['std_id'];
                     $std_name = $get_std_selstates[$i]['std_name'];
+                    $parent_id = $get_std_selstates[$i]['parent_id'];
                     $parent_name = $get_std_selstates[$i]['parent_name'];
                     $parent_phone = $get_std_selstates[$i]['parent_phone'];
                     $total_price = 0;
-                    $parent_id = $get_std_selstates[$i]['parent_id'];
                     //檢測紀錄
                     $get_record_id = $conn->query("select record_id from buxiban_record_payment where parent_id=$parent_id AND record_std_name='$std_name' AND payment_time='$datemonth'")->fetch(PDO::FETCH_ASSOC);
                     $record_id = $get_record_id['record_id'];
@@ -62,7 +62,7 @@ switch ($_POST['action']) {
                     }
                     //檢測失敗，新增一筆紀錄
                     else{
-                        $add_new_record_payment = $conn->query("insert into buxiban_record_payment(record_std_name,record_parent_name,record_parent_phone,record_total_price,payment_time,parent_id,buxiban_id) value('$std_name','$parent_name','$parent_phone',$total_price,'$payment_time',$parent_id,$buxiban_id)");
+                        $add_new_record_payment = $conn->query("insert into buxiban_record_payment(record_std_name,record_parent_name,record_parent_phone,record_total_price,payment_time,parent_id,buxiban_id) value('$std_name','$parent_name','$parent_phone',$total_price,'$datemonth',$parent_id,$buxiban_id)");
                         $get_record_id = $conn->query("select record_id from buxiban_record_payment where parent_id=$parent_id AND record_std_name='$std_name' AND payment_time='$datemonth'")->fetch(PDO::FETCH_ASSOC);
                         $record_id = $get_record_id['record_id'];
                     }
@@ -79,6 +79,7 @@ switch ($_POST['action']) {
                     //更新總價
                     $update_this_record = $conn->query("update buxiban_record_payment set record_total_price=$total_price where record_id=$record_id ");
                 } 
+                $reset_student_selstates = $conn->query("update buxiban_student set selcourse_states=0 where buxiban_id=$buxiban_id");
             }
         }
         else{
