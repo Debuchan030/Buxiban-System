@@ -31,13 +31,12 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
 $(function () {
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
-        defaultDate: new Date(),
         onSelect: function (dateText, inst) {
             $('#attend_student').empty()
             date = dateText;
             get_attend_table.call(this, dateText)
         }
-    });
+    }).datepicker("setDate", new Date());;
 });
 
 //建立所有學生列表
