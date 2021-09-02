@@ -39,10 +39,14 @@ $(function () {
         }
     });
 });
-$.post("../../app/attend_record.php", { action: "get_attend" }, function (attend) {
+$.post("../../app/attend_record.php", { action: "get_attend" }, function (date) {
     if (attend == "查無紀錄") {
         alert(attend)
         return
+    }
+    else{
+        $('#attend_student').empty()
+        get_attend_table.call(this, date)
     }
 })
 //建立所有學生列表
