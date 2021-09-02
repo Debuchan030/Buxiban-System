@@ -56,7 +56,6 @@ switch ($_POST['action']) {
         $parent_id = $find_parent_id['parent_id'];
         //殺小孩
         $sqlresult = $conn->query("delete from buxiban_student where std_id = $std_id;");
-        //選課拔除
         //查找小孩
         $sqlresult = $conn->query("select * from buxiban_student where parent_id = $parent_id;")->fetch(PDO::FETCH_ASSOC);
         //沒小孩就砍了家長
