@@ -40,8 +40,8 @@ $(function () {
     });
 });
 $.post("../../app/attend_record.php", { action: "get_attend" }, function (date) {
-    if (attend == "查無紀錄") {
-        alert(attend)
+    if (date == "查無紀錄") {
+        alert(date)
         return
     }
     else{
