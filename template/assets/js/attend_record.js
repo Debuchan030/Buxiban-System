@@ -28,7 +28,6 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
 
 `
 
-$("#datepicker").val(today)
 $(function () {
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
