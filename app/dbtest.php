@@ -17,8 +17,8 @@ if($get_std_selstates){
         $total_price = 0;
         //檢測紀錄
         $get_record_id = $conn->query("select record_id from buxiban_record_payment where parent_id=$parent_id AND record_std_name='$std_name' AND payment_time='$datemonth'")->fetch(PDO::FETCH_ASSOC);
-        print(var_dump($get_record_id));
         $record_id = $get_record_id['record_id'];
+        print("record:".$record_id);
         //檢測成功，清除之前紀錄
         if($record_id){
             $del_record_selcourse = $conn->query("delete from buxiban_record_selcourse where record_id=$record_id");
