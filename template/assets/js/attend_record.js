@@ -41,7 +41,7 @@ $("#datepicker").on('change',function(){
     console.log("test")
 })
 
-get_attend_table(this, $("#datepicker").val())
+
 
 //建立所有學生列表
 function get_attend_table(date) {
