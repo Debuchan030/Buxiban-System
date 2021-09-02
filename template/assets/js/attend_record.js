@@ -37,7 +37,7 @@ $(function () {
             date = dateText;
             get_attend_table.call(this, dateText)
         }
-    }).datepicker("setDate", new Date());;
+    });
 });
 
 //建立所有學生列表
