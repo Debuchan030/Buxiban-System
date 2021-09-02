@@ -18,9 +18,9 @@ switch ( $_POST['action'] ) {
                 $_SESSION['buxiban_id'] = $buxiban_id;
                 $_SESSION['buxiban_name'] = $buxiban['buxiban_name'];
                 //檢查今日紀錄狀態 
-                $checkattend =$conn->query("select buxiban_attend.std_id from buxiban_attend,buxiban_student where buxiban_student.buxiban_id=$buxiban_id AND buxiban_student.std_id=buxiban_attend.std_id AND buxiban_attend.date='$date'")->fetch(PDO::FETCH_ASSOC);
+                $checkattend =$conn->query("select buxiban_attend.std_id from buxiban_attend,buxiban_student where buxiban_student.buxiban_id=$buxiban_id AND buxiban_student.std_id=buxiban_attend.std_id AND buxiban_attend.date='$date'")->fetchall(PDO::FETCH_ASSOC);
                 if(!$checkattend){
-                    $get_std_list =$conn->query("select std_id from buxiban_student where buxiban_id=$buxiban_id")->fetch(PDO::FETCH_ASSOC);
+                    $get_std_list =$conn->query("select std_id from buxiban_student where buxiban_id=$buxiban_id")->fetchall(PDO::FETCH_ASSOC);
                     for($i=0;$i<count($get_std_list);$i++){
                         $std_id = $get_std_list[$i]['std_id'];
                         $buxiban =$conn->query("insert into buxiban_attend(std_id,date) value($std_id,'$date')");
