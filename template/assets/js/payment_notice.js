@@ -158,7 +158,6 @@ function add_payment_record_func() {
 }
 //更新當月繳款紀錄
 $("#record_payment").on('click', '.non_payed', function () {
-	console.log($(this).text())
 	if ($(this).text() == "未繳款") {
 		var record_id = $(this).attr('id')
 		var datemonth = $(this).parents().find('tbody').attr('id')
@@ -186,10 +185,10 @@ $("#record_payment").on('click', '.non_payed', function () {
 
 })
 $("#record_payment").on('click', '.payed', function () {
-	console.log($(this).text())
 	if ($(this).text() == "已繳款") {
 		var record_id = $(this).attr('id')
 		var datemonth = $(this).parent().find('tbody').attr('id')
+		console.log(datemonth)
 		datemonth = datemonth.substring(0, datemonth.length - 6)
 		record_id = record_id.substring(0, record_id.length - 6)
 		$(this).html("更新成未繳款")
@@ -202,6 +201,7 @@ $("#record_payment").on('click', '.payed', function () {
 	else {
 		var record_id = $(this).attr('id')
 		var datemonth = $(this).parent().find('tbody').attr('id')
+		console.log(datemonth)
 		datemonth = datemonth.substring(0, datemonth.length - 6)
 		record_id = record_id.substring(0, record_id.length - 6)
 		$(this).html("已繳款")
