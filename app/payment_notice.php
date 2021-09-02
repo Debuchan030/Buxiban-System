@@ -44,7 +44,7 @@ switch ($_POST['action']) {
         $check_payment = $conn->query("select * from buxiban_payment where buxiban_id = $buxiban_id AND payment_time = '$datemonth'")->fetchAll(PDO::FETCH_ASSOC); 
         if($check_payment){
             //調變動者
-            $get_std_selstates = $conn->query("select std_id,std_name,buxiban_parent.parent_id,parent_name,parent_phone from buxiban_student,buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_student.buxiban_id=$buxiban_id AND buxiban_student.selcourse_states")->fetch(PDO::FETCH_ASSOC);
+            $get_std_selstates = $conn->query("select std_id,std_name,buxiban_parent.parent_id,parent_name,parent_phone from buxiban_student,buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_student.buxiban_id=$buxiban_id AND buxiban_student.selcourse_states")->fetchAll(PDO::FETCH_ASSOC);
             if($get_std_selstates){
                 for($i=0;$i<count($get_std_selstates);$i++){
                     $std_id = $get_std_selstates[$i]['std_id'];
@@ -79,6 +79,7 @@ switch ($_POST['action']) {
                     //更新總價
                     $update_this_record = $conn->query("update buxiban_record_payment set record_total_price=$total_price where record_id=$record_id ");
                 } 
+                //reset states
                 $reset_student_selstates = $conn->query("update buxiban_student set selcourse_states=0 where buxiban_id=$buxiban_id");
             }
         }
