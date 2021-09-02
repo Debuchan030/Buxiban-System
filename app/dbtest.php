@@ -6,6 +6,7 @@ $buxiban_id = $_SESSION['buxiban_id'];
 $datemonth = date("Y-m");
 $get_std_selstates = $conn->query("select std_id,std_name,buxiban_parent.parent_id,parent_name,parent_phone from buxiban_student,buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_student.buxiban_id=$buxiban_id AND buxiban_student.selcourse_states")->fetch(PDO::FETCH_ASSOC);
 if($get_std_selstates){
+    print(1);
     for($i=0;$i<count($get_std_selstates);$i++){
         $std_id = $get_std_selstates[$i]['std_id'];
         $std_name = $get_std_selstates[$i]['std_name'];
@@ -26,6 +27,7 @@ if($get_std_selstates){
             $get_record_id = $conn->query("select record_id from buxiban_record_payment where parent_id=$parent_id AND record_std_name='$std_name' AND payment_time='$datemonth'")->fetch(PDO::FETCH_ASSOC);
             $record_id = $get_record_id['record_id'];
         }
+        print(2);
         //更新選課
         $get_std_selcourse = $conn->query("select course_name,course_price from buxiban_course,buxiban_selcourse where buxiban_selcourse.std_id = $std_id AND buxiban_selcourse.course_id = buxiban_course.course_id")->fetchAll(PDO::FETCH_ASSOC);
         if($get_std_selcourse){
@@ -39,6 +41,7 @@ if($get_std_selstates){
         //更新總價
         $update_this_record = $conn->query("update buxiban_record_payment set record_total_price=$total_price where record_id=$record_id ");
     } 
+    print(3);
     $reset_student_selstates = $conn->query("update buxiban_student set selcourse_states=0 where buxiban_id=$buxiban_id");
 }
 
