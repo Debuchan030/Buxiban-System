@@ -162,6 +162,7 @@ $("#record_payment").on('click', '.non_payed', function () {
 		var record_id = $(this).attr('id')
 		var datemonth = $(this).parents().find('tbody').attr('id')
 		datemonth = datemonth.substring(0, datemonth.length - 10)
+		console.log(datemonth)
 		record_id = record_id.substring(0, record_id.length - 10)
 		$(this).html("更新成已繳款")
 		$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "0", datemonth: datemonth }, function (data) {
@@ -174,6 +175,7 @@ $("#record_payment").on('click', '.non_payed', function () {
 		var record_id = $(this).attr('id')
 		var datemonth = $(this).parents().find('tbody').attr('id')
 		datemonth = datemonth.substring(0, datemonth.length - 10)
+		console.log(datemonth)
 		record_id = record_id.substring(0, record_id.length - 10)
 		$(this).html("未繳款")
 		$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1", datemonth: datemonth }, function (data) {
@@ -189,6 +191,7 @@ $("#record_payment").on('click', '.payed', function () {
 		var record_id = $(this).attr('id')
 		var datemonth = $(this).parents().find('tbody').attr('id')
 		datemonth = datemonth.substring(0, datemonth.length - 6)
+		console.log(datemonth)
 		record_id = record_id.substring(0, record_id.length - 6)
 		$(this).html("更新成未繳款")
 		$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1", datemonth: datemonth }, function (data) {
@@ -201,6 +204,7 @@ $("#record_payment").on('click', '.payed', function () {
 		var record_id = $(this).attr('id')
 		var datemonth = $(this).parents().find('tbody').attr('id')
 		datemonth = datemonth.substring(0, datemonth.length - 6)
+		console.log(datemonth)
 		record_id = record_id.substring(0, record_id.length - 6)
 		$(this).html("已繳款")
 		$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "0", datemonth: datemonth }, function (data) {
