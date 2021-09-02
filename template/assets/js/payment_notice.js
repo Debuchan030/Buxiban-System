@@ -158,18 +158,60 @@ function add_payment_record_func() {
 }
 //更新當月繳款紀錄
 $("#record_payment").on('click', '.non_payed', function () {
-	var record_id = $(this).attr('id')
-	record_id = record_id.substring(0, record_id.length - 10)
-	$(this).html("更新成已繳款")
-	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "0" }, function (data) {
-	})
+	console.log($(this).text())
+	if ($(this).text() == "未繳款") {
+		var record_id = $(this).attr('id')
+		var datemonth = $(this).parents().find('tbody').attr('id')
+		datemonth = datemonth.substring(0, datemonth.length - 10)
+		record_id = record_id.substring(0, record_id.length - 10)
+		$(this).html("更新成已繳款")
+		$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "0", datemonth: datemonth }, function (data) {
+			if (data) {
+				alert(data)
+			}
+		})
+	}
+	else {
+		var record_id = $(this).attr('id')
+		var datemonth = $(this).parents().find('tbody').attr('id')
+		datemonth = datemonth.substring(0, datemonth.length - 10)
+		record_id = record_id.substring(0, record_id.length - 10)
+		$(this).html("未繳款")
+		$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1", datemonth: datemonth }, function (data) {
+			if (data) {
+				alert(data)
+			}
+		})
+	}
+
 })
 $("#record_payment").on('click', '.payed', function () {
-	var record_id = $(this).attr('id')
-	record_id = record_id.substring(0, record_id.length - 6)
-	$(this).html("更新成未繳款")
-	$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1" }, function (data) {
-	})
+	console.log($(this).text())
+	if ($(this).text() == "已繳款") {
+		var record_id = $(this).attr('id')
+		var datemonth = $(this).parent().find('tbody').attr('id')
+		datemonth = datemonth.substring(0, datemonth.length - 6)
+		record_id = record_id.substring(0, record_id.length - 6)
+		$(this).html("更新成未繳款")
+		$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1", datemonth: datemonth }, function (data) {
+			if (data) {
+				alert(data)
+			}
+		})
+	}
+	else {
+		var record_id = $(this).attr('id')
+		var datemonth = $(this).parent().find('tbody').attr('id')
+		datemonth = datemonth.substring(0, datemonth.length - 6)
+		record_id = record_id.substring(0, record_id.length - 6)
+		$(this).html("已繳款")
+		$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "0", datemonth: datemonth }, function (data) {
+			if (data) {
+				alert(data)
+			}
+		})
+	}
+
 })
 //初始化
 $("#record_payment").empty()
