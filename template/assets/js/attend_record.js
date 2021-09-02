@@ -32,7 +32,7 @@ $(function () {
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         onSelect: function (dateText, inst) {
-
+            console.log(dateText)
             $('#attend_student').empty()
             date = dateText;
             get_attend_table.call(this, dateText)
@@ -43,6 +43,7 @@ $(function () {
 //建立所有學生列表
 function get_attend_table(date) {
     $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
+        console.log(attend)
         $('#attend_student').empty()
         if (attend == "查無紀錄") {
             alert(attend)
