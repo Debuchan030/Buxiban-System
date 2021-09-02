@@ -32,7 +32,7 @@ $(function () {
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         onSelect: function (dateText, inst) {
-
+            console.log(dateText)
             $('#attend_student').empty()
             date = dateText;
             get_attend_table.call(this, dateText)
