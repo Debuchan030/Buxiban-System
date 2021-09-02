@@ -31,8 +31,8 @@ var attend_template = ({ std_id, std_name, parent_name, parent_phone, attend_tim
 $(function () {
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
+        defaultDate: new Date(),
         onSelect: function (dateText, inst) {
-            console.log(dateText)
             $('#attend_student').empty()
             date = dateText;
             get_attend_table.call(this, dateText)
@@ -43,7 +43,6 @@ $(function () {
 //建立所有學生列表
 function get_attend_table(date) {
     $.post("../../app/attend_record.php", { action: "get_attend", date: date }, function (attend) {
-        console.log(attend)
         $('#attend_student').empty()
         if (attend == "查無紀錄") {
             alert(attend)
