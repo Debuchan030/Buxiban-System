@@ -159,8 +159,9 @@ $('#search_text').on("keydown", event => {
                         ].map(member_management_template));
                     }
                 }
-                alert("以下為搜尋結果")
+
             });
+            alert("以下為搜尋結果")
 
         }
     }
