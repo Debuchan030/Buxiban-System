@@ -21,17 +21,16 @@ switch ($_POST['action']) {
         $contact2_phone = $_POST['contact2_phone'];
         $school = $_POST['school'];
         $enrollment_year = $_POST['enrollment_year'];
-        print_r(var_dump($_POST));
         for($i=0;$i<sizeof($std_name);$i++){
             $this_std_name = $std_name[$i];
             $this_contact1_name = $contact1_name[$i];
             $this_contact1_phone = $contact1_phone[$i];
             $this_contact2_name = $contact2_name[$i];
             $this_contact2_phone = $contact2_phone[$i];
-            if($this_contact2_name==""||!isset($this_contact2_name)){
+            if($this_contact2_name==""){
                 $this_contact2_name='無';
             }
-            if($this_contact2_phone==""||!isset($this_contact2_phone)){
+            if($this_contact2_phone==""){
                 $this_contact2_phone='無';
             }
             $this_school = $school[$i];
