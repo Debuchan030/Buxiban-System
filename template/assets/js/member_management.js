@@ -11,12 +11,12 @@ var member_management_template = ({ std_id, std_name, school, enrollment_year, c
         <input id="${std_id}_enrollment_year" type="text" value="${enrollment_year}" >
     </td>
     <td>
-        <input id="${std_id}_contact1" type="text" value="${contact1}" placeholder = "必填">
-        <input id="${std_id}_contact2" type="text" value="${contact2}" placeholder = "選填">
+        <input id="${std_id}_contact1" type="text" value="${contact1}" placeholder = "聯絡人1(必填)">
+        <input id="${std_id}_contact2" type="text" value="${contact2}" placeholder = "聯絡人2(選填)">
     </td>
     <td>
-        <input id="${std_id}_contact1_phone" type="text" maxlength = "10" value="${contact1_phone}" placeholder = "必填">
-        <input id="${std_id}_contact2_phone" type="text" maxlength = "10" value="${contact2_phone}" placeholder = "選填">
+        <input id="${std_id}_contact1_phone" type="text" maxlength = "10" value="${contact1_phone}" placeholder = "聯絡電話1(必填)">
+        <input id="${std_id}_contact2_phone" type="text" maxlength = "10" value="${contact2_phone}" placeholder = "聯絡電話2(選填)">
     </td>
     <td >
         <input id="${std_id}_parent_pwd" type="text" value="${parent_pwd}" >
@@ -33,12 +33,12 @@ var dynamic_member_template = ({ }) => `
     <td><input name="school[]" required></td>
     <td><input name="enrollment_year[]" required></td>
     <td>
-        <input name="contact1[]" placeholder = "必填" required>
-        <input name="contact2[]" placeholder = "選填">
+        <input name="contact1[]" placeholder = "聯絡人1(必填)" required>
+        <input name="contact2[]" placeholder = "聯絡人2(選填)">
     </td>
     <td>
-        <input name="contact1_phone[]" type="tex" maxlength = "10" placeholder = "必填" required >
-        <input name="contact2_phone[]" type="tex" maxlength = "10" placeholder = "選填">
+        <input name="contact1_phone[]" type="tex" maxlength = "10" placeholder = "聯絡電話1(必填)" required >
+        <input name="contact2_phone[]" type="tex" maxlength = "10" placeholder = "聯絡電話2(選填)">
     </td>
 
     <td><button type="button" class="delete_new_member">刪除</button></td>
