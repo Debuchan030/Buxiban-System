@@ -33,12 +33,12 @@ var dynamic_member_template = ({ }) => `
     <td><input name="school[]" required></td>
     <td><input name="enrollment_year[]" required></td>
     <td>
-        <input name="contact1[]" required>
-        <input name="contact2[]">
+        <input name="contact1[]" placeholder = "必填" required>
+        <input name="contact2[]" placeholder = "選填">
     </td>
     <td>
-        <input name="contact1_phone[]" type="tex" maxlength = "10" required>
-        <input name="contact2_phone[]" type="tex" maxlength = "10">
+        <input name="contact1_phone[]" type="tex" maxlength = "10" placeholder = "必填" required >
+        <input name="contact2_phone[]" type="tex" maxlength = "10" placeholder = "選填">
     </td>
 
     <td><button type="button" class="delete_new_member">刪除</button></td>
