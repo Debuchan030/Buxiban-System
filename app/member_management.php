@@ -20,7 +20,6 @@ switch ($_POST['action']) {
         $contact2_phone = $_POST['contact2_phone'];
         $school = $_POST['school'];
         $enrollment_year = $_POST['enrollment_year'];
-        print_r($_POST);
         for($i=0;$i<sizeof($std_name);$i++){
             $this_std_name = $std_name[$i];
             $this_contact1_name = $contact1_name[$i];
