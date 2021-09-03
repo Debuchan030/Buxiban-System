@@ -146,7 +146,8 @@ $('#search_text').on("keydown", event => {
                 for (var i = 0; i < member.length; i++) {
                     var id = member[i].std_id
                     var std_n = member[i].std_name
-
+                    var school = member[i].school
+                    var enrollment_year = member[i].enrollment_year
                     var contact1_name = member[i].contact1_name
                     var contact2_name = member[i].contact2_name
                     var contact1_phone = member[i].contact1_phone
@@ -154,7 +155,7 @@ $('#search_text').on("keydown", event => {
                     var pwd = member[i].contact_pwd
                     if (std_n.indexOf(search_text) != -1 || contact1_name.indexOf(search_text) != -1 || contact2_name.indexOf(search_text) != -1 || contact1_phone.indexOf(search_text) != -1 || contact2_phone.indexOf(search_text) != -1 || pwd.indexOf(search_text) != -1) {
                         $('#member_info').append([
-                            { std_id: id, std_name: std_n, contact1_name: contact1_name,contact2_name:contact2_name,contact1_phone,contact2_phone, contact_pwd: pwd },
+                            { std_id: id, std_name: std_n,school:school,enrollment_year:enrollment_year, contact1_name: contact1_name,contact2_name:contact2_name,contact1_phone,contact2_phone, contact_pwd: pwd },
                         ].map(member_management_template));
                     }
                 }
