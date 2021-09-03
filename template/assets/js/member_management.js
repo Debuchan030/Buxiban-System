@@ -29,7 +29,7 @@ var member_management_template = ({ std_id, std_name, school, enrollment_year, c
 var dynamic_member_template = ({ }) => `
 
 <tr>
-    <td><input name="std_name[] type="text"" required></td>
+    <td><input name="std_name[]" type="text" required></td>
     <td><input name="school[]" type="text" required></td>
     <td><input name="enrollment_year[]" type="text" required></td>
     <td>
