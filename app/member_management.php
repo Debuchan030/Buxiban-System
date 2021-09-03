@@ -19,6 +19,12 @@ switch ($_POST['action']) {
         $contact1_phone = $_POST['contact1_phone'];
         $contact2_name = $_POST['contact2_name'];
         $contact2_phone = $_POST['contact2_phone'];
+        if($contact2_name=''){
+            $contact2_name='無';
+        }
+        if($contact2_phone=''){
+            $contact2_phone='無';
+        }
         $school = $_POST['school'];
         $enrollment_year = $_POST['enrollment_year'];
         for($i=0;$i<sizeof($std_name);$i++){
