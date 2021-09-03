@@ -49,7 +49,7 @@ var dynamic_member_template = ({ }) => `
 // 獲取所有學生/家長名單 std_n parent_n aact pwd phone, buxiban_parent.length
 function get_all_member_func() {
     $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
-
+        console.log(member)
         member = JSON.parse(member)
         for (var i = 0; i < member.length; i++) {
             var id = member[i].std_id
@@ -148,12 +148,15 @@ $('#search_text').on("keydown", event => {
                 for (var i = 0; i < member.length; i++) {
                     var id = member[i].std_id
                     var std_n = member[i].std_name
-                    var parent_n = member[i].parent_name
+
+                    var contact1_name = member[i].contact1_name
+                    var contact2_name = member[i].contact2_name
+                    var contact1_phone = member[i].contact1_phone
+                    var contact2_phone = member[i].contact2_phone
                     var pwd = member[i].contact_pwd
-                    var phone = member[i].parent_phone
-                    if (std_n.indexOf(search_text) != -1 || parent_n.indexOf(search_text) != -1 || pwd.indexOf(search_text) != -1 || phone.indexOf(search_text) != -1) {
+                    if (std_n.indexOf(search_text) != -1 || contact1_name.indexOf(search_text) != -1 || contact2_name.indexOf(search_text) != -1 || contact1_phone.indexOf(search_text) != -1 || contact2_phone.indexOf(search_text) != -1 || pwd.indexOf(search_text) != -1) {
                         $('#member_info').append([
-                            { std_id: id, std_name: std_n, parent_name: parent_n, contact_pwd: pwd, parent_phone: phone },
+                            { std_id: id, std_name: std_n, contact1_name: contact1_name,contact2_name:contact2_name,contact1_phone,contact2_phone, contact_pwd: pwd },
                         ].map(member_management_template));
                     }
                 }
