@@ -1,14 +1,20 @@
 // 學生/家長名單模板
-var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, parent_phone }) => `
+var member_management_template = ({ std_id, std_name, school, enrollment_year, parent_name, parent_pwd, parent_phone }) => `
 <tr id="${std_id}_std_id">
     <td >
         <input id="${std_id}_std_name" type="text" value="${std_name}" >
     </td>
     <td>
+        <input id="${std_id}_school" type="text" value="${school}" >
+    </td>
+    <td>
+        <input id="${std_id}_grade" type="text" value="${enrollment_year}" >
+    </td>
+    <td>
         <input id="${std_id}_parent_name" type="text" value="${parent_name}" >
     </td>
     <td>
-        <input id="${std_id}_parent_phone" type="text" maxlength = "10" value="${parent_phone}" >
+        <input id="${std_id}_parent_phone" type="text" value="${parent_phone}" >
     </td>
     <td >
         <input id="${std_id}_parent_pwd" type="text" value="${parent_pwd}" >
@@ -16,7 +22,20 @@ var member_management_template = ({ std_id, std_name, parent_name, parent_pwd, p
     <td><button class = "update_member">確認修改</button></td>
     <td><button class = "delete_member">確認刪除</button></td>
 </tr>
-`;
+`
+
+var dynamic_member_template = ({ }) => `
+
+<tr>
+    <td><input name="std_name[]" required></td>
+    <td><input name="school[]" required></td>
+    <td><input name="enrollment_year[]" required></td>
+    <td><input name="parent_name[]" required></td>
+    <td><input name="parent_phone[]" type="tex" required></td>
+    <td><button type="button" class="delete_new_member">刪除</button></td>
+</tr>       
+
+`
 
 // 獲取所有學生/家長名單 std_n parent_n aact pwd phone, buxiban_parent.length
 function get_all_member_func() {
@@ -26,11 +45,13 @@ function get_all_member_func() {
         for (var i = 0; i < member.length; i++) {
             var id = member[i].std_id
             var std_n = member[i].std_name
+            var school = member[i].school
+            var enrollment_year = member[i].enrollment_year
             var parent_n = member[i].parent_name
             var pwd = member[i].parent_pwd
             var phone = member[i].parent_phone
             $('#member_info').append([
-                { std_id: id, std_name: std_n, parent_name: parent_n, parent_pwd: pwd, parent_phone: phone },
+                { std_id: id, std_name: std_n, school: school, enrollment_year: enrollment_year, parent_name: parent_n, parent_pwd: pwd, parent_phone: phone },
             ].map(member_management_template));
         }
     });
@@ -44,13 +65,17 @@ function update_member_func() {
     var flag = 1
     var std_id = id.substring(0, id.length - 7)
     var std_name = $("#" + std_id + "_std_name").val()
+    var school = $("#" + std_id + "_school").val()
+    var enrollment_year = $("#" + std_id + "_grade").val()
     var parent_name = $("#" + std_id + "_parent_name").val()
     var parent_phone = $("#" + std_id + "_parent_phone").val()
     var parent_pwd = $("#" + std_id + "_parent_pwd").val()
-    if (std_name == "" || parent_name == "" || parent_phone == "" || parent_pwd == "") { flag = 0 }
+    if (std_name == "" || school == "" || enrollment_year == "" || parent_name == "" || parent_phone == "" || parent_pwd == "") { flag = 0 }
     var member_update_list = {}
     member_update_list.std_id = std_id
     member_update_list.std_name = std_name
+    member_update_list.school = school
+    member_update_list.enrollment_year = enrollment_year
     member_update_list.parent_name = parent_name
     member_update_list.parent_phone = parent_phone
     member_update_list.parent_pwd = parent_pwd
@@ -76,13 +101,11 @@ function delete_member_func() {
 
 //動態生成一列
 $("#add_data_write").empty()
-var add_list = "<tr><td><input name = \"std_name[]\" required></td><td><input name = \"parent_name[]\" required></td><td><input name = \"parent_phone[]\" type=\"tex\" maxlength = \"10\" required></td><td><button type = \"button\" class = \"delete_new_member\">刪除</button></td></tr>";
-$("#add_data_write").append(add_list)
+$('#add_data_write').append([{}].map(dynamic_member_template));
 var add_new_member = document.getElementById('add_new_member')
 add_new_member.addEventListener('click', add_new_member_func)
 function add_new_member_func() {
-    var add_list = "<tr><td><input name = \"std_name[]\" required></td><td><input name = \"parent_name[]\" required></td><td><input name = \"parent_phone[]\" type=\"tex\" maxlength = \"10\" required></td><td><button type = \"button\" class = \"delete_new_member\">刪除</button></td></tr>";
-    $("#add_data_write").append(add_list)
+    $('#add_data_write').append([{}].map(dynamic_member_template));
 }
 
 //刪除動態生成一列
