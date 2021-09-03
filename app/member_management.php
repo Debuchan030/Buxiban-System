@@ -35,7 +35,7 @@ switch ($_POST['action']) {
                 $get_parent_id = $conn->query("select parent_id from buxiban_parent where parent_phone = '$this_parent_phone';")->fetch(PDO::FETCH_ASSOC);
                 $parent_id = $get_parent_id['parent_id'];
             }
-            $sqlinsert = $conn->query("Insert into buxiban_student(std_name,school,enrollment_year,buxiban_id,parent_id) value('$this_std_name','$this_school,'$this_enrollment_year',$buxiban_id,$temp);");
+            $sqlinsert = $conn->query("Insert into buxiban_student(std_name,school,enrollment_year,buxiban_id,parent_id) value('$this_std_name','$this_school,'$this_enrollment_year',$buxiban_id,$parent_id);");
         }
         header("location:/index.php");
     break;
