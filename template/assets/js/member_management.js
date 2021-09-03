@@ -11,12 +11,12 @@ var member_management_template = ({ std_id, std_name, school, enrollment_year, c
         <input id="${std_id}_enrollment_year" type="text" value="${enrollment_year}" >
     </td>
     <td>
-        <input id="${std_id}_contact1" type="text" value="${contact1}" >
-        <input id="${std_id}_contact2" type="text" value="${contact2}" >
+        <input id="${std_id}_contact1" type="text" value="${contact1}" placeholder = "必填">
+        <input id="${std_id}_contact2" type="text" value="${contact2}" placeholder = "選填">
     </td>
     <td>
-        <input id="${std_id}_contact1_phone" type="text" maxlength = "10" value="${contact1_phone}" >
-        <input id="${std_id}_contact2_phone" type="text" maxlength = "10" value="${contact2_phone}" >
+        <input id="${std_id}_contact1_phone" type="text" maxlength = "10" value="${contact1_phone}" placeholder = "必填">
+        <input id="${std_id}_contact2_phone" type="text" maxlength = "10" value="${contact2_phone}" placeholder = "選填">
     </td>
     <td >
         <input id="${std_id}_parent_pwd" type="text" value="${parent_pwd}" >
