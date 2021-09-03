@@ -40,9 +40,8 @@ switch ($_POST['action']) {
                 $contact_id = $get_contact_id['contact_id'];
             }
             $sqlinsert = $conn->query("Insert into buxiban_student(std_name,school,enrollment_year,buxiban_id,contact_id) value('$this_std_name','$this_school','$this_enrollment_year',$buxiban_id,$contact_id);");
-            print('第'.$i.'次insert家長:'.$contact_id.$this_contact1_name.'，學生:'.$this_std_name);
         }
-        //header("location:/index.php");
+        header("location:/index.php");
     break;
     
     //修改學生/家長資料
