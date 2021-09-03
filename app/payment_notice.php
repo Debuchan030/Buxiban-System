@@ -19,7 +19,7 @@ switch ($_POST['action']) {
         //取得學生列表
     case "get_record_payment":
         $payment_time = $_POST['payment_time'];
-        $get_record_payment = $conn->query("select record_id,record_std_name,record_parent_name,record_parent_phone,record_payment_states,record_total_price,record_payment_done from buxiban_record_payment where buxiban_id=$buxiban_id AND payment_time ='$payment_time'")->fetchAll(PDO::FETCH_ASSOC);
+        $get_record_payment = $conn->query("select record_id,record_std_name,record_contact_name,record_contact_phone,record_payment_states,record_total_price,record_payment_done from buxiban_record_payment where buxiban_id=$buxiban_id AND payment_time ='$payment_time'")->fetchAll(PDO::FETCH_ASSOC);
         if ($get_record_payment) {
             echo json_encode($get_record_payment);
         } else {
@@ -44,17 +44,17 @@ switch ($_POST['action']) {
         $check_payment = $conn->query("select * from buxiban_payment where buxiban_id = $buxiban_id AND payment_time = '$datemonth'")->fetchAll(PDO::FETCH_ASSOC); 
         if($check_payment){
             //調變動者
-            $get_std_selstates = $conn->query("select std_id,std_name,buxiban_parent.parent_id,parent_name,parent_phone from buxiban_student,buxiban_parent where buxiban_student.parent_id = buxiban_parent.parent_id AND buxiban_student.buxiban_id=$buxiban_id AND buxiban_student.selcourse_states")->fetchAll(PDO::FETCH_ASSOC);
+            $get_std_selstates = $conn->query("select std_id,std_name,buxiban_contact.contact_id,contact1_name,contact1_phone from buxiban_student,buxiban_contact where buxiban_student.contact_id = buxiban_contact.contact_id AND buxiban_student.buxiban_id=$buxiban_id AND buxiban_student.selcourse_states=1")->fetchAll(PDO::FETCH_ASSOC);
             if($get_std_selstates){
                 for($i=0;$i<count($get_std_selstates);$i++){
                     $std_id = $get_std_selstates[$i]['std_id'];
                     $std_name = $get_std_selstates[$i]['std_name'];
-                    $parent_id = $get_std_selstates[$i]['parent_id'];
-                    $parent_name = $get_std_selstates[$i]['parent_name'];
-                    $parent_phone = $get_std_selstates[$i]['parent_phone'];
+                    $contact_id = $get_std_selstates[$i]['contact_id'];
+                    $contact1_name = $get_std_selstates[$i]['contact1_name'];
+                    $contact1_phone = $get_std_selstates[$i]['contact1_phone'];
                     $total_price = 0;
                     //檢測紀錄
-                    $get_record_id = $conn->query("select record_id from buxiban_record_payment where parent_id=$parent_id AND record_std_name='$std_name' AND payment_time='$datemonth'")->fetch(PDO::FETCH_ASSOC);
+                    $get_record_id = $conn->query("select record_id from buxiban_record_payment where contact_id=$contact_id AND record_std_name='$std_name' AND payment_time='$datemonth'")->fetch(PDO::FETCH_ASSOC);
                     $record_id = $get_record_id['record_id'];
                     //檢測成功，清除之前紀錄
                     if($record_id){
@@ -62,8 +62,8 @@ switch ($_POST['action']) {
                     }
                     //檢測失敗，新增一筆紀錄
                     else{
-                        $add_new_record_payment = $conn->query("insert into buxiban_record_payment(record_std_name,record_parent_name,record_parent_phone,record_total_price,payment_time,parent_id,buxiban_id) value('$std_name','$parent_name','$parent_phone',$total_price,'$datemonth',$parent_id,$buxiban_id)");
-                        $get_record_id = $conn->query("select record_id from buxiban_record_payment where parent_id=$parent_id AND record_std_name='$std_name' AND payment_time='$datemonth'")->fetch(PDO::FETCH_ASSOC);
+                        $add_new_record_payment = $conn->query("insert into buxiban_record_payment(record_std_name,record_contact_name,record_contact_phone,record_total_price,payment_time,contact_id,buxiban_id) value('$std_name','$contact1_name','$contact1_phone',$total_price,'$datemonth',$contact_id,$buxiban_id)");
+                        $get_record_id = $conn->query("select record_id from buxiban_record_payment where contact_id=$contact_id AND record_std_name='$std_name' AND payment_time='$datemonth'")->fetch(PDO::FETCH_ASSOC);
                         $record_id = $get_record_id['record_id'];
                     }
                     //更新選課
