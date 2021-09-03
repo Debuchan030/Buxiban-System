@@ -21,6 +21,8 @@ switch ($_POST['action']) {
         $school = $_POST['school'];
         $enrollment_year = $_POST['enrollment_year'];
         for($i=0;$i<sizeof($std_name);$i++){
+            print(sizeof($std_name));
+            print_r($std_name);
             $this_std_name = $std_name[$i];
             $this_contact1_name = $contact1_name[$i];
             $this_contact1_phone = $contact1_phone[$i];
@@ -41,7 +43,7 @@ switch ($_POST['action']) {
             }
             $sqlinsert = $conn->query("Insert into buxiban_student(std_name,school,enrollment_year,buxiban_id,contact_id) value('$this_std_name','$this_school','$this_enrollment_year',$buxiban_id,$contact_id);");
         }
-        header("location:/index.php");
+        //header("location:/index.php");
     break;
     
     //修改學生/家長資料
