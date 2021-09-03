@@ -26,7 +26,7 @@ var payment_template = ({ payment_time }) => `
 </div>
 `
 //未繳款模板
-var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_price, record_parent_name, record_parent_phone }) => `
+var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_price, record_contact1_name, record_contact2_name, record_contact1_phone, record_contact2_phone }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#std_${record_id}" aria-expanded="false"
 	aria-controls="non_payed1">
 	<td>學生姓名：${record_std_name}</td>
@@ -40,7 +40,8 @@ var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_pri
 			姓名：${record_std_name}
 		</div>
 		<div>
-			家長：${record_parent_name}，家長電話：${record_parent_phone}
+			家長：${record_contact1_name}，家長電話：${record_contact1_phone}
+			家長：${record_contact2_name}，家長電話：${record_contact2_phone}
 		</div>
 		<div>
 			詳細資訊：
@@ -53,7 +54,7 @@ var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_pri
 	
 `
 //已繳款模板
-var payed_std_info_template = ({ record_id, record_std_name, record_total_price, record_parent_name, record_parent_phone, record_payment_done }) => `
+var payed_std_info_template = ({ record_id, record_std_name, record_total_price, record_contact1_name, record_contact2_name, record_contact1_phone, record_contact2_phone, record_payment_done }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#std_${record_id}" aria-expanded="false"
 	aria-controls="non_payed1">
 	<td>學生姓名：${record_std_name}</td>
@@ -67,7 +68,8 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 			姓名：${record_std_name}
 		</div>
 		<div>
-			家長：${record_parent_name}，家長電話：${record_parent_phone}
+			家長：${record_contact1_name}，家長電話：${record_contact1_phone}
+			家長：${record_contact2_name}，家長電話：${record_contact2_phone}
 		</div>
 		<div>
 			詳細資訊：
@@ -108,11 +110,13 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 			if (parseInt(student_record_info[i].record_payment_states) == 0) { //未繳款
 				var id = student_record_info[i].record_id
 				var std_name = student_record_info[i].record_std_name
-				var parent_name = student_record_info[i].record_parent_name
-				var parent_phone = student_record_info[i].record_parent_phone
+				var record_contact1_name = student_record_info[i].record_contact1_name
+				var record_contact2_name = student_record_info[i].record_contact2_name
+				var record_contact1_phone = student_record_info[i].record_contact1_phone
+				var record_contact2_phone = student_record_info[i].record_contact2_phone
 				var total_price = student_record_info[i].record_total_price
 				$("#" + payment_time + "_non_payed").append([
-					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_parent_name: parent_name, record_parent_phone: parent_phone },
+					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact1_name: record_contact1_name,record_contact2_name: record_contact2_name, record_contact1_phone: record_contact1_phone, record_contact2_phone: record_contact2_phone },
 				].map(nonpayed_std_info_template));
 				// 放上選課課程資料
 				get_std_selcourse.call(this, id)
@@ -120,12 +124,13 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 			else {//有繳款
 				var id = student_record_info[i].record_id
 				var std_name = student_record_info[i].record_std_name
-				var parent_name = student_record_info[i].record_parent_name
-				var parent_phone = student_record_info[i].record_parent_phone
+				var record_contact1_name = student_record_info[i].record_contact1_name
+				var record_contact2_name = student_record_info[i].record_contact2_name
+				var record_contact1_phone = student_record_info[i].record_contact1_phone
+				var record_contact2_phone = student_record_info[i].record_contact2_phone
 				var total_price = student_record_info[i].record_total_price
-				var payment_done = student_record_info[i].record_payment_done
 				$("#" + payment_time + "_payed").append([
-					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_parent_name: parent_name, record_parent_phone: parent_phone, record_payment_done: payment_done },
+					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact1_name: record_contact1_name,record_contact2_name: record_contact2_name, record_contact1_phone: record_contact1_phone, record_contact2_phone: record_contact2_phone },
 				].map(payed_std_info_template));
 				// 放上選課課程資料
 				get_std_selcourse.call(this, id)
