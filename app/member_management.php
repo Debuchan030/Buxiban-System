@@ -35,7 +35,7 @@ switch ($_POST['action']) {
             }
             else{
                 //不存在則順勢新增家長
-                $sqlinsert = $conn->query("Insert into buxiban_contact(contact1_name,contact1_phone,contact2_name,contact2_phone,contact_pwd,buxiban_id) value('$this_contact1_name','$this_contact1_phone','$this_contact2_name','$this_contact2_phone','$this_contact_phone',$buxiban_id);");
+                $sqlinsert = $conn->query("Insert into buxiban_contact(contact1_name,contact1_phone,contact2_name,contact2_phone,contact_pwd,buxiban_id) value('$this_contact1_name','$this_contact1_phone','$this_contact2_name','$this_contact2_phone','$this_contact1_phone',$buxiban_id);");
                 $get_contact_id = $conn->query("select contact_id from buxiban_contact where contact1_phone = '$this_contact1_phone';")->fetch(PDO::FETCH_ASSOC);
                 $contact_id = $get_contact_id['contact_id'];
             }
