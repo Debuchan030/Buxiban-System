@@ -8,7 +8,7 @@ var member_management_template = ({ std_id, std_name, school, enrollment_year, p
         <input id="${std_id}_school" type="text" value="${school}" >
     </td>
     <td>
-        <input id="${std_id}_grade" type="text" value="${enrollment_year}" >
+        <input id="${std_id}_enrollment_year" type="text" value="${enrollment_year}" >
     </td>
     <td>
         <input id="${std_id}_parent_name" type="text" value="${parent_name}" >
@@ -66,7 +66,7 @@ function update_member_func() {
     var std_id = id.substring(0, id.length - 7)
     var std_name = $("#" + std_id + "_std_name").val()
     var school = $("#" + std_id + "_school").val()
-    var enrollment_year = $("#" + std_id + "_grade").val()
+    var enrollment_year = $("#" + std_id + "_enrollment_year").val()
     var parent_name = $("#" + std_id + "_parent_name").val()
     var parent_phone = $("#" + std_id + "_parent_phone").val()
     var parent_pwd = $("#" + std_id + "_parent_pwd").val()
