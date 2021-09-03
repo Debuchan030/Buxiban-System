@@ -83,6 +83,20 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 var selcourse_template = ({ record_selcourse_name, record_selcourse_price }) => `
 課程名稱：${record_selcourse_name}---$${record_selcourse_price}<br>
 `
+
+Date.prototype.yyyymmdd = function () {
+	var mm = this.getMonth() + 1; // getMonth() is zero-based
+	var dd = this.getDate();
+
+	return [this.getFullYear(),
+	(mm > 9 ? '' : '0') + mm,
+	(dd > 9 ? '' : '0') + dd
+	].join('-');
+};
+
+var date = new Date();
+date = date.yyyymmdd();
+
 function get_payment_record() { //放上年月大標題
 	$.post("../../app/payment_notice.php", { action: "get_payment" }, function (record_payment) {
 		if (record_payment != "NO DATA") {
@@ -112,7 +126,7 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 				var record_contact_phone = student_record_info[i].record_contact_phone
 				var total_price = student_record_info[i].record_total_price
 				$("#" + payment_time + "_non_payed").append([
-					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact_name: record_contact_name, record_contact_phone: record_contact_phone},
+					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact_name: record_contact_name, record_contact_phone: record_contact_phone },
 				].map(nonpayed_std_info_template));
 				// 放上選課課程資料
 				get_std_selcourse.call(this, id)
@@ -125,7 +139,7 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 				var total_price = student_record_info[i].record_total_price
 				var record_payment_done = student_record_info[i].record_payment_done
 				$("#" + payment_time + "_payed").append([
-					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact_name: record_contact_name, record_contact_phone: record_contact_phone,record_payment_done:record_payment_done },
+					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact_name: record_contact_name, record_contact_phone: record_contact_phone, record_payment_done: record_payment_done },
 				].map(payed_std_info_template));
 				// 放上選課課程資料
 				get_std_selcourse.call(this, id)
@@ -189,12 +203,15 @@ $("#record_payment").on('click', '.payed', function () {
 		var datemonth = $(this).closest('tbody').attr('id')
 		datemonth = datemonth.substring(0, datemonth.length - 6)
 		record_id = record_id.substring(0, record_id.length - 6)
-		$(this).html("更新成未繳款")
-		$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1", datemonth: datemonth }, function (data) {
-			if (data) {
-				alert(data)
-			}
-		})
+		if (date == datemonth) {
+			$(this).html("更新成未繳款")
+			$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1", datemonth: datemonth }, function (data) {
+				if (data) {
+					alert(data)
+				}
+			})
+		}
+
 	}
 	else {
 		var record_id = $(this).attr('id')
