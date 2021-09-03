@@ -109,7 +109,7 @@ body.is-preload *, body.is-preload *:before, body.is-preload *:after, body.is-re
 /* Type */
 
 body, input, select, textarea {
-  color: #4e5458;
+  color: #7f888f;
   font-family: "Open Sans", sans-serif;
   font-size: 13pt;
   font-weight: 400;
@@ -154,7 +154,7 @@ a:hover strong {
 }
 
 strong, b {
-  color: #313335;
+  color: #3d4449;
   font-weight: 600;
 }
 
