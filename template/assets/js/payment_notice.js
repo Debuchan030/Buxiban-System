@@ -205,7 +205,7 @@ $("#record_payment").on('click', '.payed', function () {
 		record_id = record_id.substring(0, record_id.length - 6)
 		console.log(date.toString())
 		console.log(datemonth)
-		if (date.toString() == datemonth) {
+		if (date.toString() == datemonth.substring(0,datemonth.length-3)) {
 			$(this).html("更新成未繳款")
 			$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1", datemonth: datemonth }, function (data) {
 				if (data) {
