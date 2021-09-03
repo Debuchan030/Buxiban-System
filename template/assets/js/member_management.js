@@ -95,11 +95,11 @@ $("#member_info").on("click", ".delete_member", delete_member_func)
 function delete_member_func() {
     var id = $(this).closest("tr").attr("id")
     id = id.substring(0, id.length - 7)
-    console.log(id)
+    // console.log(id)
     $.post("../../app/member_management.php", { action: "delete_member", std_id: id },function(data){
-        console.log(data)
+        // console.log(data)
     });
-    // location.reload();
+    location.reload();
 }
 
 //動態生成一列
