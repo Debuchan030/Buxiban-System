@@ -26,7 +26,7 @@ var payment_template = ({ payment_time }) => `
 </div>
 `
 //未繳款模板
-var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_price, record_contact1_name, record_contact2_name, record_contact1_phone, record_contact2_phone }) => `
+var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_price, record_contact_name, record_contact_phone }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#std_${record_id}" aria-expanded="false"
 	aria-controls="non_payed1">
 	<td>學生姓名：${record_std_name}</td>
@@ -40,8 +40,7 @@ var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_pri
 			姓名：${record_std_name}
 		</div>
 		<div>
-			家長：${record_contact1_name}，家長電話：${record_contact1_phone}
-			家長：${record_contact2_name}，家長電話：${record_contact2_phone}
+			家長：${record_contact_name}，家長電話：${record_contact_phone}
 		</div>
 		<div>
 			詳細資訊：
@@ -54,7 +53,7 @@ var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_pri
 	
 `
 //已繳款模板
-var payed_std_info_template = ({ record_id, record_std_name, record_total_price, record_contact1_name, record_contact2_name, record_contact1_phone, record_contact2_phone, record_payment_done }) => `
+var payed_std_info_template = ({ record_id, record_std_name, record_total_price, record_contact_name, record_contact_phone, record_payment_done }) => `
 <tr data-bs-toggle="collapse" data-bs-target="#std_${record_id}" aria-expanded="false"
 	aria-controls="non_payed1">
 	<td>學生姓名：${record_std_name}</td>
@@ -68,8 +67,7 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 			姓名：${record_std_name}
 		</div>
 		<div>
-			家長：${record_contact1_name}，家長電話：${record_contact1_phone}
-			家長：${record_contact2_name}，家長電話：${record_contact2_phone}
+			家長：${record_contact_name}，家長電話：${record_contact_phone}
 		</div>
 		<div>
 			詳細資訊：
@@ -85,6 +83,20 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 var selcourse_template = ({ record_selcourse_name, record_selcourse_price }) => `
 課程名稱：${record_selcourse_name}---$${record_selcourse_price}<br>
 `
+
+Date.prototype.yyyymmdd = function () {
+	var mm = this.getMonth() + 1; // getMonth() is zero-based
+	var dd = this.getDate();
+
+	return [this.getFullYear(),
+	(mm > 9 ? '' : '0') + mm,
+	(dd > 9 ? '' : '0') + dd
+	].join('-');
+};
+
+var date = new Date();
+date = date.yyyymmdd();
+
 function get_payment_record() { //放上年月大標題
 	$.post("../../app/payment_notice.php", { action: "get_payment" }, function (record_payment) {
 		if (record_payment != "NO DATA") {
@@ -110,13 +122,11 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 			if (parseInt(student_record_info[i].record_payment_states) == 0) { //未繳款
 				var id = student_record_info[i].record_id
 				var std_name = student_record_info[i].record_std_name
-				var record_contact1_name = student_record_info[i].record_contact1_name
-				var record_contact2_name = student_record_info[i].record_contact2_name
-				var record_contact1_phone = student_record_info[i].record_contact1_phone
-				var record_contact2_phone = student_record_info[i].record_contact2_phone
+				var record_contact_name = student_record_info[i].record_contact_name
+				var record_contact_phone = student_record_info[i].record_contact_phone
 				var total_price = student_record_info[i].record_total_price
 				$("#" + payment_time + "_non_payed").append([
-					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact1_name: record_contact1_name,record_contact2_name: record_contact2_name, record_contact1_phone: record_contact1_phone, record_contact2_phone: record_contact2_phone },
+					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact_name: record_contact_name, record_contact_phone: record_contact_phone },
 				].map(nonpayed_std_info_template));
 				// 放上選課課程資料
 				get_std_selcourse.call(this, id)
@@ -124,13 +134,12 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 			else {//有繳款
 				var id = student_record_info[i].record_id
 				var std_name = student_record_info[i].record_std_name
-				var record_contact1_name = student_record_info[i].record_contact1_name
-				var record_contact2_name = student_record_info[i].record_contact2_name
-				var record_contact1_phone = student_record_info[i].record_contact1_phone
-				var record_contact2_phone = student_record_info[i].record_contact2_phone
+				var record_contact_name = student_record_info[i].record_contact_name
+				var record_contact_phone = student_record_info[i].record_contact_phone
 				var total_price = student_record_info[i].record_total_price
+				var record_payment_done = student_record_info[i].record_payment_done
 				$("#" + payment_time + "_payed").append([
-					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact1_name: record_contact1_name,record_contact2_name: record_contact2_name, record_contact1_phone: record_contact1_phone, record_contact2_phone: record_contact2_phone },
+					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact_name: record_contact_name, record_contact_phone: record_contact_phone, record_payment_done: record_payment_done },
 				].map(payed_std_info_template));
 				// 放上選課課程資料
 				get_std_selcourse.call(this, id)
@@ -194,12 +203,17 @@ $("#record_payment").on('click', '.payed', function () {
 		var datemonth = $(this).closest('tbody').attr('id')
 		datemonth = datemonth.substring(0, datemonth.length - 6)
 		record_id = record_id.substring(0, record_id.length - 6)
-		$(this).html("更新成未繳款")
-		$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1", datemonth: datemonth }, function (data) {
-			if (data) {
-				alert(data)
-			}
-		})
+		console.log(date.toString())
+		console.log(datemonth)
+		if (date.toString() == datemonth.substring(0,datemonth.length-3)) {
+			$(this).html("更新成未繳款")
+			$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1", datemonth: datemonth }, function (data) {
+				if (data) {
+					alert(data)
+				}
+			})
+		}
+
 	}
 	else {
 		var record_id = $(this).attr('id')
