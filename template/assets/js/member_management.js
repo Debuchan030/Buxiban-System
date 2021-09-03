@@ -153,9 +153,9 @@ $('#search_text').on("keydown", event => {
                     var contact1_phone = member[i].contact1_phone
                     var contact2_phone = member[i].contact2_phone
                     var pwd = member[i].contact_pwd
-                    if (std_n.indexOf(search_text) != -1 || contact1_name.indexOf(search_text) != -1 || contact2_name.indexOf(search_text) != -1 || contact1_phone.indexOf(search_text) != -1 || contact2_phone.indexOf(search_text) != -1 || pwd.indexOf(search_text) != -1) {
+                    if (std_n.indexOf(search_text) != -1 || enrollment_year.indexOf(search_text) != -1 || school.indexOf(search_text) != -1 || contact1_name.indexOf(search_text) != -1 || contact2_name.indexOf(search_text) != -1 || contact1_phone.indexOf(search_text) != -1 || contact2_phone.indexOf(search_text) != -1 || pwd.indexOf(search_text) != -1) {
                         $('#member_info').append([
-                            { std_id: id, std_name: std_n,school:school,enrollment_year:enrollment_year, contact1_name: contact1_name,contact2_name:contact2_name,contact1_phone,contact2_phone, contact_pwd: pwd },
+                            { std_id: id, std_name: std_n, school: school, enrollment_year: enrollment_year, contact1_name: contact1_name, contact2_name: contact2_name, contact1_phone, contact2_phone, contact_pwd: pwd },
                         ].map(member_management_template));
                     }
                 }
