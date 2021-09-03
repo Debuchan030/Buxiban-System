@@ -41,6 +41,8 @@ var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_pri
 		</div>
 		<div>
 			家長：${record_contact1_name}，家長電話：${record_contact1_phone}
+		</div>
+		<div>
 			家長：${record_contact2_name}，家長電話：${record_contact2_phone}
 		</div>
 		<div>
@@ -69,6 +71,8 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 		</div>
 		<div>
 			家長：${record_contact1_name}，家長電話：${record_contact1_phone}
+		</div>
+		<div>
 			家長：${record_contact2_name}，家長電話：${record_contact2_phone}
 		</div>
 		<div>
@@ -129,8 +133,9 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 				var record_contact1_phone = student_record_info[i].record_contact1_phone
 				var record_contact2_phone = student_record_info[i].record_contact2_phone
 				var total_price = student_record_info[i].record_total_price
+				var record_payment_done = student_record_info[i].record_payment_done
 				$("#" + payment_time + "_payed").append([
-					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact1_name: record_contact1_name,record_contact2_name: record_contact2_name, record_contact1_phone: record_contact1_phone, record_contact2_phone: record_contact2_phone },
+					{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact1_name: record_contact1_name,record_contact2_name: record_contact2_name, record_contact1_phone: record_contact1_phone, record_contact2_phone: record_contact2_phone,record_payment_done:record_payment_done },
 				].map(payed_std_info_template));
 				// 放上選課課程資料
 				get_std_selcourse.call(this, id)
