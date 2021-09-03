@@ -94,6 +94,7 @@ function update_member_func() {
 $("#member_info").on("click", ".delete_member", delete_member_func)
 function delete_member_func() {
     var id = $(this).closest("tr").attr("id")
+    console.log(id)
     id = id.substring(0, id.length - 7)
     $.post("../../app/member_management.php", { action: "delete_member", std_id: id });
     location.reload();
