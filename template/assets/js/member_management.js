@@ -15,8 +15,8 @@ var member_management_template = ({ std_id, std_name, school, enrollment_year, c
         <input id="${std_id}_contact2" type="text" value="${contact2}" >
     </td>
     <td>
-        <input id="${std_id}_contact1_phone" type="text" value="${contact1_phone}" >
-        <input id="${std_id}_contact2_phone" type="text" value="${contact2_phone}" >
+        <input id="${std_id}_contact1_phone" type="text" maxlength = "10" value="${contact1_phone}" >
+        <input id="${std_id}_contact2_phone" type="text" maxlength = "10" value="${contact2_phone}" >
     </td>
     <td >
         <input id="${std_id}_parent_pwd" type="text" value="${parent_pwd}" >
@@ -37,8 +37,8 @@ var dynamic_member_template = ({ }) => `
         <input name="contact2[]">
     </td>
     <td>
-        <input name="contact1_phone[]" type="tex" required>
-        <input name="contact2_phone[]" type="tex">
+        <input name="contact1_phone[]" type="tex" maxlength = "10" required>
+        <input name="contact2_phone[]" type="tex" maxlength = "10">
     </td>
 
     <td><button type="button" class="delete_new_member">刪除</button></td>
