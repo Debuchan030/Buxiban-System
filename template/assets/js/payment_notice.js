@@ -96,7 +96,7 @@ Date.prototype.yyyymmdd = function () {
 
 var date = new Date();
 date = date.yyyymmdd();
-
+date = date.toString()
 function get_payment_record() { //放上年月大標題
 	$.post("../../app/payment_notice.php", { action: "get_payment" }, function (record_payment) {
 		if (record_payment != "NO DATA") {
@@ -203,9 +203,10 @@ $("#record_payment").on('click', '.payed', function () {
 		var datemonth = $(this).closest('tbody').attr('id')
 		datemonth = datemonth.substring(0, datemonth.length - 6)
 		record_id = record_id.substring(0, record_id.length - 6)
-		console.log(date.toString())
+		
+		console.log(date)
 		console.log(datemonth)
-		if (date.toString() == datemonth.substring(0,datemonth.length-3)) {
+		if (date.substring(0,date.length-3) == datemonth) {
 			$(this).html("更新成未繳款")
 			$.post("../../app/payment_notice.php", { action: "update_payment_states", record_id: record_id, record_payment_states: "1", datemonth: datemonth }, function (data) {
 				if (data) {
