@@ -19,6 +19,8 @@ switch ($_POST['action']) {
         $contact1_phone = $_POST['contact1_phone'];
         $contact2_name = $_POST['contact2_name'];
         $contact2_phone = $_POST['contact2_phone'];
+        print(var_dump($contact2_name));
+        print(var_dump($contact2_phone));
         if($contact2_name=''){
             $contact2_name='無';
         }
