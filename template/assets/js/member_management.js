@@ -29,16 +29,16 @@ var member_management_template = ({ std_id, std_name, school, enrollment_year, c
 var dynamic_member_template = ({ }) => `
 
 <tr>
-    <td><input name="std_name[]" required></td>
-    <td><input name="school[]" required></td>
-    <td><input name="enrollment_year[]" required></td>
+    <td><input name="std_name[]" type="text" required></td>
+    <td><input name="school[]" type="text" required></td>
+    <td><input name="enrollment_year[]" type="text" required></td>
     <td>
-        <input name="contact1_name[]" placeholder = "聯絡人1(必填)" required>
-        <input name="contact2_name[]" placeholder = "聯絡人2(選填)">
+        <input name="contact1_name[]" type="text" placeholder = "聯絡人1(必填)" required>
+        <input name="contact2_name[]" type="text" placeholder = "聯絡人2(選填)">
     </td>
     <td>
-        <input name="contact1_phone[]" type="tex" maxlength = "10" placeholder = "聯絡電話1(必填)" required >
-        <input name="contact2_phone[]" type="tex" maxlength = "10" placeholder = "聯絡電話2(選填)">
+        <input name="contact1_phone[]" type="text" maxlength = "10" placeholder = "聯絡電話1(必填)" required >
+        <input name="contact2_phone[]" type="text" maxlength = "10" placeholder = "聯絡電話2(選填)">
     </td>
 
     <td><button type="button" class="delete_new_member">刪除</button></td>
