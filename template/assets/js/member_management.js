@@ -49,7 +49,6 @@ var dynamic_member_template = ({ }) => `
 // 獲取所有學生/家長名單 std_n parent_n aact pwd phone, buxiban_parent.length
 function get_all_member_func() {
     $.post("../../app/member_management.php", { action: "get_member" }, function (member) {
-        console.log(member)
         member = JSON.parse(member)
         for (var i = 0; i < member.length; i++) {
             var id = member[i].std_id
@@ -108,7 +107,6 @@ function update_member_func() {
 $("#member_info").on("click", ".delete_member", delete_member_func)
 function delete_member_func() {
     var id = $(this).closest("tr").attr("id")
-    console.log(id)
     id = id.substring(0, id.length - 7)
     $.post("../../app/member_management.php", { action: "delete_member", std_id: id });
     location.reload();
