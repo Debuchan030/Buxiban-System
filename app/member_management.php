@@ -21,8 +21,6 @@ switch ($_POST['action']) {
         $school = $_POST['school'];
         $enrollment_year = $_POST['enrollment_year'];
         for($i=0;$i<sizeof($std_name);$i++){
-            print(sizeof($std_name));
-            print_r($std_name);
             $this_std_name = $std_name[$i];
             $this_contact1_name = $contact1_name[$i];
             $this_contact1_phone = $contact1_phone[$i];
@@ -42,6 +40,7 @@ switch ($_POST['action']) {
                 $contact_id = $get_contact_id['contact_id'];
             }
             $sqlinsert = $conn->query("Insert into buxiban_student(std_name,school,enrollment_year,buxiban_id,contact_id) value('$this_std_name','$this_school','$this_enrollment_year',$buxiban_id,$contact_id);");
+            print('第'.$i.'次insert家長:'.$contact_id.$this_contact1_name.'，學生:'.$this_std_name);
         }
         //header("location:/index.php");
     break;
