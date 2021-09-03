@@ -161,7 +161,7 @@ $('#search_text').on("keydown", event => {
                 }
 
             });
-            alert("以下為搜尋結果")
+            // alert("以下為搜尋結果")
 
         }
     }
