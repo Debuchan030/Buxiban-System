@@ -1,10 +1,10 @@
 //獲取php資料
 
-var attend_template = ({ std_id, std_name, contact1, contact2, contact1_phone, contact2_phone, attend_time, leave_time, remark }) => `
+var attend_template = ({ std_id, std_name, contact1_name, contact2_name, contact1_phone, contact2_phone, attend_time, leave_time, remark }) => `
 
 <tr id="${std_id}_attend">
     <td>${std_name}</td>
-    <td>${contact1}<br>${contact2}</td>
+    <td>${contact1_name}<br>${contact2_name}</td>
     <td>${contact1_phone}<br>${contact2_phone}</td>
     <td>
         <label for="">到班時間：${attend_time}</label>
@@ -66,8 +66,8 @@ function get_attend_table(date) {
         for (var i = 0; i < attend.length; i++) {
             var id = attend[i].std_id
             var std_n = attend[i].std_name
-            var contact1 = attend[i].contact1
-            var contact2 = attend[i].contact2
+            var contact1_name = attend[i].contact1_name
+            var contact2_name = attend[i].contact2_name
             var contact1_phone = attend[i].contact1_phone
             var contact2_phone = attend[i].contact2_phone
             //確認狀態 0 未到班 1 到班 2 離班 3 請假
@@ -75,7 +75,7 @@ function get_attend_table(date) {
             var leave_time = attend[i].leave_time
             var remark = attend[i].remark
             $('#attend_student').append([
-                { std_id: id, std_name: std_n, contact1: contact1, contact2: contact2, contact1_phone: contact1_phone, contact2_phone: contact2_phone, attend_time: attend_time, leave_time: leave_time, remark: remark },
+                { std_id: id, std_name: std_n, contact1_name: contact1_name, contact2_name: contact2_name, contact1_phone: contact1_phone, contact2_phone: contact2_phone, attend_time: attend_time, leave_time: leave_time, remark: remark },
             ].map(attend_template));
 
             var attend_states = attend[i].attend_states
@@ -152,17 +152,17 @@ $('#search_text').on("keydown", event => {
                 for (var i = 0; i < attend.length; i++) {
                     var id = attend[i].std_id
                     var std_n = attend[i].std_name
-                    var contact1 = attend[i].contact1
-                    var contact2 = attend[i].contact2
+                    var contact1_name = attend[i].contact1_name
+                    var contact2_name = attend[i].contact2_name
                     var contact1_phone = attend[i].contact1_phone
                     var contact2_phone = attend[i].contact2_phone
                     //確認狀態 0 未到班 1 到班 2 離班 3 請假
                     var attend_time = attend[i].attend_time
                     var leave_time = attend[i].leave_time
                     var remark = attend[i].remark
-                    if (std_n.indexOf(search_text) != -1 || contact1.indexOf(search_text) != -1 || contact2.indexOf(search_text) != -1 || attend_time.indexOf(search_text) != -1 || leave_time.indexOf(search_text) != -1 || contact1_phone.indexOf(search_text) != -1 || contact2_phone.indexOf(search_text) != -1 || remark.indexOf(search_text) != -1) {
+                    if (std_n.indexOf(search_text) != -1 || contact1_name.indexOf(search_text) != -1 || contact2_name.indexOf(search_text) != -1 || attend_time.indexOf(search_text) != -1 || leave_time.indexOf(search_text) != -1 || contact1_phone.indexOf(search_text) != -1 || contact2_phone.indexOf(search_text) != -1 || remark.indexOf(search_text) != -1) {
                         $('#attend_student').append([
-                            { std_id: id, std_name: std_n, contact1: contact1, contact2: contact2, contact1_phone: contact1_phone, contact2_phone: contact2_phone, attend_time: attend_time, leave_time: leave_time, remark },
+                            { std_id: id, std_name: std_n, contact1_name: contact1_name, contact2_name: contact2_name, contact1_phone: contact1_phone, contact2_phone: contact2_phone, attend_time: attend_time, leave_time: leave_time, remark },
                         ].map(attend_template));
 
                         var attend_states = attend[i].attend_states
