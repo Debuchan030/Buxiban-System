@@ -19,14 +19,6 @@ switch ($_POST['action']) {
         $contact1_phone = $_POST['contact1_phone'];
         $contact2_name = $_POST['contact2_name'];
         $contact2_phone = $_POST['contact2_phone'];
-        print(var_dump($contact2_name));
-        print(var_dump($contact2_phone));
-        if($contact2_name==""){
-            $contact2_name='無';
-        }
-        if($contact2_phone==""){
-            $contact2_phone='無';
-        }
         $school = $_POST['school'];
         $enrollment_year = $_POST['enrollment_year'];
         for($i=0;$i<sizeof($std_name);$i++){
@@ -35,6 +27,12 @@ switch ($_POST['action']) {
             $this_contact1_phone = $contact1_phone[$i];
             $this_contact2_name = $contact2_name[$i];
             $this_contact2_phone = $contact2_phone[$i];
+            if($this_contact2_name==""){
+                $this_contact2_name='無';
+            }
+            if($this_contact2_phone==""){
+                $this_contact2_phone='無';
+            }
             $this_school = $school[$i];
             $this_enrollment_year = $enrollment_year[$i];
             $get_old_contact_id = $conn->query("select contact_id from buxiban_contact where contact1_phone = '$this_contact1_phone';")->fetch(PDO::FETCH_ASSOC);
