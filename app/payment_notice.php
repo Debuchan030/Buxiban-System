@@ -94,17 +94,18 @@ switch ($_POST['action']) {
         $record_id = $_POST['record_id'];
         $record_payment_states = $_POST['record_payment_states'];
         $record_datemonth = $_POST['datemonth'];
-        if($record_datemonth == $datemonth){
-            if ($record_payment_states == 0) {
-                $sqlsend = $conn->query("update buxiban_record_payment set record_payment_states=NOT record_payment_states,record_payment_done='$datetime' where record_id = $record_id");
-            } else {
+
+        if ($record_payment_states == 0) {
+            $sqlsend = $conn->query("update buxiban_record_payment set record_payment_states=NOT record_payment_states,record_payment_done='$datetime' where record_id = $record_id");
+        } 
+        else {
+            if($record_datemonth == $datemonth){
                 $sqlsend = $conn->query("update buxiban_record_payment set record_payment_states=NOT record_payment_states,record_payment_done='0000-00-00 00:00:00' where record_id = $record_id");
             }
-        }
-        else{
-            echo "只能更新當月紀錄";
-        }
-        
-        break;
+            else{
+                echo "只能更新當月紀錄";
+            }
+        } 
+    break;
 }
 $conn = null;
