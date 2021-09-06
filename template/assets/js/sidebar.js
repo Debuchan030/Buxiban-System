@@ -6,6 +6,7 @@ $.post("../../app/changepage.php", { action: "get_pagename" }, function (page) {
 
 
 $('li').click(function () {
+    $(this).attr('disabled')='disabled';
     var target_page = $(this).attr('id');
     var target_title = $(this).first().text();
     if(target_page){
