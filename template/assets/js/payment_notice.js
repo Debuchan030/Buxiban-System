@@ -144,8 +144,8 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 				].map(payed_std_info_template));
 				// 放上選課課程資料
 				get_std_selcourse.call(this, id)
-				if(payment_time != date.substring(0,date.length - 3)){
-					$("#"+id+"_payed").attr('disabled',true)
+				if (payment_time != date.substring(0, date.length - 3)) {
+					$("#" + id + "_payed").attr('disabled', true)
 				}
 
 			}
@@ -233,8 +233,17 @@ $("#record_payment").on('click', '.payed', function () {
 
 })
 //搜尋
-$("#record_payment").on('keydown','.search_bar',function(event){
-	console.log(event.keyCode)
+$("#record_payment").on('keydown', '.search_bar', function (event) {
+	// console.log(event.keyCode)
+	if (event.keyCode === 13) {
+		var id = $(this).attr('id')
+		var payment_time = id.substring(0, id.length - 7)
+		var search_text = $(this).val()
+		console.log(search_text)
+		if (search_text == "") {
+			
+		}
+	}
 })
 //初始化
 $("#record_payment").empty()
