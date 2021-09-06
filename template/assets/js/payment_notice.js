@@ -233,8 +233,8 @@ $("#record_payment").on('click', '.payed', function () {
 
 })
 //搜尋
-$("#record_payment").on('keydown','.search_bar',function(){
-	console.log("hi")
+$("#record_payment").on('keydown','.search_bar',function(event){
+	console.log(event.keyCode)
 })
 //初始化
 $("#record_payment").empty()
