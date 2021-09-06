@@ -1,13 +1,15 @@
+
+var this_page;
 $.post("../../app/changepage.php", { action: "get_pagename" }, function (page) {
     page = JSON.parse(page);
     $("#main").load("./template/"+page[0]+".html")
     $("title").html(page[1])
+    this_page=page[0];
 });
 
 
 $('li').click(function () {
-    if($(this).attr('disabled')!='disabled'){
-        $(this).attr('disabled','disabled');
+    if($(this).attr('id')!=this_page){
         var target_page = $(this).attr('id');
         var target_title = $(this).first().text();
         if(target_page){
