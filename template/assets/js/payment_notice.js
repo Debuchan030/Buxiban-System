@@ -241,6 +241,10 @@ $("#record_payment").on('keydown', '.search_bar', function (event) {
 		if (search_text == "") {
 			$("#"+payment_time+"_non_payed").empty()
 			$("#"+payment_time+"_payed").empty()
+			get_student_record_info.call(this, payment_time)
+		}
+		else{
+
 		}
 	}
 })
