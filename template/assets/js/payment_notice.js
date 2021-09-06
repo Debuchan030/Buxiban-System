@@ -239,11 +239,51 @@ $("#record_payment").on('keydown', '.search_bar', function (event) {
 		var payment_time = id.substring(0, id.length - 7)
 		var search_text = $(this).val()
 		if (search_text == "") {
-			$("#"+payment_time+"_non_payed").empty()
-			$("#"+payment_time+"_payed").empty()
+			$("#" + payment_time + "_non_payed").empty()
+			$("#" + payment_time + "_payed").empty()
 			get_student_record_info.call(this, payment_time)
 		}
-		else{
+		else {
+			$("#" + payment_time + "_non_payed").empty()
+			$("#" + payment_time + "_payed").empty()
+			$.post("../../app/payment_notice.php", { action: "get_record_payment", payment_time: payment_time }, function (student_record_info) {
+				student_record_info = JSON.parse(student_record_info)
+				for (var i = 0; i < student_record_info.length; i++) {
+					if (parseInt(student_record_info[i].record_payment_states) == 0) { //未繳款
+						var id = student_record_info[i].record_id
+						var std_name = student_record_info[i].record_std_name
+						var record_contact_name = student_record_info[i].record_contact_name
+						var record_contact_phone = student_record_info[i].record_contact_phone
+						var total_price = student_record_info[i].record_total_price
+						if (std_name.indexOf(search_text) != -1) {
+							$("#" + payment_time + "_non_payed").append([
+								{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact_name: record_contact_name, record_contact_phone: record_contact_phone },
+							].map(nonpayed_std_info_template));
+							// 放上選課課程資料
+							get_std_selcourse.call(this, id)
+						}
+					}
+					else {//有繳款
+						var id = student_record_info[i].record_id
+						var std_name = student_record_info[i].record_std_name
+						var record_contact_name = student_record_info[i].record_contact_name
+						var record_contact_phone = student_record_info[i].record_contact_phone
+						var total_price = student_record_info[i].record_total_price
+						var record_payment_done = student_record_info[i].record_payment_done
+						if (std_name.indexOf(search_text) != -1) {
+							$("#" + payment_time + "_payed").append([
+								{ record_id: id, record_std_name: std_name, record_total_price: total_price, record_contact_name: record_contact_name, record_contact_phone: record_contact_phone, record_payment_done: record_payment_done },
+							].map(payed_std_info_template));
+							// 放上選課課程資料
+							get_std_selcourse.call(this, id)
+							if (payment_time != date.substring(0, date.length - 3)) {
+								$("#" + id + "_payed").attr('disabled', true)
+							}
+						}
+					}
+				}
+
+			});
 
 		}
 	}
