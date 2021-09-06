@@ -1,5 +1,4 @@
 
-var this_page;
 $.post("../../app/changepage.php", { action: "get_pagename" }, function (page) {
     page = JSON.parse(page);
     $("#main").load("./template/"+page[0]+".html")
@@ -7,7 +6,7 @@ $.post("../../app/changepage.php", { action: "get_pagename" }, function (page) {
     this_page=page[0];
 });
 
-
+var this_page;
 $('li').click(function () {
     if($(this).attr('id')!=this_page){
         var target_page = $(this).attr('id');
@@ -18,4 +17,5 @@ $('li').click(function () {
             $.post("../../app/changepage.php", {action:"change_page", target_page: target_page,target_title: target_title });
         }
     }
+    this_page=$(this).attr('id');
 })
