@@ -9,6 +9,7 @@ var payment_template = ({ payment_time }) => `
 	${payment_time}
 </div>
 <div class="collapse" id="record_${payment_time}">
+	<input class = "search_bar" id="${payment_time}_search" type="search" placeholder="搜尋">
 	<table>
 		<h3>未繳款</h3>
 		<tbody id="${payment_time}_non_payed">
@@ -230,6 +231,10 @@ $("#record_payment").on('click', '.payed', function () {
 		})
 	}
 
+})
+//搜尋
+$("#record_payment").on('keydown','.search_bar',function(){
+	console.log("hi")
 })
 //初始化
 $("#record_payment").empty()
