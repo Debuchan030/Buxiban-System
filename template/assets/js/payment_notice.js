@@ -234,14 +234,13 @@ $("#record_payment").on('click', '.payed', function () {
 })
 //搜尋
 $("#record_payment").on('keydown', '.search_bar', function (event) {
-	// console.log(event.keyCode)
 	if (event.keyCode === 13) {
 		var id = $(this).attr('id')
 		var payment_time = id.substring(0, id.length - 7)
 		var search_text = $(this).val()
-		console.log(search_text)
 		if (search_text == "") {
-			
+			$("#"+payment_time+"_non_payed").empty()
+			$("#"+payment_time+"_payed").empty()
 		}
 	}
 })
