@@ -9,7 +9,7 @@ var payment_template = ({ payment_time }) => `
 	${payment_time}
 </div>
 <div class="collapse" id="record_${payment_time}">
-	<input class = "search_bar" id="${payment_time}_search" type="search" placeholder="搜尋">
+	<input class = "search_bar" id="${payment_time}_search" type="search" placeholder="搜尋學生姓名">
 	<table>
 		<h3>未繳款</h3>
 		<tbody id="${payment_time}_non_payed">
@@ -155,13 +155,15 @@ function get_student_record_info(payment_time) { //放上學生資訊 根據有�
 }
 function get_std_selcourse(record_id) {
 	$.post("../../app/payment_notice.php", { action: "get_record_selcourse", record_id: record_id }, function (record_selcourse) {
-		record_selcourse = JSON.parse(record_selcourse)
-		for (var i = 0; i < record_selcourse.length; i++) {
-			var record_selcourse_name = record_selcourse[i].record_selcourse_name
-			var record_selcourse_price = record_selcourse[i].record_selcourse_price
-			$("#selcourse_" + record_id).append([
-				{ record_selcourse_name: record_selcourse_name, record_selcourse_price: record_selcourse_price },
-			].map(selcourse_template));
+		if (record_selcourse != "NO DATA") {
+			record_selcourse = JSON.parse(record_selcourse)
+			for (var i = 0; i < record_selcourse.length; i++) {
+				var record_selcourse_name = record_selcourse[i].record_selcourse_name
+				var record_selcourse_price = record_selcourse[i].record_selcourse_price
+				$("#selcourse_" + record_id).append([
+					{ record_selcourse_name: record_selcourse_name, record_selcourse_price: record_selcourse_price },
+				].map(selcourse_template));
+			}
 		}
 	});
 }
