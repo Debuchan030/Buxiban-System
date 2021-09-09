@@ -37,7 +37,7 @@ $.post("../../app/bulletin_board.php", { action: "get_bulletin" }, function (bux
         var title = buxiban_bulletin[i].bulletin_title
         var content = buxiban_bulletin[i].bulletin_content
         var time = buxiban_bulletin[i].bulletin_time
-        $('#bulletin_board').append([
+        $('#bulletin_board_post').append([
             { bulletin_id: id, bulletin_title: title, bulletin_content: content, bulletin_time: time },
         ].map(bulletin_template));
     }
@@ -46,7 +46,7 @@ $.post("../../app/bulletin_board.php", { action: "get_bulletin" }, function (bux
 
 
 // 修改貼文
-$("#bulletin_board").on("click", ".bulletin_save", bulletin_save_func)
+$("#bulletin_board_post").on("click", ".bulletin_save", bulletin_save_func)
 function bulletin_save_func() {
     var id = $(this).parent().attr("name")
     var title_addr = "#" + id + "_title"
@@ -57,7 +57,7 @@ function bulletin_save_func() {
     location.reload();
 }
 //刪除貼文
-$("#bulletin_board").on("click", ".bulletin_delete", bulletin_delete_func)
+$("#bulletin_board_post").on("click", ".bulletin_delete", bulletin_delete_func)
 function bulletin_delete_func() {
     var id = $(this).parent().attr("name")
     $.post("../../app/bulletin_board.php", { action: "delete_bulletin", bulletin_id: id });
