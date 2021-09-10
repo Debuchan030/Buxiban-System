@@ -13,7 +13,7 @@
 
 input {
   border: 2px solid rgba(222, 225, 226, 0.75);
-  height: 1.75em;
+  height: 1.75em !important;
   /* width: 180px; */
   margin-bottom: 2px;
 }
@@ -28,7 +28,7 @@ table {
 @media only screen and (max-width: 760px) {
   input {
     border: 2px solid rgba(222, 225, 226, 0.75);
-    height: 1.75em;
+    height: 1.75em !important;
     width: 80px;
     margin-bottom: 2px;
   }
