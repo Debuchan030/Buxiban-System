@@ -80,8 +80,8 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 			家長電話：${record_contact_phone}
 		</div>
 
-		</td>
-		<td>
+	</td>
+	<td>
 		<div>
 			詳細資訊：
 		</div>
