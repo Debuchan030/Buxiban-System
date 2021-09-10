@@ -36,20 +36,26 @@ var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_pri
 </tr>
 
 <tr class="collapse" id="std_${record_id}">
-	
+	<td>
 		<div>
 			姓名：${record_std_name}
 		</div>
 		<div>
-			家長：${record_contact_name}，家長電話：${record_contact_phone}
+			家長：${record_contact_name}
 		</div>
+		<div>
+			家長電話：${record_contact_phone}
+		</div>
+		
+	</td>
+	<td>
 		<div>
 			詳細資訊：
 		</div>
 		<div id = "selcourse_${record_id}">
 
 		</div>
-	
+	</td>
 </tr>
 	
 `
@@ -68,15 +74,20 @@ var payed_std_info_template = ({ record_id, record_std_name, record_total_price,
 			姓名：${record_std_name}
 		</div>
 		<div>
-			家長：${record_contact_name}，家長電話：${record_contact_phone}
+			家長：${record_contact_name}
 		</div>
+		<div>
+			家長電話：${record_contact_phone}
+		</div>
+
+		</td>
+		<td>
 		<div>
 			詳細資訊：
 		</div>
 		<div id = "selcourse_${record_id}">
 
 		</div>
-
 	</td>
 </tr>
 `
