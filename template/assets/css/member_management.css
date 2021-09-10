@@ -13,6 +13,10 @@
 
 input {
   border: 2px solid rgba(222, 225, 226, 0.75);
+  height: 0;
+  width: 180px;
+  padding-bottom: 2px;
+
 }
 
 table {
