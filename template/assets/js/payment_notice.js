@@ -36,7 +36,7 @@ var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_pri
 </tr>
 
 <tr class="collapse" id="std_${record_id}">
-	<td>
+	
 		<div>
 			姓名：${record_std_name}
 		</div>
@@ -49,7 +49,7 @@ var nonpayed_std_info_template = ({ record_id, record_std_name, record_total_pri
 		<div id = "selcourse_${record_id}">
 
 		</div>
-	</td>
+	
 </tr>
 	
 `
