@@ -29,7 +29,7 @@ table {
   input {
     border: 2px solid rgba(222, 225, 226, 0.75);
     height: 1.75em !important;
-    width: 80px;
+    width: 80px !important;
     margin-bottom: 2px;
   }
 }
