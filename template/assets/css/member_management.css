@@ -32,4 +32,7 @@ table {
     width: 80px !important;
     margin-bottom: 2px;
   }
+  #search_text{
+    width: 100% !important;
+  }
 }
