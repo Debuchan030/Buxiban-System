@@ -13,10 +13,9 @@
 
 input {
   border: 2px solid rgba(222, 225, 226, 0.75);
-  height: 0;
-  width: 180px;
-  padding-bottom: 2px;
-
+  height: 1.75em;
+  /* width: 180px; */
+  margin-bottom: 2px;
 }
 
 table {
@@ -24,4 +23,13 @@ table {
   display: block;
   overflow-x: auto;
   white-space: nowrap;
+}
+
+@media only screen and (max-width: 760px) {
+  input {
+    border: 2px solid rgba(222, 225, 226, 0.75);
+    height: 1.75em;
+    width: 80px;
+    margin-bottom: 2px;
+  }
 }
