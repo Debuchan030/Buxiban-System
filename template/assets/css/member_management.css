@@ -16,7 +16,7 @@ input {
 }
 
 table {
-  width: 100%;
+  /* width: 100%; */
   display: block;
   overflow-x: auto;
   white-space: nowrap;
